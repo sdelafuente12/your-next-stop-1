@@ -7,11 +7,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { StartScreenComponent } from './start-screen/start-screen.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ExploreViewComponent } from './explore-view/explore-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartScreenComponent
+    StartScreenComponent,
+    ExploreViewComponent
   ],
   imports: [
     BrowserModule,
