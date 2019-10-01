@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { StartScreenComponent } from './start-screen/start-screen.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule, Routes } from '@angular/router';
 import { ExploreViewComponent } from './explore-view/explore-view.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { ExploreViewComponent } from './explore-view/explore-view.component';
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    NgbModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
