@@ -1,11 +1,4 @@
-.start-screen-title {
-    min-height: 50%;  /* Fallback for browsers do NOT support vh unit */
-    min-height: 50vh; /* These two lines are counted as one :-)       */
-  
-    display: flex;
-    align-items: baseline;
-    justify-content: end;
+
+  .tag-line {
+      font-size: 4vw;
   }
-//   .tag-line {
-//       display: inline;
-//   }
