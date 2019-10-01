@@ -9,7 +9,7 @@ import { StartScreenComponent } from './start-screen/start-screen.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ExploreViewComponent } from './explore-view/explore-view.component';
 import { RoutePageComponent } from './route-page/route-page/route-page.component';
-import { DetailsPageComponent } from './details-page/details-page/details-page.component';
+import { DetailsPageComponent } from './details-page/details-page.component';
 import { MapComponent } from './route-page/map/map.component';
 
 
