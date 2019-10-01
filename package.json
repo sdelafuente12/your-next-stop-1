@@ -8,7 +8,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "serve": "concurrently \"ng serve\" \"server/node_modules/.bin/ts-node-dev server/server.ts\""
   },
   "private": true,
   "dependencies": {
@@ -23,7 +22,6 @@
     "@angular/router": "~8.2.8",
     "@angular/service-worker": "~8.2.8",
     "@ng-bootstrap/ng-bootstrap": "^5.1.1",
-    "concurrently": "^4.1.2",
     "express": "^4.17.1",
     "jquery": "^3.4.1",
     "materialize-css": "^1.0.0-rc.2",
@@ -31,7 +29,6 @@
     "popper.js": "^1.15.0",
     "redux": "^4.0.4",
     "rxjs": "~6.4.0",
-    "sequelize": "^5.19.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
