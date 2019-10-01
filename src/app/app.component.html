@@ -1,9 +1,10 @@
-
-  <app-start-screen></app-start-screen>
+<div>
   <router-outlet></router-outlet>
+</div>
+  
 
 
-<footer class="page-footer" style="position:fixed;bottom:0;left:0;width:100%;">
+<footer class="page-footer" style="position:fixed;bottom:0;left:0;width:100%;" *ngIf="isLoggedIn">
   <div class="footer-nav center">
     <a class="material-icons">directions_walk</a>
     <a class="material-icons">directions_car</a>
