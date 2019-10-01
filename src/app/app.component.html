@@ -2,13 +2,9 @@
   <app-start-screen></app-start-screen>
   <router-outlet></router-outlet>
 
-
-<footer class="page-footer" style="position:fixed;bottom:0;left:0;width:100%;">
-  <div class="footer-nav center">
-      <a><i class="material-icons">directions_walk</i>Explore</a>
-      <a><i class="material-icons">directions_car</i>Route</a>
-      <a><i class="material-icons">map</i>Trips</a>
-      <a><i class="material-icons">favorite</i>Favorites</a>
-    </div>
-  </div>
-</footer>
+<igx-bottom-nav>
+  <igx-tab-panel label="Explore" icon="directions_walk"></igx-tab-panel>
+  <igx-tab-panel label="Route" icon="directions_car"></igx-tab-panel>
+  <igx-tab-panel label="Trips" icon="map"></igx-tab-panel>
+  <igx-tab-panel label="Favorites" icon="favorite"></igx-tab-panel>
+</igx-bottom-nav>
