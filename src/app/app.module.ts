@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { StartScreenComponent } from './start-screen/start-screen.component';
-import { ExploreViewComponent } from './explore-view/explore-view.component';
+import { ExploreComponent } from './explore/explore.component';
 import { RouteComponent } from './route/route.component';
-import { DetailsPageComponent } from './details-page/details-page.component';
+import { DetailsComponent } from './details/details.component';
 import { MapComponent } from './map/map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxAvatarModule } from 'igniteui-angular';
@@ -24,9 +24,9 @@ import { AgmDirectionModule } from 'agm-direction';
   declarations: [
     AppComponent,
     StartScreenComponent,
-    ExploreViewComponent,
+    ExploreComponent,
     RouteComponent,
-    DetailsPageComponent,
+    DetailsComponent,
     MapComponent,
     BottomNavRoutingComponent,
     BottomNavRoutingView1Component,
@@ -48,7 +48,7 @@ import { AgmDirectionModule } from 'agm-direction';
     IgxBottomNavModule,
     RouterModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD8R2pxHPbNkftPM4FUfGKMXn3QlvJB2TE'
+      apiKey: API_KEY
     }),
     AgmDirectionModule
   ],
