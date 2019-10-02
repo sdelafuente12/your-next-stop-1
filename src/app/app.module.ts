@@ -7,11 +7,10 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { StartScreenComponent } from './start-screen/start-screen.component';
-import { RouterModule, Routes } from '@angular/router';
 import { ExploreViewComponent } from './explore-view/explore-view.component';
-import { RoutePageComponent } from './route-page/route-page/route-page.component';
+import { RoutePageComponent } from './route-page/route-page.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
-import { MapComponent } from './route-page/map/map.component';
+import { MapComponent } from './map/map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxBottomNavModule } from 'igniteui-angular';
 
