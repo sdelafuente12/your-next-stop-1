@@ -51,7 +51,7 @@ import { API_KEY } from '../../config.js';
     IgxBottomNavModule,
     IgxGeographicMapModule,
     IgxDataChartInteractivityModule,
-    RouterModule
+    RouterModule,
     AgmCoreModule.forRoot({
       apiKey: API_KEY
     }),
