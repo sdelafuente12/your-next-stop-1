@@ -24,7 +24,7 @@ const routes: Routes = [
     component: BottomNavRoutingComponent,
     children: [
       { path: 'explore-view', component: ExploreViewComponent },
-      { path: 'route-page', component: BottomNavRoutingView2Component },
+      { path: 'route', component: BottomNavRoutingView2Component },
       { path: 'trips-view', component: BottomNavRoutingView3Component },
       { path: 'favorites-view', component: BottomNavRoutingView4Component }
     ]

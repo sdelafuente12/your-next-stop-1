@@ -8,7 +8,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { StartScreenComponent } from './start-screen/start-screen.component';
 import { ExploreViewComponent } from './explore-view/explore-view.component';
-import { RoutePageComponent } from './route-page/route-page.component';
+import { RouteComponent } from './route/route.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
 import { MapComponent } from './map/map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,13 +17,15 @@ import { IgxIconModule } from 'igniteui-angular';
 import { IgxListModule } from 'igniteui-angular';
 import { IgxBottomNavModule } from 'igniteui-angular';
 import { BottomNavRoutingComponent, BottomNavRoutingView1Component, BottomNavRoutingView2Component, BottomNavRoutingView3Component, BottomNavRoutingView4Component } from './bottomnav-routing/bottomnav-routing.component';
+import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartScreenComponent,
     ExploreViewComponent,
-    RoutePageComponent,
+    RouteComponent,
     DetailsPageComponent,
     MapComponent,
     BottomNavRoutingComponent,
@@ -44,7 +46,11 @@ import { BottomNavRoutingComponent, BottomNavRoutingView1Component, BottomNavRou
     IgxIconModule,
     IgxListModule,
     IgxBottomNavModule,
-    RouterModule
+    RouterModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD8R2pxHPbNkftPM4FUfGKMXn3QlvJB2TE'
+    }),
+    AgmDirectionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
