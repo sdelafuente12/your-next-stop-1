@@ -10,21 +10,21 @@ export class BottomNavRoutingComponent {
 }
 
 @Component({
-  template: '<h3>Explore Content</h3>'
+  template: '<h3>Tab 1 Content</h3>'
 })
 export class BottomNavRoutingView1Component {}
 
 @Component({
-  template: '<h3>Route Content</h3>'
+  template: '<h3>Tab 2 Content</h3>'
 })
 export class BottomNavRoutingView2Component {}
 
 @Component({
-  template: '<h3>Trips Content</h3>'
+  template: '<h3>Tab 3 Content</h3>'
 })
 export class BottomNavRoutingView3Component {}
 
 @Component({
-  template: '<h3>Favorites Content</h3>'
+  template: '<h3>Tab 4 Content</h3>'
 })
 export class BottomNavRoutingView4Component {}
