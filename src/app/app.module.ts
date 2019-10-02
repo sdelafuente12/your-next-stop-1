@@ -1,3 +1,5 @@
+import { FavoritesComponent } from './favorites/favorites.component';
+import { TripsComponent } from './trips/trips.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,7 +18,9 @@ import { IgxAvatarModule } from 'igniteui-angular';
 import { IgxIconModule } from 'igniteui-angular';
 import { IgxListModule } from 'igniteui-angular';
 import { IgxBottomNavModule } from 'igniteui-angular';
-import { BottomNavRoutingComponent, BottomNavRoutingView1Component, BottomNavRoutingView2Component, BottomNavRoutingView3Component, BottomNavRoutingView4Component } from './bottomnav-routing/bottomnav-routing.component';
+import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
+import { IgxGeographicMapModule } from 'igniteui-angular-maps/ES5/igx-geographic-map-module';
+import { IgxDataChartInteractivityModule } from 'igniteui-angular-charts/ES5/igx-data-chart-interactivity-module';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
@@ -29,11 +33,9 @@ import { API_KEY } from '../../config.js';
     RouteComponent,
     DetailsComponent,
     MapComponent,
+    TripsComponent,
+    FavoritesComponent,
     BottomNavRoutingComponent,
-    BottomNavRoutingView1Component,
-    BottomNavRoutingView2Component,
-    BottomNavRoutingView3Component,
-    BottomNavRoutingView4Component
   ],
   imports: [
     HttpClientModule,
@@ -47,6 +49,8 @@ import { API_KEY } from '../../config.js';
     IgxIconModule,
     IgxListModule,
     IgxBottomNavModule,
+    IgxGeographicMapModule,
+    IgxDataChartInteractivityModule,
     RouterModule,
     AgmCoreModule.forRoot({
       apiKey: API_KEY
