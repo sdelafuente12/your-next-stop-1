@@ -1,8 +1,9 @@
-
-  <app-start-screen></app-start-screen>
+<div>
   <router-outlet></router-outlet>
+</div>
+  
 
-<igx-bottom-nav>
+<igx-bottom-nav *ngIf="isNotLoggedIn">
   <igx-tab-panel label="Explore" icon="directions_walk"></igx-tab-panel>
   <igx-tab-panel label="Route" icon="directions_car"></igx-tab-panel>
   <igx-tab-panel label="Trips" icon="map"></igx-tab-panel>
