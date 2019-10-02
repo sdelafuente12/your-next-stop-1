@@ -1,5 +1,3 @@
-<!-- <router-outlet></router-outlet> -->
-
 <igx-bottom-nav>
   <igx-tab label="Explore" icon="directions_walk" routerLink="explore-view" routerLinkActive #rla1="routerLinkActive"
     [isSelected]="rla1.isActive">
@@ -9,11 +7,11 @@
     [isSelected]="rla2.isActive">
   </igx-tab>
 
-  <igx-tab label="Trips" icon="map" routerLink="view3" routerLinkActive #rla3="routerLinkActive"
+  <igx-tab label="Trips" icon="map" routerLink="trips" routerLinkActive #rla3="routerLinkActive"
     [isSelected]="rla3.isActive">
   </igx-tab>
 
-  <igx-tab label="Favorites" icon="favorite" routerLink="view4" routerLinkActive #rla4="routerLinkActive"
+  <igx-tab label="Favorites" icon="favorite" routerLink="favorites" routerLinkActive #rla4="routerLinkActive"
     [isSelected]="rla4.isActive">
   </igx-tab>
 </igx-bottom-nav>
