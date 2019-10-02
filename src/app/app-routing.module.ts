@@ -20,11 +20,6 @@ import {
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/bottomnav-routing'
-  },
-  {
     path: 'bottomnav-routing',
     component: BottomNavRoutingComponent,
     children: [
@@ -33,7 +28,11 @@ const routes: Routes = [
       { path: 'trips-view', component: BottomNavRoutingView3Component },
       { path: 'favorites-view', component: BottomNavRoutingView4Component }
     ]
-  }
+  },
+  {
+    path: '',
+    component: StartScreenComponent,
+  },
 ];
 
 @NgModule({
