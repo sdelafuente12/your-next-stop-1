@@ -1,17 +1,16 @@
+import { RouteComponent } from './route/route.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ExploreViewComponent } from './explore-view/explore-view.component';
+import { ExploreComponent } from './explore/explore.component';
 import { StartScreenComponent } from './start-screen/start-screen.component';
+import { TripsComponent } from './trips/trips.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 import {
   BottomNavRoutingComponent,
-  BottomNavRoutingView1Component,
-  BottomNavRoutingView2Component,
-  BottomNavRoutingView3Component,
-  BottomNavRoutingView4Component
 } from './bottomnav-routing/bottomnav-routing.component';
 
 // const routes: Routes = [
-//   { path: 'explore-view', component: ExploreViewComponent },
+//   { path: 'explore', component: ExploreComponent },
 //   { path: '',
 //     redirectTo: '/',
 //     pathMatch: 'full'
@@ -22,13 +21,11 @@ const routes: Routes = [
   {
     path: 'bottomnav-routing',
     component: BottomNavRoutingComponent,
-    children: [
-      { path: 'explore-view', component: ExploreViewComponent },
-      { path: 'route-page', component: BottomNavRoutingView2Component },
-      { path: 'trips-view', component: BottomNavRoutingView3Component },
-      { path: 'favorites-view', component: BottomNavRoutingView4Component }
-    ]
   },
+  { path: 'explore', component: ExploreComponent },
+  { path: 'route', component: RouteComponent },
+  { path: 'trips', component: TripsComponent },
+  { path: 'favorites', component: FavoritesComponent },
   {
     path: '',
     component: StartScreenComponent,
