@@ -19,11 +19,11 @@ import {
 // ];
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   pathMatch: 'full',
-  //   redirectTo: '/bottomnav-routing'
-  // },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/bottomnav-routing'
+  },
   {
     path: 'bottomnav-routing',
     component: BottomNavRoutingComponent,
@@ -35,11 +35,6 @@ const routes: Routes = [
     ]
   }
 ];
-
-// const routes: Routes = [
-//   { path: 'explore-view', component: ExploreViewComponent },
-//   { path: '', component: StartScreenComponent },
-// ];
 
 @NgModule({
   imports: [RouterModule.forRoot(
