@@ -2,7 +2,6 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -36,7 +35,6 @@ import { BottomNavRoutingComponent, BottomNavRoutingView1Component, BottomNavRou
     BottomNavRoutingView4Component
   ],
   imports: [
-    //CommonModule,
     FormsModule,
     HttpClientModule,
     BrowserModule,
