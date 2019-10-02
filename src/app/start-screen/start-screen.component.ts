@@ -46,7 +46,6 @@ export class StartScreenComponent implements OnInit {
   //     console.log('user from user service', trip);
   //   })
   // }
-}
 
 
 
