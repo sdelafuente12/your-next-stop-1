@@ -15,7 +15,6 @@ export class StartScreenComponent implements OnInit {
 }
 
 
-
 // import { Component, OnInit } from '@angular/core';
 // import { AuthService } from '../services/auth.service';
 
@@ -39,13 +38,6 @@ export class StartScreenComponent implements OnInit {
 //       console.log('user from user service', user);
 //     })
 //   }
-
-  // createTrip() {
-  //   console.log('TRIP NAME', this.tripname);
-  //   this.trips.createTrip({ tripname: this.tripname }).subscribe(trip => {
-  //     console.log('user from user service', trip);
-  //   })
-  // }
 
 
 
