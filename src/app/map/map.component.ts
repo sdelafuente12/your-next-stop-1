@@ -49,6 +49,15 @@ export class MapComponent implements OnInit {
   styles = styles;
   currentLocation;
   positionSubscription;
+  markerOptions = {
+    icon: '../assets/icons/account_balance-24px.svg'
+  };
+
+  renderOptions = {
+    // suppressMarkers: true,
+    markerOptions: this.markerOptions
+  };
+
   constructor() { }
 
   ngOnInit() {
