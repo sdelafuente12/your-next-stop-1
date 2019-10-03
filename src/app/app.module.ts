@@ -3,10 +3,12 @@ import { TripsComponent } from './trips/trips.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { StartScreenComponent } from './start-screen/start-screen.component';
 import { ExploreComponent } from './explore/explore.component';
@@ -22,7 +24,7 @@ import { IgxBottomNavModule } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
-import { API_KEY } from '../../config.js';
+// import { API_KEY } from '../../config.js';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { API_KEY } from '../../config.js';
     BottomNavRoutingComponent,
   ],
   imports: [
+    FormsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
@@ -50,7 +53,7 @@ import { API_KEY } from '../../config.js';
     IgxBottomNavModule,
     RouterModule,
     AgmCoreModule.forRoot({
-      apiKey: API_KEY
+      // apiKey: API_KEY
     }),
     AgmDirectionModule
   ],
