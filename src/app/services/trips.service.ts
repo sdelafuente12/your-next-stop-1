@@ -9,12 +9,12 @@ import { environment } from '../../environments/environment';
 
 export class TripsService {
 
-  private usersEndpoint = `${environment.BASE_API_URL}/addTrip`;
+  private tripsEndpoint = `${environment.BASE_API_URL}/addTrip`;
 
   constructor(private http: HttpClient) { }
 
   createTrip(tripData) {
     console.log('TRIP ENVIRONMENT', environment)
-    return this.http.post(this.usersEndpoint, tripData);
+    return this.http.post(this.tripsEndpoint, tripData);
   }
 }
