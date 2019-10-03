@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { styles } from './styles.js';
 
 @Component({
   selector: 'app-map',
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class MapComponent implements OnInit {
   lat: number;
   lng: number;
-
+  styles = styles;
+  origin;
   constructor() { }
 
   ngOnInit() {
@@ -20,8 +22,16 @@ export class MapComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
-    })
+      this.origin = {
+        lat: this.lat,
+        lng: this.lng
+      }
+    }),
+    (err) => {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    },
+    options
   }
-
+  
 
 }

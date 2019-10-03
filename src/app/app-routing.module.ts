@@ -9,6 +9,7 @@ import {
   BottomNavRoutingComponent,
 } from './bottomnav-routing/bottomnav-routing.component';
 
+
 // const routes: Routes = [
 //   { path: 'explore', component: ExploreComponent },
 //   { path: '',
