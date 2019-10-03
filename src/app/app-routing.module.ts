@@ -8,7 +8,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import {
   BottomNavRoutingComponent,
 } from './bottomnav-routing/bottomnav-routing.component';
-import { RouteComponent } from './route/route.component';
+
 
 // const routes: Routes = [
 //   { path: 'explore', component: ExploreComponent },
