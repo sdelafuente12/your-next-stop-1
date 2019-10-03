@@ -20,8 +20,6 @@ import { IgxIconModule } from 'igniteui-angular';
 import { IgxListModule } from 'igniteui-angular';
 import { IgxBottomNavModule } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
-import { IgxGeographicMapModule } from 'igniteui-angular-maps/ES5/igx-geographic-map-module';
-import { IgxDataChartInteractivityModule } from 'igniteui-angular-charts/ES5/igx-data-chart-interactivity-module';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
