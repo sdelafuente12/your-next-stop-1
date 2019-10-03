@@ -5,10 +5,19 @@
 [zoom]="15" 
 (mapClick)="onChoseLocation($event)"
 >
-    <agm-marker 
+    <agm-marker
     [latitude]="lat" 
-    [longitude]="lng" 
-    >
+    [longitude]="lng">
+        <agm-info-window>
+            <strong>this is you</strong>
+        </agm-info-window>
+    </agm-marker>
+    <agm-marker
+    [latitude]="29.9776876"
+    [longitude]="-90.0823041">
+        <agm-info-window>
+      <strong>test info :}</strong>
+        </agm-info-window>
     </agm-marker>
 
     <agm-direction *ngIf="destination"
