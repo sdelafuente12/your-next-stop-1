@@ -1,18 +1,33 @@
-// CSS Reset, comment out if not required or using a different module
-// @import '~minireset.css/minireset';
-//thisisacomment
+@import "~igniteui-angular/lib/core/styles/themes/index";
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 $bg: #282a36;
 $white: rgb(223, 223, 223);
 $primary-font-stack: Roboto, Helvetica, sans-serif;
+$my-h4: igx-type-style($font-size: 72px);
+$my-type-scale: igx-type-scale($h4: $my-h4);
+
+@include igx-core();
+@include igx-typography(
+    $font-family: "'Roboto', sans-serif",
+    $type-scale: $my-type-scale,
+    $base-color: #ff2e2e
+);
 
 body {
     background-color: $bg;
     color: $white;
-    font: $primary-font-stack;
+    // font: $primary-font-stack;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1 {
     font-size: 10vw;
+}
+
+h4 {
+    color: #BDEAF2;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
