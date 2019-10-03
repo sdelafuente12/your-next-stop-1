@@ -3,7 +3,6 @@
 [longitude]="lng"
 [styles]="styles"
 [zoom]="15" 
-(mapClick)="onChoseLocation($event)"
 >
     <agm-marker 
     [latitude]="lat" 
@@ -12,7 +11,7 @@
     </agm-marker>
 
     <agm-direction *ngIf="destination"
-    [origin]="origin" 
+    [origin]="currentLocation" 
     [destination]="destination" 
     [waypoints]="waypoints" 
     [renderOptions]="renderOptions"
