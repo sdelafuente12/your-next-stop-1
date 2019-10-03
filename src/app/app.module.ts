@@ -14,7 +14,7 @@ import { RouteComponent } from './route/route.component';
 import { DetailsComponent } from './details/details.component';
 import { MapComponent } from './map/map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IgxGridModule } from 'igniteui-angular';
+import { IgxCardModule } from 'igniteui-angular';
 import { IgxAvatarModule } from 'igniteui-angular';
 import { IgxIconModule } from 'igniteui-angular';
 import { IgxListModule } from 'igniteui-angular';
@@ -23,7 +23,7 @@ import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
-
+import 'hammerjs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +47,7 @@ import { API_KEY } from '../../config.js';
     IgxAvatarModule,
     IgxIconModule,
     IgxListModule,
+    IgxCardModule,
     IgxBottomNavModule,
     RouterModule,
     AgmCoreModule.forRoot({
