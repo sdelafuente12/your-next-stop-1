@@ -47,7 +47,7 @@ import 'hammerjs';
     IgxBottomNavModule,
     RouterModule,
     AgmCoreModule.forRoot({
-      apiKey: API_KEY
+      // apiKey: API_KEY
     }),
     AgmDirectionModule
   ],
