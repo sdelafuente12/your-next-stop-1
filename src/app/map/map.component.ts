@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs"
-import { styles } from './styles.js';
-
+import { mapStyle } from './map-style.js';
+import { Router } from '@angular/router';
 const options = {
   enableHighAccuracy: true,
   timeout: 5000,
@@ -44,42 +44,74 @@ const locations = new Observable((observer) => {
 
 
 export class MapComponent implements OnInit {
-  lat: number;
-  lng: number;
-  styles = styles;
-  currentLocation;
+  // lat: number;
+  // lng: number;
+  styles = mapStyle;
+  currentPosition;
+  origin;
+  destination;
   positionSubscription;
+
   markerOptions = {
-    icon: '../assets/icons/account_balance-24px.svg'
+    icon: '../assets/icons/looks-24px.svg'
   };
 
   renderOptions = {
+    suppressPolylines: false,
     // suppressMarkers: true,
     markerOptions: this.markerOptions
   };
 
-  constructor() { }
+  waypoints;
+  snapshotUrl: string;
+
+  constructor(private router: Router) { 
+    this.snapshotUrl = router.routerState.snapshot.url;
+  }
 
   ngOnInit() {
+    //function for populating lat and lng based on the values that positionSubscription provides
     const setCoords = (coords) => {
-      this.lat = coords.latitude;
-      this.lng = coords.longitude;
-      this.currentLocation = {
-          lat: this.lat,
-          lng: this.lng
+      // this.lat = coords.latitude;
+      // this.lng = coords.longitude;
+      this.currentPosition = {
+          lat: coords.latitude,
+          lng: coords.longitude
         }
     }
+    //Observable subscription that realtime updates users geolocation
     this.positionSubscription = locations.subscribe({
       next(position: any) { 
         setCoords(position.coords);
       },
       error(msg) { console.log('Error Getting Location: ', msg); }
     });
+
+    if (this.snapshotUrl === '/explore'){ 
+      // this.renderOptions.suppressPolylines = true;
+
+      this.waypoints = [
+        { lat: 29.98057427526072, lng: -90.07347342531739 },
+        { lat: 29.9786784315525, lng: -90.09677645723878 },
+        { lat: 29.980388409830528, lng: -90.0732588485962 },
+        { lat: 29.992283096074008, lng: -90.07334467928467 },
+        { lat: 29.986534772505895, lng: -90.09346961975098 }
+      ]
+
+    }
+
+    if (this.snapshotUrl === '/route') {
+      this.origin = { lat: 41.881832, lng: -87.623177 }
+      this.destination = { lat: 29.986534772505895, lng: -90.09346961975098 };
+    }
   }
   
   ngOnDestroy() {
     this.positionSubscription.unsubscribe();
   }
  
+  showStops(event) {
+    console.log(event)
+  }
 
 }

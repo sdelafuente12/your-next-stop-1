@@ -1,18 +1,21 @@
 <agm-map
- [latitude]="lat"
-[longitude]="lng"
+ [latitude]="currentPosition.lat"
+[longitude]="currentPosition.lng"
 [styles]="styles"
 [zoom]="15" 
 [disableDefaultUI]="true"
+(mapClick)="showStops($event)"
 >
+<!-- *ngFor="let waypoint of waypoints; let i = index" -->
     <agm-marker 
-    [latitude]="lat" 
-    [longitude]="lng" 
+    [animation]="BOUNCE"
+    [latitude]="currentPosition.lat" 
+    [longitude]="currentPosition.lng" 
     >
     </agm-marker>
 
-    <agm-direction *ngIf="destination"
-    [origin]="currentLocation" 
+    <agm-direction *ngIf="snapshotUrl === '/route'"
+    [origin]="origin" 
     [destination]="destination" 
     [waypoints]="waypoints" 
     [renderOptions]="renderOptions"
