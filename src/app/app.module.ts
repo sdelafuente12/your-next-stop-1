@@ -12,6 +12,7 @@ import { RouteComponent } from './route/route.component';
 import { DetailsComponent } from './details/details.component';
 import { MapComponent } from './map/map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IgxGridModule } from 'igniteui-angular';
 import { IgxAvatarModule } from 'igniteui-angular';
 import { IgxIconModule } from 'igniteui-angular';
 import { IgxListModule } from 'igniteui-angular';
@@ -47,6 +48,7 @@ import { API_KEY } from '../../config.js';
     IgxIconModule,
     IgxListModule,
     IgxBottomNavModule,
+    IgxGridModule,
     RouterModule,
     AgmCoreModule.forRoot({
       apiKey: API_KEY

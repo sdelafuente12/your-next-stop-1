@@ -1,1 +1,22 @@
-<p>map works!</p>
+<agm-map
+ [latitude]="lat"
+[longitude]="lng"
+[styles]="styles"
+[zoom]="15" 
+(mapClick)="onChoseLocation($event)"
+>
+    <agm-marker 
+    [latitude]="lat" 
+    [longitude]="lng" 
+    >
+    </agm-marker>
+
+    <agm-direction *ngIf="destination"
+    [origin]="origin" 
+    [destination]="destination" 
+    [waypoints]="waypoints" 
+    [renderOptions]="renderOptions"
+    >
+    </agm-direction>
+
+</agm-map>

@@ -9,6 +9,7 @@ import {
   BottomNavRoutingView3Component,
   BottomNavRoutingView4Component
 } from './bottomnav-routing/bottomnav-routing.component';
+import { RouteComponent } from './route/route.component';
 
 // const routes: Routes = [
 //   { path: 'explore', component: ExploreComponent },
@@ -19,16 +20,9 @@ import {
 // ];
 
 const routes: Routes = [
-  {
-    path: 'bottomnav-routing',
-    component: BottomNavRoutingComponent,
-    children: [
-      { path: 'explore', component: ExploreComponent },
-      { path: 'route', component: BottomNavRoutingView2Component },
-      { path: 'trips-view', component: BottomNavRoutingView3Component },
-      { path: 'favorites-view', component: BottomNavRoutingView4Component }
-    ]
-  },
+  { path: 'bottomnav-routing', component: BottomNavRoutingComponent },
+  { path: 'explore', component: ExploreComponent },
+  { path: 'route', component: RouteComponent },
   {
     path: '',
     component: StartScreenComponent,
