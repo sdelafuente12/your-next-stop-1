@@ -1,4 +1,4 @@
-<agm-map
+<agm-map *ngIf="currentPosition"
  [latitude]="currentPosition.lat"
 [longitude]="currentPosition.lng"
 [styles]="styles"
@@ -7,19 +7,39 @@
 (mapClick)="showStops($event)"
 >
 <!-- *ngFor="let waypoint of waypoints; let i = index" -->
-    <agm-marker 
-    [animation]="BOUNCE"
-    [latitude]="currentPosition.lat" 
-    [longitude]="currentPosition.lng" 
-    >
-    </agm-marker>
+<!-- [iconUrl]="src/assets/icons/face-24px.svg" -->
+    
+    <div *ngIf="snapshotUrl === '/route'">
+        
+        <agm-direction
+        [origin]="origin" 
+        [destination]="destination" 
+        [waypoints]="waypoints" 
+        [renderOptions]="renderOptions"
+        >
+        </agm-direction>
+        <agm-marker
+        [latitude]="currentPosition.lat"
+        [longitude]="currentPosition.lng"
+        >
+        </agm-marker>
+        
+    </div>
 
-    <agm-direction *ngIf="snapshotUrl === '/route'"
-    [origin]="origin" 
-    [destination]="destination" 
-    [waypoints]="waypoints" 
-    [renderOptions]="renderOptions"
-    >
-    </agm-direction>
+    <div *ngIf="snapshotUrl === '/explore'">
+        <agm-marker *ngFor="let waypoint of waypoints; let i = index"
+        [animation]="BOUNCE"
+        [latitude]="waypoint.location.lat" 
+        [longitude]="waypoint.location.lng" 
+        >
+        </agm-marker>
+        
+        <agm-marker
+        [latitude]="currentPosition.lat"
+        [longitude]="currentPosition.lng"
+        >
+        </agm-marker>
+    </div>
+
 
 </agm-map>
