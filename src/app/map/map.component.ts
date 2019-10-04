@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs"
 import { mapStyle } from './map-style.js';
 import { Router } from '@angular/router';
+//geolocation options
 const options = {
   enableHighAccuracy: true,
   timeout: 5000,
@@ -31,11 +32,6 @@ const locations = new Observable((observer) => {
   return {unsubscribe() { navigator.geolocation.clearWatch(watchId); }};
 });
 
-
-
-
-
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -44,25 +40,26 @@ const locations = new Observable((observer) => {
 
 
 export class MapComponent implements OnInit {
-  // lat: number;
-  // lng: number;
+//custom map style
+    styles = mapStyle;
+//geolocation properties
   currentPosition;
-  styles = mapStyle;
   origin;
   destination;
   positionSubscription;
-  isLoaded = false;
+
+//custom marker image
   markerOptions = {
     icon: '../assets/icons/looks-24px.svg'
   };
-
+//options for map rendering
   renderOptions = {
     suppressPolylines: false,
-    // suppressMarkers: true,
     markerOptions: this.markerOptions
   };
-
+//all route points between origin and destination
   waypoints;
+//endpoint of current view based on Router
   snapshotUrl: string;
 
   constructor(private router: Router) { 
@@ -72,8 +69,6 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     //function for populating lat and lng based on the values that positionSubscription provides
     const setCoords = (coords) => {
-      // this.lat = coords.latitude;
-      // this.lng = coords.longitude;
       this.currentPosition = {
           lat: coords.latitude,
           lng: coords.longitude
@@ -86,9 +81,8 @@ export class MapComponent implements OnInit {
       },
       error(msg) { console.log('Error Getting Location: ', msg); }
     });
-
+    //populate data for '/explore' endpoint
     if (this.snapshotUrl === '/explore'){ 
-      // this.renderOptions.suppressPolylines = true;
 
       this.waypoints = [
         { location: { lat: 29.98057427526072, lng: -90.07347342531739 } },
@@ -99,7 +93,7 @@ export class MapComponent implements OnInit {
       ]
 
     }
-
+    //populate data for '/route' endpoint
     if (this.snapshotUrl === '/route') {
       this.origin = { lat: 41.881832, lng: -87.623177 }
       this.destination = { lat: 29.986534772505895, lng: -90.09346961975098 };
@@ -116,14 +110,8 @@ export class MapComponent implements OnInit {
   }
   
   ngOnDestroy() {
+    //subscription cleanup
     this.positionSubscription.unsubscribe();
   }
-  
-  showStops(event) {
-    console.log(event)
-  }
 
-  loadSetter() {
-    this.isLoaded = true;
-  }
 }
