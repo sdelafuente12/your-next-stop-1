@@ -6,23 +6,26 @@
   <igx-tabs tabsType="fixed">
     <igx-tabs-group label="CURRENT">
       <igx-list>
-        <ng-template igxEmptyList>
-          <h4 class="empty">No trips! :(</h4>
-        </ng-template>
+            <igx-list-item *ngFor="let current of current">
+              <p igxListLineTitle>Origin</p>
+              <p igxListLineTitle>Destination</p>
+            </igx-list-item>
       </igx-list>
     </igx-tabs-group>
     <igx-tabs-group label="UPCOMING">
       <igx-list>
-        <ng-template igxEmptyList>
-          <h4 class="empty">No trips! :(</h4>
-        </ng-template>
+        <igx-list-item *ngFor="let upcoming of upcoming">
+          <p igxListLineTitle>Origin: {{upcoming.origin}}</p>
+          <p igxListLineTitle>Destination: {{upcoming.destination}}</p>
+        </igx-list-item>
       </igx-list>
     </igx-tabs-group>
     <igx-tabs-group label="PREVIOUS">
       <igx-list>
-        <ng-template igxEmptyList>
-          <h4 class="empty">No trips! :(</h4>
-        </ng-template>
+        <igx-list-item *ngFor="let previous of previous">
+          <p igxListLineTitle>Origin: {{previous.origin}}</p>
+          <p igxListLineTitle>Destination: {{previous.destination}}</p>
+        </igx-list-item>
       </igx-list>
     </igx-tabs-group>
   </igx-tabs>
