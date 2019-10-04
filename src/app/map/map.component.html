@@ -1,4 +1,6 @@
+<div style="visibility: hidden;"></div>
 <agm-map *ngIf="currentPosition"
+
  [latitude]="currentPosition.lat"
 [longitude]="currentPosition.lng"
 [styles]="styles"
@@ -10,7 +12,8 @@
 <!-- [iconUrl]="src/assets/icons/face-24px.svg" -->
     
     <div *ngIf="snapshotUrl === '/route'">
-        
+
+        <!-- (tilesLoaded)="loadSetter()" -->
         <agm-direction
         [origin]="origin" 
         [destination]="destination" 
@@ -18,7 +21,7 @@
         [renderOptions]="renderOptions"
         >
         </agm-direction>
-        <agm-marker
+        <agm-marker *ngIf="isLoaded"
         [latitude]="currentPosition.lat"
         [longitude]="currentPosition.lng"
         >

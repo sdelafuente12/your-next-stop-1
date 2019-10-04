@@ -51,7 +51,7 @@ export class MapComponent implements OnInit {
   origin;
   destination;
   positionSubscription;
-
+  isLoaded = false;
   markerOptions = {
     icon: '../assets/icons/looks-24px.svg'
   };
@@ -118,9 +118,12 @@ export class MapComponent implements OnInit {
   ngOnDestroy() {
     this.positionSubscription.unsubscribe();
   }
- 
+  
   showStops(event) {
     console.log(event)
   }
 
+  loadSetter() {
+    this.isLoaded = true;
+  }
 }

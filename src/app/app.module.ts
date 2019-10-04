@@ -23,6 +23,7 @@ import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
+import { IsLoadedDirective } from './is-loaded.directive';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { API_KEY } from '../../config.js';
     TripsComponent,
     FavoritesComponent,
     BottomNavRoutingComponent,
+    IsLoadedDirective,
   ],
   imports: [
     HttpClientModule,
@@ -55,6 +57,7 @@ import { API_KEY } from '../../config.js';
     AgmDirectionModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [IsLoadedDirective]
 })
 export class AppModule {}
