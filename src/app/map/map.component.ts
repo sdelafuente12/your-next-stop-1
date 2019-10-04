@@ -1,36 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs"
-import { mapStyle } from './map-style.js';
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { mapStyle } from './map-style.js';
+import { locations } from './observables';
+
 //geolocation options
 const options = {
   enableHighAccuracy: true,
   timeout: 5000,
   maximumAge: 0
 };
-
-const locations = new Observable((observer) => {
-  // Get the next and error callbacks. These will be passed in when
-  // the consumer subscribes.
-  let watchId;
-  // next callback
-  const onSuccess: PositionCallback = function(pos: Position) {
-    observer.next(pos);
-  };
-  // error callback
-  const onError: PositionErrorCallback | any = function(error) {
-    observer.error(error);
-  };
-
-  // Simple geolocation API check provides values to publish
-  if (navigator.geolocation) {
-    watchId = navigator.geolocation.watchPosition(onSuccess, onError, options);
-  } else {
-    onError('Geolocation not available');
-  }
-  // When the consumer unsubscribes, clean up data ready for next subscription.
-  return {unsubscribe() { navigator.geolocation.clearWatch(watchId); }};
-});
 
 @Component({
   selector: 'app-map',

@@ -8,7 +8,7 @@
 (mapClick)="showStops($event)"
 >
   
-    <agm-direction
+    <agm-direction *ngIf="origin && destination"
     [origin]="origin" 
     [destination]="destination" 
     [waypoints]="waypoints" 
