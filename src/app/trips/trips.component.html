@@ -4,8 +4,26 @@
 
 <div class="items-wrapper__item items-wrapper__item-small items-wrapper__item--blue">
   <igx-tabs tabsType="fixed">
-    <igx-tabs-group label="CURRENT"></igx-tabs-group>
-    <igx-tabs-group label="UPCOMING"></igx-tabs-group>
-    <igx-tabs-group label="PREVIOUS"></igx-tabs-group>
+    <igx-tabs-group label="CURRENT">
+      <igx-list>
+        <ng-template igxEmptyList>
+          <h4 class="empty">No trips! :(</h4>
+        </ng-template>
+      </igx-list>
+    </igx-tabs-group>
+    <igx-tabs-group label="UPCOMING">
+      <igx-list>
+        <ng-template igxEmptyList>
+          <h4 class="empty">No trips! :(</h4>
+        </ng-template>
+      </igx-list>
+    </igx-tabs-group>
+    <igx-tabs-group label="PREVIOUS">
+      <igx-list>
+        <ng-template igxEmptyList>
+          <h4 class="empty">No trips! :(</h4>
+        </ng-template>
+      </igx-list>
+    </igx-tabs-group>
   </igx-tabs>
 </div>
