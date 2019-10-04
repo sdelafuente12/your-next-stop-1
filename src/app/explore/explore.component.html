@@ -12,41 +12,120 @@
   </div>
 </div>
 
-<div class="sample-column card-wrapper" style="position: relative;">
-  <igx-card>
-    <igx-card-header>
-      <h3 igxCardHeaderTitle>Sushi Place</h3>
-      <h5 igxCardHeaderSubtitle>2 mi</h5>
-      <h5 igxCardHeaderSubtitle>
-          <igx-icon>favorite</igx-icon>
-      </h5>
-    </igx-card-header>
-      <igx-card-media height="100px"> // 171
-      <img src="../../assets/images/sushi.png">
-    </igx-card-media>
-  </igx-card>
-</div>
 
-<igx-carousel [pause]="true" [loop]="true" [navigation]="true">
+
+<igx-carousel [pause]="true" [loop]="false" [navigation]="true">
   <igx-slide>
-    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 100px">
-      <p>
-        Slide 1
-      </p>
+    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
+      <div class="sample-column card-wrapper" style="position: relative;">
+        <igx-card>
+          <igx-card-header>
+            <h3 igxCardHeaderTitle>Sushi</h3>
+            <h5 igxCardHeaderSubtitle>2 mi</h5>
+            <h5 igxCardHeaderSubtitle>
+              <igx-icon>favorite</igx-icon>
+            </h5>
+          </igx-card-header>
+          <igx-card-media height="171px">
+            <img src="../../assets/images/sushi.png">
+          </igx-card-media>
+        </igx-card>
+      </div>
     </div>
   </igx-slide>
   <igx-slide>
-    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 100px">
-      <p>
-        Slide 2
-      </p>
+    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
+      <div class="sample-column card-wrapper" style="position: relative;">
+        <igx-card>
+          <igx-card-header>
+            <h3 igxCardHeaderTitle>Burgers</h3>
+            <h5 igxCardHeaderSubtitle>2 mi</h5>
+            <h5 igxCardHeaderSubtitle>
+              <igx-icon>favorite</igx-icon>
+            </h5>
+          </igx-card-header>
+          <igx-card-media height="171px">
+            <img src="../../assets/images/sushi.png">
+          </igx-card-media>
+        </igx-card>
+      </div>
     </div>
   </igx-slide>
   <igx-slide>
-    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 100px">
-      <p>
-        Slide 3
-      </p>
+    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
+      <div class="sample-column card-wrapper" style="position: relative;">
+        <igx-card>
+          <igx-card-header>
+            <h3 igxCardHeaderTitle>Tacos</h3>
+            <h5 igxCardHeaderSubtitle>2 mi</h5>
+            <h5 igxCardHeaderSubtitle>
+              <igx-icon>favorite</igx-icon>
+            </h5>
+          </igx-card-header>
+          <igx-card-media height="171px">
+            <img src="../../assets/images/sushi.png">
+          </igx-card-media>
+        </igx-card>
+      </div>
+    </div>
+  </igx-slide>
+  <igx-slide>
+    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
+      <div class="sample-column card-wrapper" style="position: relative;">
+        <igx-card>
+          <igx-card-header>
+            <h3 igxCardHeaderTitle>Seafood</h3>
+            <h5 igxCardHeaderSubtitle>2 mi</h5>
+            <h5 igxCardHeaderSubtitle>
+              <igx-icon>favorite</igx-icon>
+            </h5>
+          </igx-card-header>
+          <igx-card-media height="171px">
+            <img src="../../assets/images/sushi.png">
+          </igx-card-media>
+        </igx-card>
+      </div>
+    </div>
+  </igx-slide>
+  <igx-slide>
+    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
+      <div class="sample-column card-wrapper" style="position: relative;">
+        <igx-card>
+          <igx-card-header>
+            <h3 igxCardHeaderTitle>Tapas</h3>
+            <h5 igxCardHeaderSubtitle>2 mi</h5>
+            <h5 igxCardHeaderSubtitle>
+              <igx-icon>favorite</igx-icon>
+            </h5>
+          </igx-card-header>
+          <igx-card-media height="171px">
+            <img src="../../assets/images/sushi.png">
+          </igx-card-media>
+        </igx-card>
+      </div>
     </div>
   </igx-slide>
 </igx-carousel>
+
+<igx-tabs tabsType="fixed">
+  <igx-tabs-group label="Foo" icon="home">
+    <div>
+      tab 0 content
+    </div>
+  </igx-tabs-group>
+  <igx-tabs-group label="Bar" icon="menu">
+    <div>
+      tab 1 content
+    </div>
+  </igx-tabs-group>
+  <igx-tabs-group>
+    <ng-template igxTab>
+      <div>
+        Custom
+      </div>
+    </ng-template>
+    <div>
+      tab 2 content
+    </div>
+  </igx-tabs-group>
+</igx-tabs>

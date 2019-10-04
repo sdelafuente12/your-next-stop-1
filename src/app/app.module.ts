@@ -22,7 +22,10 @@ import {
 	IgxListModule,
 	IgxBottomNavModule,
 	IgxInputGroupModule,
-	IgxCarouselModule
+	IgxCarouselModule,
+	IgxButtonModule,
+	IgxRippleModule,
+	IgxTabsModule
 } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
 import { AgmCoreModule } from '@agm/core';
@@ -58,7 +61,10 @@ import { AgmDirectionModule } from 'agm-direction';
         AgmCoreModule.forRoot({}),
         AgmDirectionModule,
         IgxInputGroupModule,
-        IgxCarouselModule
+        IgxCarouselModule,
+        IgxButtonModule,
+        IgxRippleModule,
+        IgxTabsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
