@@ -1,0 +1,18 @@
+@import '~igniteui-angular/lib/core/styles/themes/index';
+
+.card-wrapper {
+  max-width: 152px;
+}
+
+$colorful-card: igx-card-theme(
+  $background: #353A50,
+  $header-text-color: #ffffff,
+  $subtitle-text-color: #ffffff,
+  $content-text-color: #ffffff
+);
+
+:host {
+  ::ng-deep {
+    @include igx-card($colorful-card);
+  }
+}
