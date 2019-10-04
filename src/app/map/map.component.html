@@ -1,31 +1,48 @@
-<agm-map
- [latitude]="lat"
-[longitude]="lng"
+<!-- '/route' map -->
+<agm-map *ngIf="snapshotUrl === '/route' && currentPosition"
+[latitude]="origin"
+[longitude]="destination"
 [styles]="styles"
 [zoom]="15" 
-(mapClick)="onChoseLocation($event)"
+[disableDefaultUI]="true"
+(mapClick)="showStops($event)"
 >
-    <agm-marker
-    [latitude]="lat" 
-    [longitude]="lng">
-        <agm-info-window>
-            <strong>this is you</strong>
-        </agm-info-window>
-    </agm-marker>
-    <agm-marker
-    [latitude]="29.9776876"
-    [longitude]="-90.0823041">
-        <agm-info-window>
-      <strong>test info :}</strong>
-        </agm-info-window>
-    </agm-marker>
-
-    <agm-direction *ngIf="destination"
+  
+    <agm-direction
     [origin]="origin" 
     [destination]="destination" 
     [waypoints]="waypoints" 
     [renderOptions]="renderOptions"
     >
     </agm-direction>
+    <agm-marker 
+    [latitude]="currentPosition.lat"
+    [longitude]="currentPosition.lng"
+    >
+    </agm-marker>  
+
+</agm-map>
+
+<!-- '/explore' map -->
+<agm-map *ngIf="snapshotUrl === '/explore' && currentPosition"
+[latitude]="currentPosition.lat"
+[longitude]="currentPosition.lng"
+[styles]="styles"
+[zoom]="15" 
+[disableDefaultUI]="true"
+(mapClick)="showStops($event)"
+> 
+
+    <agm-marker *ngFor="let waypoint of waypoints; let i = index"
+    [latitude]="waypoint.location.lat" 
+    [longitude]="waypoint.location.lng" 
+    >
+    </agm-marker>
+    
+    <agm-marker
+    [latitude]="currentPosition.lat"
+    [longitude]="currentPosition.lng"
+    >
+    </agm-marker>
 
 </agm-map>
