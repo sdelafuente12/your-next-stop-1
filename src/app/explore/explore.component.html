@@ -21,9 +21,32 @@
           <igx-icon>favorite</igx-icon>
       </h5>
     </igx-card-header>
-      <igx-card-media height="171px">
+      <igx-card-media height="100px"> // 171
       <img src="../../assets/images/sushi.png">
     </igx-card-media>
   </igx-card>
 </div>
 
+<igx-carousel [pause]="true" [loop]="true" [navigation]="true">
+  <igx-slide>
+    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 100px">
+      <p>
+        Slide 1
+      </p>
+    </div>
+  </igx-slide>
+  <igx-slide>
+    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 100px">
+      <p>
+        Slide 2
+      </p>
+    </div>
+  </igx-slide>
+  <igx-slide>
+    <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 100px">
+      <p>
+        Slide 3
+      </p>
+    </div>
+  </igx-slide>
+</igx-carousel>

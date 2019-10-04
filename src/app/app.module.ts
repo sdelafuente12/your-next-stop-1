@@ -15,45 +15,53 @@ import { ExploreComponent } from './explore/explore.component';
 import { RouteComponent } from './route/route.component';
 import { DetailsComponent } from './details/details.component';
 import { MapComponent } from './map/map.component';
-import { IgxCardModule, IgxAvatarModule, IgxIconModule, IgxListModule, IgxBottomNavModule } from 'igniteui-angular';
+import {
+	IgxCardModule,
+	IgxAvatarModule,
+	IgxIconModule,
+	IgxListModule,
+	IgxBottomNavModule,
+	IgxInputGroupModule,
+	IgxCarouselModule
+} from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 // import { API_KEY } from '../../config.js';
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    StartScreenComponent,
-    ExploreComponent,
-    RouteComponent,
-    DetailsComponent,
-    MapComponent,
-    TripsComponent,
-    FavoritesComponent,
-    BottomNavRoutingComponent,
-  ],
-  imports: [
-    FormsModule,
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production
-    }),
-    BrowserAnimationsModule,
-    IgxAvatarModule,
-    IgxIconModule,
-    IgxListModule,
-    IgxCardModule,
-    IgxBottomNavModule,
-    RouterModule,
-    AgmCoreModule.forRoot({
-      // apiKey: API_KEY
-    }),
-    AgmDirectionModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        StartScreenComponent,
+        ExploreComponent,
+        RouteComponent,
+        DetailsComponent,
+        MapComponent,
+        TripsComponent,
+        FavoritesComponent,
+        BottomNavRoutingComponent,
+    ],
+    imports: [
+        FormsModule,
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production
+        }),
+        BrowserAnimationsModule,
+        IgxAvatarModule,
+        IgxIconModule,
+        IgxListModule,
+        IgxCardModule,
+        IgxBottomNavModule,
+        RouterModule,
+        AgmCoreModule.forRoot({}),
+        AgmDirectionModule,
+        IgxInputGroupModule,
+        IgxCarouselModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}
