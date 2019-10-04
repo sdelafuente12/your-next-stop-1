@@ -29,7 +29,8 @@ import {
   IgxDatePickerModule,
   IgxTimePickerModule,
   IgxComboModule,
-  IgxSelectModule
+  IgxSelectModule,
+  IgxAutocompleteModule
 } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
 import { AgmCoreModule } from '@agm/core';
@@ -72,7 +73,8 @@ import { AgmDirectionModule } from 'agm-direction';
     IgxTabsModule,
     IgxDatePickerModule,
     IgxTimePickerModule,
-    IgxComboModule
+    IgxComboModule,
+    IgxAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
