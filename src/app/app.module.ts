@@ -27,7 +27,7 @@ import {
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
-// import { API_KEY } from '../../config.js';
+import { API_KEY } from '../../config.js';
 @NgModule({
     declarations: [
         AppComponent,
@@ -55,7 +55,9 @@ import { AgmDirectionModule } from 'agm-direction';
         IgxCardModule,
         IgxBottomNavModule,
         RouterModule,
-        AgmCoreModule.forRoot({}),
+        AgmCoreModule.forRoot({
+            apiKey: API_KEY
+        }),
         AgmDirectionModule,
         IgxInputGroupModule,
         IgxCarouselModule

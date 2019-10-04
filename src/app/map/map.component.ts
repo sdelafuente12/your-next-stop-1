@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { mapStyle } from './map-style.js';
 import { locations } from './observables';
 import { MapService } from '../services/map.service';
+import { LocationService } from '../services/location.service'
 
 @Component({
   selector: 'app-map',
@@ -16,9 +17,13 @@ export class MapComponent implements OnInit {
   styles = mapStyle;
 //geolocation properties
   currentPosition;
+  currentPositionString;
   origin;
   destination;
+  loaded;
+
   positionSubscription;
+  mapSubscription;
 
 //custom marker image
   markerOptions = {
@@ -34,29 +39,50 @@ export class MapComponent implements OnInit {
 //endpoint of current view based on Router
   snapshotUrl: string;
 
-  constructor(private router: Router, private mapService: MapService) { 
+  constructor(private router: Router, private mapService: MapService, private locationService: LocationService) { 
     this.snapshotUrl = router.routerState.snapshot.url;
   }
 
   ngOnInit() {
     //function for populating lat and lng based on the values that positionSubscription provides
-    const setCoords = (coords) => {
-      this.currentPosition = {
-          lat: coords.latitude,
-          lng: coords.longitude
-        }
-    }
+    // const setCoords = (coords) => {
+    //   this.currentPosition = {
+    //       lat: coords.latitude,
+    //       lng: coords.longitude
+    //     }
+    //   this.currentPositionString = `${coords.latitude},${coords.longitude}`
+    // }
     //Observable subscription that realtime updates users geolocation
-    this.positionSubscription = locations.subscribe({
-      next(position: any) { 
-        setCoords(position.coords);
+    // this.positionSubscription = this.locationService.getCurrentPosition().subscribe({
+    //   next(position: Position) { 
+    //     this.currentPosition = {
+    //       lat: +(position.coords.latitude),
+    //       lng: +(position.coords.longitude)
+    //     }
+    //     this.currentPositionString = `${position.coords.latitude},${position.coords.longitude}`;
+
+    //   },
+    //   error(msg) { console.log('Error Getting Location: ', msg); }
+    // });
+    this.positionSubscription = this.locationService.getCurrentPosition().subscribe({
+      next(position: Position) { 
+        this.currentPosition = {
+          lat: +(position.coords.latitude),
+          lng: +(position.coords.longitude)
+        }
+        this.currentPositionString = `${position.coords.latitude},${position.coords.longitude}`;
+
       },
       error(msg) { console.log('Error Getting Location: ', msg); }
     });
     //populate data for '/explore' endpoint
     if (this.snapshotUrl === '/explore'){ 
-      const currentPositionString = `${this.currentPosition.lat},${this.currentPosition.lng}`;
-      this.getNearbyPlaces(currentPositionString);
+      // console.log(this.currentPositionString);
+      // this.getNearbyPlaces(this.currentPositionString);
+      this.mapSubscription = this.mapService.getNearbyPlaces('teststring plesae work annoying')
+        .subscribe((data) => { console.log(data) })
+      // this.mapService.getNearbyPlaces(this.currentPositionString)
+      // .subscribe((data) => { console.log(data) })
       // this.waypoints = [
       //   { location: { lat: 29.98057427526072, lng: -90.07347342531739 } },
       //   { location: { lat: 29.9786784315525, lng: -90.09677645723878 } },
@@ -85,10 +111,11 @@ export class MapComponent implements OnInit {
   ngOnDestroy() {
     //subscription cleanup
     this.positionSubscription.unsubscribe();
+    this.mapSubscription.unsubscribe();
   }
 
   getNearbyPlaces(location) {
-    this.mapService.getNearbyPlaces(location)
+    return this.mapSubscription = this.mapService.getNearbyPlaces(location)
       .subscribe((data) => { console.log(data) })
   }
 }
