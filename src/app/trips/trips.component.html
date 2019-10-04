@@ -1,3 +1,32 @@
 <div>
   <h4>Trips</h4>
 </div>
+
+<div class="items-wrapper__item items-wrapper__item-small items-wrapper__item--blue">
+  <igx-tabs tabsType="fixed">
+    <igx-tabs-group label="CURRENT">
+      <igx-list>
+            <igx-list-item *ngFor="let current of current">
+              <p igxListLineTitle>Origin</p>
+              <p igxListLineTitle>Destination</p>
+            </igx-list-item>
+      </igx-list>
+    </igx-tabs-group>
+    <igx-tabs-group label="UPCOMING">
+      <igx-list>
+        <igx-list-item *ngFor="let upcoming of upcoming">
+          <p igxListLineTitle>Origin: {{upcoming.origin}}</p>
+          <p igxListLineTitle>Destination: {{upcoming.destination}}</p>
+        </igx-list-item>
+      </igx-list>
+    </igx-tabs-group>
+    <igx-tabs-group label="PREVIOUS">
+      <igx-list>
+        <igx-list-item *ngFor="let previous of previous">
+          <p igxListLineTitle>Origin: {{previous.origin}}</p>
+          <p igxListLineTitle>Destination: {{previous.destination}}</p>
+        </igx-list-item>
+      </igx-list>
+    </igx-tabs-group>
+  </igx-tabs>
+</div>

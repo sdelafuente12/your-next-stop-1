@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trips.component.scss']
 })
 export class TripsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  constructor() {}
+  public current = [];
+  public upcoming = [
+    {
+      origin: 'New Orleans, LA',
+      destination: 'Atlanta, GA'
+    }
+  ];
+  public previous = [
+    {
+      origin: 'New Orleans, LA',
+      destination: 'New York, NY'
+    }
+  ];
+  ngOnInit() {}
 }
