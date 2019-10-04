@@ -1,5 +1,12 @@
 import { Observable } from "rxjs";
 
+//geolocation options
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
 export const locations = new Observable((observer) => {
     // Get the next and error callbacks. These will be passed in when
     // the consumer subscribes.

@@ -1,17 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs"
 import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { mapStyle } from './map-style.js';
 import { locations } from './observables';
-
-//geolocation options
-const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0
-};
+import { MapService } from '../services/map.service';
 
 @Component({
   selector: 'app-map',
@@ -22,7 +13,7 @@ const options = {
 
 export class MapComponent implements OnInit {
 //custom map style
-    styles = mapStyle;
+  styles = mapStyle;
 //geolocation properties
   currentPosition;
   origin;
@@ -43,7 +34,7 @@ export class MapComponent implements OnInit {
 //endpoint of current view based on Router
   snapshotUrl: string;
 
-  constructor(private router: Router) { 
+  constructor(private router: Router, private mapService: MapService) { 
     this.snapshotUrl = router.routerState.snapshot.url;
   }
 
@@ -64,14 +55,15 @@ export class MapComponent implements OnInit {
     });
     //populate data for '/explore' endpoint
     if (this.snapshotUrl === '/explore'){ 
-
-      this.waypoints = [
-        { location: { lat: 29.98057427526072, lng: -90.07347342531739 } },
-        { location: { lat: 29.9786784315525, lng: -90.09677645723878 } },
-        { location: { lat: 29.980388409830528, lng: -90.0732588485962 } },
-        { location: { lat: 29.992283096074008, lng: -90.07334467928467 } },
-        { location: {lat: 29.986534772505895, lng: -90.09346961975098 } }
-      ]
+      const currentPositionString = `${this.currentPosition.lat},${this.currentPosition.lng}`;
+      this.getNearbyPlaces(currentPositionString);
+      // this.waypoints = [
+      //   { location: { lat: 29.98057427526072, lng: -90.07347342531739 } },
+      //   { location: { lat: 29.9786784315525, lng: -90.09677645723878 } },
+      //   { location: { lat: 29.980388409830528, lng: -90.0732588485962 } },
+      //   { location: { lat: 29.992283096074008, lng: -90.07334467928467 } },
+      //   { location: {lat: 29.986534772505895, lng: -90.09346961975098 } }
+      // ]
 
     }
     //populate data for '/route' endpoint
@@ -95,4 +87,8 @@ export class MapComponent implements OnInit {
     this.positionSubscription.unsubscribe();
   }
 
+  getNearbyPlaces(location) {
+    this.mapService.getNearbyPlaces(location)
+      .subscribe((data) => { console.log(data) })
+  }
 }
