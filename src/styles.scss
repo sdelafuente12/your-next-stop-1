@@ -13,12 +13,7 @@
 $bg: #1f1f1f;
 $white: rgb(223, 223, 223);
 $primary-font-stack: Roboto, Helvetica, sans-serif;
-$my-h4: igx-type-style(
-  $font-size: 72px
-);
-$my-type-scale: igx-type-scale(
-  $h4: $my-h4
-);
+
 $colorful-card: igx-card-theme(
   $background: #353a50
 );

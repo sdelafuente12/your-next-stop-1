@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { TripsComponent } from './trips/trips.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { StartScreenComponent } from './start-screen/start-screen.component';
 import { ExploreComponent } from './explore/explore.component';
@@ -18,8 +19,8 @@ import { IgxCardModule, IgxAvatarModule, IgxIconModule, IgxListModule, IgxBottom
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
-import { API_KEY } from '../../config.js';
-import 'hammerjs';
+// import { API_KEY } from '../../config.js';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import 'hammerjs';
     BottomNavRoutingComponent,
   ],
   imports: [
+    FormsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
