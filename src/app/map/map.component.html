@@ -32,13 +32,13 @@
 [disableDefaultUI]="true"
 (mapClick)="showStops($event)"
 > 
-
+<div *ngIf="waypoints">
     <agm-marker *ngFor="let waypoint of waypoints; let i = index"
-    [latitude]="waypoint.location.lat" 
-    [longitude]="waypoint.location.lng" 
+    [latitude]="waypoint.lat" 
+    [longitude]="waypoint.lng" 
     >
     </agm-marker>
-    
+</div>
     <agm-marker
     [latitude]="currentPosition.lat"
     [longitude]="currentPosition.lng"

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { mapStyle } from './map-style.js';
-import { locations } from './observables';
 import { MapService } from '../services/map.service';
 import { LocationService } from '../services/location.service'
+import { switchMap, map, mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-map',
@@ -39,11 +39,12 @@ export class MapComponent implements OnInit {
 //endpoint of current view based on Router
   snapshotUrl: string;
 
-  constructor(private router: Router, private mapService: MapService, private locationService: LocationService) { 
+  constructor(private router: Router, private mapService: MapService, private locationService: LocationService, private route: ActivatedRoute) { 
     this.snapshotUrl = router.routerState.snapshot.url;
   }
 
   ngOnInit() {
+    //  this.positionSubscription = this.route.data.subscribe(position => console.log('getting there'))
     //function for populating lat and lng based on the values that positionSubscription provides
     // const setCoords = (coords) => {
     //   this.currentPosition = {
@@ -53,8 +54,25 @@ export class MapComponent implements OnInit {
     //   this.currentPositionString = `${coords.latitude},${coords.longitude}`
     // }
     //Observable subscription that realtime updates users geolocation
-    // this.positionSubscription = this.locationService.getCurrentPosition().subscribe({
-    //   next(position: Position) { 
+    this.positionSubscription = this.locationService.getCurrentPosition()
+    .pipe(
+      switchMap(position => {
+        this.currentPosition = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              }
+        return this.locationService.getNearbyPlaces(position)
+      })
+      )
+      .subscribe(locations => {
+        
+        this.waypoints = locations
+        console.log(this.waypoints)
+      })
+      
+      // this.positionSubscription = this.locationService.getCurrentPosition().subscribe({
+        //   next(position: Position) { 
+          // map(position => this.locationService.getNearbyPlaces(position))
     //     this.currentPosition = {
     //       lat: +(position.coords.latitude),
     //       lng: +(position.coords.longitude)
@@ -64,23 +82,12 @@ export class MapComponent implements OnInit {
     //   },
     //   error(msg) { console.log('Error Getting Location: ', msg); }
     // });
-    this.positionSubscription = this.locationService.getCurrentPosition().subscribe({
-      next(position: Position) { 
-        this.currentPosition = {
-          lat: +(position.coords.latitude),
-          lng: +(position.coords.longitude)
-        }
-        this.currentPositionString = `${position.coords.latitude},${position.coords.longitude}`;
-
-      },
-      error(msg) { console.log('Error Getting Location: ', msg); }
-    });
     //populate data for '/explore' endpoint
     if (this.snapshotUrl === '/explore'){ 
       // console.log(this.currentPositionString);
       // this.getNearbyPlaces(this.currentPositionString);
-      this.mapSubscription = this.mapService.getNearbyPlaces('teststring plesae work annoying')
-        .subscribe((data) => { console.log(data) })
+      // this.mapSubscription = this.mapService.getNearbyPlaces('teststring plesae work annoying')
+      //   .subscribe((data) => { console.log(data) })
       // this.mapService.getNearbyPlaces(this.currentPositionString)
       // .subscribe((data) => { console.log(data) })
       // this.waypoints = [
@@ -111,11 +118,7 @@ export class MapComponent implements OnInit {
   ngOnDestroy() {
     //subscription cleanup
     this.positionSubscription.unsubscribe();
-    this.mapSubscription.unsubscribe();
+    
   }
 
-  getNearbyPlaces(location) {
-    return this.mapSubscription = this.mapService.getNearbyPlaces(location)
-      .subscribe((data) => { console.log(data) })
-  }
 }
