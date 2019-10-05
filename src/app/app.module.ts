@@ -30,12 +30,13 @@ import {
   IgxTimePickerModule,
   IgxComboModule,
   IgxSelectModule,
-  IgxAutocompleteModule
+  IgxAutocompleteModule,
+  IgxChipsModule
 } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
-// import { API_KEY } from '../../config.js';
+import { API_KEY } from '../../config.js';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,9 @@ import { AgmDirectionModule } from 'agm-direction';
     IgxDatePickerModule,
     IgxTimePickerModule,
     IgxComboModule,
-    IgxAutocompleteModule
+    IgxAutocompleteModule,
+    IgxChipsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
