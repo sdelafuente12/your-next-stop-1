@@ -1,23 +1,16 @@
-@import '~igniteui-angular/lib/core/styles/themes/index';
+// @import '~igniteui-angular/lib/core/styles/themes/index';
+@import '../node_modules/igniteui-angular/lib/core/styles/themes/index';
 @include igx-core();
 @include igx-theme($default-palette);
-
-$my-chip-theme: igx-chip-theme(
-  $background: #353A50
-  );
-@include igx-chip($my-chip-theme);
 
 $bg: #1f1f1f;
 $white: rgb(223, 223, 223);
 $primary-font-stack: Roboto, Helvetica, sans-serif;
-$colorful-card: igx-card-theme(
-  $background: #353a50
-);
 
 html,
 body {
   height: 100%;
-  overflow: hidden;
+  overflow: visible;
   background-color: $bg;
   color: $white;
   // font: $primary-font-stack;
@@ -71,55 +64,55 @@ h4 {
 //   min-width: 280px;
 // }
 
-// .sample-title .light {
-//   font-weight: 400;
-// }
+.sample-title .light {
+  font-weight: 400;
+}
 
-// .sample-description {
-//   font-size: 14px;
-//   font-weight: normal;
-//   color: #717171;
-// }
+.sample-description {
+  font-size: 14px;
+  font-weight: normal;
+  color: #717171;
+}
 
-// @-webkit-keyframes color-change-2x {
-//   0% {
-//     background: #fdf8f0;
-//   }
-//   100% {
-//     background: #f6e7ec;
-//   }
-// }
+@-webkit-keyframes color-change-2x {
+  0% {
+    background: #fdf8f0;
+  }
+  100% {
+    background: #f6e7ec;
+  }
+}
 
-// @keyframes color-change-2x {
-//   0% {
-//     background: #fdf8f0;
-//   }
-//   100% {
-//     background: #f6e7ec;
-//   }
-// }
+@keyframes color-change-2x {
+  0% {
+    background: #fdf8f0;
+  }
+  100% {
+    background: #f6e7ec;
+  }
+}
 
-// @-webkit-keyframes fade-in {
-//   0% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-// }
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
-// @keyframes fade-in {
-//   0% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-// }
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
-// .headerAlignSyle {
-//   text-align: right !important;
-// }
+.headerAlignSyle {
+  text-align: right !important;
+}
 
 // $green-palette: igx-palette(
 //   $primary: #09f,
