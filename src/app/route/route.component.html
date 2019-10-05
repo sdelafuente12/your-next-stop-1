@@ -2,95 +2,91 @@
   <h4 class="igx-typography__h4">Route</h4>
 </div>
 
-  <div class="valign-wrapper" style="width: 100%;height:370px;position:relative;">
-    <div class="valign" style="width: 100%;height: 100%">
-      <div class="row" style="height: 100%">
-        <div class="col s12" style="height: 100%">
-          <app-map></app-map>
-        </div>
+<div class="valign-wrapper" style="width: 100%;height:370px;position:relative;">
+  <div class="valign" style="width: 100%;height: 100%">
+    <div class="row" style="height: 100%">
+      <div class="col s12" style="height: 100%">
+        <app-map></app-map>
       </div>
     </div>
   </div>
+</div>
 
 
-    <form class="input-group-form" (submit)="onSubmit()">
-        <igx-input-group>
-          <input igxInput name="fullName" type="text" [(ngModel)]="user.fullName" required="required" />
-          <label igxLabel for="fullName">Origin</label>
-          <igx-suffix>
-            <igx-icon>place</igx-icon>
-          </igx-suffix>
-        </igx-input-group>
-        <igx-input-group>
-          <input igxInput name="fullName" type="text" [(ngModel)]="user.fullName" required="required" />
-          <label igxLabel for="fullName">Destination</label>
-          <igx-suffix>
-            <igx-icon>place</igx-icon>
-          </igx-suffix>
-        </igx-input-group>
-        <ng-template #mySelectIcon>
-          <igx-icon fontSet="fa-solid" name="fa-check-circle"></igx-icon>
-        </ng-template>
-        <igx-date-picker name="date" (onSelection)="onDateSelection($event)">
-          <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value"
-            let-displayData="displayData">
-            <igx-input-group (click)="openDialog()">
-              <label igxLabel>Start Date </label>
-              <input igxInput [value]="displayData" />
-              <igx-suffix>
-                <igx-icon>today</igx-icon>
-              </igx-suffix>
-            </igx-input-group>
-          </ng-template>
-        </igx-date-picker>
-        <igx-date-picker name="date" (onSelection)="onDateSelection($event)">
-          <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value"
-            let-displayData="displayData">
-            <igx-input-group (click)="openDialog()">
-              <label igxLabel>End Date </label>
-              <input igxInput [value]="displayData" />
-              <igx-suffix>
-                <igx-icon>today</igx-icon>
-              </igx-suffix>
-            </igx-input-group>
-          </ng-template>
-        </igx-date-picker>
-      <section class="chips-places">
-        <igx-chip class="chip-style" selectable="'true'">
-          <igx-icon igxPrefix></igx-icon>
-          <span style="text-align: center">Amusement</span>
-        </igx-chip>
-        <igx-chip class="chip-style" selectable="'true'">
-          <igx-icon igxPrefix></igx-icon>
-          <span>Attractions</span>
-        </igx-chip>
-        <igx-chip class="chip-style" selectable="'true'">
-          <igx-icon igxPrefix>golf_course</igx-icon>
-          <span>Entertainment</span>
-        </igx-chip>
-        <igx-chip class="chip-style" selectable="'true'">
-          <igx-icon igxPrefix>landscape</igx-icon>
-          <span>Landmarks</span>
-        </igx-chip>
-        <igx-chip class="chip-style" selectable="'true'">
-          <igx-icon igxPrefix></igx-icon>
-          <span>Museums</span>
-        </igx-chip>
-        <igx-chip class="chip-style" selectable="'true'">
-          <igx-icon igxPrefix></igx-icon>
-          <span>Parks</span>
-        </igx-chip>
-        <igx-chip class="chip-style" selectable="'true'">
-          <igx-icon igxPrefix>local_see</igx-icon>
-          <span>Photo Op</span>
-        </igx-chip>
-        <igx-chip class="chip-style" selectable="'true'">
-          <igx-icon igxPrefix></igx-icon>
-          <span>Tours</span>
-        </igx-chip>
-      </section>
-    </form>
+<form class="input-group-form" (keyup.enter)="onSubmit()">
+  <igx-input-group type="border">
+    <input igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required" />
+    <label igxLabel for="origin">Origin</label>
+    <igx-suffix>
+      <igx-icon>place</igx-icon>
+    </igx-suffix>
+  </igx-input-group>
+  <igx-input-group type="border">
+    <input igxInput name="destination" type="text" [(ngModel)]="form.destination" required="required" />
+    <label igxLabel for="destination">Destination</label>
+    <igx-suffix>
+      <igx-icon>place</igx-icon>
+    </igx-suffix>
+  </igx-input-group>
+  <ng-template #mySelectIcon>
+    <igx-icon fontSet="fa-solid" name="fa-check-circle"></igx-icon>
+  </ng-template>
+  <igx-date-picker name="date" (onSelection)="onDateSelection($event)">
+    <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
+      <igx-input-group (click)="openDialog()" type="box">
+        <label igxLabel>Start Date(optional)</label>
+        <input igxInput [value]="displayData" />
+        <igx-suffix>
+          <igx-icon>today</igx-icon>
+        </igx-suffix>
+      </igx-input-group>
+    </ng-template>
+  </igx-date-picker>
+  <igx-date-picker name="date" (onSelection)="onDateSelection($event)">
+    <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
+      <igx-input-group (click)="openDialog()" type="box">
+        <label igxLabel>End Date(optional)</label>
+        <input igxInput [value]="displayData" />
+        <igx-suffix>
+          <igx-icon>today</igx-icon>
+        </igx-suffix>
+      </igx-input-group>
+    </ng-template>
+  </igx-date-picker>
+  <section class="chips-places">
+    <igx-chip class="chip-style" selectable="'true'">
+      <igx-icon igxPrefix></igx-icon>
+      <span style="text-align: center">Amusement</span>
+    </igx-chip>
+    <igx-chip class="chip-style" selectable="'true'">
+      <igx-icon igxPrefix></igx-icon>
+      <span>Attractions</span>
+    </igx-chip>
+    <igx-chip class="chip-style" selectable="'true'">
+      <igx-icon igxPrefix>golf_course</igx-icon>
+      <span>Entertainment</span>
+    </igx-chip>
+    <igx-chip class="chip-style" selectable="'true'">
+      <igx-icon igxPrefix>landscape</igx-icon>
+      <span>Landmarks</span>
+    </igx-chip>
+    <igx-chip class="chip-style" selectable="'true'">
+      <igx-icon igxPrefix></igx-icon>
+      <span>Museums</span>
+    </igx-chip>
+    <igx-chip class="chip-style" selectable="'true'">
+      <igx-icon igxPrefix></igx-icon>
+      <span>Parks</span>
+    </igx-chip>
+    <igx-chip class="chip-style" selectable="'true'">
+      <igx-icon igxPrefix>local_see</igx-icon>
+      <span>Photo Op</span>
+    </igx-chip>
+    <igx-chip class="chip-style" selectable="'true'">
+      <igx-icon igxPrefix></igx-icon>
+      <span>Tours</span>
+    </igx-chip>
+  </section>
+</form>
 
-
-  <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50">SAVE TO TRIPS</button>
-
+<button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50">SAVE TO TRIPS</button>

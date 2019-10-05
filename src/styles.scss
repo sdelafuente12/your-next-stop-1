@@ -1,5 +1,5 @@
-// @import '~igniteui-angular/lib/core/styles/themes/index';
-@import '../node_modules/igniteui-angular/lib/core/styles/themes/index';
+@import '~igniteui-angular/lib/core/styles/themes/index';
+// @import '../node_modules/igniteui-angular/lib/core/styles/themes/index';
 @include igx-core();
 @include igx-theme($default-palette);
 
@@ -10,7 +10,7 @@ $primary-font-stack: Roboto, Helvetica, sans-serif;
 html,
 body {
   height: 100%;
-  overflow: visible;
+  overflow: scroll;
   background-color: $bg;
   color: $white;
   // font: $primary-font-stack;
