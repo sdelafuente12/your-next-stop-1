@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { mapStyle } from './map-style.js';
-import { MapService } from '../services/map.service';
 import { LocationService } from '../services/location.service'
 import { switchMap, map, mergeMap } from 'rxjs/operators';
 
