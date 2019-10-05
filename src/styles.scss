@@ -2,6 +2,11 @@
 @include igx-core();
 @include igx-theme($default-palette);
 
+$my-chip-theme: igx-chip-theme(
+  $background: #353A50
+  );
+@include igx-chip($my-chip-theme);
+
 $bg: #1f1f1f;
 $white: rgb(223, 223, 223);
 $primary-font-stack: Roboto, Helvetica, sans-serif;
@@ -26,7 +31,7 @@ h1 {
 h4 {
   color: #bdeaf2;
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto-Light', sans-serif;
 }
 
 .sample-column {
