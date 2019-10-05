@@ -43,7 +43,7 @@ export class LocationService {
     })
   }
 
-  getNearbyPlaces(location) {
+  public getNearbyPlaces(location) {
     const currentPositionString = `${location.coords.latitude},${location.coords.longitude}`;
     
     return this.http.get(this.getNearbyPlacesEndpoint, {

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { mapStyle } from './map-style.js';
 import { LocationService } from '../services/location.service'
-import { switchMap, map, mergeMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { RouteService } from '../services/route.service.js';
 
 @Component({
   selector: 'app-map',
@@ -19,10 +20,10 @@ export class MapComponent implements OnInit {
   currentPositionString;
   origin;
   destination;
-  loaded;
-
-  positionSubscription;
-  mapSubscription;
+//location subsciptions
+  exploreSubscription;
+  routeSubscription;
+  currentLocationSubscription;
 
 //custom marker image
   markerOptions = {
@@ -40,13 +41,13 @@ export class MapComponent implements OnInit {
 //endpoint of current view based on Router
   snapshotUrl: string;
 
-  constructor(private router: Router, private locationService: LocationService, private route: ActivatedRoute) { 
+  constructor(private router: Router, private locationService: LocationService, private routeService: RouteService) { 
     this.snapshotUrl = router.routerState.snapshot.url;
   }
 
   ngOnInit() {
     if (this.snapshotUrl === '/explore'){ //if explore view is active, populates currentposition and nearby locations
-      this.positionSubscription = this.locationService.getCurrentPosition()
+      this.exploreSubscription = this.locationService.getCurrentPosition()
       .pipe(
         switchMap(position => {
           this.currentPosition = {
@@ -62,26 +63,37 @@ export class MapComponent implements OnInit {
         })
 
     }
-    //in progress
+    //subscribes to currentlocation only
     if (this.snapshotUrl === '/route') {
-      this.origin = { lat: 41.881832, lng: -87.623177 }
-      this.destination = { lat: 29.986534772505895, lng: -90.09346961975098 };
-    
-      this.waypoints = [
-        { location: { lat: 29.98057427526072, lng: -90.07347342531739 } },
-        { location: { lat: 29.9786784315525, lng: -90.09677645723878 } },
-        { location: { lat: 29.980388409830528, lng: -90.0732588485962 } },
-        { location: { lat: 29.992283096074008, lng: -90.07334467928467 } },
-        { location: {lat: 29.986534772505895, lng: -90.09346961975098 } }
-      ]
+      this.currentLocationSubscription = this.locationService.getCurrentPosition()
+      .subscribe(position => {
+          this.currentPosition = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                }
+      });
     }
     
   }
-  
+  //for conveniently getting lat, lng from map
+  showClickedPosition(event) {
+    console.log(event);
+  }
+  //calls google geocode API to convert user inputted addresses into geocoordinates
+  setRoute(route) {
+    this.routeSubscription = this.routeService.getRoutePositions(route)
+      .subscribe(routePositions => { 
+        console.log(routePositions) 
+        this.origin = routePositions[0].location;
+        this.destination = routePositions[1].location;
+      })
+  }
+
   ngOnDestroy() {
     //subscription cleanup
-    this.positionSubscription.unsubscribe();
-    
+    if(this.exploreSubscription) this.exploreSubscription.unsubscribe();
+    if(this.routeSubscription) this.routeSubscription.unsubscribe();
+    if(this.currentLocationSubscription) this.currentLocationSubscription.unsubscribe();
   }
 
 }
