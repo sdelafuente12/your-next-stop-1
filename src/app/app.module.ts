@@ -65,7 +65,9 @@ import { API_KEY } from '../../config.js';
     IgxBottomNavModule,
     IgxSelectModule,
     RouterModule,
-    AgmCoreModule.forRoot({}),
+    AgmCoreModule.forRoot({
+      apiKey: API_KEY
+    }),
     AgmDirectionModule,
     IgxInputGroupModule,
     IgxCarouselModule,
