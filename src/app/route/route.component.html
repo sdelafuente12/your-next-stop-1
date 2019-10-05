@@ -11,21 +11,40 @@
   </div>
 </div>
 
+<!-- <form class="input-group-form" (keyup.enter)="onSubmit()">
+  
+  <igx-input-group type="box">
+    <input igxInput name="origin" type="text" [(ngModel)]="origin" required="required" />
+    <label igxLabel for="origin">Origin</label>
+    <igx-suffix>
+        <igx-icon>place</igx-icon>
+    </igx-suffix>
+  </igx-input-group>
+  <igx-input-group type="box">
+  <input igxInput name="destination" type="text" [(ngModel)]="destination" required="required" />
+  <label igxLabel for="destination">Destination</label>
+  <igx-suffix>
+    <igx-icon>place</igx-icon>
+  </igx-suffix>
+  </igx-input-group>
+
+</form> -->
+
 <div class="sample-wrapper">
     <section class="sample-content">
         <article class="sample-column">
-            <form class="input-group-form" (submit)="onSubmit()">
+            <form class="input-group-form" (keyup.enter)="onSubmit()">
                 <div class="container" >
-                    <igx-input-group>
-                        <input igxInput name="fullName" type="text" [(ngModel)]="user.fullName" required="required" />
-                        <label igxLabel for="fullName">Origin</label>
+                    <igx-input-group type="box">
+                        <input igxInput name="origin" type="text" [(ngModel)]="origin" required="required" />
+                        <label igxLabel for="origin">Origin</label>
                         <igx-suffix>
                             <igx-icon>place</igx-icon>
                         </igx-suffix>
                     </igx-input-group>
-                    <igx-input-group>
-                      <input igxInput name="fullName" type="text" [(ngModel)]="user.fullName" required="required" />
-                      <label igxLabel for="fullName">Destination</label>
+                    <igx-input-group type="box">
+                      <input igxInput name="destination" type="text" [(ngModel)]="destination" required="required" />
+                      <label igxLabel for="destination">Destination</label>
                       <igx-suffix>
                         <igx-icon>place</igx-icon>
                       </igx-suffix>
@@ -35,7 +54,7 @@
                     </ng-template>
                     <igx-date-picker name="date" (onSelection)="onDateSelection($event)" >
                         <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
-                            <igx-input-group (click)="openDialog()">
+                            <igx-input-group (click)="openDialog()" type="border">
                                 <label igxLabel>Start Date </label>
                                 <input igxInput [value]="displayData" />
                                 <igx-suffix>
@@ -47,7 +66,7 @@
                     <igx-date-picker name="date" (onSelection)="onDateSelection($event)">
                       <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value"
                         let-displayData="displayData">
-                        <igx-input-group (click)="openDialog()">
+                        <igx-input-group (click)="openDialog()" type="border">
                           <label igxLabel>End Date </label>
                           <input igxInput [value]="displayData" />
                           <igx-suffix>

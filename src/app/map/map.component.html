@@ -1,11 +1,8 @@
 <!-- '/route' map -->
 <agm-map *ngIf="snapshotUrl === '/route' && currentPosition"
-[latitude]="origin"
-[longitude]="destination"
 [styles]="styles"
-[zoom]="15" 
 [disableDefaultUI]="true"
-(mapClick)="showStops($event)"
+(mapClick)="showClickedPosition($event)"
 >
   
     <agm-direction *ngIf="origin && destination"

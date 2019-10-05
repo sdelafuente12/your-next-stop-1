@@ -21,8 +21,8 @@ export class MapComponent implements OnInit {
   destination;
   loaded;
 
-  positionSubscription;
-  mapSubscription;
+  exploreSubscription;
+  routeSubscription;
 
 //custom marker image
   markerOptions = {
@@ -46,7 +46,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     if (this.snapshotUrl === '/explore'){ //if explore view is active, populates currentposition and nearby locations
-      this.positionSubscription = this.locationService.getCurrentPosition()
+      this.exploreSubscription = this.locationService.getCurrentPosition()
       .pipe(
         switchMap(position => {
           this.currentPosition = {
@@ -64,6 +64,13 @@ export class MapComponent implements OnInit {
     }
     //in progress
     if (this.snapshotUrl === '/route') {
+      this.routeSubscription = this.locationService.getCurrentPosition()
+      .subscribe(position => {
+          this.currentPosition = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                }
+              });
       this.origin = { lat: 41.881832, lng: -87.623177 }
       this.destination = { lat: 29.986534772505895, lng: -90.09346961975098 };
     
@@ -78,9 +85,14 @@ export class MapComponent implements OnInit {
     
   }
   
+  showClickedPosition(event) {
+    console.log(event);
+  }
+
   ngOnDestroy() {
     //subscription cleanup
-    this.positionSubscription.unsubscribe();
+    if(this.exploreSubscription) this.exploreSubscription.unsubscribe();
+    if(this.routeSubscription) this.routeSubscription.unsubscribe();
     
   }
 

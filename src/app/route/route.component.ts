@@ -38,11 +38,11 @@ export class RouteComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.log('submit');
+    console.log(this.origin, this.destination);
   }
 
   ngOnInit() {
-    this.getAllTrips();
+    // this.getAllTrips();
   }
 
   createTrip() {
