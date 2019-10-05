@@ -8,7 +8,7 @@
 (mapClick)="showStops($event)"
 >
   
-    <agm-direction
+    <agm-direction *ngIf="origin && destination"
     [origin]="origin" 
     [destination]="destination" 
     [waypoints]="waypoints" 
@@ -32,13 +32,13 @@
 [disableDefaultUI]="true"
 (mapClick)="showStops($event)"
 > 
-
-    <agm-marker *ngFor="let waypoint of waypoints; let i = index"
-    [latitude]="waypoint.location.lat" 
-    [longitude]="waypoint.location.lng" 
+<div *ngIf="nearbyPlaces">
+    <agm-marker *ngFor="let place of nearbyPlaces; let i = index"
+    [latitude]="place.lat" 
+    [longitude]="place.lng" 
     >
     </agm-marker>
-    
+</div>
     <agm-marker
     [latitude]="currentPosition.lat"
     [longitude]="currentPosition.lng"
