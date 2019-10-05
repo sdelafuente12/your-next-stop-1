@@ -19,6 +19,13 @@
     [latitude]="currentPosition.lat"
     [longitude]="currentPosition.lng"
     >
+        <agm-info-window
+        [disableAutoPan]="true"
+        [isOpen]="true"
+        >
+        Look at you, being all right here!!
+        </agm-info-window>
+
     </agm-marker>  
 
 </agm-map>
@@ -30,12 +37,13 @@
 [styles]="styles"
 [zoom]="14" 
 [disableDefaultUI]="true"
-(mapClick)="showStops($event)"
 > 
 <div *ngIf="nearbyPlaces">
     <agm-marker *ngFor="let place of nearbyPlaces; let i = index"
     [latitude]="place.lat" 
     [longitude]="place.lng" 
+    [openInfoWindow]="true"
+    [markerClickable]="true"
     >
     </agm-marker>
 </div>
@@ -43,6 +51,12 @@
     [latitude]="currentPosition.lat"
     [longitude]="currentPosition.lng"
     >
+        <agm-info-window
+        [disableAutoPan]="true"
+        [isOpen]="true"
+        >
+        Look at you, being all right here!!
+        </agm-info-window>
     </agm-marker>
 
 </agm-map>
