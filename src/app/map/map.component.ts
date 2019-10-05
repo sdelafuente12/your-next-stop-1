@@ -19,8 +19,7 @@ export class MapComponent implements OnInit {
   currentPositionString;
   origin;
   destination;
-  loaded;
-
+//location subsciptions
   exploreSubscription;
   routeSubscription;
 
@@ -87,6 +86,11 @@ export class MapComponent implements OnInit {
   
   showClickedPosition(event) {
     console.log(event);
+  }
+
+  getRoute(route) {
+    // this.routeSubscription = this.locationService
+    console.log(route);
   }
 
   ngOnDestroy() {
