@@ -30,11 +30,7 @@ export class RouteComponent implements OnInit {
 
   public user = {
     dateTime: new Date(),
-    email: undefined,
     fullName: undefined,
-    genres: undefined,
-    movie: undefined,
-    phone: undefined
   };
 
   public onDateSelection(value) {
