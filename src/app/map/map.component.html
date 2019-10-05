@@ -1,5 +1,8 @@
 <!-- '/route' map -->
 <agm-map *ngIf="snapshotUrl === '/route' && currentPosition"
+[latitude]="currentPosition.lat"
+[longitude]="currentPosition.lng"
+[zoom]="12"
 [styles]="styles"
 [disableDefaultUI]="true"
 (mapClick)="showClickedPosition($event)"
@@ -25,7 +28,7 @@
 [latitude]="currentPosition.lat"
 [longitude]="currentPosition.lng"
 [styles]="styles"
-[zoom]="15" 
+[zoom]="14" 
 [disableDefaultUI]="true"
 (mapClick)="showStops($event)"
 > 
