@@ -1,0 +1,15 @@
+
+@import '../../dark-theme.scss';
+
+:host {
+    display: block;
+    margin: 16px;
+    box-shadow: igx-elevation($elevations, 12);
+
+    &.dark-theme {
+      background: $dark-color;
+        ::ng-deep {
+          @include igx-bottom-nav($dark-bottom-nav-theme);
+      }
+    }
+}

@@ -1,0 +1,19 @@
+@import '~igniteui-angular/lib/core/styles/components/bottom-nav/bottom-nav-component';
+@import '~igniteui-angular/lib/core/styles/components/bottom-nav/bottom-nav-theme';
+// @import '~igniteui-angular/lib/core/styles/components/tab/tab-component';
+// @import '~igniteui-angular/lib/core/styles/components/tab/tab-theme';
+@include igx-core();
+@include igx-theme($default-palette);
+
+// Define the primary color
+$dark-color: #282828;
+
+// Define the secondary color
+$orange-color: #FFA500;
+
+// Define the palette:
+$dark-theme-palette: igx-palette($primary: $dark-color, $secondary: $orange-color);
+
+$my-tabbar-theme: igx-toast-theme($palette: $dark-theme-palette,$background: black);
+// Pass the theme to the igx-bottom-nav component mixin
+@include igx-bottom-nav($my-tabbar-theme);

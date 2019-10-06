@@ -1,11 +1,12 @@
 @import '~igniteui-angular/lib/core/styles/themes/index';
-@include igx-core();
-@include igx-theme($default-palette);
+@import '~igniteui-angular/lib/core/styles/themes/utilities';
+
 
 $my-chip-theme: igx-chip-theme(
   $background: #353A50
   );
 @include igx-chip($my-chip-theme);
+
 
 $bg: #1f1f1f;
 $white: rgb(223, 223, 223);

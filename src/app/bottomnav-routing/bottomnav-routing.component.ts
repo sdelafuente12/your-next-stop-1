@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-bottomnav-routing',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: 'bottomnav-routing.component.html'
 })
 export class BottomNavRoutingComponent {
+  @HostBinding("class")
+  public themesClass = "dark-theme";
   constructor() {}
 }
