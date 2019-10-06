@@ -13,65 +13,45 @@ $my-chip-theme: igx-chip-theme(
 .igx-input-group,
 .center-content,
 .select {
-  margin-top: 0px;
-}
-
-.hor-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.vert-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  min-width: 300px;
-  margin: 0 50px;
-}
-
-.vert-container > * {
-  margin-top: 32px;
+  margin-top: 8px;
 }
 
 .input-group-form {
   background-color: white;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
     0 2px 1px -1px rgba(0, 0, 0, 0.12);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.sample-title {
-  margin: 20px;
-}
-
-.center-content {
-  display: flex;
-  justify-content: center;
+  padding: 8px;
+  margin: 8px;
 }
 
 .chips-places {
-  padding: 30px;
-  border: 1px dotted #ddd;
-  margin: 0 auto;
-  width: 254px;
-  display: block;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 127px;
+  padding: auto;
+  margin-top: 10px;
+  // min-width: 360px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+} 
+
+igx-card {
+  color: white;
+  background: #353a50;
+  font-size: 9px;
+  font-family: 'Roboto';
+  align-items: center;
+  height: 56px;
+  width: 65px;
+  margin: 1em;
 }
 
-.chip-style {
-  margin-right: 0.5em;
-  margin-bottom: 0.5em;
+igx-icon {
+  margin-top: 4px;
+  font-size: 36md;
+  
 }
 
-
-
+button {
+  margin-bottom: 60px;
+  
+}
