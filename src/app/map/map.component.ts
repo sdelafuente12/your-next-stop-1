@@ -80,8 +80,9 @@ export class MapComponent implements OnInit {
   
   ngOnDestroy() {
     //subscription cleanup
+    if (this.positionSubscription) {
     this.positionSubscription.unsubscribe();
-    
+    }
   }
 
 }
