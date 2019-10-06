@@ -17,7 +17,7 @@ $colorful-card: igx-card-theme(
 html,
 body {
   height: 100%;
-  overflow: hidden;
+  overflow: scroll;
   background-color: $bg;
   color: $white;
   // font: $primary-font-stack;

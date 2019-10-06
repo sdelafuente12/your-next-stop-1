@@ -1,7 +1,13 @@
 # YourNextStop
 The travel app to end all travel apps! Your Next Stop will allow users to create unique routes + customize their trip spontaneously. Whether you want to plan your trip on our desktop app or take it with with our mobile version, this app is meant to be used as much as your want it and no more. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
+https://yournextstop-app.tk
+
+## Getting Started
+
+### Prerequisites
+
+`npm install`
 
 ## Development server
 
@@ -17,28 +23,25 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Built With
 
-* [Angular 8 + Angular CLI](doc link) - The web framework used
-* [Node.js](doc link) - 
-* [Express](doc link) - 
-* [etc](etc) - description
+* [Angular 8 + Angular CLI](https://angular.io/cli) - The web framework used
+* [Node.js](https://nodejs.org/en/docs/)
+* [Express](https://expressjs.com/en/api.html)
+* [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular) - Front end design
 
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+<!-- ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). -->
 
-## Further help
+## Authors
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-<!-- ## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Raphael Khan** - *Scrum Master*
+* **Samantha De La Fuente** - *Back End*
+* **Gary Marino Jr.** - *Front End*
+* **David Polk** - *Front End*
 
 ## License
 
@@ -46,6 +49,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc -->
+* The friendly staff at Operation Spark
