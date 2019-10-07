@@ -16,3 +16,12 @@ $colorful-card: igx-card-theme(
     @include igx-card($colorful-card);
   }
 }
+
+button {
+  margin-top: 16px;
+  margin-bottom: 60px;
+}
+
+igx-carousel {
+  margin-top: 16px;
+}

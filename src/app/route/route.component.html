@@ -1,6 +1,7 @@
 <div>
-  <h4>Route</h4>
+  <h4 class="igx-typography__h4">Route</h4>
 </div>
+
 <div class="valign-wrapper" style="width: 100%;height:370px;position:relative;">
   <div class="valign" style="width: 100%;height: 100%">
     <div class="row" style="height: 100%">
@@ -11,94 +12,83 @@
   </div>
 </div>
 
-<!-- <form class="input-group-form" (keyup.enter)="onSubmit()">
-  
-  <igx-input-group type="box">
-    <input igxInput name="origin" type="text" [(ngModel)]="origin" required="required" />
+
+<form class="input-group-form" (keyup.enter)="onSubmit()">
+  <igx-input-group type="border">
+    <input igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required" />
     <label igxLabel for="origin">Origin</label>
     <igx-suffix>
-        <igx-icon>place</igx-icon>
+      <igx-icon>place</igx-icon>
     </igx-suffix>
   </igx-input-group>
-  <igx-input-group type="box">
-  <input igxInput name="destination" type="text" [(ngModel)]="destination" required="required" />
-  <label igxLabel for="destination">Destination</label>
-  <igx-suffix>
-    <igx-icon>place</igx-icon>
-  </igx-suffix>
+  <igx-input-group type="border">
+    <input igxInput name="destination" type="text" [(ngModel)]="form.destination" required="required" />
+    <label igxLabel for="destination">Destination</label>
+    <igx-suffix>
+      <igx-icon>place</igx-icon>
+    </igx-suffix>
   </igx-input-group>
-
-</form> -->
-
-<div class="sample-wrapper">
-    <section class="sample-content">
-        <article class="sample-column">
-            <form class="input-group-form" (keyup.enter)="onSubmit()">
-                <div class="container" >
-                    <igx-input-group type="border">
-                        <input igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required" />
-                        <label igxLabel for="origin">Origin</label>
-                        <igx-suffix>
-                            <igx-icon>place</igx-icon>
-                        </igx-suffix>
-                    </igx-input-group>
-                    <igx-input-group type="border">
-                      <input igxInput name="destination" type="text" [(ngModel)]="form.destination" required="required" />
-                      <label igxLabel for="destination">Destination</label>
-                      <igx-suffix>
-                        <igx-icon>place</igx-icon>
-                      </igx-suffix>
-                    </igx-input-group>
-                    <ng-template #mySelectIcon>
-                      <igx-icon fontSet="fa-solid" name="fa-check-circle"></igx-icon>
-                    </ng-template>
-                    <igx-date-picker name="date" (onSelection)="onDateSelection($event)" >
-                        <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
-                            <igx-input-group (click)="openDialog()" type="box">
-                                <label igxLabel>Start Date(optional)</label>
-                                <input igxInput [value]="displayData" />
-                                <igx-suffix>
-                                    <igx-icon>today</igx-icon>
-                                </igx-suffix>
-                            </igx-input-group>
-                        </ng-template>
-                    </igx-date-picker>
-                    <igx-date-picker name="date" (onSelection)="onDateSelection($event)">
-                      <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value"
-                        let-displayData="displayData">
-                        <igx-input-group (click)="openDialog()" type="box">
-                          <label igxLabel>End Date(optional)</label>
-                          <input igxInput [value]="displayData" />
-                          <igx-suffix>
-                            <igx-icon>today</igx-icon>
-                          </igx-suffix>
-                        </igx-input-group>
-                      </ng-template>
-                    </igx-date-picker>
-                </div>
-                <div>
-                  <igx-chips-area>
-                    <igx-chip>
-                      <igx-icon igxPrefix>local_see</igx-icon>
-                      <span>Photo Op</span>
-                    </igx-chip>
-                    <igx-chip>
-                      <igx-icon igxPrefix>golf_course</igx-icon>
-                      <span>Entertainment</span>
-                    </igx-chip>
-                    <igx-chip>
-                      <igx-icon igxPrefix>landscape</igx-icon>
-                      <span>Landmarks</span>
-                    </igx-chip>
-                  </igx-chips-area>
-                </div>
-            </form>
-        </article>
-    </section>
+  <ng-template #mySelectIcon>
+    <igx-icon fontSet="fa-solid" name="fa-check-circle"></igx-icon>
+  </ng-template>
+  <igx-date-picker name="date" (onSelection)="onDateSelection($event)">
+    <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
+      <igx-input-group (click)="openDialog()" type="box">
+        <label igxLabel>Start Date(optional)</label>
+        <input igxInput [value]="displayData" />
+        <igx-suffix>
+          <igx-icon>today</igx-icon>
+        </igx-suffix>
+      </igx-input-group>
+    </ng-template>
+  </igx-date-picker>
+  <igx-date-picker name="date" (onSelection)="onDateSelection($event)">
+    <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
+      <igx-input-group (click)="openDialog()" type="box">
+        <label igxLabel>End Date(optional)</label>
+        <input igxInput [value]="displayData" />
+        <igx-suffix>
+          <igx-icon>today</igx-icon>
+        </igx-suffix>
+      </igx-input-group>
+    </ng-template>
+  </igx-date-picker>
+  <section class="chips-places">
+    <igx-card>
+      <igx-icon>golf_course</igx-icon>
+      <span>Amusement</span>
+    </igx-card>
+    <igx-card>
+      <igx-icon>local_activity</igx-icon>
+      <span>Attractions</span>
+    </igx-card>
+    <igx-card>
+      <igx-icon>casino</igx-icon>
+      <span>Entertainment</span>
+    </igx-card>
+    <igx-card>
+      <igx-icon>location_city</igx-icon>
+      <span>Landmarks</span>
+    </igx-card>
+    <igx-card>
+      <igx-icon>museum</igx-icon>
+      <span>Museum</span>
+    </igx-card>
+    <igx-card>
+      <igx-icon>local_florist</igx-icon>
+      <span>Parks</span>
+    </igx-card>
+    <igx-card>
+      <igx-icon>local_see</igx-icon>
+      <span>Photo Op</span>
+    </igx-card>
+    <igx-card>
+      <igx-icon>directions_boat</igx-icon>
+      <span>Tours</span>
+    </igx-card>
+  </section>
+</form>
+<div style="text-align: center">
+<button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50">SAVE TO
+  TRIPS</button>
 </div>
-
-
-
-<button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50">SAVE TO TRIPS</button>
-
-

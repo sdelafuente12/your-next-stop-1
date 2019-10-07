@@ -18,7 +18,6 @@ export class RouteComponent implements OnInit {
   @ViewChild(MapComponent, {static: false}) private map: MapComponent;
 
   ngOnInit() {
-   
   }
 
   public onSubmit() {
