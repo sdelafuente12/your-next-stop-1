@@ -40,6 +40,7 @@ export class MapComponent implements OnInit {
   nearbyPlaces;
 //endpoint of current view based on Router
   snapshotUrl: string;
+  image;
 
   constructor(private router: Router, private locationService: LocationService, private routeService: RouteService) { 
     this.snapshotUrl = router.routerState.snapshot.url;
@@ -51,14 +52,17 @@ export class MapComponent implements OnInit {
       .pipe(
         switchMap(position => {
           this.currentPosition = {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude
+                      lat: 29.96768435314543,
+                      lng: -90.05025405587452
+                  // lat: position.coords.latitude,
+                  // lng: position.coords.longitude
                 }
           return this.locationService.getNearbyPlaces(position)
         })
         )
         .subscribe(places => {
           this.nearbyPlaces = places;
+          // this.nearbyPlaces.iconElement = `<img src="${this.nearbyPlaces.icon}" alt="Smiley face" style="background: black;">`
           console.log(this.nearbyPlaces)
         })
 
@@ -89,6 +93,15 @@ export class MapComponent implements OnInit {
       })
   }
 
+  getPlacePhoto(photoRef, index) {
+    // if(!this.images && !this.images[index]) {
+      this.locationService.getPlacePhoto(photoRef)
+        .subscribe(photo => {
+          console.log(photo)
+          this.image = photo;
+        })
+    // }  
+  }
   ngOnDestroy() {
     //subscription cleanup
     if(this.exploreSubscription) this.exploreSubscription.unsubscribe();

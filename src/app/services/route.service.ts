@@ -9,7 +9,7 @@ import { CustomHttpParamEncoder } from '../custom-http-param-encoder';
   providedIn: 'root'
 })
 export class RouteService {
-  private getRoutePositionsEndpoint = `${environment.BASE_API_URL}/getRoutePositions`;
+  private getRoutePositionsEndpoint = `${environment.BASE_API_URL}/routePositions`;
 
   constructor(private http: HttpClient) { }
 

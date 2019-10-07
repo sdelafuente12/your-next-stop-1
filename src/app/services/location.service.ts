@@ -9,6 +9,7 @@ import { HttpParams } from "@angular/common/http";
 })
 export class LocationService {
   private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`;
+  private getPlacePhotoEndpoint = `${environment.BASE_API_URL}/placePhoto`;
 
   constructor(private http: HttpClient) { }
   
@@ -30,7 +31,7 @@ export class LocationService {
       if (navigator.geolocation) {
         watchId = navigator.geolocation.watchPosition(onSuccess, onError,
           {
-            enableHighAccuracy: true,
+            enableHighAccuracy: false,
             timeout: 15000,
             maximumAge: 0
           }
@@ -51,4 +52,10 @@ export class LocationService {
     })
   }
 
+  public getPlacePhoto(photoRef) {
+    return this.http.get(this.getPlacePhotoEndpoint, {
+      responseType: "blob",
+      params: new HttpParams().set('ref', photoRef)
+    })
+  }
 }

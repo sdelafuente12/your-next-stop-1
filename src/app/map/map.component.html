@@ -43,8 +43,19 @@
     [latitude]="place.lat" 
     [longitude]="place.lng" 
     [openInfoWindow]="true"
+    [iconUrl]="place.icon"
     [markerClickable]="true"
+    (markerClick)="getPlacePhoto(place.photos)"
     >
+    <agm-info-window 
+    [disableAutoPan]="true"
+    [isOpen]="isOpen"
+    >
+    <div *ngIf="image"><img src={{image}}>{{image}}</div><br>
+    {{place.name}}<br>
+    {{place.address}}<br>
+    rating: {{place.rating}}
+    </agm-info-window>
     </agm-marker>
 </div>
     <agm-marker
