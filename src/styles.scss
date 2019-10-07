@@ -18,7 +18,19 @@ body {
 }
 
 h1 {
-  font-size: 10vw;
+  color: #bdeaf2;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+h5 {
+  color: #bdeaf2;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 h4 {
