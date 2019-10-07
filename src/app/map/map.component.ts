@@ -24,6 +24,7 @@ export class MapComponent implements OnInit {
   exploreSubscription;
   routeSubscription;
   currentLocationSubscription;
+  imageSubscription;
 
 //custom marker image
   markerOptions = {
@@ -95,9 +96,9 @@ export class MapComponent implements OnInit {
 
   getPlacePhoto(photoRef, index) {
     // if(!this.images && !this.images[index]) {
-      this.locationService.getPlacePhoto(photoRef)
+      this.imageSubscription = this.locationService.getPlacePhoto(photoRef)
         .subscribe(photo => {
-          console.log(photo)
+          console.log('photo success')
           this.image = photo;
         })
     // }  
@@ -107,6 +108,7 @@ export class MapComponent implements OnInit {
     if(this.exploreSubscription) this.exploreSubscription.unsubscribe();
     if(this.routeSubscription) this.routeSubscription.unsubscribe();
     if(this.currentLocationSubscription) this.currentLocationSubscription.unsubscribe();
+    if(this.imageSubscription) this.imageSubscription.unsubscribe();
   }
 
 }

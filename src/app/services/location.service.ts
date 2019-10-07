@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { HttpParams } from "@angular/common/http";
+import { HttpParams } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +61,7 @@ export class LocationService {
 
   public getPlacePhoto(photoRef) {
     return this.http.get(this.getPlacePhotoEndpoint, {
-      responseType: "blob",
+      // responseType: "blob",
       params: new HttpParams().set('ref', photoRef)
     })
   }
