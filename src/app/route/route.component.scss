@@ -1,38 +1,57 @@
-.igx-input-group, .center-content, .select {
-    margin-top: 0px;
+@import '~igniteui-angular/lib/core/styles/themes/index';
+
+$my-chip-theme: igx-chip-theme(
+  $background: #353a50
+);
+
+:host {
+  ::ng-deep {
+    @include igx-chip($my-chip-theme);
+  }
 }
 
-.hor-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.vert-container {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-    min-width: 300px;
-    margin: 0 50px;
-}
-
-.vert-container > * {
-    margin-top: 32px;
+.igx-input-group,
+.center-content,
+.select {
+  margin-top: 8px;
 }
 
 .input-group-form {
-    background-color: white;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
-    padding: 20px,;
-    margin-bottom: 20px,;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  padding: 8px;
+  margin: 8px;
 }
 
-.sample-title {
-    margin: 20px;
+.chips-places {
+  padding: auto;
+  margin-top: 10px;
+  // min-width: 360px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+} 
+
+igx-card {
+  color: white;
+  background: #353a50;
+  font-size: 9px;
+  font-family: 'Roboto';
+  align-items: center;
+  height: 56px;
+  width: 65px;
+  margin: 1em;
 }
 
-.center-content {
-    display: flex;
-    justify-content: center;
+igx-icon {
+  margin-top: 4px;
+  font-size: 36md;
+  
 }
 
+button {
+  margin-bottom: 60px;
+  
+}
