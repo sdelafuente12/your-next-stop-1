@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { TripsComponent } from './trips/trips.component';
+import { ResultsComponent } from './results/results.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -47,6 +48,7 @@ import { API_KEY } from '../../config.js';
     MapComponent,
     TripsComponent,
     FavoritesComponent,
+    ResultsComponent,
     BottomNavRoutingComponent
   ],
   imports: [
