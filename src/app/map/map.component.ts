@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { mapStyle } from './map-style.js';
 import { LocationService } from '../services/location.service'
-import { switchMap } from 'rxjs/operators';
+import { switchMap, flatMap } from 'rxjs/operators';
 import { RouteService } from '../services/route.service.js';
 
 @Component({
@@ -52,10 +52,10 @@ export class MapComponent implements OnInit {
       .pipe(
         switchMap(position => {
           this.currentPosition = {
-                      lat: 29.96768435314543,
-                      lng: -90.05025405587452
-                  // lat: position.coords.latitude,
-                  // lng: position.coords.longitude
+                      // lat: 29.96768435314543,
+                      // lng: -90.05025405587452
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
                 }
           return this.locationService.getNearbyPlaces(position)
         })

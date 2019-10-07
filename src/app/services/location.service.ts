@@ -10,6 +10,7 @@ import { HttpParams } from "@angular/common/http";
 export class LocationService {
   private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`;
   private getPlacePhotoEndpoint = `${environment.BASE_API_URL}/placePhoto`;
+  private wait = false;
 
   constructor(private http: HttpClient) { }
   
@@ -47,9 +48,14 @@ export class LocationService {
   public getNearbyPlaces(location) {
     const currentPositionString = `${location.coords.latitude},${location.coords.longitude}`;
     
-    return this.http.get(this.getNearbyPlacesEndpoint, {
-      params: new HttpParams().set('location', currentPositionString)
-    })
+    if(!this.wait){
+      this.wait = true;
+      setTimeout(() => this.wait = false, 1000)
+
+      return this.http.get(this.getNearbyPlacesEndpoint, {
+        params: new HttpParams().set('location', currentPositionString)
+      })
+    }
   }
 
   public getPlacePhoto(photoRef) {

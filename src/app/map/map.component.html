@@ -20,10 +20,11 @@
     [longitude]="currentPosition.lng"
     >
         <agm-info-window
+        
         [disableAutoPan]="true"
         [isOpen]="true"
         >
-        Look at you, being all right here!!
+        You are here
         </agm-info-window>
 
     </agm-marker>  
@@ -43,7 +44,7 @@
     [latitude]="place.lat" 
     [longitude]="place.lng" 
     [openInfoWindow]="true"
-    [iconUrl]="place.icon"
+    
     [markerClickable]="true"
     (markerClick)="getPlacePhoto(place.photos)"
     >
@@ -53,6 +54,7 @@
     >
     <div *ngIf="image"><img src={{image}}/></div><br>
     {{place.name}}<br>
+    <hr>
     {{place.address}}<br>
     rating: {{place.rating}}
     </agm-info-window>
@@ -66,7 +68,7 @@
         [disableAutoPan]="true"
         [isOpen]="true"
         >
-        Look at you, being all right here!!
+        You are here
         </agm-info-window>
     </agm-marker>
 
