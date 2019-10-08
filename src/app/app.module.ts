@@ -84,7 +84,6 @@ import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe'
     IgxComboModule,
     IgxAutocompleteModule,
     IgxChipsModule,
-    
   ],
   providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent],

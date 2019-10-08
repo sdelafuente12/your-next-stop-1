@@ -1,5 +1,22 @@
 @import '~igniteui-angular/lib/core/styles/themes/index';
 
+h5 {
+  text-align: left;
+  margin-left: 70px;
+  color: white; 
+  font-size: 22px;
+}
+
+igx-icon {
+  color: white;
+}
+
+.header {
+  // display: inline-block;
+  // width: 200px;
+  align-items: justify;
+}
+
 .slide-style {
   display: flex;
   flex-direction: column;
