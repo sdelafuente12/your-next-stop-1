@@ -38,6 +38,7 @@ import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
+import { WINDOW_PROVIDERS } from './services/window.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +84,7 @@ import { API_KEY } from '../../config.js';
     IgxChipsModule,
     
   ],
-  providers: [],
+  providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -61,7 +61,7 @@ export class LocationService {
 
   public getPlacePhoto(photoRef) {
     return this.http.get(this.getPlacePhotoEndpoint, {
-      // responseType: "blob",
+      responseType: "blob",
       params: new HttpParams().set('ref', photoRef)
     })
   }

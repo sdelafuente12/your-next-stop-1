@@ -4,6 +4,8 @@ import { mapStyle } from './map-style.js';
 import { LocationService } from '../services/location.service'
 import { switchMap, flatMap } from 'rxjs/operators';
 import { RouteService } from '../services/route.service.js';
+import { WindowRef } from '../services/window.service'
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-map',
@@ -43,11 +45,21 @@ export class MapComponent implements OnInit {
   snapshotUrl: string;
   image;
 
-  constructor(private router: Router, private locationService: LocationService, private routeService: RouteService) { 
+  private _window;
+
+  constructor(
+    private router: Router, 
+    private locationService: LocationService, 
+    private routeService: RouteService,
+    private windowRefService: WindowRef,
+    private sanitizer: DomSanitizer
+    ) { 
     this.snapshotUrl = router.routerState.snapshot.url;
   }
 
   ngOnInit() {
+    this._window = this.windowRefService.nativeWindow;
+
     if (this.snapshotUrl === '/explore'){ //if explore view is active, populates currentposition and nearby locations
       this.exploreSubscription = this.locationService.getCurrentPosition()
       .pipe(
@@ -96,13 +108,26 @@ export class MapComponent implements OnInit {
 
   getPlacePhoto(photoRef, index) {
     // if(!this.images && !this.images[index]) {
-      this.imageSubscription = this.locationService.getPlacePhoto(photoRef)
-        .subscribe(photo => {
-          console.log('photo success')
-          this.image = photo;
-        })
+      // this.imageSubscription = this.locationService.getPlacePhoto(photoRef)
+      //   .subscribe(photo => {
+      //     console.log(photo)
+      //     this.onLoadReadBlobAsBase64(photo);
+      //     // this.image = photo;
+          
+      //   })
     // }  
   }
+
+  onLoadReadBlobAsBase64(blob) {
+    const reader = new FileReader();
+    // result includes identifier 'data:image/png;base64,' plus the base64 data
+    reader.readAsDataURL(blob);
+    reader.onloadend = () => {
+    this.image = reader.result;
+    console.log(this.image)
+  }
+  }
+
   ngOnDestroy() {
     //subscription cleanup
     if(this.exploreSubscription) this.exploreSubscription.unsubscribe();
