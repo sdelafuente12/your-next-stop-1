@@ -34,6 +34,7 @@ import {
   IgxSelectModule,
   IgxAutocompleteModule,
   IgxChipsModule,
+  IgxDialogModule,
   IgxNavigationDrawerModule
 } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
@@ -87,6 +88,7 @@ import { API_KEY } from '../../config.js';
     IgxComboModule,
     IgxAutocompleteModule,
     IgxChipsModule,
+    IgxDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
