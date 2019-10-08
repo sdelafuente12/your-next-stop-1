@@ -76,7 +76,6 @@ export class MapComponent implements OnInit, OnDestroy {
         .subscribe(places => {
           this.nearbyPlaces = places;
           this.nearbyPlaces.map((place, i) => this.getPlacePhoto(place.photos, i))
-          console.log(this.nearbyPlaces)
         })
 
     }
@@ -105,18 +104,14 @@ export class MapComponent implements OnInit, OnDestroy {
         this.destination = routePositions[1].location;
       })
   }
-
+//gets top photo for each place
   getPlacePhoto(photoRef, index) {
-    // if(!this.images[index]) {
+    if(!this.images[index]) {
       this.imageSubscription = this.locationService.getPlacePhoto(photoRef)
         .subscribe(photo => {
-          console.log(index)
-          // this.onLoadReadBlobAsBase64(photo);
-          // this.image = photo;
           this.images[index] = this._window.URL.createObjectURL(photo);
-          console.log(this.images)
         })
-    // }  
+    }  
   }
 
   // onLoadReadBlobAsBase64(blob) {

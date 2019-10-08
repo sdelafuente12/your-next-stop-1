@@ -31,7 +31,7 @@ export class LocationService {
     
       // Simple geolocation API check provides values to publish
       if (navigator.geolocation) {
-        watchId = navigator.geolocation.watchPosition(onSuccess, onError,
+        watchId = navigator.geolocation.getCurrentPosition(onSuccess, onError,
           {
             enableHighAccuracy: false,
             timeout: 15000,

@@ -53,7 +53,7 @@
     [disableAutoPan]="true"
     [isOpen]="isOpen"
     >
-    <div *ngIf="images"><img [src]="images[i] | htmlSanitizer"/></div><br>
+    <ng-container *ngIf="images[i]"><img [src]="images[i] | htmlSanitizer"/></ng-container><br>
     {{place.name}}<br>
     <hr>
     {{place.address}}<br>
