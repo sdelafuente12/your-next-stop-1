@@ -1,5 +1,4 @@
 @import '~igniteui-angular/lib/core/styles/themes/index';
-// @import '../node_modules/igniteui-angular/lib/core/styles/themes/index';
 @include igx-core();
 @include igx-theme($default-palette);
 
@@ -64,8 +63,8 @@ body {
   flex: 1 0 25%;
   align-content: flex-start;
   font-family: 'Roboto', sans-serif;
-  margin: 16px;
-  min-width: 280px;
+  // margin: 16px;
+  // min-width: 280px;
 }
 
 .sample-title .light {

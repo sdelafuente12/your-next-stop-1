@@ -1,0 +1,20 @@
+<div class="content-wrap">
+  <igx-nav-drawer id="navigation" #drawer [isOpen]="false">
+    <ng-template igxDrawer>
+      <nav>
+        <span igxDrawerItem [isHeader]="true"> Settings </span>
+        <span igxDrawerItem routerLink="/stats" igxRipple> Stats </span>
+        <!-- <span igxDrawerItem igxRipple [active]="true"> Drafts </span> -->
+        
+      </nav>
+    </ng-template>
+  </igx-nav-drawer>
+
+  <main>
+    <button (click)="drawer.toggle()">
+    <span igxButton="icon" igxToggleAction="navigation">
+      <igx-icon fontSet="material">menu</igx-icon>
+    </span>
+    </button>
+  </main>
+</div>
