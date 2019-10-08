@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TripsComponent implements OnInit {
   constructor() {}
-  public current = [];
-  public upcoming = [
+  public upcoming = [];
+  public current = [
     {
       origin: 'New Orleans, LA',
       destination: 'Atlanta, GA'
