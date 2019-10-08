@@ -5,7 +5,7 @@
 }
 
 $colorful-card: igx-card-theme(
-  $background: #353A50,
+  // $background: #353a50,
   $header-text-color: #ffffff,
   $subtitle-text-color: #ffffff,
   $content-text-color: #ffffff
@@ -17,16 +17,17 @@ $colorful-card: igx-card-theme(
   }
 }
 
-button {
-  margin-top: 16px;
-  margin-bottom: 60px;
-}
+.h-sample-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 1 0%;
 
-igx-carousel {
-  margin-top: 16px;
+    igx-card-header {
+        padding-bottom: 0;
+    }
 }
 
 h5 {
-  text-align: left;
-  // display: inline-block;
+  color: black
 }

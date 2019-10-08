@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { TripsComponent } from './trips/trips.component';
+import { ResultsComponent } from './results/results.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +16,7 @@ import { ExploreComponent } from './explore/explore.component';
 import { RouteComponent } from './route/route.component';
 import { DetailsComponent } from './details/details.component';
 import { MapComponent } from './map/map.component';
+import { StatsComponent } from './stats/stats.component'
 import {
   IgxCardModule,
   IgxAvatarModule,
@@ -31,12 +33,17 @@ import {
   IgxComboModule,
   IgxSelectModule,
   IgxAutocompleteModule,
-  IgxChipsModule
+  IgxChipsModule,
+  IgxDialogModule,
+  IgxNavigationDrawerModule
 } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
+import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
+import { WINDOW_PROVIDERS } from './services/window.service';
+import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe'
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +54,11 @@ import { API_KEY } from '../../config.js';
     MapComponent,
     TripsComponent,
     FavoritesComponent,
-    BottomNavRoutingComponent
+    ResultsComponent,
+    HtmlSanitizerPipe,
+    StatsComponent,
+    BottomNavRoutingComponent,
+    NavDrawerComponent
   ],
   imports: [
     FormsModule,
@@ -64,6 +75,7 @@ import { API_KEY } from '../../config.js';
     IgxCardModule,
     IgxBottomNavModule,
     IgxSelectModule,
+    IgxNavigationDrawerModule,
     RouterModule,
     AgmCoreModule.forRoot({
       apiKey: API_KEY
@@ -79,9 +91,10 @@ import { API_KEY } from '../../config.js';
     IgxComboModule,
     IgxAutocompleteModule,
     IgxChipsModule,
-    
+    IgxDialogModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [WINDOW_PROVIDERS],
+  bootstrap: [AppComponent],
+  exports: [HtmlSanitizerPipe]
 })
 export class AppModule {}

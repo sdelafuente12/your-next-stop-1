@@ -9,8 +9,8 @@ import { CustomHttpParamEncoder } from '../custom-http-param-encoder';
   providedIn: 'root'
 })
 export class RouteService {
-  private getRoutePositionsEndpoint = `${environment.BASE_API_URL}/getRoutePositions`;
-
+  private getRoutePositionsEndpoint = `${environment.BASE_API_URL}/routePositions`;
+  private autocompleteAddressEndpoint = `${environment.BASE_API_URL}/autocompleteAddress`;
   constructor(private http: HttpClient) { }
 
   getRoutePositions(route) {
@@ -22,4 +22,11 @@ export class RouteService {
     })
   }
   
+  autoSuggestion(text, location) {
+    const currentPositionString = `${location.lat},${location.lng}`;
+
+    return this.http.get(this.autocompleteAddressEndpoint, {
+      params: new HttpParams().set('input', text).set('location', currentPositionString)
+    })
+  }
 }
