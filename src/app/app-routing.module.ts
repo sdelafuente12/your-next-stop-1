@@ -10,11 +10,16 @@ import { DetailsComponent } from './details/details.component';
 import {
   BottomNavRoutingComponent,
 } from './bottomnav-routing/bottomnav-routing.component';
+import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 
 const routes: Routes = [
   {
     path: 'bottomnav-routing',
     component: BottomNavRoutingComponent
+  },
+  {
+    path: 'nav-drawer',
+    component: NavDrawerComponent
   },
   { path: 'explore', component: ExploreComponent },
   { path: 'route', component: RouteComponent },
