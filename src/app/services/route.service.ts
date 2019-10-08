@@ -22,9 +22,11 @@ export class RouteService {
     })
   }
   
-  autoSuggestion(text) {
+  autoSuggestion(text, location) {
+    const currentPositionString = `${location.lat},${location.lng}`;
+
     return this.http.get(this.autocompleteAddressEndpoint, {
-      params: new HttpParams().set('input', text)
+      params: new HttpParams().set('input', text).set('location', currentPositionString)
     })
   }
 }

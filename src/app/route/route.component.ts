@@ -27,7 +27,8 @@ export class RouteComponent implements OnInit {
   }
 
   public onKey(field, input) {
-    this.route.autoSuggestion(input)
+    console.log(input)
+    this.route.autoSuggestion(input, this.map.currentPosition)
       .subscribe(suggestion => {
         if (field === 'origin') {
           
