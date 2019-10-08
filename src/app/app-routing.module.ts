@@ -11,15 +11,6 @@ import {
   BottomNavRoutingComponent,
 } from './bottomnav-routing/bottomnav-routing.component';
 
-
-// const routes: Routes = [
-//   { path: 'explore', component: ExploreComponent },
-//   { path: '',
-//     redirectTo: '/',
-//     pathMatch: 'full'
-//   },
-// ];
-
 const routes: Routes = [
   {
     path: 'bottomnav-routing',
