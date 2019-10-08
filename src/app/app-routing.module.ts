@@ -7,6 +7,7 @@ import { TripsComponent } from './trips/trips.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ResultsComponent } from './results/results.component';
 import { DetailsComponent } from './details/details.component';
+import { StatsComponent } from './stats/stats.component';
 import {
   BottomNavRoutingComponent,
 } from './bottomnav-routing/bottomnav-routing.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'favorites', component: FavoritesComponent },
   { path: 'explore/results', component: ResultsComponent },
   { path: 'details', component: DetailsComponent },
+  { path: 'stats', component: StatsComponent },
   {
     path: '',
     component: StartScreenComponent

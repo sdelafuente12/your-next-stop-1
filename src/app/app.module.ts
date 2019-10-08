@@ -16,6 +16,7 @@ import { ExploreComponent } from './explore/explore.component';
 import { RouteComponent } from './route/route.component';
 import { DetailsComponent } from './details/details.component';
 import { MapComponent } from './map/map.component';
+import { StatsComponent } from './stats/stats.component'
 import {
   IgxCardModule,
   IgxAvatarModule,
@@ -51,6 +52,7 @@ import { API_KEY } from '../../config.js';
     TripsComponent,
     FavoritesComponent,
     ResultsComponent,
+    StatsComponent,
     BottomNavRoutingComponent,
     NavDrawerComponent
   ],
