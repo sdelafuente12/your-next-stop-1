@@ -12,13 +12,11 @@
   </div>
 </div>
 
-
-
 <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
   <igx-slide>
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
       <div class="sample-column card-wrapper" style="position: relative;">
-        <igx-card>
+        <igx-card routerLink="/details">
           <igx-card-header>
             <h3 igxCardHeaderTitle>Sushi</h3>
             <h5 igxCardHeaderSubtitle>2 mi</h5>
@@ -27,7 +25,7 @@
             </h5>
           </igx-card-header>
           <igx-card-media height="171px">
-            <img src="../../assets/images/sushi.png">
+            <img src="../../assets/images/sushi.jpg">
           </igx-card-media>
         </igx-card>
       </div>
@@ -36,7 +34,7 @@
   <igx-slide>
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
       <div class="sample-column card-wrapper" style="position: relative;">
-        <igx-card>
+        <igx-card routerLink="/details">
           <igx-card-header>
             <h3 igxCardHeaderTitle>Burgers</h3>
             <h5 igxCardHeaderSubtitle>2 mi</h5>
@@ -45,7 +43,7 @@
             </h5>
           </igx-card-header>
           <igx-card-media height="171px">
-            <img src="../../assets/images/sushi.png">
+            <img src="../../assets/images/sushi.jpg">
           </igx-card-media>
         </igx-card>
       </div>
@@ -54,7 +52,7 @@
   <igx-slide>
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
       <div class="sample-column card-wrapper" style="position: relative;">
-        <igx-card>
+        <igx-card routerLink="/details">
           <igx-card-header>
             <h3 igxCardHeaderTitle>Tacos</h3>
             <h5 igxCardHeaderSubtitle>2 mi</h5>
@@ -63,7 +61,7 @@
             </h5>
           </igx-card-header>
           <igx-card-media height="171px">
-            <img src="../../assets/images/sushi.png">
+            <img src="../../assets/images/sushi.jpg">
           </igx-card-media>
         </igx-card>
       </div>
@@ -72,7 +70,7 @@
   <igx-slide>
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
       <div class="sample-column card-wrapper" style="position: relative;">
-        <igx-card>
+        <igx-card routerLink="/details">
           <igx-card-header>
             <h3 igxCardHeaderTitle>Seafood</h3>
             <h5 igxCardHeaderSubtitle>2 mi</h5>
@@ -81,7 +79,7 @@
             </h5>
           </igx-card-header>
           <igx-card-media height="171px">
-            <img src="../../assets/images/sushi.png">
+            <img src="../../assets/images/sushi.jpg">
           </igx-card-media>
         </igx-card>
       </div>
@@ -90,7 +88,7 @@
   <igx-slide>
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
       <div class="sample-column card-wrapper" style="position: relative;">
-        <igx-card>
+        <igx-card routerLink="/details">
           <igx-card-header>
             <h3 igxCardHeaderTitle>Tapas</h3>
             <h5 igxCardHeaderSubtitle>2 mi</h5>
@@ -99,7 +97,7 @@
             </h5>
           </igx-card-header>
           <igx-card-media height="171px">
-            <img src="../../assets/images/sushi.png">
+            <img src="../../assets/images/sushi.jpg">
           </igx-card-media>
         </igx-card>
       </div>
@@ -108,5 +106,5 @@
 </igx-carousel>
 
 <div style="text-align: center">
-  <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50">SHOW ALL RESULTS</button>
+  <button igxButton="raised" igxButtonColor="white" routerLink="results" igxButtonBackground="#353A50">SHOW ALL RESULTS</button>
 </div>

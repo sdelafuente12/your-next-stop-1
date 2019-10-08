@@ -81,7 +81,6 @@ import { API_KEY } from '../../config.js';
     IgxComboModule,
     IgxAutocompleteModule,
     IgxChipsModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
