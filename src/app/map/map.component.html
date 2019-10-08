@@ -38,6 +38,7 @@
 [styles]="styles"
 [zoom]="15" 
 [disableDefaultUI]="true"
+(mapClick)="showClickedPosition($event)"
 > 
 <div *ngIf="nearbyPlaces">
     <agm-marker *ngFor="let place of nearbyPlaces; let i = index"
