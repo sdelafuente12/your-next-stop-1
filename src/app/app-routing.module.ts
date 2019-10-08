@@ -21,10 +21,7 @@ const routes: Routes = [
   { path: 'trips', component: TripsComponent },
   { path: 'favorites', component: FavoritesComponent },
   { path: 'explore/results', component: ResultsComponent },
-<<<<<<< HEAD
-=======
   { path: 'details', component: DetailsComponent },
->>>>>>> 6a7d786f63e8cd9e83b8ea0e2c4ffc8e5ec23d28
   {
     path: '',
     component: StartScreenComponent
