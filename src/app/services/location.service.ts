@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { HttpParams } from "@angular/common/http";
+import { HttpParams } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
   private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`;
+  private getPlacePhotoEndpoint = `${environment.BASE_API_URL}/placePhoto`;
+  private wait = false;
 
   constructor(private http: HttpClient) { }
   
@@ -30,8 +33,8 @@ export class LocationService {
       if (navigator.geolocation) {
         watchId = navigator.geolocation.watchPosition(onSuccess, onError,
           {
-            enableHighAccuracy: true,
-            timeout: 5000,
+            enableHighAccuracy: false,
+            timeout: 15000,
             maximumAge: 0
           }
           );
@@ -46,9 +49,20 @@ export class LocationService {
   public getNearbyPlaces(location) {
     const currentPositionString = `${location.coords.latitude},${location.coords.longitude}`;
     
-    return this.http.get(this.getNearbyPlacesEndpoint, {
-      params: new HttpParams().set('location', currentPositionString)
-    })
+    if(!this.wait){
+      this.wait = true;
+      setTimeout(() => this.wait = false, 1000)
+
+      return this.http.get(this.getNearbyPlacesEndpoint, {
+        params: new HttpParams().set('location', currentPositionString)
+      })
+    }
   }
 
+  public getPlacePhoto(photoRef) {
+    return this.http.get(this.getPlacePhotoEndpoint, {
+      responseType: "blob",
+      params: new HttpParams().set('ref', photoRef)
+    })
+  }
 }

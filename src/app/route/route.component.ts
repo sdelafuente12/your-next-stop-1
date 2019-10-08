@@ -2,6 +2,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TripsService } from '../services/trips.service';
 import { MapComponent } from '../map/map.component'
+import { RouteService } from '../services/route.service';
+
 @Component({
   selector: 'app-route',
   templateUrl: './route.component.html',
@@ -14,7 +16,7 @@ export class RouteComponent implements OnInit {
   }
 
 
-  constructor(private trips: TripsService) {}
+  constructor(private trips: TripsService, private route: RouteService) {}
   @ViewChild(MapComponent, {static: false}) private map: MapComponent;
 
   ngOnInit() {
@@ -22,5 +24,15 @@ export class RouteComponent implements OnInit {
 
   public onSubmit() {
     this.map.setRoute(this.form);
+  }
+
+  public onKey(field, input) {
+    console.log(input)
+    this.route.autoSuggestion(input, this.map.currentPosition)
+      .subscribe(suggestion => {
+        if (field === 'origin') {
+          
+        }
+      })
   }
 }

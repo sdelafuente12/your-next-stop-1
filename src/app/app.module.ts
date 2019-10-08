@@ -42,6 +42,8 @@ import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
+import { WINDOW_PROVIDERS } from './services/window.service';
+import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe'
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +55,7 @@ import { API_KEY } from '../../config.js';
     TripsComponent,
     FavoritesComponent,
     ResultsComponent,
+    HtmlSanitizerPipe,
     StatsComponent,
     BottomNavRoutingComponent,
     NavDrawerComponent
@@ -90,7 +93,8 @@ import { API_KEY } from '../../config.js';
     IgxChipsModule,
     IgxDialogModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [WINDOW_PROVIDERS],
+  bootstrap: [AppComponent],
+  exports: [HtmlSanitizerPipe]
 })
 export class AppModule {}

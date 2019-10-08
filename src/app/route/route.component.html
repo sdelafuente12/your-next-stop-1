@@ -15,7 +15,7 @@
 
 <form class="input-group-form" (keyup.enter)="onSubmit()">
   <igx-input-group type="border">
-    <input igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required" />
+    <input #origin igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required" (keyup)="onKey('origin', origin.value)"/>
     <label igxLabel for="origin">Origin</label>
     <igx-suffix>
       <igx-icon>place</igx-icon>
