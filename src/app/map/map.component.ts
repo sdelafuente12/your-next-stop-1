@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { mapStyle } from './map-style.js';
 import { LocationService } from '../services/location.service'
@@ -14,7 +14,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 
 
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnDestroy {
 //custom map style
   styles = mapStyle;
 //geolocation properties
@@ -43,7 +43,7 @@ export class MapComponent implements OnInit {
   nearbyPlaces;
 //endpoint of current view based on Router
   snapshotUrl: string;
-  image;
+  images = [];
 
   private _window;
 
@@ -75,7 +75,7 @@ export class MapComponent implements OnInit {
         )
         .subscribe(places => {
           this.nearbyPlaces = places;
-          // this.nearbyPlaces.iconElement = `<img src="${this.nearbyPlaces.icon}" alt="Smiley face" style="background: black;">`
+          this.nearbyPlaces.map((place, i) => this.getPlacePhoto(place.photos, i))
           console.log(this.nearbyPlaces)
         })
 
@@ -107,26 +107,27 @@ export class MapComponent implements OnInit {
   }
 
   getPlacePhoto(photoRef, index) {
-    // if(!this.images && !this.images[index]) {
-      // this.imageSubscription = this.locationService.getPlacePhoto(photoRef)
-      //   .subscribe(photo => {
-      //     console.log(photo)
-      //     this.onLoadReadBlobAsBase64(photo);
-      //     // this.image = photo;
-          
-      //   })
+    // if(!this.images[index]) {
+      this.imageSubscription = this.locationService.getPlacePhoto(photoRef)
+        .subscribe(photo => {
+          console.log(index)
+          // this.onLoadReadBlobAsBase64(photo);
+          // this.image = photo;
+          this.images[index] = this._window.URL.createObjectURL(photo);
+          console.log(this.images)
+        })
     // }  
   }
 
-  onLoadReadBlobAsBase64(blob) {
-    const reader = new FileReader();
-    // result includes identifier 'data:image/png;base64,' plus the base64 data
-    reader.readAsDataURL(blob);
-    reader.onloadend = () => {
-    this.image = reader.result;
-    console.log(this.image)
-  }
-  }
+  // onLoadReadBlobAsBase64(blob) {
+  //   const reader = new FileReader();
+  //   // result includes identifier 'data:image/png;base64,' plus the base64 data
+  //   reader.readAsDataURL(blob);
+  //   reader.onloadend = () => {
+  //   this.image = reader.result;
+  //   console.log(this.image)
+  // }
+  // }
 
   ngOnDestroy() {
     //subscription cleanup

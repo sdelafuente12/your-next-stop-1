@@ -47,13 +47,13 @@
     [openInfoWindow]="true"
     
     [markerClickable]="true"
-    (markerClick)="getPlacePhoto(place.photos)"
+    
     >
     <agm-info-window 
     [disableAutoPan]="true"
     [isOpen]="isOpen"
     >
-    <div>IMAGE GOES HERE</div><br>
+    <div *ngIf="images"><img [src]="images[i] | htmlSanitizer"/></div><br>
     {{place.name}}<br>
     <hr>
     {{place.address}}<br>

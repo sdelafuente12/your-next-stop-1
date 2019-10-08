@@ -38,7 +38,8 @@ import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
-import { WINDOW_PROVIDERS } from './services/window.service'
+import { WINDOW_PROVIDERS } from './services/window.service';
+import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe'
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { WINDOW_PROVIDERS } from './services/window.service'
     TripsComponent,
     FavoritesComponent,
     ResultsComponent,
-    BottomNavRoutingComponent
+    BottomNavRoutingComponent,
+    HtmlSanitizerPipe
   ],
   imports: [
     FormsModule,
@@ -85,6 +87,7 @@ import { WINDOW_PROVIDERS } from './services/window.service'
     
   ],
   providers: [WINDOW_PROVIDERS],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [HtmlSanitizerPipe]
 })
 export class AppModule {}
