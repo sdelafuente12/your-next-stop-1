@@ -5,7 +5,7 @@ import { LocationService } from '../services/location.service'
 import { switchMap, flatMap } from 'rxjs/operators';
 import { RouteService } from '../services/route.service.js';
 import { WindowRef } from '../services/window.service'
-import {DomSanitizer} from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-map',
