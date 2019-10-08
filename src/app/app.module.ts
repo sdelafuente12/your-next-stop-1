@@ -32,9 +32,11 @@ import {
   IgxComboModule,
   IgxSelectModule,
   IgxAutocompleteModule,
-  IgxChipsModule
+  IgxChipsModule,
+  IgxNavigationDrawerModule
 } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
+import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
@@ -49,7 +51,8 @@ import { API_KEY } from '../../config.js';
     TripsComponent,
     FavoritesComponent,
     ResultsComponent,
-    BottomNavRoutingComponent
+    BottomNavRoutingComponent,
+    NavDrawerComponent
   ],
   imports: [
     FormsModule,
@@ -66,6 +69,7 @@ import { API_KEY } from '../../config.js';
     IgxCardModule,
     IgxBottomNavModule,
     IgxSelectModule,
+    IgxNavigationDrawerModule,
     RouterModule,
     AgmCoreModule.forRoot({
       apiKey: API_KEY
