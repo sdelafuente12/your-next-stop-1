@@ -1,36 +1,11 @@
 @import '~igniteui-angular/lib/core/styles/themes/index';
 
-h5 {
-  text-align: left;
-  margin-left: 70px;
-  color: white; 
-  font-size: 22px;
-}
-
-igx-icon {
-  color: white;
-}
-
-.header {
-  // display: inline-block;
-  // width: 200px;
-  align-items: justify;
-}
-
-.slide-style {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 250px;
-}
-
 .card-wrapper {
   max-width: 152px;
 }
 
 $colorful-card: igx-card-theme(
-  $background: #353a50,
+  // $background: #353a50,
   $header-text-color: #ffffff,
   $subtitle-text-color: #ffffff,
   $content-text-color: #ffffff
@@ -40,4 +15,19 @@ $colorful-card: igx-card-theme(
   ::ng-deep {
     @include igx-card($colorful-card);
   }
+}
+
+.h-sample-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 1 0%;
+
+    igx-card-header {
+        padding-bottom: 0;
+    }
+}
+
+h5 {
+  color: black
 }
