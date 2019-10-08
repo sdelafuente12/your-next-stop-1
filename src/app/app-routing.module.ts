@@ -6,6 +6,7 @@ import { StartScreenComponent } from './start-screen/start-screen.component';
 import { TripsComponent } from './trips/trips.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ResultsComponent } from './results/results.component';
+import { DetailsComponent } from './details/details.component';
 import {
   BottomNavRoutingComponent,
 } from './bottomnav-routing/bottomnav-routing.component';
@@ -22,17 +23,18 @@ import {
 const routes: Routes = [
   {
     path: 'bottomnav-routing',
-    component: BottomNavRoutingComponent,
+    component: BottomNavRoutingComponent
   },
   { path: 'explore', component: ExploreComponent },
   { path: 'route', component: RouteComponent },
   { path: 'trips', component: TripsComponent },
   { path: 'favorites', component: FavoritesComponent },
-  { path: 'results', component: ResultsComponent },
+  { path: 'explore/results', component: ResultsComponent },
+  { path: 'details', component: DetailsComponent },
   {
     path: '',
-    component: StartScreenComponent,
-  },
+    component: StartScreenComponent
+  }
 ];
 
 @NgModule({
