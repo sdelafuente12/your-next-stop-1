@@ -41,7 +41,7 @@
     igxInput 
     name="destination"
     type="text" 
-    [ngModel]="form.destination"
+    [(ngModel)]="form.destination"
     (ngModelChange)="onKey('destination')"
     [igxAutocomplete]="destinationSuggestions"
     [igxAutocompleteSettings]='settings'

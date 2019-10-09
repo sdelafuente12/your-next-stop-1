@@ -8,7 +8,7 @@ import {
   IgxInputGroupComponent 
 } from 'igniteui-angular';
 import { debounceTime, switchMap, map } from 'rxjs/operators';
-import { from } from 'rxjs';
+import { from, concat } from 'rxjs';
 
 @Component({
   selector: 'app-route',
@@ -51,7 +51,14 @@ inputSubscription;
       .pipe(
         debounceTime(250),
         switchMap(
-          input => this.route.autoSuggestion(this.form[field], this.map.currentPosition)
+          (input) => {
+            if (field === 'origin') {
+              return this.route.autoSuggestion(this.form[field], this.map.currentPosition)
+            } else {
+              return this.route.autoSuggestion(this.form[field], '')
+            }
+            
+          }  
         )
       )
       .subscribe((suggestions: any) => {
