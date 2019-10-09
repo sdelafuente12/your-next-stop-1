@@ -1,0 +1,43 @@
+@import '~igniteui-angular/lib/core/styles/themes/index';
+
+  $colorful-card: igx-card-theme(
+    $background: #353A50,
+    $header-text-color: #ffffff,
+    $subtitle-text-color: #ffffff,
+    $content-text-color: #ffffff
+  );
+  
+  :host {
+    ::ng-deep {
+      @include igx-card($colorful-card);
+    }
+  }
+
+.card-column {
+  max-width: 152px;
+  display: block;
+  flex-flow: row nowrap;
+  flex-flow: column nowrap;
+  flex: 1 0 25%;
+  align-content: flex-start;
+  font-family: 'Roboto', sans-serif;
+  width: inherit;
+  position: relative;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: 15px;
+  background: transparent;
+}
+
+h5 {
+  text-align: left;
+}
+
+igx-icon {
+  margin-top: 20px;
+}
+
+igx-card-header {
+  margin-top: -10px;
+  margin-bottom: -10px;
+}

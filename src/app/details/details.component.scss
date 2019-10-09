@@ -15,30 +15,35 @@ $colorful-card: igx-card-theme(
   }
 }
 
-.card-wrapper {
-  // margin: 100px;
-  max-width: 300px;
-  min-width: 250px;
+.card-column {
+  align-content: flex-start;
   align-self: center;
-  justify-content: space-around;
-  display: flex;
+  display: block;
   flex-direction: row;
-  // height: 250px
+  justify-content: space-around;
+  max-width: 300px;
+  flex-flow: column nowrap;
+  flex: 1 0 25%;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  height: 200px;
+  margin: 0 auto;
+  // margin-top: 15px;
 }
 
 p {
   font-family: 'Roboto', sans-serif;
 }
-// .map-wrapper {
-//   max-width: 300px;
-//   min-width: 250px;
-//   align-content: center;
-//   justify-content: center;
-//   border-color: white;
-//   border: 5px;
-// }
 
 h5 {
   text-align: left;
-  // display: inline-block;
+}
+
+igx-icon {
+  margin-top: 20px;
+}
+
+igx-card-header {
+  margin-top: -10px;
+  margin-bottom: -10px;
 }
