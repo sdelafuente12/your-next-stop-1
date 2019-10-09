@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-explore',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExploreComponent implements OnInit {
 
-  constructor() { }
+  currentUser = localStorage.getItem('userId');
+
+  constructor(private route: ActivatedRoute) {
+    console.log('ROUTE', this.route.snapshot.queryParams);
+  }
 
   ngOnInit() {
+    const userId = this.route.snapshot.queryParams.id;
+    console.log('USERID', userId)
+    if (userId) {
+      localStorage.setItem('userId', userId);
+    }
   }
 
 }
