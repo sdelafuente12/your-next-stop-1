@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class StartScreenComponent implements OnInit {
 
+  currentUser = localStorage.getItem('username');
   googleLoginUrl = `${environment.BASE_API_URL}/auth/google`;
 
   constructor() { }
