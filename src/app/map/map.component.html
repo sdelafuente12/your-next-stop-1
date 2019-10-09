@@ -53,7 +53,7 @@
     [disableAutoPan]="true"
     [isOpen]="isOpen"
     >
-    <div *ngIf="images"><img [src]="images[i] | htmlSanitizer"/></div><br>
+    <div *ngIf="images.length"><img [src]="images[i] | htmlSanitizer"/></div><br>
     {{place.name}}<br>
     <hr>
     {{place.address}}<br>
