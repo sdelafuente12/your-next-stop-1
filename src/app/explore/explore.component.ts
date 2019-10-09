@@ -8,13 +8,18 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ExploreComponent implements OnInit {
 
+  currentUser = localStorage.getItem('username');
+
   constructor(private route: ActivatedRoute) {
-    //console.log('roooooooo', this.route.snapshot.queryParams.username);
-    localStorage.setItem('username', this.route.snapshot.queryParams.username);
+    console.log('ROUTE', this.route.snapshot.queryParams.username);
   }
 
   ngOnInit() {
-    
+    const username = this.route.snapshot.queryParams.username;
+    console.log('USERNAME', username)
+    if (username) {
+      localStorage.setItem('username', username);
+    }
   }
 
 }
