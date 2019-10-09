@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { FavoritesComponent } from './favorites/favorites.component';
+import { PlacesComponent } from './places/places.component';
 import { TripsComponent } from './trips/trips.component';
 import { ResultsComponent } from './results/results.component';
 import { RouterModule } from '@angular/router';
@@ -54,7 +54,7 @@ import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe'
     DetailsComponent,
     MapComponent,
     TripsComponent,
-    FavoritesComponent,
+    PlacesComponent,
     ResultsComponent,
     HtmlSanitizerPipe,
     StatsComponent,
