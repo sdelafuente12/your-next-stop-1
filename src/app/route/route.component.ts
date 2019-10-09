@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { TripsService } from '../services/trips.service';
 import { MapComponent } from '../map/map.component'
 import { RouteService } from '../services/route.service';
@@ -7,7 +7,7 @@ import {
   ConnectedPositioningStrategy, 
   IgxInputGroupComponent 
 } from 'igniteui-angular';
-import { debounceTime, switchMap, filter } from 'rxjs/operators';
+import { debounceTime, switchMap, map } from 'rxjs/operators';
 import { from } from 'rxjs';
 
 @Component({
@@ -15,7 +15,7 @@ import { from } from 'rxjs';
   templateUrl: './route.component.html',
   styleUrls: ['./route.component.scss']
 })
-export class RouteComponent implements OnInit {
+export class RouteComponent implements OnInit, OnDestroy {
   form = {
     origin: '',
     destination: '',
@@ -30,7 +30,7 @@ export class RouteComponent implements OnInit {
         verticalStartPoint: 0
     })
 }
-
+inputSubscription;
   constructor(private trips: TripsService, private route: RouteService) {
     // this.suggestions = ['a', 'ab', 'abc']
   }
@@ -44,13 +44,14 @@ export class RouteComponent implements OnInit {
     this.map.setRoute(this.form);
   }
 
-  public onKey(field, input: string) {
-    if (input.length) {
-      from(input)
+  public onKey(field) {
+    
+    if (this.form[field].length) {
+      this.inputSubscription = from(this.form[field])
       .pipe(
         debounceTime(250),
         switchMap(
-          input => this.route.autoSuggestion(input, this.map.currentPosition)
+          input => this.route.autoSuggestion(this.form[field], this.map.currentPosition)
         )
       )
       .subscribe((suggestions: any) => {
@@ -59,11 +60,13 @@ export class RouteComponent implements OnInit {
       })
     }
   }
-    // console.log(input)
-    // this.route.autoSuggestion(input, this.map.currentPosition)
-    //   .subscribe((suggestions: any) => {
-    //     console.log(suggestions)
-    //     this.suggestions = suggestions.predictions;
-    //   })
-  
+
+  public onClick() {
+    this.suggestions = [];
+    if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
+  }
+ 
+  ngOnDestroy() {
+    if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
+  }
 }
