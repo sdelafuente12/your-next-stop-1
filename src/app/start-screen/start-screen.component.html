@@ -1,7 +1,7 @@
 <div>
   <h1 class="igx-typography__h1">YOUR NEXT STOP</h1>
   <h5 class="igx-typography__h5">Explore Your World</h5>
-    <div>
-      <a [href]="googleLoginUrl">Login With Google</a>
-    </div>
+  <div *ngIf="!currentUser">
+    <a [href]="googleLoginUrl"><button>Login With Google</button></a>
+  </div>
 </div>
