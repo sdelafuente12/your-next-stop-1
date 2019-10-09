@@ -14,7 +14,7 @@ export class RouteComponent implements OnInit {
     origin: '',
     destination: '',
   }
-
+  public suggestions = [];
 
   constructor(private trips: TripsService, private route: RouteService) {}
   @ViewChild(MapComponent, {static: false}) private map: MapComponent;
@@ -29,10 +29,9 @@ export class RouteComponent implements OnInit {
   public onKey(field, input) {
     console.log(input)
     this.route.autoSuggestion(input, this.map.currentPosition)
-      .subscribe(suggestion => {
-        if (field === 'origin') {
-          
-        }
+      .subscribe((suggestions: any) => {
+        console.log(suggestions)
+        this.suggestions = suggestions.predictions;
       })
   }
 }
