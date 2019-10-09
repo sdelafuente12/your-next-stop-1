@@ -54,7 +54,7 @@ export class MapComponent implements OnInit, OnDestroy {
     private windowRefService: WindowRef,
     private sanitizer: DomSanitizer
     ) { 
-    this.snapshotUrl = router.routerState.snapshot.url;
+    this.snapshotUrl = router.routerState.snapshot.url.split('?')[0];
   }
 
   ngOnInit() {
