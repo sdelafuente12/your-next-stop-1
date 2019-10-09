@@ -35,7 +35,8 @@ import {
   IgxAutocompleteModule,
   IgxChipsModule,
   IgxDialogModule,
-  IgxNavigationDrawerModule
+  IgxNavigationDrawerModule,
+  IgxDropDownModule
 } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
 import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
@@ -91,7 +92,8 @@ import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe'
     IgxComboModule,
     IgxAutocompleteModule,
     IgxChipsModule,
-    IgxDialogModule
+    IgxDialogModule,
+    IgxDropDownModule
   ],
   providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent],
