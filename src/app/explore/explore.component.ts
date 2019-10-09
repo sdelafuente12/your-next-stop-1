@@ -8,17 +8,17 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ExploreComponent implements OnInit {
 
-  currentUser = localStorage.getItem('username');
+  currentUser = localStorage.getItem('userId');
 
   constructor(private route: ActivatedRoute) {
-    console.log('ROUTE', this.route.snapshot.queryParams.username);
+    console.log('ROUTE', this.route.snapshot.queryParams);
   }
 
   ngOnInit() {
-    const username = this.route.snapshot.queryParams.username;
-    console.log('USERNAME', username)
-    if (username) {
-      localStorage.setItem('username', username);
+    const userId = this.route.snapshot.queryParams.id;
+    console.log('USERID', userId)
+    if (userId) {
+      localStorage.setItem('userId', userId);
     }
   }
 
