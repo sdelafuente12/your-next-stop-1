@@ -19,6 +19,7 @@ export class RouteComponent implements OnInit, OnDestroy {
   form = {
     origin: '',
     destination: '',
+    waypoints: ''
   }
   public suggestions = [];
   
@@ -31,9 +32,7 @@ export class RouteComponent implements OnInit, OnDestroy {
     })
 }
 inputSubscription;
-  constructor(private trips: TripsService, private route: RouteService) {
-    // this.suggestions = ['a', 'ab', 'abc']
-  }
+  constructor(private trips: TripsService, private route: RouteService) {}
   @ViewChild(MapComponent, {static: false}) private map: MapComponent;
   @ViewChild('originGroup', { read: IgxInputGroupComponent, static: true }) inputGroup: IgxInputGroupComponent;
   ngOnInit() {
@@ -73,6 +72,9 @@ inputSubscription;
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }
  
+  public autosuggestClick(suggestion) {
+    
+  }
   ngOnDestroy() {
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }

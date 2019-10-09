@@ -59,8 +59,8 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._window = this.windowRefService.nativeWindow;
-
-    if (this.snapshotUrl === '/explore'){ //if explore view is active, populates currentposition and nearby locations
+    //if explore view is active, populates currentposition and nearby locations
+    if (this.snapshotUrl === '/explore'){ 
       this.exploreSubscription = this.locationService.getCurrentPosition()
       .pipe(
         switchMap(position => {
@@ -91,7 +91,7 @@ export class MapComponent implements OnInit, OnDestroy {
     }
     
   }
-  //for conveniently getting lat, lng from map
+  //for conveniently getting lat, lng from map click
   showClickedPosition(event) {
     console.log(event);
   }
@@ -113,16 +113,6 @@ export class MapComponent implements OnInit, OnDestroy {
         })
     }  
   }
-
-  // onLoadReadBlobAsBase64(blob) {
-  //   const reader = new FileReader();
-  //   // result includes identifier 'data:image/png;base64,' plus the base64 data
-  //   reader.readAsDataURL(blob);
-  //   reader.onloadend = () => {
-  //   this.image = reader.result;
-  //   console.log(this.image)
-  // }
-  // }
 
   ngOnDestroy() {
     //subscription cleanup
