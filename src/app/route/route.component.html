@@ -14,15 +14,16 @@
 
 
 <form class="input-group-form" (keyup.enter)="onSubmit()">
-  <igx-input-group type="border">
+  <igx-input-group #originGroup type="border">
     <input #origin
     igxInput
     name="origin"
     type="text"
-    [(ngModel)]="form.origin"
+    [ngModel]="form.origin"
     required="required"
-    (keyup)="onKey('origin', origin.value)"
+    (ngModelChange)="onKey('origin', origin.value)"
     [igxAutocomplete]="suggestionsPanel"
+    [igxAutocompleteSettings]='settings'
     />
     <label igxLabel for="origin">Origin</label>
     <igx-suffix>
@@ -30,7 +31,7 @@
     </igx-suffix>
   </igx-input-group>
   <igx-drop-down #suggestionsPanel maxHeight="300px">
-    <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="town">
+    <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
         {{suggestion}}
     </igx-drop-down-item>
 </igx-drop-down>
