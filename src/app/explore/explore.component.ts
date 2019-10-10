@@ -16,7 +16,6 @@ export class ExploreComponent implements OnInit {
 
   ngOnInit() {
     const userId = this.route.snapshot.queryParams.id;
-    console.log('USERID', userId)
     if (userId) {
       localStorage.setItem('userId', userId);
     }
