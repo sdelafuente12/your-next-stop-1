@@ -1,7 +1,19 @@
 @import '~igniteui-angular/lib/core/styles/themes/index';
 
-.card-wrapper {
-  max-width: 152px;
+.card-column {
+  max-width: 225px;
+  display: block;
+  flex-flow: row nowrap;
+  flex-flow: column nowrap;
+  flex: 1 0 25%;
+  align-content: flex-start;
+  font-family: 'Roboto', sans-serif;
+  width: inherit;
+  position: relative;
+  height: 250px;
+  margin: 0 auto;
+  margin-top: 15px;
+  background: transparent;
 }
 
 $colorful-card: igx-card-theme(
@@ -20,6 +32,7 @@ $colorful-card: igx-card-theme(
 button {
   margin-top: 16px;
   margin-bottom: 60px;
+  width: 215px;
 }
 
 igx-carousel {
@@ -28,5 +41,19 @@ igx-carousel {
 
 h5 {
   text-align: left;
-  // display: inline-block;
+}
+
+.material-icons {
+  font-size: 16px;
+  margin-top: 6px;
+  margin-right: -10px;
+}
+
+igx-card-header {
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
+.igx-card-header__title {
+  font-size: 16px;
 }

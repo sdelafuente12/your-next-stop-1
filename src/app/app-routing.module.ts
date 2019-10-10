@@ -13,6 +13,7 @@ import {
 } from './bottomnav-routing/bottomnav-routing.component';
 import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 import { ɵPLATFORM_SERVER_ID } from '@angular/common';
+import { DynamicInputComponent } from './route/dynamic-input/dynamic-input.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'explore/results', component: ResultsComponent },
   { path: 'details', component: DetailsComponent },
   { path: 'stats', component: StatsComponent },
+  { path: 'dynInput', component: DynamicInputComponent},
   {
     path: '',
     component: StartScreenComponent

@@ -1,14 +1,15 @@
 
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { TripsService } from '../services/trips.service';
-import { MapComponent } from '../map/map.component'
+import { MapComponent } from '../map/map.component';
+import { DynamicInputComponent } from './dynamic-input/dynamic-input.component';
 import { RouteService } from '../services/route.service';
 import { 
   ConnectedPositioningStrategy, 
-  IgxInputGroupComponent 
 } from 'igniteui-angular';
-import { debounceTime, switchMap, map } from 'rxjs/operators';
-import { from, concat } from 'rxjs';
+import { debounceTime, switchMap } from 'rxjs/operators';
+import { from } from 'rxjs';
+
 
 @Component({
   selector: 'app-route',
@@ -19,6 +20,7 @@ export class RouteComponent implements OnInit, OnDestroy {
   form = {
     origin: '',
     destination: '',
+    waypoints: ''
   }
   public suggestions = [];
   
@@ -31,11 +33,9 @@ export class RouteComponent implements OnInit, OnDestroy {
     })
 }
 inputSubscription;
-  constructor(private trips: TripsService, private route: RouteService) {
-    // this.suggestions = ['a', 'ab', 'abc']
-  }
+  constructor(private trips: TripsService, private route: RouteService) {}
   @ViewChild(MapComponent, {static: false}) private map: MapComponent;
-  @ViewChild('originGroup', { read: IgxInputGroupComponent, static: true }) inputGroup: IgxInputGroupComponent;
+  
   ngOnInit() {
     
   }
@@ -62,7 +62,7 @@ inputSubscription;
         )
       )
       .subscribe((suggestions: any) => {
-        console.log(suggestions)
+        // console.log(suggestions)
         this.suggestions = suggestions;
       })
     }
@@ -73,6 +73,10 @@ inputSubscription;
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }
  
+  public autosuggestClick(suggestion) {
+
+  }
+  
   ngOnDestroy() {
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }
