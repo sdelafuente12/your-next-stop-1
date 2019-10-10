@@ -4,6 +4,7 @@
 
 $htc: #bdeaf2;
 $bg: #1f1f1f;
+$pink: rgb(230, 65, 139);
 
 h1 {
   color: $htc;
@@ -13,6 +14,12 @@ h1 {
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+}
+
+h3 {
+  color: white;
+  text-align: left;
+  font-family: 'Roboto-Light', sans-serif;
 }
 
 h4 {
@@ -118,20 +125,20 @@ body {
 }
 
 $green-palette: igx-palette(
-  $primary: #09f,
+  $primary: $pink,
   $secondary: #72da67,
-  $surface: #333,
+  $surface: $bg,
 );
 
-// .fin-dark-theme {
-//   @include igx-dark-theme($green-palette);
-//   background: #333;
+.fin-dark-theme {
+  @include igx-dark-theme($green-palette);
+  background: $bg;
 
-//   ::-moz-placeholder {
-//     opacity: 1;
-//   }
-// }
+  ::-moz-placeholder {
+    opacity: 1;
+  }
+}
 
-// .dark-theme {
-//   @include igx-dark-theme($green-palette);
-// }
+.dark-theme {
+  @include igx-dark-theme($green-palette);
+}
