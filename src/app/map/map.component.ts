@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { mapStyle } from './map-style.js';
 import { LocationService } from '../services/location.service'
@@ -15,6 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 
 export class MapComponent implements OnInit, OnDestroy {
+  @Output() placesLoaded = new EventEmitter<string>();
 //custom map style
   styles = mapStyle;
 //geolocation properties
@@ -59,8 +60,8 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._window = this.windowRefService.nativeWindow;
-
-    if (this.snapshotUrl === '/explore'){ //if explore view is active, populates currentposition and nearby locations
+    //if explore view is active, populates currentposition and nearby locations
+    if (this.snapshotUrl === '/explore'){ 
       this.exploreSubscription = this.locationService.getCurrentPosition()
       .pipe(
         switchMap(position => {
@@ -75,6 +76,7 @@ export class MapComponent implements OnInit, OnDestroy {
         )
         .subscribe(places => {
           this.nearbyPlaces = places;
+          this.placesLoaded.emit('places loaded')
           this.nearbyPlaces.map((place, i) => this.getPlacePhoto(place.photos, i))
         })
 
@@ -91,7 +93,7 @@ export class MapComponent implements OnInit, OnDestroy {
     }
     
   }
-  //for conveniently getting lat, lng from map
+  //for conveniently getting lat, lng from map click
   showClickedPosition(event) {
     console.log(event);
   }
@@ -113,16 +115,6 @@ export class MapComponent implements OnInit, OnDestroy {
         })
     }  
   }
-
-  // onLoadReadBlobAsBase64(blob) {
-  //   const reader = new FileReader();
-  //   // result includes identifier 'data:image/png;base64,' plus the base64 data
-  //   reader.readAsDataURL(blob);
-  //   reader.onloadend = () => {
-  //   this.image = reader.result;
-  //   console.log(this.image)
-  // }
-  // }
 
   ngOnDestroy() {
     //subscription cleanup

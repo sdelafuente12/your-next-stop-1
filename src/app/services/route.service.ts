@@ -19,6 +19,7 @@ export class RouteService {
       params: new HttpParams({ encoder: new CustomHttpParamEncoder() })
                   .set('origin', route.origin)
                   .set('destination', route.destination)
+                  .set('waypoints', route.waypoints)
     })
   }
   
