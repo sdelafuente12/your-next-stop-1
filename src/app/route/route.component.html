@@ -61,23 +61,23 @@
   </igx-drop-down>
   <!-------------------------- waypoints input ----------------------------------->
   <igx-input-group type="border">
-      <input #destination 
+      <input #waypoint
       igxInput 
-      name="destination"
+      name="waypoint"
       type="text" 
-      [(ngModel)]="form.destination"
-      (ngModelChange)="onKey('destination')"
-      [igxAutocomplete]="destinationSuggestions"
+      [(ngModel)]="form.waypoints"
+      (ngModelChange)="onKey('waypoint')"
+      [igxAutocomplete]="waypointSuggestions"
       [igxAutocompleteSettings]='settings'
       (click)="onClick()"
       required="required" 
       />
-      <label igxLabel for="destination">Destination</label>
+      <label igxLabel for="waypoint">Waypoint</label>
       <igx-suffix>
         <igx-icon>place</igx-icon>
       </igx-suffix>
     </igx-input-group>
-    <igx-drop-down #destinationSuggestions maxHeight="300px">
+    <igx-drop-down #waypointSuggestions maxHeight="300px">
       <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
           {{suggestion}}
       </igx-drop-down-item>

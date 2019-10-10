@@ -44,7 +44,8 @@ import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
 import { WINDOW_PROVIDERS } from './services/window.service';
-import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe'
+import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe';
+import { DynamicInputComponent } from './route/dyanmicInput/dynamic-input/dynamic-input.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +60,8 @@ import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe'
     HtmlSanitizerPipe,
     StatsComponent,
     BottomNavRoutingComponent,
-    NavDrawerComponent
+    NavDrawerComponent,
+    DynamicInputComponent
   ],
   imports: [
     FormsModule,
@@ -97,6 +99,6 @@ import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe'
   ],
   providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent],
-  exports: [HtmlSanitizerPipe]
+  exports: [HtmlSanitizerPipe, DynamicInputComponent]
 })
 export class AppModule {}
