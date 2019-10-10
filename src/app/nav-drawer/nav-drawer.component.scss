@@ -1,3 +1,6 @@
+$bg: #1f1f1f;
+$htc: #bdeaf2;
+
 .content-wrap {
     margin-top: 20px;
     width: 20%;
@@ -6,5 +9,11 @@
 }
 
 igx-icon {
-    font-size: 36px;
+    font-size: 30px;
+    color: $htc;
+}
+
+button {
+    background: $bg;
+    border: $bg;
 }
