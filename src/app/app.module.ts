@@ -45,7 +45,7 @@ import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
 import { WINDOW_PROVIDERS } from './services/window.service';
 import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe';
-import { DynamicInputComponent } from './route/dyanmicInput/dynamic-input/dynamic-input.component'
+import { DynamicInputComponent } from './route/dynamic-input/dynamic-input.component'
 @NgModule({
   declarations: [
     AppComponent,

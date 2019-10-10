@@ -1,14 +1,14 @@
 
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { TripsService } from '../services/trips.service';
-import { MapComponent } from '../map/map.component'
+import { MapComponent } from '../map/map.component';
+import { DynamicInputComponent } from './dynamic-input/dynamic-input.component';
 import { RouteService } from '../services/route.service';
 import { 
   ConnectedPositioningStrategy, 
 } from 'igniteui-angular';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { from } from 'rxjs';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 
 
 @Component({
@@ -76,6 +76,7 @@ inputSubscription;
   public autosuggestClick(suggestion) {
 
   }
+  
   ngOnDestroy() {
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }

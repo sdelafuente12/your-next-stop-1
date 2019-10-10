@@ -6,7 +6,7 @@
   <div class="valign" style="width: 100%;height: 100%">
     <div class="row" style="height: 100%">
       <div class="col s12" style="height: 100%">
-        <app-map></app-map>
+        <app-map ></app-map>
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@
     </igx-drop-down-item>
   </igx-drop-down>
   <!-------------------------- waypoints input ----------------------------------->
-  <igx-input-group type="border">
+  <!-- <igx-input-group type="border">
       <input #waypoint
       igxInput 
       name="waypoint"
@@ -76,7 +76,8 @@
       <igx-suffix>
         <igx-icon>place</igx-icon>
       </igx-suffix>
-    </igx-input-group>
+    </igx-input-group> -->
+    <app-dynamic-input></app-dynamic-input>
     <igx-drop-down #waypointSuggestions maxHeight="300px">
       <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
           {{suggestion}}

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { mapStyle } from './map-style.js';
 import { LocationService } from '../services/location.service'
@@ -15,6 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 
 export class MapComponent implements OnInit, OnDestroy {
+  @Output() placesLoaded = new EventEmitter<string>();
 //custom map style
   styles = mapStyle;
 //geolocation properties
@@ -75,6 +76,7 @@ export class MapComponent implements OnInit, OnDestroy {
         )
         .subscribe(places => {
           this.nearbyPlaces = places;
+          this.placesLoaded.emit('places loaded')
           this.nearbyPlaces.map((place, i) => this.getPlacePhoto(place.photos, i))
         })
 
