@@ -1,70 +1,9 @@
-<!-- <div formArrayName="waypointArray" -->
-  <!-- *ngFor="let waypoint of waypointGroup.get('waypointArray').controls; let i = index;">
-  <div formGroupName="i">
-    <input formControlName="waypoint" placeholder="Add a Stop">
-  </div>
-  <button igxButton="fab" igxButtonColor="#79F7FF" igxButtonBackground="#353A50" (click)="createInput()">+</button> -->
-  <!-- Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }} -->
-<!-- </div> -->
-<!-- <form [formGroup]="demoForm">
-    <div formArrayName="demoArray" 
-       *ngFor="let arrayItem of arrayItems; let i=index">
-          
-       <input [id]="arrayItem.id" type="checkbox"
-          [formControl]="demoArray[i]">
-       <label [for]="arrayItem.id" class="array-item-title">
-          {{arrayItem.title}}</label>
-    
-    </div>
- </form> -->
-<!-- <div [formGroup]="waypointGroup"> -->
-  <!-- <div *ngFor="let waypoint of waypointArray.controls; let i = index">
-    <label for="waypoint">Waypoint</label>
-    <div >
-      <input #waypointInput id={{i}} type="text" (keyup.enter)="sendText(waypoint, i)">
-    </div>
-    <button type="submit" (click)="addInput()">ADD</button>
-    <button type="submit" (click)="removeInput(i)">REMOVE</button>
-  </div> -->
-<!-- </div> -->
-<!-- <igx-input-group #originGroup type="border">
-  <ng-container *ngFor="let waypoint of waypointArray.controls; let i = index">
-    <input #waypointInput
-    igxInput
-    id={{i}}
-    name="waypoint[{{i}}]"
-    type="text"
-    [(ngModel)]="form.origin"
-    required="required"
-    (ngModelChange)="onKey('origin')"
-    [igxAutocomplete]="originSuggestions"
-    [igxAutocompleteSettings]='settings'
-    (click)="onClick()"
-    />
-    <label igxLabel for="origin">Origin</label>
-    <igx-suffix>
-      <igx-icon>place</igx-icon>
-    </igx-suffix>
-  </ng-container>
-</igx-input-group>
-    
-  <igx-drop-down #originSuggestions maxHeight="300px">
-    <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
-        {{suggestion}}
-    </igx-drop-down-item>
-  </igx-drop-down> -->
- 
       <div [formGroup]="waypointGroup">
         <div formArrayName="waypoints" *ngFor="let waypoint of waypointGroup.get('waypoints').controls; let i = index">
           <label [attr.for]="waypoint + i">Add a Stop</label>
           <div [formGroupName]="i">
-            <input 
-            #waypointInput
-            [id]="skillname + i" 
-            type="text" 
-            formControlName="waypoint"
-            (keyup.enter)="sendText(i)"
-            >
+            <input #waypointInput [id]="skillname + i" type="text" formControlName="waypoint"
+              (keyup.enter)="sendText(i)">
           </div>
           <button type="button" (click)="addInput()">+</button>
           <button type="button" (click)="removeInput(i)">-</button>

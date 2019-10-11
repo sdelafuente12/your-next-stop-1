@@ -22,7 +22,7 @@ export class ResultsComponent implements OnInit {
     return this.locationService.getCurrentPosition()
     .subscribe(loc => {
       console.log('LOCATION NATION', loc);
-      this.allPlacesSubscription = this.locationService.getAllNearbyPlaces(loc)
+      this.allPlacesSubscription = this.locationService.getNearbyPlaces(loc)
       .subscribe(place => {
         this.allPlaces.push(place)
         console.log('ALL PLACES', this.allPlaces[0])
