@@ -6,29 +6,31 @@
   <div class="valign" style="width: 100%;height: 100%">
     <div class="row" style="height: 100%">
       <div class="col s12" style="height: 100%">
-        <app-map (placesLoaded)="loadPlaces()"></app-map>
+        <app-map (placesLoaded)="loadPlaces()" (imagesLoaded)="loadImages()"></app-map>
       </div>
     </div>
   </div>
 </div>
 
 <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
-  <ng-container *ngFor="let place of places">
-  <igx-slide >
+  <ng-container *ngFor="let place of places; let i = index">
+    <igx-slide>
       <div class="card-column">
         <igx-card routerLink="/details">
           <igx-card-header>
             <h3 igxCardHeaderTitle>{{place.name}}</h3>
-            <igx-icon>thumb_up</igx-icon>
+            <igx-icon>{{place.rating}}</igx-icon>
           </igx-card-header>
           <igx-card-media height="200px">
-            <img src="../../assets/images/sushi.jpg">
+            <ng-container *ngIf="images.length">
+              <img [src]="images[i] | htmlSanitizer">
+              </ng-container>
           </igx-card-media>
         </igx-card>
       </div>
     </igx-slide>
   </ng-container>
-    <!-- <igx-slide>
+  <!-- <igx-slide>
         <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
           <div class="sample-column card-wrapper" style="position: relative;">
             <igx-card routerLink="/details">
@@ -49,5 +51,6 @@
 </igx-carousel>
 
 <div style="text-align: center">
-  <button igxButton="raised" igxButtonColor="white" routerLink="results" igxButtonBackground="#353A50">SHOW ALL RESULTS</button>
+  <button igxButton="raised" igxButtonColor="white" routerLink="results" igxButtonBackground="#353A50">SHOW ALL
+    RESULTS</button>
 </div>

@@ -28,7 +28,7 @@ export class RouteComponent implements OnInit, OnDestroy {
     userId: JSON.parse(this.currentUser),
   }
   public suggestions = [];
-  
+
   public settings = {
     positionStrategy: new ConnectedPositioningStrategy({
         closeAnimation: null,
@@ -95,6 +95,7 @@ inputSubscription;
     this.form.dateEnd = value;
     console.log(this.form.dateEnd);
   }
+  
   public autosuggestClick(suggestion) {
 
   }

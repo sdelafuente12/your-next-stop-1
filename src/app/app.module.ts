@@ -36,7 +36,8 @@ import {
   IgxChipsModule,
   IgxDialogModule,
   IgxNavigationDrawerModule,
-  IgxDropDownModule
+  IgxDropDownModule,
+  IgxDividerModule
 } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
 import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
@@ -45,7 +46,8 @@ import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
 import { WINDOW_PROVIDERS } from './services/window.service';
 import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe';
-import { DynamicInputComponent } from './route/dynamic-input/dynamic-input.component'
+import { DynamicInputComponent } from './route/dynamic-input/dynamic-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +97,9 @@ import { DynamicInputComponent } from './route/dynamic-input/dynamic-input.compo
     IgxAutocompleteModule,
     IgxChipsModule,
     IgxDialogModule,
-    IgxDropDownModule
+    IgxDropDownModule,
+    IgxDividerModule,
+    ReactiveFormsModule
   ],
   providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent],
