@@ -84,7 +84,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
     }
     //subscribes to currentlocation only
-    if (this.snapshotUrl === '/routes') {
+    if (this.snapshotUrl === '/route') {
       this.currentLocationSubscription = this.locationService.getCurrentPosition()
       .subscribe(position => {
           this.currentPosition = {
@@ -126,7 +126,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   markerClick(index) {
-    console.log(index)
+    console.log()
   }
 
   ngOnDestroy() {
