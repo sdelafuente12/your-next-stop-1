@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MapComponent } from '../map/map.component';
 import { from } from 'rxjs';
 import { distinct } from 'rxjs/operators';
+import  { IgxCarouselComponent, Direction } from 'igniteui-angular';
 
 @Component({
   selector: 'app-explore',
@@ -11,7 +12,7 @@ import { distinct } from 'rxjs/operators';
 })
 export class ExploreComponent implements OnInit {
   @ViewChild(MapComponent, { static: false }) private map: MapComponent;
-
+  @ViewChild(IgxCarouselComponent, { static: false }) private carousel: IgxCarouselComponent;
   currentUser = localStorage.getItem('userId');
   public places = [];
   public images = [];
@@ -48,7 +49,9 @@ export class ExploreComponent implements OnInit {
     })
   }
 
-  changed() {
-    console.log('change')
+  mapMarkerClicked(i) {
+    console.log(i)
+    const focus = this.carousel.get(i);
+    this.carousel.select(focus, Direction.NEXT);
   }
 }

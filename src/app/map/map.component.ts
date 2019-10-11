@@ -18,6 +18,7 @@ import { Observable } from 'rxjs';
 export class MapComponent implements OnInit, OnDestroy {
   @Output() placesLoaded = new EventEmitter<string>();
   @Output() imagesLoaded = new EventEmitter<string>();
+  @Output() markerClicked = new EventEmitter<number>();
 //custom map style
   styles = mapStyle;
 //geolocation properties
@@ -126,7 +127,7 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   markerClick(index) {
-    console.log()
+    this.markerClicked.emit(index)
   }
 
   ngOnDestroy() {

@@ -2,7 +2,6 @@
         <div formArrayName="waypoints" *ngFor="let waypoint of waypointGroup.get('waypoints').controls; let i = index">
           <label [attr.for]="waypoint + i">Add a Stop</label>
           <div [formGroupName]="i">
-<<<<<<< HEAD
             <input 
             #waypointInput
             [id]="skillname + i" 
@@ -11,10 +10,6 @@
             (keyup.enter)="sendText(i)"
             placeholder="Add a Stop*"
             >
-=======
-            <input #waypointInput [id]="skillname + i" type="text" formControlName="waypoint"
-              (keyup.enter)="sendText(i)">
->>>>>>> 71b7da9d7a1cecc9fbf876a9e1430cba735aadec
           </div>
           <button type="button" (click)="addInput()">+</button>
           <button type="button" (click)="removeInput(i)">-</button>
