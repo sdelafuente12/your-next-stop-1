@@ -36,7 +36,8 @@ import {
   IgxChipsModule,
   IgxDialogModule,
   IgxNavigationDrawerModule,
-  IgxDropDownModule
+  IgxDropDownModule,
+  IgxDividerModule
 } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
 import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
@@ -97,6 +98,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     IgxChipsModule,
     IgxDialogModule,
     IgxDropDownModule,
+    IgxDividerModule,
     ReactiveFormsModule
   ],
   providers: [WINDOW_PROVIDERS],

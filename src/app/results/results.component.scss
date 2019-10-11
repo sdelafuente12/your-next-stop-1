@@ -1,43 +1,69 @@
 @import '~igniteui-angular/lib/core/styles/themes/index';
 
-h5 {
-  text-align: left;
-  margin-left: 70px;
-  color: white; 
-  font-size: 22px;
-}
-
-igx-icon {
-  color: white;
-}
-
-.header {
-  // display: inline-block;
-  // width: 200px;
-  align-items: justify;
-}
-
-.slide-style {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.card-column {
+  max-width: 225px;
+  display: block;
+  flex-flow: row nowrap;
+  flex-flow: column nowrap;
+  flex: 1 0 25%;
+  align-content: flex-start;
+  font-family: 'Roboto', sans-serif;
+  width: inherit;
+  position: relative;
   height: 250px;
-}
-
-.card-wrapper {
-  max-width: 152px;
+  margin: 0 auto;
+  margin-top: 15px;
+  background: transparent;
 }
 
 $colorful-card: igx-card-theme(
-  $background: #353a50,
+  $background: #353A50,
   $header-text-color: #ffffff,
   $subtitle-text-color: #ffffff,
   $content-text-color: #ffffff
-);
-
-:host {
-  ::ng-deep {
-    @include igx-card($colorful-card);
+  );
+  
+  :host {
+    ::ng-deep {
+      @include igx-card($colorful-card);
+    }
   }
+  
+  igx-divider {
+    display: flex;
+    // padding: 20px;
+    border: 1px solid #ededed;
+  }
+  
+  button {
+    margin-top: 2px;
+    margin-bottom: 65px;
+    width: 215px;
+  }
+  
+  igx-carousel {
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+h5 {
+  text-align: left;
+  color: white;
+  margin-bottom: -15px;
+  margin-left: 20px;
+}
+
+.material-icons {
+  font-size: 16px;
+  margin-top: 6px;
+  margin-right: -10px;
+}
+
+igx-card-header {
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
+.igx-card-header__title {
+  font-size: 16px;
 }

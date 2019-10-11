@@ -2,12 +2,10 @@
   <h4 class="igx-typography__h4">Route</h4>
 </div>
 <!------------------------------------- map ----------------------------------->
-<div class="valign-wrapper" style="width: 100%;height:370px;position:relative;">
-  <div class="valign" style="width: 100%;height: 100%">
-    <div class="row" style="height: 100%">
-      <div class="col s12" style="height: 100%">
-        <app-map ></app-map>
-      </div>
+<div class="map-container">
+  <div class="row" style="height: 100%">
+    <div class="col s12" style="height: 100%">
+      <app-map></app-map>
     </div>
   </div>
 </div>
@@ -15,17 +13,9 @@
 <form class="input-group-form" (ngSubmit)="onSubmit()">
 <!------------------------------- origin input -------------------------------->
   <igx-input-group #originGroup type="border">
-    <input #origin
-    igxInput
-    name="origin"
-    type="text"
-    [(ngModel)]="form.origin"
-    required="required"
-    (ngModelChange)="onKey('origin')"
-    [igxAutocomplete]="originSuggestions"
-    [igxAutocompleteSettings]='settings'
-    (click)="onClick()"
-    />
+    <input #origin igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required"
+      (ngModelChange)="onKey('origin')" [igxAutocomplete]="originSuggestions" [igxAutocompleteSettings]='settings'
+      (click)="onClick()" />
     <label igxLabel for="origin">Origin</label>
     <igx-suffix>
       <igx-icon>place</igx-icon>
@@ -33,22 +23,14 @@
   </igx-input-group>
   <igx-drop-down #originSuggestions maxHeight="300px">
     <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
-        {{suggestion}}
+      {{suggestion}}
     </igx-drop-down-item>
   </igx-drop-down>
-<!----------------------------- destination input ---------------------------------->
+  <!----------------------------- destination input ---------------------------------->
   <igx-input-group type="border">
-    <input #destination 
-    igxInput 
-    name="destination"
-    type="text" 
-    [(ngModel)]="form.destination"
-    (ngModelChange)="onKey('destination')"
-    [igxAutocomplete]="destinationSuggestions"
-    [igxAutocompleteSettings]='settings'
-    (click)="onClick()"
-    required="required" 
-    />
+    <input #destination igxInput name="destination" type="text" [(ngModel)]="form.destination"
+      (ngModelChange)="onKey('destination')" [igxAutocomplete]="destinationSuggestions"
+      [igxAutocompleteSettings]='settings' (click)="onClick()" required="required" />
     <label igxLabel for="destination">Destination</label>
     <igx-suffix>
       <igx-icon>place</igx-icon>
@@ -56,7 +38,7 @@
   </igx-input-group>
   <igx-drop-down #destinationSuggestions maxHeight="300px">
     <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
-        {{suggestion}}
+      {{suggestion}}
     </igx-drop-down-item>
   </igx-drop-down>
   <!-------------------------- waypoints input ----------------------------------->
@@ -77,13 +59,13 @@
         <igx-icon>place</igx-icon>
       </igx-suffix>
     </igx-input-group> -->
-    <app-dynamic-input></app-dynamic-input>
-    <igx-drop-down #waypointSuggestions maxHeight="300px">
-      <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
-          {{suggestion}}
-      </igx-drop-down-item>
-    </igx-drop-down>
-<!---------------------------- date picker-------------------------------------- -->
+  <app-dynamic-input></app-dynamic-input>
+  <igx-drop-down #waypointSuggestions maxHeight="300px">
+    <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
+      {{suggestion}}
+    </igx-drop-down-item>
+  </igx-drop-down>
+  <!---------------------------- date picker-------------------------------------- -->
   <ng-template #mySelectIcon>
     <igx-icon fontSet="fa-solid" name="fa-check-circle"></igx-icon>
   </ng-template>
@@ -110,7 +92,7 @@
       </igx-input-group>
     </ng-template>
   </igx-date-picker>
-<!---------------------------- places of interests buttons ----------------------------------->
+  <!---------------------------- places of interests buttons ----------------------------------->
   <section class="chips-places">
     <igx-card>
       <i class="fas fa-grin fa-3x"></i>
@@ -148,8 +130,8 @@
 </form>
 <!----------------------------- save to trips button -------------------------------------->
 <div style="text-align: center">
-<button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50" (click)="alert.open()">SAVE TO
-  TRIPS</button>
+  <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50" (click)="alert.open()">SAVE TO
+    TRIPS</button>
   <igx-dialog #alert title="Notification" message="Your route has been saved to trips!" leftButtonLabel="OK"
     (onLeftButtonSelect)="alert.close()">
   </igx-dialog>

@@ -10,10 +10,11 @@ import { distinct } from 'rxjs/operators';
   styleUrls: ['./explore.component.scss']
 })
 export class ExploreComponent implements OnInit {
-  @ViewChild(MapComponent, {static: false}) private map: MapComponent;
+  @ViewChild(MapComponent, { static: false }) private map: MapComponent;
 
   currentUser = localStorage.getItem('userId');
   public places = [];
+  public images = [];
 
   placesSubscription;
   imagesSubscription;
@@ -42,6 +43,8 @@ export class ExploreComponent implements OnInit {
     .pipe(
       distinct()
     )
-    .subscribe(image => console.log(image))
+    .subscribe(image => {
+      this.images.push(image);
+    })
   }
 }
