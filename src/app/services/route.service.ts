@@ -11,6 +11,7 @@ import { CustomHttpParamEncoder } from '../custom-http-param-encoder';
 export class RouteService {
   private getRoutePositionsEndpoint = `${environment.BASE_API_URL}/routePositions`;
   private autocompleteAddressEndpoint = `${environment.BASE_API_URL}/autocompleteAddress`;
+  private addTripEndpoint = `${environment.BASE_API_URL}/addTrip`;
   constructor(private http: HttpClient) { }
 
   getRoutePositions(route) {
@@ -33,5 +34,9 @@ export class RouteService {
     return this.http.get(this.autocompleteAddressEndpoint, {
       params: new HttpParams().set('input', text).set('location', currentPositionString)
     })
+  }
+
+  saveTrips(form) {
+    return this.http.post(this.addTripEndpoint, form);
   }
 }
