@@ -84,7 +84,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
     }
     //subscribes to currentlocation only
-    if (this.snapshotUrl === '/route') {
+    if (this.snapshotUrl === '/routes') {
       this.currentLocationSubscription = this.locationService.getCurrentPosition()
       .subscribe(position => {
           this.currentPosition = {
@@ -118,11 +118,15 @@ export class MapComponent implements OnInit, OnDestroy {
         )
       .subscribe(photo => {
         this.images[index] = this._window.URL.createObjectURL(photo);
-        if (this.images.length === 14) {
+        if (this.images.length === 14) {//this number will need to be dynamic in the future (ncategories * nplaces)
           this.imagesLoaded.emit('');
         }
       })
     }  
+  }
+
+  markerClick(index) {
+    console.log(index)
   }
 
   ngOnDestroy() {

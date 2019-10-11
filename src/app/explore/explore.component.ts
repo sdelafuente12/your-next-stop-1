@@ -44,4 +44,8 @@ export class ExploreComponent implements OnInit {
     )
     .subscribe(image => console.log(image))
   }
+
+  changed() {
+    console.log('change')
+  }
 }

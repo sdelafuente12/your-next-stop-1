@@ -37,10 +37,14 @@ export class DynamicInputComponent implements OnInit {
   }
 
   addInput(): void {
-    this.waypointArray.push(this.createInput());
+    if (this.waypointArray.length < 10) {
+      this.waypointArray.push(this.createInput());
+    }
   }
 
   removeInput(index): void {
-    this.waypointArray.removeAt(index);
+    if (this.waypointArray.length > 1) {
+      this.waypointArray.removeAt(index);
+    }
   }
 }

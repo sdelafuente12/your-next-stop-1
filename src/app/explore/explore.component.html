@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<igx-carousel [pause]="true" [loop]="false" [navigation]="true">
+<igx-carousel #carousel [pause]="true" [loop]="false" [navigation]="true" (onSlideChanged)="changed()">
   <ng-container *ngFor="let place of places">
   <igx-slide >
       <div class="card-column">
