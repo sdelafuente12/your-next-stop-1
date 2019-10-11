@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MapComponent } from '../map/map.component';
 import { from } from 'rxjs';
 
@@ -15,6 +15,7 @@ export class ExploreComponent implements OnInit {
   public places = [];
   placesSubscription;
   constructor(private route: ActivatedRoute) {
+    console.log('PLACESSSSSSSSSSSSSSSSSSSS', this.places);
     console.log('ROUTE', this.route.snapshot.queryParams);
   }
 
