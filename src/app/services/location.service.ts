@@ -9,7 +9,8 @@ import { HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LocationService {
-  private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`;
+  private getAllNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`
+  private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/exploreNearbyPlaces`;
   private getPlacePhotoEndpoint = `${environment.BASE_API_URL}/placePhoto`;
   private wait = false;
 
@@ -47,6 +48,7 @@ export class LocationService {
   }
 
   public getNearbyPlaces(location) {
+    
     const currentPositionString = `${location.coords.latitude},${location.coords.longitude}`;
     const id = localStorage.getItem('userId');
 
