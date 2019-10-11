@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MapComponent } from '../map/map.component';
 import { from } from 'rxjs';
 
@@ -19,12 +19,12 @@ export class ExploreComponent implements OnInit {
   imagesSubscription;
 
   constructor(private route: ActivatedRoute) {
+    console.log('PLACESSSSSSSSSSSSSSSSSSSS', this.places);
     console.log('ROUTE', this.route.snapshot.queryParams);
   }
 
   ngOnInit() {
     const userId = this.route.snapshot.queryParams.id;
-    console.log('USERID', userId);
     if (userId) {
       localStorage.setItem('userId', userId);
     }
