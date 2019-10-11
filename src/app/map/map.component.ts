@@ -18,6 +18,7 @@ import { Observable } from 'rxjs';
 export class MapComponent implements OnInit, OnDestroy {
   @Output() placesLoaded = new EventEmitter<string>();
   @Output() imagesLoaded = new EventEmitter<string>();
+  @Output() markerClicked = new EventEmitter<number>();
 //custom map style
   styles = mapStyle;
 //geolocation properties
@@ -118,11 +119,15 @@ export class MapComponent implements OnInit, OnDestroy {
         )
       .subscribe(photo => {
         this.images[index] = this._window.URL.createObjectURL(photo);
-        if (this.images.length === 14) {
+        if (this.images.length === 14) {//this number will need to be dynamic in the future (ncategories * nplaces)
           this.imagesLoaded.emit('');
         }
       })
     }  
+  }
+
+  markerClick(index) {
+    this.markerClicked.emit(index)
   }
 
   ngOnDestroy() {
