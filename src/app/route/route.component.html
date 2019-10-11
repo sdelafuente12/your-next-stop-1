@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<form class="input-group-form" (keyup.enter)="onSubmit()">
+<form class="input-group-form" (ngSubmit)="onSubmit()">
 <!------------------------------- origin input -------------------------------->
   <igx-input-group #originGroup type="border">
     <input #origin

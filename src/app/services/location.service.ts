@@ -9,8 +9,7 @@ import { HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LocationService {
-  private getAllNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`
-  private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/exploreNearbyPlaces`;
+  private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`;
   private getPlacePhotoEndpoint = `${environment.BASE_API_URL}/placePhoto`;
   private wait = false;
 
@@ -48,9 +47,10 @@ export class LocationService {
   }
 
   public getNearbyPlaces(location) {
-    const currentUser = localStorage.getItem('userId');
-    const currentPositionString = `${location.coords.latitude},${location.coords.longitude}`;
     
+    const currentPositionString = `${location.coords.latitude},${location.coords.longitude}`;
+    const id = localStorage.getItem('userId');
+
     if(!this.wait){
       this.wait = true;
       setTimeout(() => this.wait = false, 1000)
@@ -58,23 +58,7 @@ export class LocationService {
       return this.http.get(this.getNearbyPlacesEndpoint, {
         params: new HttpParams()
         .set('location', currentPositionString)
-        .set('id', currentUser)
-      })
-    }
-  }
-
-  public getAllNearbyPlaces(location) {
-    const currentUser = localStorage.getItem('userId');
-    const currentPositionString = `${location.coords.latitude},${location.coords.longitude}`;
-
-    if (!this.wait) {
-      this.wait = true;
-      setTimeout(() => this.wait = false, 1000)
-
-      return this.http.get(this.getAllNearbyPlacesEndpoint, {
-        params: new HttpParams()
-          .set('location', currentPositionString)
-          .set('id', currentUser)
+        .set('id', id)
       })
     }
   }

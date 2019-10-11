@@ -2,10 +2,11 @@ import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/cor
 import { Router } from '@angular/router';
 import { mapStyle } from './map-style.js';
 import { LocationService } from '../services/location.service'
-import { switchMap, flatMap } from 'rxjs/operators';
+import { switchMap, flatMap, endWith, finalize, distinct, take } from 'rxjs/operators';
 import { RouteService } from '../services/route.service.js';
 import { WindowRef } from '../services/window.service'
 import { DomSanitizer } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -16,6 +17,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 export class MapComponent implements OnInit, OnDestroy {
   @Output() placesLoaded = new EventEmitter<string>();
+  @Output() imagesLoaded = new EventEmitter<string>();
 //custom map style
   styles = mapStyle;
 //geolocation properties
@@ -101,7 +103,7 @@ export class MapComponent implements OnInit, OnDestroy {
   setRoute(route) {
     this.routeSubscription = this.routeService.getRoutePositions(route)
       .subscribe(routePositions => { 
-        console.log(routePositions) 
+        // console.log(routePositions) 
         this.origin = routePositions[0].location;
         this.destination = routePositions[1].location;
       })
@@ -110,9 +112,16 @@ export class MapComponent implements OnInit, OnDestroy {
   getPlacePhoto(photoRef, index) {
     if(!this.images[index]) {
       this.imageSubscription = this.locationService.getPlacePhoto(photoRef)
-        .subscribe(photo => {
-          this.images[index] = this._window.URL.createObjectURL(photo);
-        })
+      .pipe(
+        distinct(),
+        take(14),
+        )
+      .subscribe(photo => {
+        this.images[index] = this._window.URL.createObjectURL(photo);
+        if (this.images.length === 14) {
+          this.imagesLoaded.emit('');
+        }
+      })
     }  
   }
 

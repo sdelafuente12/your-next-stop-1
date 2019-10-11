@@ -7,9 +7,10 @@ import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@ang
   styleUrls: ['./dynamic-input.component.scss']
 })
 export class DynamicInputComponent implements OnInit {
-  waypointForm: FormGroup;
+  waypointGroup: FormGroup;
 
   waypointArray: FormArray;
+
 
   constructor(private _formBuilder: FormBuilder) {
     
@@ -17,23 +18,29 @@ export class DynamicInputComponent implements OnInit {
 
 
   ngOnInit() {
-    this.waypointForm = new FormGroup({
-      city: new FormControl(),
-      state: new FormControl()
+    this.waypointGroup = this._formBuilder.group({
+      waypoints: this._formBuilder.array([this.createInput()])
     });
-    // this.waypointForm = this._formBuilder.group({
-    //   waypointArray: this._formBuilder.array([this.createInput()])
-    // });
+    // this.waypointArray = this._formBuilder.array([this.createInput()])
+    this.waypointArray = this.waypointGroup.get('waypoints') as FormArray;
   }
 
-  // createInput(): FormGroup {
-  //   return this._formBuilder.group({
-  //     waypoint: ['', Validators.required]
-  //   })
-  // }
+  sendText(index) {
+    
+    console.log(this.waypointArray)
+  }
 
-  // addInput(): void {
-  //   this.waypointArray = this.waypointForm.get('waypointArray') as FormArray;
-  //   this.waypointArray.push(this.createInput());
-  // }
+  createInput(): FormGroup {
+    return this._formBuilder.group({
+      waypoint: ['']
+    })
+  }
+
+  addInput(): void {
+    this.waypointArray.push(this.createInput());
+  }
+
+  removeInput(index): void {
+    this.waypointArray.removeAt(index);
+  }
 }
