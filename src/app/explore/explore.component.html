@@ -13,7 +13,7 @@
 </div>
 
 <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
-  <ng-container *ngFor="let place of places">
+  <ng-container *ngFor="let place of places; let i = index">
     <igx-slide>
       <div class="card-column">
         <igx-card routerLink="/details">
@@ -22,8 +22,8 @@
             <igx-icon>thumb_up</igx-icon>
           </igx-card-header>
           <igx-card-media height="200px">
-            <ng-container *ngFor="let image of images">
-              <!-- <img src={{image.name}}> -->
+            <ng-container *ngIf="images.length">
+              <img [src]="images[i] | htmlSanitizer">
               </ng-container>
           </igx-card-media>
         </igx-card>

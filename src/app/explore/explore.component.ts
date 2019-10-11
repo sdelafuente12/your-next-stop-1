@@ -14,6 +14,7 @@ export class ExploreComponent implements OnInit {
 
   currentUser = localStorage.getItem('userId');
   public places = [];
+  public images = [];
 
   placesSubscription;
   imagesSubscription;
@@ -42,6 +43,8 @@ export class ExploreComponent implements OnInit {
     .pipe(
       distinct()
     )
-    .subscribe(image => console.log(image))
+    .subscribe(image => {
+      this.images.push(image);
+    })
   }
 }
