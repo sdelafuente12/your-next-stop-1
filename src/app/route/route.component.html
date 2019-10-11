@@ -87,22 +87,23 @@
   <ng-template #mySelectIcon>
     <igx-icon fontSet="fa-solid" name="fa-check-circle"></igx-icon>
   </ng-template>
-  <igx-date-picker name="date" (onSelection)="onDateSelection($event)">
+  <igx-date-picker name="date" (onSelection)="onDateSelection(value)">
     <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
       <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>Start Date</label>
-        <input igxInput [value]="displayData" />
+        <input #dateStart igxInput name="dateStart" [value]="displayData" [(ngModel)]="form.dateStart" (ngModelChange)="onKey('dateStart')" required="required" />
         <igx-suffix>
           <igx-icon>today</igx-icon>
         </igx-suffix>
       </igx-input-group>
     </ng-template>
   </igx-date-picker>
-  <igx-date-picker name="date" (onSelection)="onDateSelection($event)">
+  <igx-date-picker name="date" (onSelection)="onDateSelection(value)">
     <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
       <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>End Date</label>
-        <input igxInput [value]="displayData" />
+        <input #dateEnd igxInput name="dateEnd" [value]="displayData" [(ngModel)]="form.dateEnd" (ngModelChange)="onKey('dateEnd')" required="required" />
+        <!-- <input igxInput [value]="displayData" /> -->
         <igx-suffix>
           <igx-icon>today</igx-icon>
         </igx-suffix>
