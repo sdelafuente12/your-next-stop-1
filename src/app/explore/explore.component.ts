@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MapComponent } from '../map/map.component';
 import { from } from 'rxjs';
+import { distinct } from 'rxjs/operators';
 
 @Component({
   selector: 'app-explore',
@@ -13,11 +14,9 @@ export class ExploreComponent implements OnInit {
 
   currentUser = localStorage.getItem('userId');
   public places = [];
-  public images = [];
 
   placesSubscription;
   imagesSubscription;
-
   constructor(private route: ActivatedRoute) {
     console.log('PLACESSSSSSSSSSSSSSSSSSSS', this.places);
     console.log('ROUTE', this.route.snapshot.queryParams);
@@ -31,18 +30,18 @@ export class ExploreComponent implements OnInit {
   }
 
   loadPlaces() {
-    this.placesSubscription = from(this.map.nearbyPlaces).subscribe(place => {
-      console.log('places', this.map);
-      this.places.push(place);
-      console.log(this.places);
-    });
+    this.placesSubscription = from(this.map.nearbyPlaces)
+    .subscribe(place => {
+      this.places.push(place)
+      // console.log(this.places)
+    })
   }
 
   loadImages() {
-    this.imagesSubscription = from(this.map.images).subscribe(image => {
-      console.log('images', this.map);
-      this.images.push(image);
-      console.log(this.images);
-    });
+    this.imagesSubscription = from(this.map.images)
+    .pipe(
+      distinct()
+    )
+    .subscribe(image => console.log(image))
   }
 }
