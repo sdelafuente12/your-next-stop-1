@@ -1,15 +1,17 @@
-<div >
+<div>
   <h4 class="igx-typography__h4">All Results</h4>
 </div>
 
-<h5>Restaurants</h5>
+<ng-container *ngFor="let places of allPlaces[0]">
+<h5>{{places[0].interest[0].toUpperCase().concat(places[0].interest.slice(1))}}</h5>
 <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
+  <ng-container *ngFor="let place of places">
   <igx-slide>
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
       <div class="sample-column card-wrapper" style="position: relative;">
         <igx-card routerLink="/details">
           <igx-card-header>
-            <h3 igxCardHeaderTitle>Sushi</h3>
+            <h3 igxCardHeaderTitle>{{place.name}}</h3>
             <h5 igxCardHeaderSubtitle>2 mi</h5>
             <h5 igxCardHeaderSubtitle>
               <igx-icon>favorite</igx-icon>
@@ -22,7 +24,10 @@
       </div>
     </div>
   </igx-slide>
-  <igx-slide>
+  </ng-container>
+</igx-carousel>
+</ng-container>
+  <!-- <igx-slide>
     <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
       <div class="sample-column card-wrapper" style="position: relative;">
         <igx-card routerLink="/details">
@@ -95,6 +100,7 @@
     </div>
   </igx-slide>
 </igx-carousel>
+</ng-container>
 
 <h5>Coffee</h5>
 <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
@@ -281,7 +287,7 @@
         </igx-card>
       </div>
     </div>
-  </igx-slide>
-</igx-carousel>
+  </igx-slide> -->
+<!-- </igx-carousel> -->
 
 <div style="margin-bottom: 60px;"></div>
