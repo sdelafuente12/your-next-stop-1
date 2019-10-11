@@ -17,10 +17,15 @@ import { from } from 'rxjs';
   styleUrls: ['./route.component.scss']
 })
 export class RouteComponent implements OnInit, OnDestroy {
+  currentUser = localStorage.getItem('userId');
   form = {
     origin: '',
     destination: '',
-    waypoints: ''
+    route: '', 
+    waypoints: '',
+    dateStart: '',
+    dateEnd: '',
+    userId: JSON.parse(this.currentUser),
   }
   public suggestions = [];
   
@@ -42,6 +47,15 @@ inputSubscription;
 
   public onSubmit() {
     this.map.setRoute(this.form);
+    this.submitTrip(this.form);
+  }
+
+  public submitTrip(form) { 
+    this.form.route = this.form.origin + this.form.destination;
+    return this.route.saveTrips(form)
+      .subscribe(userTrip => {
+        console.log(userTrip);
+      })
   }
 
   public onKey(field) {
@@ -52,6 +66,7 @@ inputSubscription;
         debounceTime(250),
         switchMap(
           (input) => {
+            console.log('FORMMMMM', this.form);
             if (field === 'origin') {
               return this.route.autoSuggestion(this.form[field], this.map.currentPosition)
             } else {
@@ -73,9 +88,17 @@ inputSubscription;
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }
  
+  public onDateSelection(value) {
+    if(value === 'startValue') {
+      this.form.dateStart = value;
+    }
+    this.form.dateEnd = value;
+    console.log(this.form.dateEnd);
+  }
   public autosuggestClick(suggestion) {
 
   }
+
   
   ngOnDestroy() {
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
