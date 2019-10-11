@@ -9,8 +9,7 @@ import { HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LocationService {
-  private getAllNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`
-  private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/exploreNearbyPlaces`;
+  private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`;
   private getPlacePhotoEndpoint = `${environment.BASE_API_URL}/placePhoto`;
   private wait = false;
 
