@@ -14,6 +14,13 @@ $my-chip-theme: igx-chip-theme(
 .center-content,
 .select {
   margin-top: 8px;
+
+}
+
+.map-container {
+  width: 359px;
+  height:370px;
+  position:relative;
 }
 
 .input-group-form {
@@ -27,7 +34,6 @@ $my-chip-theme: igx-chip-theme(
 .chips-places {
   padding: auto;
   margin-top: 10px;
-  // min-width: 360px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -46,6 +52,6 @@ igx-card {
 }
 
 button {
-  margin-bottom: 60px;
-  
+  margin-bottom: 65px;
+  width: 215px;
 }
