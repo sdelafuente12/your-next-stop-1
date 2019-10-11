@@ -9,28 +9,40 @@ import { from } from 'rxjs';
   styleUrls: ['./explore.component.scss']
 })
 export class ExploreComponent implements OnInit {
-  @ViewChild(MapComponent, {static: false}) private map: MapComponent;
+  @ViewChild(MapComponent, { static: false }) private map: MapComponent;
 
   currentUser = localStorage.getItem('userId');
   public places = [];
+  public images = [];
+
   placesSubscription;
+  imagesSubscription;
+
   constructor(private route: ActivatedRoute) {
     console.log('ROUTE', this.route.snapshot.queryParams);
   }
 
   ngOnInit() {
     const userId = this.route.snapshot.queryParams.id;
-    console.log('USERID', userId)
+    console.log('USERID', userId);
     if (userId) {
       localStorage.setItem('userId', userId);
     }
   }
 
   loadPlaces() {
-    this.placesSubscription = from(this.map.nearbyPlaces)
-    .subscribe(place => {
-      this.places.push(place)
-      console.log(this.places)
-    })
+    this.placesSubscription = from(this.map.nearbyPlaces).subscribe(place => {
+      console.log('places', this.map);
+      this.places.push(place);
+      console.log(this.places);
+    });
+  }
+
+  loadImages() {
+    this.imagesSubscription = from(this.map.images).subscribe(image => {
+      console.log('images', this.map);
+      this.images.push(image);
+      console.log(this.images);
+    });
   }
 }
