@@ -20,10 +20,12 @@ export class RouteComponent implements OnInit, OnDestroy {
   form = {
     origin: '',
     destination: '',
-    waypoints: ''
+    waypoints: '',
+    dateStart: '',
+    dateEnd: '', 
   }
   public suggestions = [];
-  
+
   public settings = {
     positionStrategy: new ConnectedPositioningStrategy({
         closeAnimation: null,
@@ -75,6 +77,14 @@ inputSubscription;
  
   public autosuggestClick(suggestion) {
 
+  }
+
+  public onDateSelection(value){
+    if(value === 'startValue'){
+      this.form.dateStart = value;
+    }
+    this.form.dateEnd = value;
+    console.log(this.form.dateEnd);
   }
   
   ngOnDestroy() {
