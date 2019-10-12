@@ -22,11 +22,12 @@ export class RouteComponent implements OnInit, OnDestroy {
     origin: '',
     destination: '',
     route: '', 
-    waypoints: '',
+    waypoints: ['', '', '', '', ''] ,
     dateStart: '',
     dateEnd: '',
     userId: JSON.parse(this.currentUser),
   }
+  public show = [0];
   public suggestions = [];
 
   public settings = {
@@ -58,19 +59,22 @@ inputSubscription;
       })
   }
 
-  public onKey(field) {
+  public onKey(field, index) {
+    let input;
+    if (index) input = this.form[field][index];
+    else input = this.form[field];
     
-    if (this.form[field].length) {
-      this.inputSubscription = from(this.form[field])
+    if (input.length) {
+      this.inputSubscription = from(input)
       .pipe(
         debounceTime(250),
         switchMap(
-          (input) => {
+          (text) => {
             console.log('FORMMMMM', this.form);
             if (field === 'origin') {
-              return this.route.autoSuggestion(this.form[field], this.map.currentPosition)
+              return this.route.autoSuggestion(input, this.map.currentPosition)
             } else {
-              return this.route.autoSuggestion(this.form[field], '')
+              return this.route.autoSuggestion(input, '')
             }
             
           }  
@@ -103,6 +107,14 @@ inputSubscription;
   
   public autosuggestClick(suggestion) {
 
+  }
+
+  addWaypointInput() {
+    this.show[this.show.length] = this.show.length;
+  }
+
+  removeWaypointInput(index) {
+    this.show.splice(index, 1);
   }
 
   setDate(part, dateValue) {
