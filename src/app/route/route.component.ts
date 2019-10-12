@@ -23,8 +23,8 @@ export class RouteComponent implements OnInit, OnDestroy {
     destination: '',
     route: '', 
     waypoints: '',
-    dateStart: '',
-    dateEnd: '',
+    dateStart: new Date,
+    dateEnd: new Date,
     userId: JSON.parse(this.currentUser),
   }
   public suggestions = [];
