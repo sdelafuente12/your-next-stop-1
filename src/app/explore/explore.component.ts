@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MapComponent } from '../map/map.component';
 import { from } from 'rxjs';
 import { distinct } from 'rxjs/operators';
@@ -22,7 +22,7 @@ export class ExploreComponent implements OnInit {
   newColor = false;
   currentUser = localStorage.getItem('userId');
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, public router: Router) {
     console.log('PLACESSSSSSSSSSSSSSSSSSSS', this.places);
     console.log('ROUTE', this.route.snapshot.queryParams);
   }
@@ -58,4 +58,9 @@ export class ExploreComponent implements OnInit {
     this.newColor = !this.newColor;
     console.log('color change');
   }
+
+  navigateWithState(id) {
+    this.router.navigateByUrl('/details', { state: { id } });
+  }
+
 }
