@@ -193,12 +193,11 @@
       </igx-input-group>
     </ng-template>
   </igx-date-picker>
-  <igx-date-picker name="endDate" (onSelection)="onDateSelection($event, end)">
+  <igx-date-picker name="endDate" (onSelection)="onDateSelection($event, 'end')">
     <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
-      <igx-input-group (click)="openDialog()" type="border">
+      <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>End Date</label>
         <input #dateEnd igxInput name="dateEnd" [value]="displayData" [(ngModel)]="form.dateEnd"  required="required" />
-        <!-- <input igxInput [value]="displayData" /> -->
         <igx-suffix>
           <igx-icon>today</igx-icon>
         </igx-suffix>
@@ -208,7 +207,7 @@
   <!---------------------------- time picker ----------------------------------->
   <igx-time-picker name="dateTime" (onValueChanged)="onTimeSelection($event)">
     <ng-template igxTimePickerTemplate let-openDialog="openDialog" let-value="value" let-displayTime="displayTime">
-      <igx-input-group (click)="openDialog()" type="border">
+      <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>Time </label>
         <input igxInput [value]="displayTime" />
         <igx-suffix>

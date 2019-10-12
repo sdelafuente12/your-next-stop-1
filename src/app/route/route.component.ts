@@ -32,6 +32,10 @@ export class RouteComponent implements OnInit, OnDestroy {
     dateEnd: '',
     userId: JSON.parse(this.currentUser),
   }
+  private isoDate = {
+    start: '',
+    end: ''
+  }
   public show = [0];
   public suggestions = [];
   
@@ -97,13 +101,15 @@ export class RouteComponent implements OnInit, OnDestroy {
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }
  
-  public onDateSelection(event, startOrEnd) {
-    // console.log(startOrEnd, event)
+  public onDateSelection(event, startOrEnd, display) {
+    console.log(startOrEnd, event, display)
     if(startOrEnd === 'start') {
-      this.form.dateStart = JSON.stringify(event);
+      this.isoDate.start = JSON.stringify(event);
+      this.form.dateStart = this.humanReadableDate(this.isoDate.start)
     }
     if(startOrEnd === 'end'){
-      this.form.dateStart = JSON.stringify(event);
+      this.isoDate.end = JSON.stringify(event);
+      this.form.dateEnd = this.humanReadableDate(this.isoDate.end)
     }
   }
   
@@ -119,9 +125,15 @@ export class RouteComponent implements OnInit, OnDestroy {
     this.show.splice(index, 1);
   }
 
-  setDate(part, dateValue) {
-    console.log(part, dateValue)
-  }  
+  humanReadableDate(isoDate) {
+    let day = isoDate.slice(9, 11);
+    if (day[0] === '0') day = day.slice(1);
+    let month = isoDate.slice(6, 8);
+    if (month[0] === 0) month = month.slice(1);
+    let year = isoDate.slice(1, 5);
+    
+    return `${month}/${day}/${year}`
+  }
   ngOnDestroy() {
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }
