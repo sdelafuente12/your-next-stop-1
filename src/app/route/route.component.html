@@ -42,7 +42,7 @@
     </igx-drop-down-item>
   </igx-drop-down>
   <!-------------------------- waypoints input ----------------------------------->
-  <!-- <igx-input-group type="border">
+  <igx-input-group type="border">
       <input #waypoint
       igxInput 
       name="waypoint"
@@ -58,7 +58,7 @@
       <igx-suffix>
         <igx-icon>place</igx-icon>
       </igx-suffix>
-    </igx-input-group> -->
+    </igx-input-group>
   <app-dynamic-input></app-dynamic-input>
   <igx-drop-down #waypointSuggestions maxHeight="300px">
     <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
@@ -69,8 +69,8 @@
   <ng-template #mySelectIcon>
     <igx-icon fontSet="fa-solid" name="fa-check-circle"></igx-icon>
   </ng-template>
-  <igx-date-picker name="date" (onSelection)="onDateSelection(value)">
-    <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
+  <igx-date-picker name="startDate" (onSelection)="onDateSelection($event, 'start')">
+    <ng-template #dp igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
       <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>Start Date</label>
         <input #dateStart igxInput name="dateStart" [value]="displayData" [(ngModel)]="form.dateStart" (ngModelChange)="onKey('dateStart')" required="required" />
@@ -80,7 +80,7 @@
       </igx-input-group>
     </ng-template>
   </igx-date-picker>
-  <igx-date-picker name="date" (onSelection)="onDateSelection(value)">
+  <igx-date-picker name="endDate" (onSelection)="onDateSelection($event, end)">
     <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
       <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>End Date</label>

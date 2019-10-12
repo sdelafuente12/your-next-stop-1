@@ -85,7 +85,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
     }
     //subscribes to currentlocation only
-    if (this.snapshotUrl === '/route') {
+    if (this.snapshotUrl === '/routes') {
       this.currentLocationSubscription = this.locationService.getCurrentPosition()
       .subscribe(position => {
           this.currentPosition = {

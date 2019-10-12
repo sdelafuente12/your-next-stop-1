@@ -88,19 +88,26 @@ inputSubscription;
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }
  
-  public onDateSelection(value) {
-    if(value === 'startValue') {
-      this.form.dateStart = value;
+  public onDateSelection(event, startOrEnd) {
+    console.log(startOrEnd, event)
+    if(startOrEnd === 'start') {
+      this.form.dateStart = JSON.stringify(event);
+      console.log(this.form.dateStart)
     }
-    this.form.dateEnd = value;
-    console.log(this.form.dateEnd);
+    // if(value === 'startValue') {
+    //   this.form.dateStart = value;
+    // }
+    // this.form.dateEnd = value;
+    // console.log(this.form.dateEnd);
   }
   
   public autosuggestClick(suggestion) {
 
   }
 
-  
+  setDate(part, dateValue) {
+    console.log(part, dateValue)
+  }  
   ngOnDestroy() {
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }
