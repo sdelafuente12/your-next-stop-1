@@ -43,7 +43,9 @@
       <igx-suffix *ngIf="!show[1]">
         <igx-icon (click)="addWaypointInput()">add</igx-icon>
       </igx-suffix> 
-   
+      <igx-suffix *ngIf="!show[2]">
+        <igx-icon (click)="removeWaypointInput(0)">remove</igx-icon>
+      </igx-suffix>  
   </igx-input-group>
   <igx-drop-down #waypoint0Suggestions maxHeight="300px">
     <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">

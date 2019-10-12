@@ -122,7 +122,8 @@ export class RouteComponent implements OnInit, OnDestroy {
   }
 
   removeWaypointInput(index) {
-    this.show.splice(index, 1);
+    if (index === 0) this.form.waypoints[0] = '';
+    else this.show.splice(index, 1);
   }
 
   humanReadableDate(isoDate) {
@@ -134,7 +135,7 @@ export class RouteComponent implements OnInit, OnDestroy {
     
     return `${month}/${day}/${year}`
   }
-  
+
   ngOnDestroy() {
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }
