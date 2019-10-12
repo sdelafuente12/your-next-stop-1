@@ -27,11 +27,16 @@ export class RouteComponent implements OnInit, OnDestroy {
     origin: '',
     destination: '',
     route: '', 
-    waypoints: '',
+    waypoints: ['', '', '', '', ''] ,
     dateStart: '',
     dateEnd: '',
     userId: JSON.parse(this.currentUser),
   }
+  private isoDate = {
+    start: '',
+    end: ''
+  }
+  public show = [0];
   public suggestions = [];
   
   public settings = {
@@ -62,51 +67,74 @@ export class RouteComponent implements OnInit, OnDestroy {
       console.log(userTrip);
     })
   }
-  
-  public onKey(field) {
+
+  public onKey(field, index) {
+    let input;
+    if (index) input = this.form[field][index];
+    else input = this.form[field];
     
-    if (this.form[field].length) {
-      this.inputSubscription = from(this.form[field])
+    if (input.length) {
+      this.inputSubscription = from(input)
       .pipe(
         debounceTime(250),
         switchMap(
-          (input) => {
+          (text) => {
             console.log('FORMMMMM', this.form);
             if (field === 'origin') {
-              return this.route.autoSuggestion(this.form[field], this.map.currentPosition)
+              return this.route.autoSuggestion(input, this.map.currentPosition)
             } else {
-              return this.route.autoSuggestion(this.form[field], '')
+              return this.route.autoSuggestion(input, '')
             }
             
           }  
-          )
-          )
-          .subscribe((suggestions: any) => {
-            // console.log(suggestions)
-            this.suggestions = suggestions;
-          })
-        }
-      }
-      
-      public onClick() {
-        this.suggestions = [];
-        if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
-      }
-      
-      public onDateSelection(value) {
-        if(value === 'startValue') {
-          this.form.dateStart = value;
-        }
-        this.form.dateEnd = value;
-        console.log(this.form.dateEnd);
-      }
-      
-      public autosuggestClick(suggestion) {
-        
-      }
-      
-      
-      ngOnDestroy() {
-        if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
-      }
+        )
+      )
+      .subscribe((suggestions: any) => {
+        // console.log(suggestions)
+        this.suggestions = suggestions;
+      })
     }
+  }
+
+  public onClick() {
+    this.suggestions = [];
+    if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
+  }
+ 
+  public onDateSelection(event, startOrEnd, display) {
+    console.log(startOrEnd, event, display)
+    if(startOrEnd === 'start') {
+      this.isoDate.start = JSON.stringify(event);
+      this.form.dateStart = this.humanReadableDate(this.isoDate.start)
+    }
+    if(startOrEnd === 'end'){
+      this.isoDate.end = JSON.stringify(event);
+      this.form.dateEnd = this.humanReadableDate(this.isoDate.end)
+    }
+  }
+  
+  public autosuggestClick(suggestion) {
+
+  }
+
+  addWaypointInput() {
+    this.show[this.show.length] = this.show.length;
+  }
+
+  removeWaypointInput(index) {
+    this.show.splice(index, 1);
+  }
+
+  humanReadableDate(isoDate) {
+    let day = isoDate.slice(9, 11);
+    if (day[0] === '0') day = day.slice(1);
+    let month = isoDate.slice(6, 8);
+    if (month[0] === 0) month = month.slice(1);
+    let year = isoDate.slice(1, 5);
+    
+    return `${month}/${day}/${year}`
+  }
+  ngOnDestroy() {
+    if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
+  }
+}
