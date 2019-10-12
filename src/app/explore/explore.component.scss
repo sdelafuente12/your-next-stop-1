@@ -29,12 +29,6 @@ $colorful-card: igx-card-theme(
   }
 }
 
-// button {
-//   margin-top: 2px;
-//   margin-bottom: 65px;
-//   width: 215px;
-// }
-
 igx-carousel {
   margin-top: 16px;
 }
@@ -47,6 +41,7 @@ h5 {
   font-size: 20px;
   margin-top: 4px;
   margin-right: -10px;
+
 }
 
 igx-card-header {
@@ -56,6 +51,10 @@ igx-card-header {
 
 .igx-card-header__title {
   font-size: 16px;
+  white-space: nowrap;
+  width: 160px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .igx-button--raised {

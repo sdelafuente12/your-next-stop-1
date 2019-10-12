@@ -7,30 +7,28 @@
 
     <igx-tabs-group label="Likes">
         <div class="card-column">
-          <igx-card routerLink="/details">
+          <igx-card>
             <igx-card-header>
-              <h3 igxCardHeaderTitle>Sushi</h3>
-              <h5 igxCardHeaderSubtitle>2 mi</h5>
-              <igx-icon>thumb_up</igx-icon>
+              <h3 igxCardHeaderTitle>Likey Likes</h3>
+              <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
+                <igx-icon fontSet="material">thumb_up</igx-icon>
+              </button>
             </igx-card-header>
-            <igx-card-media height="150px">
-              <img src="../../assets/images/sushi.jpg">
-            </igx-card-media>
+            <igx-card-media routerLink="/details" height="200px"></igx-card-media>
           </igx-card>
         </div>
     </igx-tabs-group>
 
     <igx-tabs-group label="Interests">
         <div class="card-column">
-          <igx-card routerLink="/details">
+          <igx-card>
             <igx-card-header>
-              <h3 igxCardHeaderTitle>Sushi</h3>
-              <h5 igxCardHeaderSubtitle>2 mi</h5>
-              <igx-icon>thumb_up</igx-icon>
+              <h3 igxCardHeaderTitle>Interesting</h3>
+              <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
+                <igx-icon fontSet="material">thumb_up</igx-icon>
+              </button>
             </igx-card-header>
-            <igx-card-media height="150px">
-              <img src="../../assets/images/sushi.jpg">
-            </igx-card-media>
+              <igx-card-media routerLink="/details" height="200px"></igx-card-media>
           </igx-card>
         </div>
     </igx-tabs-group>
