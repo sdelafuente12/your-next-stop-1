@@ -11,10 +11,10 @@
     <h3 igxCardHeaderTitle>Sushi</h3>
     <h5 igxCardHeaderSubtitle>2 mi</h5>
       <div class="button-sample">
-        <button igxButton="icon" igxButtonColor="#ff2ad2" igxButtonBackground="#353a50" igxRipple="#FBB13C"
-          igxRippleCentered="true">
+        <button [ngClass]="{'change': newColor}" (click)="toggleColor()" >
           <igx-icon fontSet="material">thumb_up</igx-icon>
         </button>
+         
       </div>
   </igx-card-header>
   <igx-card-content>
