@@ -8,7 +8,6 @@ import { TripsService } from '../services/trips.service';
 })
 export class TripsComponent implements OnInit {
   currentUser = localStorage.getItem('userId');
-  public usersTrips = [];
   public upcoming = [];
   public current = [];
   public previous = [];
@@ -34,9 +33,8 @@ export class TripsComponent implements OnInit {
 
   getAllTrips() {
     return this.trips.getAllTrips(this.currentUser)
-    .subscribe(resposnse => {
-      this.usersTrips.push(resposnse);
-      console.log('USERS TRIPS', this.usersTrips);
+    .subscribe(response => {
+      console.log('USERS TRIPS RESPONSE', response);
     })
   }
 }
