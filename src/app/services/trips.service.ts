@@ -9,17 +9,13 @@ import { environment } from '../../environments/environment';
 
 export class TripsService {
 
-  private getAllTripsEndpoint = `${environment.BASE_API_URL}/getAllTrips`;
-  private postTripsEndpoint = `${environment.BASE_API_URL}/addTrip`;
+  private getAllTripsEndpoint = `${environment.BASE_API_URL}/getAllUsersTrips`;
 
   constructor(private http: HttpClient) { }
 
-  getAllTrips() {
-    return this.http.get(this.getAllTripsEndpoint);
-  }
-
-  createTrip(tripData) {
-    return this.http.post(this.postTripsEndpoint, tripData);
+  getAllTrips(user) {
+    console.log('ENDGAME', this.getAllTripsEndpoint);
+    return this.http.get(`${this.getAllTripsEndpoint}?id=${user}`);
   }
 
 }

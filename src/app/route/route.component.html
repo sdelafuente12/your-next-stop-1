@@ -12,6 +12,7 @@
 
 <!-- <form class="input-group-form" (ngSubmit)="onSubmit()"> -->
     <form class="input-group-form" (keyup.enter)="onSubmit()">
+      
 <!------------------------------- origin input -------------------------------->
   <igx-input-group #originGroup type="border">
     <input #origin igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required"
@@ -42,51 +43,161 @@
       {{suggestion}}
     </igx-drop-down-item>
   </igx-drop-down>
-  <!-------------------------- waypoints input ----------------------------------->
-  <!-- <igx-input-group type="border">
+  <!-------------------------- waypoints input0 ----------------------------------->
+  <igx-input-group type="border">
+    <input #waypoint
+    igxInput 
+    name="waypoint"
+    type="text" 
+    [(ngModel)]="form.waypoints[0]"
+    (ngModelChange)="onKey('waypoints', 0)"
+    [igxAutocomplete]="waypointSuggestions"
+    [igxAutocompleteSettings]='settings'
+    (click)="onClick()"
+    required="required" 
+    />
+    <label igxLabel for="waypoint">Waypoint</label>
+      <igx-suffix *ngIf="!show[1]">
+        <igx-icon (click)="addWaypointInput()">add</igx-icon>
+      </igx-suffix> 
+   
+  </igx-input-group>
+  <igx-drop-down #waypointSuggestions maxHeight="300px">
+    <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
+      {{suggestion}}
+    </igx-drop-down-item>
+  </igx-drop-down>
+<!-------------------------- waypoints input1 ----------------------------------->
+  <ng-container *ngIf="show[1]">
+    <igx-input-group type="border">
       <input #waypoint
       igxInput 
       name="waypoint"
       type="text" 
-      [(ngModel)]="form.waypoints"
-      (ngModelChange)="onKey('waypoint')"
+      [(ngModel)]="form.waypoints[1]"
+      (ngModelChange)="onKey('waypoints', 1)"
       [igxAutocomplete]="waypointSuggestions"
       [igxAutocompleteSettings]='settings'
       (click)="onClick()"
       required="required" 
       />
       <label igxLabel for="waypoint">Waypoint</label>
-      <igx-suffix>
-        <igx-icon>place</igx-icon>
-      </igx-suffix>
-    </igx-input-group> -->
-  <app-dynamic-input></app-dynamic-input>
-  <igx-drop-down #waypointSuggestions maxHeight="300px">
-    <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
-      {{suggestion}}
-    </igx-drop-down-item>
-  </igx-drop-down>
+     
+        <igx-suffix *ngIf="!show[2]">
+          <igx-icon (click)="addWaypointInput()">add</igx-icon>
+        </igx-suffix>
+        <igx-suffix *ngIf="!show[2]">
+          <igx-icon (click)="removeWaypointInput(1)">remove</igx-icon>
+        </igx-suffix>     
+    
+    </igx-input-group>
+    <igx-drop-down #waypointSuggestions maxHeight="300px">
+      <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
+        {{suggestion}}
+      </igx-drop-down-item>
+    </igx-drop-down>
+  </ng-container>
+  <!-------------------------- waypoints input2 ----------------------------------->
+  <ng-container *ngIf="show[2]">
+    <igx-input-group type="border">
+      <input #waypoint
+      igxInput 
+      name="waypoint"
+      type="text" 
+      [(ngModel)]="form.waypoints[2]"
+      (ngModelChange)="onKey('waypoints', 2)"
+      [igxAutocomplete]="waypointSuggestions"
+      [igxAutocompleteSettings]='settings'
+      (click)="onClick()"
+      required="required" 
+      />
+      <label igxLabel for="waypoint">Waypoint</label>
+        <igx-suffix *ngIf="!show[3]">
+          <igx-icon (click)="addWaypointInput()">add</igx-icon>
+        </igx-suffix>
+        <igx-suffix *ngIf="!show[3]">
+          <igx-icon (click)="removeWaypointInput(2)">remove</igx-icon>
+        </igx-suffix> 
+    </igx-input-group>
+    <igx-drop-down #waypointSuggestions maxHeight="300px">
+      <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
+        {{suggestion}}
+      </igx-drop-down-item>
+    </igx-drop-down>
+  </ng-container> 
+<!-------------------------- waypoints input3 ----------------------------------->
+  <ng-container *ngIf="show[3]">
+    <igx-input-group type="border">
+      <input #waypoint
+      igxInput 
+      name="waypoint"
+      type="text" 
+      [(ngModel)]="form.waypoints[3]"
+      (ngModelChange)="onKey('waypoints', 3)"
+      [igxAutocomplete]="waypointSuggestions"
+      [igxAutocompleteSettings]='settings'
+      (click)="onClick()"
+      required="required" 
+      />
+      <label igxLabel for="waypoint">Waypoint</label>
+        <igx-suffix *ngIf="!show[4]">
+          <igx-icon (click)="addWaypointInput()">add</igx-icon>
+        </igx-suffix>
+        <igx-suffix *ngIf="!show[4]">
+          <igx-icon (click)="removeWaypointInput(2)">remove</igx-icon>
+        </igx-suffix> 
+    </igx-input-group>
+    <igx-drop-down #waypointSuggestions maxHeight="300px">
+      <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
+        {{suggestion}}
+      </igx-drop-down-item>
+    </igx-drop-down>
+  </ng-container> 
+  <!-------------------------- waypoints input4 ----------------------------------->
+  <ng-container *ngIf="show[4]">
+    <igx-input-group type="border">
+      <input #waypoint
+      igxInput 
+      name="waypoint"
+      type="text" 
+      [(ngModel)]="form.waypoints[4]"
+      (ngModelChange)="onKey('waypoints', 4)"
+      [igxAutocomplete]="waypointSuggestions"
+      [igxAutocompleteSettings]='settings'
+      (click)="onClick()"
+      required="required" 
+      />
+      <label igxLabel for="waypoint">Waypoint</label>
+        <igx-suffix *ngIf="!show[5]">
+          <igx-icon (click)="removeWaypointInput(4)">remove</igx-icon>
+        </igx-suffix> 
+    </igx-input-group>
+    <igx-drop-down #waypointSuggestions maxHeight="300px">
+      <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
+        {{suggestion}}
+      </igx-drop-down-item>
+    </igx-drop-down>
+  </ng-container>  
   <!---------------------------- date picker-------------------------------------- -->
   <ng-template #mySelectIcon>
     <igx-icon fontSet="fa-solid" name="fa-check-circle"></igx-icon>
   </ng-template>
-  <igx-date-picker name="date" (onSelection)="onDateSelection(value)">
-    <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
-      <igx-input-group (click)="openDialog()" type="border">
+  <igx-date-picker name="startDate" (onSelection)="onDateSelection($event, 'start')">
+    <ng-template #dp igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
+      <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>Start Date</label>
-        <input #dateStart igxInput name="dateStart" [value]="displayData" [(ngModel)]="form.dateStart" (ngModelChange)="onKey('dateStart')" required="required" />
+        <input #dateStart igxInput name="dateStart" [value]="displayData" [(ngModel)]="form.dateStart" required="required" />
         <igx-suffix>
           <igx-icon>today</igx-icon>
         </igx-suffix>
       </igx-input-group>
     </ng-template>
   </igx-date-picker>
-  <igx-date-picker name="date" (onSelection)="onDateSelection(value)">
+  <igx-date-picker name="endDate" (onSelection)="onDateSelection($event, 'end')">
     <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
-      <igx-input-group (click)="openDialog()" type="border">
+      <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>End Date</label>
-        <input #dateEnd igxInput name="dateEnd" [value]="displayData" [(ngModel)]="form.dateEnd" (ngModelChange)="onKey('dateEnd')" required="required" />
-        <!-- <input igxInput [value]="displayData" /> -->
+        <input #dateEnd igxInput name="dateEnd" [value]="displayData" [(ngModel)]="form.dateEnd"  required="required" />
         <igx-suffix>
           <igx-icon>today</igx-icon>
         </igx-suffix>
@@ -96,7 +207,7 @@
   <!---------------------------- time picker ----------------------------------->
   <igx-time-picker name="dateTime" (onValueChanged)="onTimeSelection($event)">
     <ng-template igxTimePickerTemplate let-openDialog="openDialog" let-value="value" let-displayTime="displayTime">
-      <igx-input-group (click)="openDialog()" type="border">
+      <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>Time </label>
         <input igxInput [value]="displayTime" />
         <igx-suffix>

@@ -50,7 +50,6 @@ export class ExploreComponent implements OnInit {
   }
 
   mapMarkerClicked(i) {
-    console.log(i);
     const focus = this.carousel.get(i);
     this.carousel.select(focus, Direction.NEXT);
   }
