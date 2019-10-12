@@ -48,4 +48,10 @@ export class TripsComponent implements OnInit {
       console.log('UPCOMING', this.upcoming,'CURRENT', this.current, 'PREVIOUS', this.previous);    
     })
   }
+  onSelection(trip){
+    console.log(trip)
+    let storageTrip = JSON.stringify(trip)
+    localStorage.setItem("trip", storageTrip);
+    //return 'boob'
+  }
 }
