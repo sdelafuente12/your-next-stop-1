@@ -10,7 +10,8 @@
   </div>
 </div>
 
-<form class="input-group-form" (ngSubmit)="onSubmit()">
+<!-- <form class="input-group-form" (ngSubmit)="onSubmit()"> -->
+    <form class="input-group-form" (keyup.enter)="onSubmit()">
 <!------------------------------- origin input -------------------------------->
   <igx-input-group #originGroup type="border">
     <input #origin igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required"
