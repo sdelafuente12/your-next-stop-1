@@ -6,20 +6,20 @@
   <div class="valign" style="width: 100%;height: 100%">
     <div class="row" style="height: 100%">
       <div class="col s12" style="height: 100%">
-        <app-map (placesLoaded)="loadPlaces()" (imagesLoaded)="loadImages()"></app-map>
+        <app-map (placesLoaded)="loadPlaces()" (imagesLoaded)="loadImages()" (markerClicked)="mapMarkerClicked($event)"></app-map>
       </div>
     </div>
   </div>
 </div>
 
-<igx-carousel [pause]="true" [loop]="false" [navigation]="true">
-  <ng-container *ngFor="let place of places; let i = index">
+<igx-carousel #ic [pause]="true" [loop]="true" >
+  <ng-container *ngFor="let place of places; let i = index;">
     <igx-slide>
       <div class="card-column">
         <igx-card routerLink="/details">
           <igx-card-header>
             <h3 igxCardHeaderTitle>{{place.name}}</h3>
-            <igx-icon>{{place.rating}}</igx-icon>
+            <igx-icon>thumb_up</igx-icon>
           </igx-card-header>
           <igx-card-media height="200px">
             <ng-container *ngIf="images.length">
