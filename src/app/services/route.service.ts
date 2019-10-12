@@ -15,12 +15,16 @@ export class RouteService {
   constructor(private http: HttpClient) { }
 
   getRoutePositions(route) {
-  
+    let waypointsString = '';
+    for (let point of route.waypoints) {
+      if (point.length) waypointsString += point + ';';
+    }
+
     return this.http.get(this.getRoutePositionsEndpoint, {
       params: new HttpParams({ encoder: new CustomHttpParamEncoder() })
                   .set('origin', route.origin)
                   .set('destination', route.destination)
-                  .set('waypoints', route.waypoints)
+                  .set('waypoints', waypointsString)
     })
   }
   

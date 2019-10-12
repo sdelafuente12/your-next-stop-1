@@ -11,7 +11,7 @@
 </div>
 
 <!-- <form class="input-group-form" (ngSubmit)="onSubmit()"> -->
-    <form class="input-group-form" (keyup.enter)="onSubmit()">
+ <form class="input-group-form" (keyup.enter)="onSubmit()">
       
 <!------------------------------- origin input -------------------------------->
   <igx-input-group #originGroup type="border">
@@ -30,9 +30,16 @@
   </igx-drop-down>
   <!----------------------------- destination input ---------------------------------->
   <igx-input-group type="border">
-    <input #destination igxInput name="destination" type="text" [(ngModel)]="form.destination"
-      (ngModelChange)="onKey('destination')" [igxAutocomplete]="destinationSuggestions"
-      [igxAutocompleteSettings]='settings' (click)="onClick()" required="required" />
+    <input #destination 
+    igxInput 
+    name="destination" 
+    type="text" 
+    [(ngModel)]="form.destination"
+    (ngModelChange)="onKey('destination')" 
+    [igxAutocomplete]="destinationSuggestions"
+    [igxAutocompleteSettings]='settings' 
+    (click)="onClick()" 
+    required="required" />
     <label igxLabel for="destination">Destination</label>
     <igx-suffix>
       <igx-icon>place</igx-icon>
@@ -45,24 +52,23 @@
   </igx-drop-down>
   <!-------------------------- waypoints input0 ----------------------------------->
   <igx-input-group type="border">
-    <input #waypoint
+    <input #waypoint0
     igxInput 
-    name="waypoint"
+    name="waypoint0"
     type="text" 
     [(ngModel)]="form.waypoints[0]"
     (ngModelChange)="onKey('waypoints', 0)"
-    [igxAutocomplete]="waypointSuggestions"
+    [igxAutocomplete]="waypoint0Suggestions"
     [igxAutocompleteSettings]='settings'
-    (click)="onClick()"
-    required="required" 
+    
     />
-    <label igxLabel for="waypoint">Waypoint</label>
+    <label igxLabel for="waypoint0">Waypoint</label>
       <igx-suffix *ngIf="!show[1]">
         <igx-icon (click)="addWaypointInput()">add</igx-icon>
       </igx-suffix> 
    
   </igx-input-group>
-  <igx-drop-down #waypointSuggestions maxHeight="300px">
+  <igx-drop-down #waypoint0Suggestions maxHeight="300px">
     <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
       {{suggestion}}
     </igx-drop-down-item>
@@ -76,10 +82,9 @@
       type="text" 
       [(ngModel)]="form.waypoints[1]"
       (ngModelChange)="onKey('waypoints', 1)"
-      [igxAutocomplete]="waypointSuggestions"
+      [igxAutocomplete]="waypoint1Suggestions"
       [igxAutocompleteSettings]='settings'
-      (click)="onClick()"
-      required="required" 
+  
       />
       <label igxLabel for="waypoint">Waypoint</label>
      
@@ -91,7 +96,7 @@
         </igx-suffix>     
     
     </igx-input-group>
-    <igx-drop-down #waypointSuggestions maxHeight="300px">
+    <igx-drop-down #waypoint1Suggestions maxHeight="300px">
       <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
         {{suggestion}}
       </igx-drop-down-item>
@@ -106,10 +111,8 @@
       type="text" 
       [(ngModel)]="form.waypoints[2]"
       (ngModelChange)="onKey('waypoints', 2)"
-      [igxAutocomplete]="waypointSuggestions"
+      [igxAutocomplete]="waypoint2Suggestions"
       [igxAutocompleteSettings]='settings'
-      (click)="onClick()"
-      required="required" 
       />
       <label igxLabel for="waypoint">Waypoint</label>
         <igx-suffix *ngIf="!show[3]">
@@ -119,7 +122,7 @@
           <igx-icon (click)="removeWaypointInput(2)">remove</igx-icon>
         </igx-suffix> 
     </igx-input-group>
-    <igx-drop-down #waypointSuggestions maxHeight="300px">
+    <igx-drop-down #waypoint2Suggestions maxHeight="300px">
       <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
         {{suggestion}}
       </igx-drop-down-item>
@@ -134,9 +137,9 @@
       type="text" 
       [(ngModel)]="form.waypoints[3]"
       (ngModelChange)="onKey('waypoints', 3)"
-      [igxAutocomplete]="waypointSuggestions"
+      [igxAutocomplete]="waypoint3Suggestions"
       [igxAutocompleteSettings]='settings'
-      (click)="onClick()"
+   
       required="required" 
       />
       <label igxLabel for="waypoint">Waypoint</label>
@@ -147,7 +150,7 @@
           <igx-icon (click)="removeWaypointInput(2)">remove</igx-icon>
         </igx-suffix> 
     </igx-input-group>
-    <igx-drop-down #waypointSuggestions maxHeight="300px">
+    <igx-drop-down #waypoint3Suggestions maxHeight="300px">
       <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
         {{suggestion}}
       </igx-drop-down-item>
@@ -162,9 +165,9 @@
       type="text" 
       [(ngModel)]="form.waypoints[4]"
       (ngModelChange)="onKey('waypoints', 4)"
-      [igxAutocomplete]="waypointSuggestions"
+      [igxAutocomplete]="waypoint4Suggestions"
       [igxAutocompleteSettings]='settings'
-      (click)="onClick()"
+ 
       required="required" 
       />
       <label igxLabel for="waypoint">Waypoint</label>
@@ -172,7 +175,7 @@
           <igx-icon (click)="removeWaypointInput(4)">remove</igx-icon>
         </igx-suffix> 
     </igx-input-group>
-    <igx-drop-down #waypointSuggestions maxHeight="300px">
+    <igx-drop-down #waypoint4Suggestions maxHeight="300px">
       <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
         {{suggestion}}
       </igx-drop-down-item>
