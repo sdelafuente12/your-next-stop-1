@@ -53,11 +53,12 @@
     [disableAutoPan]="true"
     [isOpen]="isOpen"
     >
-    <ng-container *ngIf="images[i]"><img [src]="images[i] | htmlSanitizer"/></ng-container><br>
+    <!-- <ng-container *ngIf="images[i]"><img [src]="images[i] | htmlSanitizer"/></ng-container><br> -->
     {{place.name}}<br>
     <hr>
     {{place.address}}<br>
-    rating: {{place.rating}}
+    rating: {{place.rating}}<br>
+    <a href="http://maps.google.com/?q={{place.address + place.name}}"  target="_blank">Open in Google Maps</a>
     </agm-info-window>
     </agm-marker>
 </div>
