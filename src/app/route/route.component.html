@@ -72,7 +72,7 @@
   </ng-template>
   <igx-date-picker name="date" (onSelection)="onDateSelection(value)">
     <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
-      <igx-input-group (click)="openDialog()" type="box">
+      <igx-input-group (click)="openDialog()" type="border">
         <label igxLabel>Start Date</label>
         <input #dateStart igxInput name="dateStart" [value]="displayData" [(ngModel)]="form.dateStart" (ngModelChange)="onKey('dateStart')" required="required" />
         <igx-suffix>
@@ -83,7 +83,7 @@
   </igx-date-picker>
   <igx-date-picker name="date" (onSelection)="onDateSelection(value)">
     <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
-      <igx-input-group (click)="openDialog()" type="box">
+      <igx-input-group (click)="openDialog()" type="border">
         <label igxLabel>End Date</label>
         <input #dateEnd igxInput name="dateEnd" [value]="displayData" [(ngModel)]="form.dateEnd" (ngModelChange)="onKey('dateEnd')" required="required" />
         <!-- <input igxInput [value]="displayData" /> -->
@@ -93,6 +93,18 @@
       </igx-input-group>
     </ng-template>
   </igx-date-picker>
+  <!---------------------------- time picker ----------------------------------->
+  <igx-time-picker name="dateTime" (onValueChanged)="onTimeSelection($event)">
+    <ng-template igxTimePickerTemplate let-openDialog="openDialog" let-value="value" let-displayTime="displayTime">
+      <igx-input-group (click)="openDialog()" type="border">
+        <label igxLabel>Time </label>
+        <input igxInput [value]="displayTime" />
+        <igx-suffix>
+          <igx-icon>access_time</igx-icon>
+        </igx-suffix>
+      </igx-input-group>
+    </ng-template>
+  </igx-time-picker>
   <!---------------------------- places of interests buttons ----------------------------------->
   <section class="chips-places">
     <igx-card>
