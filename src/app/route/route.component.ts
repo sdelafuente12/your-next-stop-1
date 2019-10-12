@@ -47,11 +47,11 @@ inputSubscription;
 
   public onSubmit() {
     this.map.setRoute(this.form);
-    this.submitTrip(this.form);
+    // this.submitTrip(this.form);
   }
 
   public submitTrip(form) { 
-    this.form.route = this.form.origin + this.form.destination;
+    this.form.route = this.form.origin + ';' + this.form.destination;
     return this.route.saveTrips(form)
       .subscribe(userTrip => {
         console.log(userTrip);
@@ -95,7 +95,7 @@ inputSubscription;
     this.form.dateEnd = value;
     console.log(this.form.dateEnd);
   }
-  
+
   public autosuggestClick(suggestion) {
 
   }
