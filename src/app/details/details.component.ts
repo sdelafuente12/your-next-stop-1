@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-
+  newColor = false;
   constructor() { }
-
+  
+  toggleColor() {
+    this.newColor = !this.newColor;
+    console.log('color change')
+  }
   ngOnInit() {
   }
 

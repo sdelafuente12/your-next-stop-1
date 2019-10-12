@@ -9,6 +9,8 @@ $colorful-card: igx-card-theme(
   $content-text-color: #ffffff
 );
 
+$pink: #ff2ad2;
+
 :host {
   ::ng-deep {
     @include igx-card($colorful-card);
@@ -39,8 +41,16 @@ h5 {
   text-align: left;
 }
 
+.material-icons{
+  // font-size: 16px;
+  margin-top: 6px;
+}
+
 igx-icon {
-  margin-top: 20px;
+  // margin-top: 8px;
+  display: flex;
+  // flex: 1 0 30%;
+  margin-bottom: 16px;
 }
 
 igx-card-header {

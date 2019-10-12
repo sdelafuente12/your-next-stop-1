@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TripsService } from '../services/trips.service';
+import { IgxTextHighlightDirective, IgxCardThumbnailDirective } from 'igniteui-angular';
 
 @Component({
   selector: 'app-trips',
@@ -35,6 +36,16 @@ export class TripsComponent implements OnInit {
     return this.trips.getAllTrips(this.currentUser)
     .subscribe(response => {
       console.log('USERS TRIPS RESPONSE', response);
+      response.forEach(element => {
+        if(element[0].status === 'current'){
+          this.current.push(element)
+        } if (element[0].status === 'previous'){
+          this.previous.push(element)
+        } else if (element[0].status === 'upcoming'){
+          this.upcoming.push(element)
+        }
+      });
+      console.log('UPCOMING', this.upcoming,'CURRENT', this.current, 'PREVIOUS', this.previous);    
     })
   }
 }
