@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { TripsService } from '../services/trips.service';
 import { MapComponent } from '../map/map.component';
 import { DynamicInputComponent } from './dynamic-input/dynamic-input.component';
@@ -16,7 +16,12 @@ import { from } from 'rxjs';
   templateUrl: './route.component.html',
   styleUrls: ['./route.component.scss']
 })
+
+
 export class RouteComponent implements OnInit, OnDestroy {
+
+  @Output() public onClosing = new EventEmitter<string>();
+
   currentUser = localStorage.getItem('userId');
   form = {
     origin: '',
@@ -29,34 +34,34 @@ export class RouteComponent implements OnInit, OnDestroy {
   }
   public show = [0];
   public suggestions = [];
-
+  
   public settings = {
     positionStrategy: new ConnectedPositioningStrategy({
-        closeAnimation: null,
-        openAnimation: null,
-        verticalDirection: 0,
-        verticalStartPoint: 0
+      closeAnimation: null,
+      openAnimation: null,
+      verticalDirection: 0,
+      verticalStartPoint: 0
     })
-}
-inputSubscription;
+  }
+  inputSubscription;
   constructor(private trips: TripsService, private route: RouteService) {}
   @ViewChild(MapComponent, {static: false}) private map: MapComponent;
   
   ngOnInit() {
     
   }
-
+  
   public onSubmit() {
     this.map.setRoute(this.form);
-    this.submitTrip(this.form);
+    // this.submitTrip(this.form);
   }
-
+  
   public submitTrip(form) { 
-    this.form.route = this.form.origin + this.form.destination;
+    this.form.route = this.form.origin + ';' + this.form.destination;
     return this.route.saveTrips(form)
-      .subscribe(userTrip => {
-        console.log(userTrip);
-      })
+    .subscribe(userTrip => {
+      console.log(userTrip);
+    })
   }
 
   public onKey(field, index) {
@@ -93,16 +98,13 @@ inputSubscription;
   }
  
   public onDateSelection(event, startOrEnd) {
-    console.log(startOrEnd, event)
+    // console.log(startOrEnd, event)
     if(startOrEnd === 'start') {
       this.form.dateStart = JSON.stringify(event);
-      console.log(this.form.dateStart)
     }
-    // if(value === 'startValue') {
-    //   this.form.dateStart = value;
-    // }
-    // this.form.dateEnd = value;
-    // console.log(this.form.dateEnd);
+    if(startOrEnd === 'end'){
+      this.form.dateStart = JSON.stringify(event);
+    }
   }
   
   public autosuggestClick(suggestion) {

@@ -10,7 +10,9 @@
   </div>
 </div>
 
-<form class="input-group-form" (ngSubmit)="onSubmit()">
+<!-- <form class="input-group-form" (ngSubmit)="onSubmit()"> -->
+    <form class="input-group-form" (keyup.enter)="onSubmit()">
+      
 <!------------------------------- origin input -------------------------------->
   <igx-input-group #originGroup type="border">
     <input #origin igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required"
@@ -193,7 +195,7 @@
   </igx-date-picker>
   <igx-date-picker name="endDate" (onSelection)="onDateSelection($event, end)">
     <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
-      <igx-input-group (click)="openDialog()" type="box">
+      <igx-input-group (click)="openDialog()" type="border">
         <label igxLabel>End Date</label>
         <input #dateEnd igxInput name="dateEnd" [value]="displayData" [(ngModel)]="form.dateEnd"  required="required" />
         <!-- <input igxInput [value]="displayData" /> -->
@@ -203,6 +205,18 @@
       </igx-input-group>
     </ng-template>
   </igx-date-picker>
+  <!---------------------------- time picker ----------------------------------->
+  <igx-time-picker name="dateTime" (onValueChanged)="onTimeSelection($event)">
+    <ng-template igxTimePickerTemplate let-openDialog="openDialog" let-value="value" let-displayTime="displayTime">
+      <igx-input-group (click)="openDialog()" type="border">
+        <label igxLabel>Time </label>
+        <input igxInput [value]="displayTime" />
+        <igx-suffix>
+          <igx-icon>access_time</igx-icon>
+        </igx-suffix>
+      </igx-input-group>
+    </ng-template>
+  </igx-time-picker>
   <!---------------------------- places of interests buttons ----------------------------------->
   <section class="chips-places">
     <igx-card>
