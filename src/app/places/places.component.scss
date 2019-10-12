@@ -33,11 +33,17 @@ h5 {
   text-align: left;
 }
 
-igx-icon {
-  margin-top: 20px;
+.material-icons {
+  font-size: 20px;
+  margin-top: 4px;
+  margin-right: -10px;
 }
 
 igx-card-header {
   margin-top: -10px;
   margin-bottom: -10px;
+}
+
+.igx-card-header__title {
+  font-size: 16px;
 }
