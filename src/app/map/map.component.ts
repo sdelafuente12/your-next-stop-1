@@ -74,7 +74,7 @@ export class MapComponent implements OnInit, OnDestroy {
                   lat: position.coords.latitude,
                   lng: position.coords.longitude
                 }
-          return this.locationService.getNearbyPlaces(position)
+          return this.locationService.getNearbyPlaces(position, this.snapshotUrl)
         })
         )
         .subscribe(places => {

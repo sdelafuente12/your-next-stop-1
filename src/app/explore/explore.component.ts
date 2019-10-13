@@ -20,7 +20,6 @@ export class ExploreComponent implements OnInit {
   placesSubscription;
   imagesSubscription;
   constructor(private route: ActivatedRoute) {
-    console.log('PLACESSSSSSSSSSSSSSSSSSSS', this.places);
     console.log('ROUTE', this.route.snapshot.queryParams);
   }
 
@@ -35,7 +34,7 @@ export class ExploreComponent implements OnInit {
     this.placesSubscription = from(this.map.nearbyPlaces)
     .subscribe(place => {
       this.places.push(place)
-      // console.log(this.places)
+      console.log('EXPLORE PLACES', this.places)
     })
   }
 
