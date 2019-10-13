@@ -12,6 +12,7 @@ export class RouteService {
   private getRoutePositionsEndpoint = `${environment.BASE_API_URL}/routePositions`;
   private autocompleteAddressEndpoint = `${environment.BASE_API_URL}/autocompleteAddress`;
   private addTripEndpoint = `${environment.BASE_API_URL}/addTrip`;
+
   constructor(private http: HttpClient) { }
 
   getRoutePositions(route) {
@@ -43,4 +44,6 @@ export class RouteService {
   saveTrips(form) {
     return this.http.post(this.addTripEndpoint, form);
   }
+
+  
 }

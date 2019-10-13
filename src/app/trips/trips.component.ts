@@ -34,7 +34,7 @@ export class TripsComponent implements OnInit {
 
   getAllTrips() {
     return this.trips.getAllTrips(this.currentUser)
-    .subscribe((response: Array<any>): void => {
+    .subscribe((response: Object[]): void => {
       console.log('USERS TRIPS RESPONSE', response);
       response.forEach(element => {
         if(element[0].status === 'current'){
