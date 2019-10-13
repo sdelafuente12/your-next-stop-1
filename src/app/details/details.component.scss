@@ -9,6 +9,8 @@ $colorful-card: igx-card-theme(
   $content-text-color: #ffffff
 );
 
+$pink: #ff2ad2;
+
 :host {
   ::ng-deep {
     @include igx-card($colorful-card);

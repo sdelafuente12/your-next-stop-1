@@ -31,12 +31,16 @@ export class RouteComponent implements OnInit, OnDestroy {
     origin: '',
     destination: '',
     route: '', 
-    waypoints: '',
+    waypoints: ['', '', '', '', ''] ,
     dateStart: '',
     dateEnd: '',
     userId: JSON.parse(this.currentUser),
   }
-
+  private isoDate = {
+    start: '',
+    end: ''
+  }
+  public show = [0];
   public suggestions = [];
   
   public settings = {
@@ -74,20 +78,23 @@ export class RouteComponent implements OnInit, OnDestroy {
       console.log(userTrip);
     })
   }
-  
-  public onKey(field) {
+
+  public onKey(field, index) {
+    let input;
+    if (index) input = this.form[field][index];
+    else input = this.form[field];
     
-    if (this.form[field].length) {
-      this.inputSubscription = from(this.form[field])
+    if (input.length) {
+      this.inputSubscription = from(input)
       .pipe(
         debounceTime(250),
         switchMap(
-          (input) => {
+          (text) => {
             console.log('FORMMMMM', this.form);
             if (field === 'origin') {
-              return this.route.autoSuggestion(this.form[field], this.map.currentPosition)
+              return this.route.autoSuggestion(input, this.map.currentPosition)
             } else {
-              return this.route.autoSuggestion(this.form[field], '')
+              return this.route.autoSuggestion(input, '')
             }
             
           }  
@@ -130,9 +137,27 @@ export class RouteComponent implements OnInit, OnDestroy {
         setTimeout(() => this.map.setRoute(this.form), 2000);
         
       }
-      
-      
-      ngOnDestroy() {
-        if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
-      }
-    }
+
+  addWaypointInput() {
+    this.show[this.show.length] = this.show.length;
+  }
+
+  removeWaypointInput(index) {
+    if (index === 0) this.form.waypoints[0] = '';
+    else this.show.splice(index, 1);
+  }
+
+  humanReadableDate(isoDate) {
+    let day = isoDate.slice(9, 11);
+    if (day[0] === '0') day = day.slice(1);
+    let month = isoDate.slice(6, 8);
+    if (month[0] === 0) month = month.slice(1);
+    let year = isoDate.slice(1, 5);
+    
+    return `${month}/${day}/${year}`
+  }
+
+  ngOnDestroy() {
+    if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
+  }
+}

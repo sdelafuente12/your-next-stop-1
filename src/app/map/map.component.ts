@@ -103,10 +103,11 @@ export class MapComponent implements OnInit, OnDestroy {
   //calls google geocode API to convert user inputted addresses into geocoordinates
   setRoute(route) {
     this.routeSubscription = this.routeService.getRoutePositions(route)
-      .subscribe(routePositions => { 
+      .subscribe((routePositions: Array<any>): void => { 
         // console.log(routePositions) 
-        this.origin = routePositions[0].location;
-        this.destination = routePositions[1].location;
+        this.origin = routePositions[0];
+        this.destination = routePositions[1];
+        this.waypoints = routePositions.splice(2);
       })
   }
 //gets top photo for each place
