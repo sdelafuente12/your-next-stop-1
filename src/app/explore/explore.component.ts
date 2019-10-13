@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MapComponent } from '../map/map.component';
+import { TripsService } from '../services/trips.service';
 import { from } from 'rxjs';
 import { distinct } from 'rxjs/operators';
 import  { IgxCarouselComponent, Direction } from 'igniteui-angular';
@@ -22,7 +23,7 @@ export class ExploreComponent implements OnInit {
   newColor = false;
   currentUser = localStorage.getItem('userId');
 
-  constructor(private route: ActivatedRoute, public router: Router) {
+  constructor(private route: ActivatedRoute, public router: Router, private trips: TripsService) {
     console.log('PLACESSSSSSSSSSSSSSSSSSSS', this.places);
     console.log('ROUTE', this.route.snapshot.queryParams);
   }
@@ -62,6 +63,14 @@ export class ExploreComponent implements OnInit {
 
   navigateWithState(id) {
     this.router.navigateByUrl('/details', { state: { id } });
+  }
+
+  onUpvote(place) {
+    console.log('PLACE UPVOTED', place);
+    this.trips.upvoteInterest(place, this.currentUser)
+    .subscribe(response => {
+      console.log('UPVOTE response', response);
+    })
   }
 
 }
