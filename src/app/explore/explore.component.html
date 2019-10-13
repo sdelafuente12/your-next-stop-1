@@ -16,12 +16,14 @@
   <ng-container *ngFor="let place of places; let i = index;">
     <igx-slide>
       <div class="card-column">
-        <igx-card routerLink="/details">
+        <igx-card>
           <igx-card-header>
             <h3 igxCardHeaderTitle>{{place.name}}</h3>
-            <igx-icon>thumb_up</igx-icon>
+            <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
+              <igx-icon fontSet="material">thumb_up</igx-icon>
+            </button>
           </igx-card-header>
-          <igx-card-media height="200px">
+          <igx-card-media (click)="navigateWithState(place.placeId)" height="200px">
             <ng-container *ngIf="images.length">
               <img [src]="images[i] | htmlSanitizer">
               </ng-container>
@@ -30,24 +32,6 @@
       </div>
     </igx-slide>
   </ng-container>
-  <!-- <igx-slide>
-        <div style="display: flex;flex-direction: column;align-items: center;justify-content: center;height: 250px">
-          <div class="sample-column card-wrapper" style="position: relative;">
-            <igx-card routerLink="/details">
-              <igx-card-header>
-                <h3 igxCardHeaderTitle>{{place.name}}</h3>
-                <h5 igxCardHeaderSubtitle>2 mi</h5>
-                <h5 igxCardHeaderSubtitle>
-                  <igx-icon>favorite</igx-icon>
-                </h5>
-              </igx-card-header>
-              <igx-card-media height="171px">
-                <img src="../../assets/images/sushi.jpg">
-              </igx-card-media>
-            </igx-card>
-          </div>
-        </div>
-      </igx-slide> -->
 </igx-carousel>
 
 <div style="text-align: center">

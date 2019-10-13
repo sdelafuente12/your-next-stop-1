@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MapComponent } from '../map/map.component';
 import { from } from 'rxjs';
 import { distinct } from 'rxjs/operators';
@@ -12,14 +12,18 @@ import  { IgxCarouselComponent, Direction } from 'igniteui-angular';
 })
 export class ExploreComponent implements OnInit {
   @ViewChild(MapComponent, { static: false }) private map: MapComponent;
-  @ViewChild(IgxCarouselComponent, { static: false }) private carousel: IgxCarouselComponent;
-  currentUser = localStorage.getItem('userId');
+  @ViewChild(IgxCarouselComponent, { static: false })
+  private carousel: IgxCarouselComponent;
   public places = [];
   public images = [];
-
+  
   placesSubscription;
   imagesSubscription;
-  constructor(private route: ActivatedRoute) {
+  newColor = false;
+  currentUser = localStorage.getItem('userId');
+
+  constructor(private route: ActivatedRoute, public router: Router) {
+    console.log('PLACESSSSSSSSSSSSSSSSSSSS', this.places);
     console.log('ROUTE', this.route.snapshot.queryParams);
   }
 
@@ -40,17 +44,24 @@ export class ExploreComponent implements OnInit {
 
   loadImages() {
     this.imagesSubscription = from(this.map.images)
-    .pipe(
-      distinct()
-    )
-    .subscribe(image => {
-      this.images.push(image);
-    })
+      .pipe(distinct())
+      .subscribe(image => {
+        this.images.push(image);
+      });
   }
 
   mapMarkerClicked(i) {
-    console.log(i)
     const focus = this.carousel.get(i);
     this.carousel.select(focus, Direction.NEXT);
   }
+
+  toggleColor() {
+    this.newColor = !this.newColor;
+    console.log('color change');
+  }
+
+  navigateWithState(id) {
+    this.router.navigateByUrl('/details', { state: { id } });
+  }
+
 }

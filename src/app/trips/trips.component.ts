@@ -34,7 +34,7 @@ export class TripsComponent implements OnInit {
 
   getAllTrips() {
     return this.trips.getAllTrips(this.currentUser)
-    .subscribe(response => {
+    .subscribe((response: Array<any>): void => {
       console.log('USERS TRIPS RESPONSE', response);
       response.forEach(element => {
         if(element[0].status === 'current'){
@@ -47,5 +47,11 @@ export class TripsComponent implements OnInit {
       });
       console.log('UPCOMING', this.upcoming,'CURRENT', this.current, 'PREVIOUS', this.previous);    
     })
+  }
+  onSelection(trip){
+    console.log(trip)
+    let storageTrip = JSON.stringify(trip)
+    localStorage.setItem("trip", storageTrip);
+    //return 'boob'
   }
 }

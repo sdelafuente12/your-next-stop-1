@@ -4,11 +4,13 @@ import { TripsService } from '../services/trips.service';
 import { MapComponent } from '../map/map.component';
 import { DynamicInputComponent } from './dynamic-input/dynamic-input.component';
 import { RouteService } from '../services/route.service';
+import { PreviousRouteService } from '../services/router.service';
 import { 
   ConnectedPositioningStrategy, 
 } from 'igniteui-angular';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { from } from 'rxjs';
+import { ThrowStmt } from '@angular/compiler';
 
 
 @Component({
@@ -23,15 +25,22 @@ export class RouteComponent implements OnInit, OnDestroy {
   @Output() public onClosing = new EventEmitter<string>();
 
   currentUser = localStorage.getItem('userId');
+  parsedTrip = JSON.parse(localStorage.getItem('trip'));
+
   form = {
     origin: '',
     destination: '',
     route: '', 
-    waypoints: '',
+    waypoints: ['', '', '', '', ''] ,
     dateStart: '',
     dateEnd: '',
     userId: JSON.parse(this.currentUser),
   }
+  private isoDate = {
+    start: '',
+    end: ''
+  }
+  public show = [0];
   public suggestions = [];
   
   public settings = {
@@ -43,39 +52,49 @@ export class RouteComponent implements OnInit, OnDestroy {
     })
   }
   inputSubscription;
-  constructor(private trips: TripsService, private route: RouteService) {}
-  @ViewChild(MapComponent, {static: false}) private map: MapComponent;
+  constructor(private trips: TripsService, private route: RouteService, private router: PreviousRouteService) {}
+  @ViewChild(MapComponent, {static: false}) public map: MapComponent;
   
   ngOnInit() {
-    
+    const previousPage = this.router.getPreviousUrl();
+    console.log('PASTTTTTT', previousPage);
+    if (previousPage === '/trips') {
+      this.fromTripsSubmit();
+    }
   }
   
   public onSubmit() {
     this.map.setRoute(this.form);
     this.submitTrip(this.form);
+    let formStorage = JSON.stringify(this.form);
+    localStorage.setItem('form', formStorage)
+    console.log('@@form@@', localStorage.form)
   }
   
   public submitTrip(form) { 
-    this.form.route = this.form.origin + ' ->  ' + this.form.destination;
+    this.form.route = this.form.origin + ' -> ' + this.form.destination;
     return this.route.saveTrips(form)
     .subscribe(userTrip => {
       console.log(userTrip);
     })
   }
-  
-  public onKey(field) {
+
+  public onKey(field, index) {
+    let input;
+    if (index) input = this.form[field][index];
+    else input = this.form[field];
     
-    if (this.form[field].length) {
-      this.inputSubscription = from(this.form[field])
+    if (input.length) {
+      this.inputSubscription = from(input)
       .pipe(
         debounceTime(250),
         switchMap(
-          (input) => {
+          (text) => {
             console.log('FORMMMMM', this.form);
             if (field === 'origin') {
-              return this.route.autoSuggestion(this.form[field], this.map.currentPosition)
+              return this.route.autoSuggestion(input, this.map.currentPosition)
             } else {
-              return this.route.autoSuggestion(this.form[field], '')
+              return this.route.autoSuggestion(input, '')
             }
             
           }  
@@ -104,9 +123,41 @@ export class RouteComponent implements OnInit, OnDestroy {
       public autosuggestClick(suggestion) {
         
       }
-      
-      
-      ngOnDestroy() {
-        if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
+
+      public fromTripsSubmit() {
+        console.log('PARSLEY', this.parsedTrip);
+        this.form.origin = this.parsedTrip[0].route.split('->')[0];
+        this.form.destination = this.parsedTrip[0].route.split('-> ')[1];
+        this.form.dateStart = this.parsedTrip[0].dateStart;
+        this.form.dateEnd = this.parsedTrip[0].dateEnd;
+        this.form.userId = JSON.parse(this.currentUser);
+        this.form.route = this.parsedTrip[0].route;
+        console.log('FORMMMMMM', this.form);
+        //console.log(this.map.setRoute);
+        setTimeout(() => this.map.setRoute(this.form), 2000);
+        
       }
-    }
+
+  addWaypointInput() {
+    this.show[this.show.length] = this.show.length;
+  }
+
+  removeWaypointInput(index) {
+    if (index === 0) this.form.waypoints[0] = '';
+    else this.show.splice(index, 1);
+  }
+
+  humanReadableDate(isoDate) {
+    let day = isoDate.slice(9, 11);
+    if (day[0] === '0') day = day.slice(1);
+    let month = isoDate.slice(6, 8);
+    if (month[0] === 0) month = month.slice(1);
+    let year = isoDate.slice(1, 5);
+    
+    return `${month}/${day}/${year}`
+  }
+
+  ngOnDestroy() {
+    if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
+  }
+}
