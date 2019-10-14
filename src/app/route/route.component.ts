@@ -100,7 +100,7 @@ export class RouteComponent implements OnInit, OnDestroy {
     this.suggestions = [];
     if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
   }
- 
+
   public onDateSelection(event, startOrEnd, display) {
     console.log(startOrEnd, event, display)
     if(startOrEnd === 'start') {
