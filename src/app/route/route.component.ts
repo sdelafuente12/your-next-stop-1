@@ -4,11 +4,13 @@ import { TripsService } from '../services/trips.service';
 import { MapComponent } from '../map/map.component';
 import { DynamicInputComponent } from './dynamic-input/dynamic-input.component';
 import { RouteService } from '../services/route.service';
+import { PreviousRouteService } from '../services/router.service';
 import { 
   ConnectedPositioningStrategy, 
 } from 'igniteui-angular';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { from } from 'rxjs';
+import { ThrowStmt } from '@angular/compiler';
 
 
 @Component({
@@ -23,6 +25,8 @@ export class RouteComponent implements OnInit, OnDestroy {
   @Output() public onClosing = new EventEmitter<string>();
 
   currentUser = localStorage.getItem('userId');
+  parsedTrip = JSON.parse(localStorage.getItem('trip'));
+
   form = {
     origin: '',
     destination: '',
@@ -48,20 +52,27 @@ export class RouteComponent implements OnInit, OnDestroy {
     })
   }
   inputSubscription;
-  constructor(private trips: TripsService, private route: RouteService) {}
-  @ViewChild(MapComponent, {static: false}) private map: MapComponent;
+  constructor(private trips: TripsService, private route: RouteService, private router: PreviousRouteService) {}
+  @ViewChild(MapComponent, {static: false}) public map: MapComponent;
   
   ngOnInit() {
-    
+    const previousPage = this.router.getPreviousUrl();
+    console.log('PASTTTTTT', previousPage);
+    if (previousPage === '/trips') {
+      this.fromTripsSubmit();
+    }
   }
   
   public onSubmit() {
     this.map.setRoute(this.form);
     this.submitTrip(this.form);
+    let formStorage = JSON.stringify(this.form);
+    localStorage.setItem('form', formStorage)
+    console.log('@@form@@', localStorage.form)
   }
   
   public submitTrip(form) { 
-    this.form.route = this.form.origin + ' ->  ' + this.form.destination;
+    this.form.route = this.form.origin + ' -> ' + this.form.destination;
     return this.route.saveTrips(form)
     .subscribe(userTrip => {
       console.log(userTrip);
@@ -87,35 +98,45 @@ export class RouteComponent implements OnInit, OnDestroy {
             }
             
           }  
-        )
-      )
-      .subscribe((suggestions: any) => {
-        // console.log(suggestions)
-        this.suggestions = suggestions;
-      })
-    }
-  }
+          )
+          )
+          .subscribe((suggestions: any) => {
+            // console.log(suggestions)
+            this.suggestions = suggestions;
+          })
+        }
+      }
+      
+      public onClick() {
+        this.suggestions = [];
+        if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
+      }
+      
+      public onDateSelection(value) {
+        if(value === 'startValue') {
+          this.form.dateStart = value;
+        }
+        this.form.dateEnd = value;
+        console.log(this.form.dateEnd);
+      }
+      
+      public autosuggestClick(suggestion) {
+        
+      }
 
-  public onClick() {
-    this.suggestions = [];
-    if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
-  }
- 
-  public onDateSelection(event, startOrEnd, display) {
-    console.log(startOrEnd, event, display)
-    if(startOrEnd === 'start') {
-      this.isoDate.start = JSON.stringify(event);
-      this.form.dateStart = this.humanReadableDate(this.isoDate.start)
-    }
-    if(startOrEnd === 'end'){
-      this.isoDate.end = JSON.stringify(event);
-      this.form.dateEnd = this.humanReadableDate(this.isoDate.end)
-    }
-  }
-  
-  public autosuggestClick(suggestion) {
-
-  }
+      public fromTripsSubmit() {
+        console.log('PARSLEY', this.parsedTrip);
+        this.form.origin = this.parsedTrip[0].route.split('->')[0];
+        this.form.destination = this.parsedTrip[0].route.split('-> ')[1];
+        this.form.dateStart = this.parsedTrip[0].dateStart;
+        this.form.dateEnd = this.parsedTrip[0].dateEnd;
+        this.form.userId = JSON.parse(this.currentUser);
+        this.form.route = this.parsedTrip[0].route;
+        console.log('FORMMMMMM', this.form);
+        //console.log(this.map.setRoute);
+        setTimeout(() => this.map.setRoute(this.form), 2000);
+        
+      }
 
   addWaypointInput() {
     this.show[this.show.length] = this.show.length;

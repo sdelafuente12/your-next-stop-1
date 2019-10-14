@@ -46,7 +46,7 @@ export class LocationService {
     })
   }
 
-  public getNearbyPlaces(location) {
+  public getNearbyPlaces(location, snapshotUrl) {
     
     const currentPositionString = `${location.coords.latitude},${location.coords.longitude}`;
     const id = localStorage.getItem('userId');
@@ -59,6 +59,7 @@ export class LocationService {
         params: new HttpParams()
         .set('location', currentPositionString)
         .set('id', id)
+        .set('snapshotUrl', snapshotUrl)
       })
     }
   }

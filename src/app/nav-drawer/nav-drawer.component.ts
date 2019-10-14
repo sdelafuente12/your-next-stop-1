@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NavDrawerComponent {
   constructor() {}
+
+  logoutUser() {
+    localStorage.removeItem('userId');
+    window.location.href = '/';
+  }
 }
