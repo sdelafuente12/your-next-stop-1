@@ -14,10 +14,10 @@
     </igx-tabs-group>
     <igx-tabs-group label="UPCOMING">
       <igx-list>
-        <!-- <ng-template igxEmptyList>
+        <ng-template igxEmptyList>
           <p class="empty">You have no upcoming trips.</p>
           <p class="empty"> Route one now!</p>
-        </ng-template> -->
+        </ng-template>
         <igx-list-item *ngFor="let upcoming of upcoming" (click)="onSelection(upcoming)" routerLink="/route">
           <!-- <p igxListLineTitle>Origin: {{upcoming.origin}}</p> -->
           <p igxListLineTitle>Route: {{upcoming[0].route}}</p>
