@@ -1,3 +1,4 @@
+<div *ngIf="stats">
 <div>
   <h4 class="igx-typography__h4">Stats</h4>
 </div>
@@ -24,7 +25,8 @@
       <igx-card-media width="64px" height="64px">
       </igx-card-media>
     </igx-card-header>
-    <igx-card-content>
+    <igx-card-content >
+      <p>{{stats.numberOfTrips}}</p>
     </igx-card-content>
   </div>
   <igx-card-actions layout="justify">
@@ -39,6 +41,10 @@
       </igx-card-media>
     </igx-card-header>
     <igx-card-content>
+      <p>Number of cities visited: {{stats.numberOfCities}}</p>
+      <ul>
+        <li *ngFor="let city of stats.cities">{{city}}</li>
+      </ul>
     </igx-card-content>
   </div>
   <igx-card-actions layout="justify">
@@ -48,13 +54,18 @@
 <igx-card type="outlined" [horizontal]="horizontal">
   <div class="h-sample-column">
     <igx-card-header>
-      <h5 igxCardHeaderTitle>Interests Visited</h5>
+      <h5 igxCardHeaderTitle>Favorite Interests</h5>
       <igx-card-media width="64px" height="64px">
       </igx-card-media>
     </igx-card-header>
     <igx-card-content>
+      <ul>
+        <li *ngFor="let interest of stats.top5Interests">{{interest}}</li>
+      </ul>
     </igx-card-content>
   </div>
   <igx-card-actions layout="justify">
   </igx-card-actions>
 </igx-card>
+
+</div>

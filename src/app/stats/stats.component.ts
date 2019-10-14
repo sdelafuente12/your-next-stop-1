@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TripsService } from '../services/trips.service';
 
 @Component({
   selector: 'app-stats',
@@ -6,12 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
+  userId = localStorage.getItem('userId');
   nearbyPlaces = JSON.parse(localStorage.getItem('allUserNearbyPlaces'));
+  public stats = null;
 
-  constructor() { }
+  constructor(private trips: TripsService) { }
 
   ngOnInit() {
     console.log(this.nearbyPlaces);
-  }    
+    this.getStats();
+  }
+
+  getStats() {
+    this.trips.getStats(this.userId)
+    .subscribe(stats => {
+      console.log('STATS', stats);
+      this.stats = stats;
+    });
+  }
 
 }
