@@ -22,10 +22,7 @@ export class ExploreComponent implements OnInit {
   newColor = false;
   currentUser = localStorage.getItem('userId');
 
-  constructor(private route: ActivatedRoute, public router: Router) {
-    console.log('PLACESSSSSSSSSSSSSSSSSSSS', this.places);
-    console.log('ROUTE', this.route.snapshot.queryParams);
-  }
+  constructor(private route: ActivatedRoute, public router: Router) {}
 
   ngOnInit() {
     const userId = this.route.snapshot.queryParams.id;
@@ -37,7 +34,6 @@ export class ExploreComponent implements OnInit {
   loadPlaces() {
     this.placesSubscription = from(this.map.nearbyPlaces).subscribe(place => {
       this.places.push(place);
-      // console.log(this.places)
     });
   }
 
