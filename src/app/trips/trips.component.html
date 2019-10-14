@@ -6,7 +6,7 @@
   <igx-tabs tabsType="fixed">
     <igx-tabs-group label="CURRENT">
       <igx-list>
-            <igx-list-item *ngFor="let current of current" routerLink="/route">
+            <igx-list-item *ngFor="let current of current" (click)="onSelection(current)" routerLink="/route">
               <p igxListLineTitle>Route: {{current[0].route}}</p>
               <!-- <p igxListLineTitle>Destination: {{current.destination}}</p> -->
             </igx-list-item>
@@ -14,11 +14,11 @@
     </igx-tabs-group>
     <igx-tabs-group label="UPCOMING">
       <igx-list>
-        <!-- <ng-template igxEmptyList>
+        <ng-template igxEmptyList>
           <p class="empty">You have no upcoming trips.</p>
           <p class="empty"> Route one now!</p>
-        </ng-template> -->
-        <igx-list-item *ngFor="let upcoming of upcoming" routerLink="/route">
+        </ng-template>
+        <igx-list-item *ngFor="let upcoming of upcoming" (click)="onSelection(upcoming)" routerLink="/route">
           <!-- <p igxListLineTitle>Origin: {{upcoming.origin}}</p> -->
           <p igxListLineTitle>Route: {{upcoming[0].route}}</p>
           <!-- <p igxListLineTitle>Destination: {{upcoming.destination}}</p> -->
@@ -27,7 +27,7 @@
     </igx-tabs-group>
     <igx-tabs-group label="PREVIOUS">
       <igx-list>
-        <igx-list-item *ngFor="let previous of previous" routerLink="/route">
+        <igx-list-item *ngFor="let previous of previous" (click)="onSelection(previous)" routerLink="/route">
           <!-- <p igxListLineTitle>Origin: {{previous.origin}}</p> -->
           <p igxListLineTitle>Route: {{previous[0].route}}</p>
           <!-- <p igxListLineTitle>Destination: {{previous.destination}}</p> -->
