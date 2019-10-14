@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { LocationService } from '../services/location.service'
+import { LocationService } from '../services/location.service';
+import { API_KEY } from '../../../config.js';
 import { from } from 'rxjs';
-import { distinct } from 'rxjs/operators';
+import { distinct, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-results',
@@ -11,18 +12,19 @@ import { distinct } from 'rxjs/operators';
 
 export class ResultsComponent implements OnInit {
   @Output() placesLoaded = new EventEmitter<string>();
+  // @Output() imagesLoaded = new EventEmitter<string>();
   snapshotUrl = '/results';
   currentUser = localStorage.getItem('userId');
   public allPlaces = [];
   public images = [];
   allPlacesSubscription;
   imagesSubscription;
+  // private _window;
 
   constructor(private locationService: LocationService) { }
 
   ngOnInit() {
     this.loadPlaces();
-    this.loadImages();
   }
 
   loadPlaces() {
@@ -31,31 +33,15 @@ export class ResultsComponent implements OnInit {
       console.log('LOCATION NATION', loc);
       this.allPlacesSubscription = this.locationService.getNearbyPlaces(loc, this.snapshotUrl)
       .subscribe(place => {
-        this.allPlaces.push(place)
-        console.log('ALL PLACES', this.allPlaces[0])
+        this.allPlaces.push(place);
+        console.log('ALL PLACES', this.allPlaces[0]);
+        //console.log('IMAGE REFERENCE', this.allPlaces[0][0][0].photos);
       });
     })
   }
 
-  loadImages() {
-    this.imagesSubscription = from(this.allPlaces[0].images)
-      .pipe(
-        distinct()
-      )
-      .subscribe(image => {
-        this.images.push(image);
-      })
+  getImageSrc (ref) {
+    return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
   }
-
-  // loadImages() {
-  //   this.imagesSubscription = from(this.allPlaces[0].photos)
-  //     .pipe(
-  //       distinct()
-  //     )
-  //     .subscribe(image => {
-  //       console.log('IMAGES!!!!!!!!!!!!!', image);
-  //       this.images.push(image);
-  //     })
-  // }
 
 }

@@ -14,8 +14,8 @@
               <igx-icon>thumb_up</igx-icon>
             </igx-card-header>
           <igx-card-media height="200px">
-            <ng-container *ngIf="images.length">
-              <img [src]="images[i] | htmlSanitizer">
+            <ng-container *ngIf="place.photos">
+              <img [src]="getImageSrc(place.photos)" />
             </ng-container>
           </igx-card-media>
           </igx-card>
