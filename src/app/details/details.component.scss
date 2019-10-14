@@ -28,7 +28,6 @@ $pink: #ff2ad2;
   flex: 1 0 25%;
   font-family: 'Roboto', sans-serif;
   position: relative;
-  height: 200px;
   margin: 0 auto;
   // margin-top: 15px;
 }
@@ -56,4 +55,8 @@ igx-icon {
 igx-card-header {
   margin-top: -10px;
   margin-bottom: -10px;
+}
+
+igx-card-media {
+  height: 248px
 }
