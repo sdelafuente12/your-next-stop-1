@@ -11,6 +11,7 @@ export class TripsService {
 
   private getAllTripsEndpoint = `${environment.BASE_API_URL}/getAllUsersTrips`;
   private upvoteInterestEndpoint = `${environment.BASE_API_URL}/likedInterest`;
+  private getUserStatsEndpoint = `${environment.BASE_API_URL}/getStats`;
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +23,10 @@ export class TripsService {
   upvoteInterest(upvotedPlace, userId) {
     console.log('UPVOTE SERVICE', this.upvoteInterestEndpoint);
     return this.http.post(this.upvoteInterestEndpoint, { interest: upvotedPlace.interest, userId: userId, name: upvotedPlace.name });
+  }
+
+  getStats(user) {
+    return this.http.get(`${this.getUserStatsEndpoint}?id=${user}`);
   }
 
 }
