@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
+import { PathLocationStrategy } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,10 @@ export class TripsService {
 
   upvoteInterest(upvotedPlace, userId) {
     console.log('UPVOTE SERVICE', this.upvoteInterestEndpoint);
-    return this.http.post(this.upvoteInterestEndpoint, { interest: upvotedPlace.interest, userId: userId, name: upvotedPlace.name });
+    return this.http.post(this.upvoteInterestEndpoint, { 
+      interest: upvotedPlace.interest, userId: userId, name: upvotedPlace.name, city: upvotedPlace.city,
+      address: upvotedPlace.address, photoRef: upvotedPlace.photos,
+    });
   }
 
   getStats(user) {
