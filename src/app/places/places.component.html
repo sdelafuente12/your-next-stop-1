@@ -5,15 +5,20 @@
 <div class="items-wrapper__item items-wrapper__item-small items-wrapper__item--blue">
   <igx-tabs tabsType="fixed">
 
-    <igx-tabs-group label="Likes">
+    <igx-tabs-group *ngFor="let place of userPlaces" label="Likes">
         <div class="card-column">
           <igx-card>
             <igx-card-header>
-              <h3 igxCardHeaderTitle>Likey Likes</h3>
+              <h3 igxCardHeaderTitle>{{place[1].name}}</h3>
               <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
                 <igx-icon fontSet="material">thumb_up</igx-icon>
               </button>
             </igx-card-header>
+            <igx-card-media height="200px">
+              <ng-container *ngIf="place[1].photo">
+                <img [src]="getImageSrc(place[1].photo)" />
+              </ng-container>
+            </igx-card-media>
             <igx-card-media routerLink="/details" height="200px"></igx-card-media>
           </igx-card>
         </div>
