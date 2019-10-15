@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, ParamMap } from '@angular/router'
 import { map, take } from 'rxjs/operators';
 
 @Component({
@@ -12,7 +12,6 @@ export class DetailsComponent implements OnInit {
   newColor = false;
   state$: Observable<object>;
   placeId: string;
-
   constructor(public activatedRoute: ActivatedRoute) { }
   
   toggleColor() {

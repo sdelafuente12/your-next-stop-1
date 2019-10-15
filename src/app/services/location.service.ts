@@ -65,6 +65,13 @@ export class LocationService {
   }
 
   public getPlacePhoto(photoRef) {
+   
+    // return this.http.get(`${environment.BASE_API_URL}/yelpAPI`, {
+    //   params: new HttpParams()
+    //   .set('latitude', coordinates.lat)
+    //   .set('longitude', coordinates.lng)
+    //   .set('name', coordinates.name)
+    // })
     return this.http.get(this.getPlacePhotoEndpoint, {
       responseType: "blob",
       params: new HttpParams().set('ref', photoRef)
