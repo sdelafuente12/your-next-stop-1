@@ -80,7 +80,12 @@ export class MapComponent implements OnInit, OnDestroy {
         .subscribe(places => {
           this.nearbyPlaces = places;
           this.placesLoaded.emit('places loaded')
-          this.nearbyPlaces.map((place, i) => this.getPlacePhoto(place.photos, i))
+          console.log(this.nearbyPlaces)
+          this.nearbyPlaces.map((place, i) => {
+            // const placeCoords = { lat: place.lat, lng: place.lng, name: place.name } 
+            // this.getPlacePhoto(placeCoords, i)
+            this.getPlacePhoto(place.photos, i)
+          })
         })
 
     }
@@ -111,14 +116,14 @@ export class MapComponent implements OnInit, OnDestroy {
       })
   }
 //gets top photo for each place
-  getPlacePhoto(photoRef, index) {
+  getPlacePhoto(placeCoords, index) {
     if(!this.images[index]) {
-      this.imageSubscription = this.locationService.getPlacePhoto(photoRef)
+      this.imageSubscription = this.locationService.getPlacePhoto(placeCoords)
       .pipe(
         distinct(),
-        take(14),
         )
       .subscribe(photo => {
+        console.log(photo)
         this.images[index] = this._window.URL.createObjectURL(photo);
         if (this.images.length === 14) {//this number will need to be dynamic in the future (ncategories * nplaces)
           this.imagesLoaded.emit('');

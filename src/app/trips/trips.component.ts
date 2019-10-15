@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TripsService } from '../services/trips.service';
-import { IgxTextHighlightDirective, IgxCardThumbnailDirective } from 'igniteui-angular';
+// import { IgxTextHighlightDirective, IgxCardThumbnailDirective } from 'igniteui-angular';
 
 @Component({
   selector: 'app-trips',
