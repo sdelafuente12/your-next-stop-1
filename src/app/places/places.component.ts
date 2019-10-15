@@ -19,11 +19,6 @@ export class PlacesComponent implements OnInit {
     this.getUserPlaces();
   }
 
-  toggleColor() {
-    this.newColor = !this.newColor;
-    console.log('color change');
-  }
-
   getUserPlaces() {
     this.trips.getUserPlaces(this.userId)
     .subscribe(userPlace => {
@@ -34,6 +29,20 @@ export class PlacesComponent implements OnInit {
 
   getImageSrc(ref) {
     return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
+  }
+
+  toggleColor() {
+    this.newColor = !this.newColor;
+    console.log('color change');
+  }
+
+  onUpvote(place) {
+    console.log('PLACE UPVOTED', place);
+    this.toggleColor();
+    this.trips.upvoteInterest(place, this.userId)
+      .subscribe(response => {
+        console.log('UPVOTE response', response);
+      })
   }
   
 }
