@@ -209,7 +209,7 @@
     </ng-template>
   </igx-date-picker>
   <!---------------------------- time picker ----------------------------------->
-  <igx-time-picker name="dateTime" (onValueChanged)="onTimeSelection($event)">
+  <igx-time-picker name="dateTime" (onValueChanged)="onDateSelection($event)">
     <ng-template igxTimePickerTemplate let-openDialog="openDialog" let-value="value" let-displayTime="displayTime">
       <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>Time </label>
