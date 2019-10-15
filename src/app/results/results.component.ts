@@ -1,8 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LocationService } from '../services/location.service';
+import { TripsService } from '../services/trips.service';
 import { API_KEY } from '../../../config.js';
-import { from } from 'rxjs';
-import { distinct, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-results',
@@ -17,11 +16,12 @@ export class ResultsComponent implements OnInit {
   currentUser = localStorage.getItem('userId');
   public allPlaces = [];
   public images = [];
+  newColor = false;
   allPlacesSubscription;
   imagesSubscription;
   // private _window;
 
-  constructor(private locationService: LocationService) { }
+  constructor(private locationService: LocationService, private trips: TripsService) { }
 
   ngOnInit() {
     this.loadPlaces();
@@ -42,6 +42,20 @@ export class ResultsComponent implements OnInit {
 
   getImageSrc (ref) {
     return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
+  }
+
+  toggleColor() {
+    this.newColor = !this.newColor;
+    console.log('color change');
+  }
+
+  onUpvote(place) {
+    console.log('PLACE UPVOTED', place);
+    this.toggleColor();
+    this.trips.upvoteInterest(place, this.currentUser)
+      .subscribe(response => {
+        console.log('UPVOTE response', response);
+    });
   }
 
 }
