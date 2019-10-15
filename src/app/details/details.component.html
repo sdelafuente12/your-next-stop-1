@@ -4,12 +4,12 @@
 
 <div class="card-column">
   <igx-card>
-    <igx-card-media height="248px">
-      <img src="../../assets/images/sushi.jpg">
+    <igx-card-media>
+      <img src="../../assets/images/fair grinds.jpg">
     </igx-card-media>
     <igx-card-header>
-      <h3 igxCardHeaderTitle>Sushi</h3>
-      <h5 igxCardHeaderSubtitle>2 mi</h5>
+      <h3 igxCardHeaderTitle>Fair Grinds Coffeehouse</h3>
+      <h3 igxCardHeaderSubtitle>Cafe</h3>
       <div class="button-sample">
         <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
           <igx-icon fontSet="material">thumb_up</igx-icon>
@@ -17,7 +17,24 @@
       </div>
     </igx-card-header>
     <igx-card-content>
-      <p>Dynamic and detailed information related to the item selected and presented on this page.</p>
+      <p>Cozy coffeehouse with pastries, vegan snacks & fair-trade brews, plus outdoor seating.</p>
     </igx-card-content>
+    <ng-container>
+    <div class="line-wrapper">
+    <igx-icon fontSet="material">computer</igx-icon>
+    <h3 igxCardHeaderSubtitle>fairgrinds.com</h3>
+    </div>
+    <div class="line-wrapper">
+      <igx-icon fontSet="material">phone</igx-icon>
+    <h3 igxCardHeaderSubtitle>(504) 913-9072</h3>
+    </div>
+    <div class="line-wrapper">
+      <igx-icon fontSet="material">location_city</igx-icon>
+    <h3 igxCardHeaderSubtitle>3133 Ponce De Leon St
+      New Orleans, LA 70119</h3>
+      </div>
+      </ng-container>
   </igx-card>
 </div>
+
+
