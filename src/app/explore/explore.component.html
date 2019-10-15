@@ -1,4 +1,4 @@
-<div >
+<div style="margin-bottom: 20px;">
   <h4 class="igx-typography__h4">Explore</h4>
 </div>
 
@@ -19,7 +19,7 @@
         <igx-card>
           <igx-card-header>
             <h3 igxCardHeaderTitle>{{place.name}}</h3>
-            <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
+            <button [ngClass]="{'change': newColor}">
               <igx-icon fontSet="material" (click)=onUpvote(place)>thumb_up</igx-icon>
             </button>
           </igx-card-header>
