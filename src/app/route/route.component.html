@@ -15,7 +15,7 @@
       
 <!------------------------------- origin input -------------------------------->
   <igx-input-group #originGroup type="border">
-    <input #origin igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required"
+    <input igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required"
       (ngModelChange)="onKey('origin')" [igxAutocomplete]="originSuggestions" [igxAutocompleteSettings]='settings'
       (click)="onClick()" />
     <label igxLabel for="origin">Origin</label>
@@ -30,7 +30,7 @@
   </igx-drop-down>
   <!-------------------------- waypoints input0 ----------------------------------->
   <igx-input-group type="border">
-    <input #waypoint0
+    <input 
     igxInput 
     name="waypoint0"
     type="text" 
@@ -55,7 +55,7 @@
 <!-------------------------- waypoints input1 ----------------------------------->
   <ng-container *ngIf="show[1]">
     <igx-input-group type="border">
-      <input #waypoint1
+      <input 
       igxInput 
       name="waypoint1"
       type="text" 
@@ -84,7 +84,7 @@
   <!-------------------------- waypoints input2 ----------------------------------->
   <ng-container *ngIf="show[2]">
     <igx-input-group type="border">
-      <input #waypoint2
+      <input
       igxInput 
       name="waypoint"
       type="text" 
@@ -110,7 +110,7 @@
 <!-------------------------- waypoints input3 ----------------------------------->
   <ng-container *ngIf="show[3]">
     <igx-input-group type="border">
-      <input #waypoint3
+      <input 
       igxInput 
       name="waypoint3"
       type="text" 
@@ -138,7 +138,7 @@
   <!-------------------------- waypoints input4 ----------------------------------->
   <ng-container *ngIf="show[4]">
     <igx-input-group type="border">
-      <input #waypoint4
+      <input 
       igxInput 
       name="waypoint4"
       type="text" 
@@ -162,7 +162,7 @@
   </ng-container>
 <!----------------------------- destination input ---------------------------------->
   <igx-input-group type="border">
-      <input #destination 
+      <input
       igxInput 
       name="destination" 
       type="text" 
