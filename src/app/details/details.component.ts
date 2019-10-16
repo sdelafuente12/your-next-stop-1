@@ -12,7 +12,8 @@ import { TripsComponent } from '../trips/trips.component';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  newColor = false;
+  thumbColor = false;
+  saveColor = false;
   state$: Observable<object>;
   placeId: string;
   selectedPlaceInfo: {};
@@ -21,9 +22,12 @@ export class DetailsComponent implements OnInit {
 
   constructor(public activatedRoute: ActivatedRoute, private location: LocationService) { }
   
-  toggleColor() {
-    this.newColor = !this.newColor;
-    console.log('color change');
+  toggleThumb() {
+    this.thumbColor = !this.thumbColor;
+  }
+
+  toggleSave() {
+    this.saveColor = !this.saveColor;
   }
 
   ngOnInit() {

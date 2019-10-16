@@ -11,7 +11,6 @@
           <igx-card>
             <igx-card-header>
               <h3 igxCardHeaderTitle>{{place.name}}</h3>
-              <igx-icon [ngClass]="{'change': newColor}" (click)=onUpvote(place)>thumb_up</igx-icon>
             </igx-card-header>
           <igx-card-media (click)="navigateWithState(place.placeId)" height="200px">
             <ng-container *ngIf="place.photos">
