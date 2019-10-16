@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TripsService } from '../services/trips.service';
+import { LocationService } from '../services/location.service';
 import { API_KEY } from '../../../config.js';
 
 @Component({
@@ -16,14 +16,14 @@ export class PlacesComponent implements OnInit {
   //   city: 'San Antonio, TX', name: ''
   // }]
 
-  constructor(private trips: TripsService) {}
+  constructor(private location: LocationService) {}
 
   ngOnInit() {
     this.getUserPlaces();
   }
 
   getUserPlaces() {
-    this.trips.getUserPlaces(this.userId)
+    this.location.getUserPlaces(this.userId)
     .subscribe(userPlace => {
       console.log(userPlace);
       this.userPlaces.push(userPlace);
@@ -42,7 +42,7 @@ export class PlacesComponent implements OnInit {
   onUpvote(place) {
     console.log('PLACE UPVOTED', place);
     this.toggleColor();
-    this.trips.upvoteInterest(place, this.userId)
+    this.location.upvoteInterest(place, this.userId)
       .subscribe(response => {
         console.log('UPVOTE response', response);
       })
