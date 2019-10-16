@@ -6,7 +6,7 @@
   <div class="valign" style="width: 100%;height: 100%">
     <div class="row" style="height: 100%">
       <div class="col s12" style="height: 100%">
-        <app-map (placesLoaded)="loadPlaces()" (imagesLoaded)="loadImages()" (markerClicked)="mapMarkerClicked($event)"></app-map>
+        <app-map (placesLoaded)="loadPlaces()" (imagesLoaded)="loadImages($event)" (markerClicked)="mapMarkerClicked($event)"></app-map>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@
           </igx-card-header>
           <igx-card-media (click)="navigateWithState(place.placeId)" height="200px">
             <ng-container *ngIf="images.length">
-              <img [src]="images[i] | htmlSanitizer">
+              <img [src]="images[i]">
               </ng-container>
           </igx-card-media>
         </igx-card>

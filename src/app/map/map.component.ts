@@ -69,22 +69,25 @@ export class MapComponent implements OnInit, OnDestroy {
       .pipe(
         switchMap(position => {
           this.currentPosition = {
-                      // lat: 29.96768435314543,
-                      // lng: -90.05025405587452
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude
+            lat: 45.53006858396305, lng: -122.65297249732771
+                  // lat: position.coords.latitude,
+                  // lng: position.coords.longitude
                 }
-          return this.locationService.getNearbyPlaces(position, this.snapshotUrl)
+               const p = {
+                 coords: {latitude: this.currentPosition.lat, longitude: this.currentPosition.lng }
+               }
+                console.log(position)
+          return this.locationService.getNearbyPlaces(p, this.snapshotUrl)
         })
         )
         .subscribe(places => {
           this.nearbyPlaces = places;
           this.placesLoaded.emit('places loaded')
-          console.log(this.nearbyPlaces)
+          // console.log(this.nearbyPlaces)
           this.nearbyPlaces.map((place, i) => {
-            // const placeCoords = { lat: place.lat, lng: place.lng, name: place.name } 
-            // this.getPlacePhoto(placeCoords, i)
-            this.getPlacePhoto(place.photos, i)
+            const placeCoords = { lat: place.lat, lng: place.lng, name: place.name } 
+            this.getPlacePhoto(placeCoords, i)
+            // this.getPlacePhoto(place.photos, i)
           })
         })
 
@@ -122,11 +125,11 @@ export class MapComponent implements OnInit, OnDestroy {
       .pipe(
         distinct(),
         )
-      .subscribe(photo => {
-        console.log(photo)
-        this.images[index] = this._window.URL.createObjectURL(photo);
-        if (this.images.length === 14) {//this number will need to be dynamic in the future (ncategories * nplaces)
-          this.imagesLoaded.emit('');
+      .subscribe(photos => {
+        console.log(photos)
+        this.images[index] = photos || ['http://www.moxmultisport.com/wp-content/uploads/no-image.jpg'];
+        if (this.images.length) {//this number will need to be dynamic in the future (ncategories * nplaces)
+          this.imagesLoaded.emit(index);
         }
       })
     }  
