@@ -14,16 +14,16 @@
   }
 
 .card-column {
-  max-width: 152px;
+  max-width: 160px;
   display: block;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   flex-flow: column nowrap;
   flex: 1 0 25%;
   align-content: flex-start;
   font-family: 'Roboto', sans-serif;
   width: inherit;
   position: relative;
-  height: 300px;
+  height: 250px;
   margin: 0 auto;
   margin-top: 15px;
   background: transparent;
@@ -46,4 +46,9 @@ igx-card-header {
 
 .igx-card-header__title {
   font-size: 16px;
+}
+
+button {
+  border: none;
+  background: #353a50
 }
