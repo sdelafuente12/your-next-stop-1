@@ -7,20 +7,20 @@
 
     <igx-tabs-group label="Likes">
         <div class="card-column">
-          <ng-container *ngFor="let places of userPlaces">
-            <h5>{{places[0].city}}</h5>
+          <ng-container *ngFor="let likedPlace of userPlaces[0].likedPlaces">
+            <h5>{{likedPlace.city}}</h5>
             <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
-              <ng-container *ngFor="let place of places">
+              <ng-container>
                 <igx-slide>
                   <div class="card-column">
                     <igx-card routerLink="/details">
                       <igx-card-header>
-                        <h3 igxCardHeaderTitle>{{place.name}}</h3>
+                        <h3 igxCardHeaderTitle>{{likedPlace.name}}</h3>
                         <igx-icon [ngClass]="{'change': newColor}" (click)=onUpvote(place)>thumb_up</igx-icon>
                       </igx-card-header>
                       <igx-card-media routerLink="/details" height="200px">
-                        <ng-container *ngIf="place.photo">
-                          <img [src]="getImageSrc(place.photo)" />
+                        <ng-container *ngIf="likedPlace.photo">
+                          <img [src]="getImageSrc(likedPlace.photo)" />
                         </ng-container>
                       </igx-card-media>
                     </igx-card>
@@ -34,22 +34,33 @@
     </igx-tabs-group>
 
 
-        <igx-tabs-group label="Interests">
+        <igx-tabs-group label="Saved">
           <div class="card-column">
-            <ng-container *ngFor="let places of userPlaces"></ng-container>
-            <igx-card>
-              <igx-card-header>
-                <h3 igxCardHeaderTitle>Interesting</h3>
-                <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
-                  <igx-icon fontSet="material">thumb_up</igx-icon>
-                </button>
-              </igx-card-header>
-              <igx-card-media routerLink="/details" height="200px"></igx-card-media>
-            </igx-card>
+            <ng-container *ngFor="let savedPlace of userPlaces[0].savedPlaces">
+              <h5>{{savedPlace.city}}</h5>
+              <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
+                <ng-container>
+                  <igx-slide>
+                    <div class="card-column">
+                      <igx-card routerLink="/details">
+                        <igx-card-header>
+                          <h3 igxCardHeaderTitle>{{savedPlace.name}}</h3>
+                          <igx-icon [ngClass]="{'change': newColor}" (click)=onUpvote(place)>thumb_up</igx-icon>
+                        </igx-card-header>
+                        <igx-card-media routerLink="/details" height="200px">
+                          <ng-container *ngIf="savedPlace.photo">
+                            <img [src]="getImageSrc(savedPlace.photo)" />
+                          </ng-container>
+                        </igx-card-media>
+                      </igx-card>
+                    </div>
+                  </igx-slide>
+                </ng-container>
+              </igx-carousel>
+              <igx-divider></igx-divider>
+            </ng-container>
           </div>
         </igx-tabs-group>
-        </igx-tabs>
-        </div>
 
 
     <!-- <igx-tabs-group label="Interests">
