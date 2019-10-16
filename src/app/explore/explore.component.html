@@ -23,7 +23,7 @@
               <igx-icon fontSet="material" (click)=onUpvote(place)>thumb_up</igx-icon>
             </button>
           </igx-card-header>
-          <igx-card-media (click)="navigateWithState(place)" height="200px">
+          <igx-card-media (click)="navigateWithState(place.placeId)" height="200px">
             <ng-container *ngIf="images.length">
               <img [src]="images[i] | htmlSanitizer">
               </ng-container>
