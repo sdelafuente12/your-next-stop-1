@@ -55,7 +55,7 @@ export class DetailsComponent implements OnInit {
 
   onUpvote(place) {
     console.log('PLACE UPVOTED', place);
-    this.toggleColor();
+    this.toggleThumb();
     this.location.upvoteInterest(place, this.currentUser)
       .subscribe(response => {
         console.log('UPVOTE response', response);
