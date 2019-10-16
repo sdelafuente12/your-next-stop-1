@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router'
 import { LocationService } from '../services/location.service';
 import { map, take } from 'rxjs/operators';
 import { API_KEY } from '../../../config.js';
+import { TripsComponent } from '../trips/trips.component';
 
 @Component({
   selector: 'app-details',
@@ -16,12 +17,13 @@ export class DetailsComponent implements OnInit {
   placeId: string;
   selectedPlaceInfo: {};
   selectedPlacePhoto: null;
+  currentUser = localStorage.getItem('userId');
 
   constructor(public activatedRoute: ActivatedRoute, private location: LocationService) { }
   
   toggleColor() {
     this.newColor = !this.newColor;
-    console.log('color change')
+    console.log('color change');
   }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class DetailsComponent implements OnInit {
         )
     this.state$.subscribe(state => 
       this.getPlaceInfo(state));
-  }
+}
 
   getPlaceInfo(place) {
     // console.log('PLACEEEE', place);
@@ -45,6 +47,15 @@ export class DetailsComponent implements OnInit {
 
   getImageSrc(ref) {
     return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
+  }
+
+  onUpvote(place) {
+    console.log('PLACE UPVOTED', place);
+    this.toggleColor();
+    this.location.upvoteInterest(place, this.currentUser)
+      .subscribe(response => {
+        console.log('UPVOTE response', response);
+      });
   }
 
 }
