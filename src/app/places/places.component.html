@@ -8,7 +8,7 @@
     <igx-tabs-group label="Likes">
         <div class="card-column">
           <ng-container *ngFor="let likedPlace of userPlaces[0].likedPlaces">
-            <h5>{{likedPlace.city}}</h5>
+            <!-- <h5>{{likedPlace.city}}</h5> -->
             <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
               <ng-container *ngFor="let likedPlace of userPlaces[0].likedPlaces">
                 <igx-slide>
@@ -37,7 +37,7 @@
         <igx-tabs-group label="Saved">
           <div class="card-column">
             <ng-container *ngFor="let savedPlace of userPlaces[0].savedPlaces">
-              <h5>{{savedPlace.city}}</h5>
+              <!-- <h5>{{savedPlace.city}}</h5> -->
               <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
                 <ng-container *ngFor="let savedPlace of userPlaces[0].savedPlaces">
                   <igx-slide>
