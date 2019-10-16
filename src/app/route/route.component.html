@@ -16,7 +16,7 @@
 <!------------------------------- origin input -------------------------------->
   <igx-input-group #originGroup type="border">
     <input igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required"
-      (ngModelChange)="onKey('origin')" [igxAutocomplete]="originSuggestions" [igxAutocompleteSettings]='settings'
+      (ngModelChange)="onKey('origin', null)" [igxAutocomplete]="originSuggestions" [igxAutocompleteSettings]='settings'
       (click)="onClick()" />
     <label igxLabel for="origin">Origin</label>
     <igx-suffix>
@@ -56,7 +56,6 @@
   <ng-container *ngIf="show[1]">
     <igx-input-group type="border">
       <input 
-      igxInput 
       name="waypoint1"
       type="text" 
       [(ngModel)]="form.waypoints[1]"
@@ -167,7 +166,7 @@
       name="destination" 
       type="text" 
       [(ngModel)]="form.destination"
-      (ngModelChange)="onKey('destination')" 
+      (ngModelChange)="onKey('destination', null)" 
       [igxAutocomplete]="destinationSuggestions"
       [igxAutocompleteSettings]='settings' 
       (click)="onClick()" 
@@ -186,7 +185,7 @@
   <ng-template #mySelectIcon>
     <igx-icon fontSet="fa-solid" name="fa-check-circle"></igx-icon>
   </ng-template>
-  <igx-date-picker name="startDate" (onSelection)="onDateSelection($event, 'start')">
+  <igx-date-picker name="startDate" (onSelection)="onDateSelection($event)">
     <ng-template #dp igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
       <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>Start Date</label>
@@ -197,7 +196,7 @@
       </igx-input-group>
     </ng-template>
   </igx-date-picker>
-  <igx-date-picker name="endDate" (onSelection)="onDateSelection($event, 'end')">
+  <igx-date-picker name="endDate" (onSelection)="onDateSelection($event)">
     <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
       <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>End Date</label>
