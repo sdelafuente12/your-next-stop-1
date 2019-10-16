@@ -123,7 +123,7 @@ export class MapComponent implements OnInit, OnDestroy {
         distinct(),
         )
       .subscribe(photo => {
-        console.log(photo)
+        // console.log(photo)
         this.images[index] = this._window.URL.createObjectURL(photo);
         if (this.images.length === 14) {//this number will need to be dynamic in the future (ncategories * nplaces)
           this.imagesLoaded.emit('');
