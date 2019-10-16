@@ -53,9 +53,9 @@ export class LocationService {
     const currentPositionString = `${location.coords.latitude},${location.coords.longitude}`;
     const id = localStorage.getItem('userId');
 
-    if(!this.wait){
-      this.wait = true;
-      setTimeout(() => this.wait = false, 1000)
+    // if(!this.wait){
+    //   this.wait = true;
+    //   setTimeout(() => this.wait = false, 1000)
 
       return this.http.get(this.getNearbyPlacesEndpoint, {
         params: new HttpParams()
@@ -63,21 +63,21 @@ export class LocationService {
         .set('id', id)
         .set('snapshotUrl', snapshotUrl)
       })
-    }
+    // }
   }
 
-  public getPlacePhoto(photoRef) {
+  public getPlacePhoto(coordinates) {
    
-    // return this.http.get(`${environment.BASE_API_URL}/yelpAPI`, {
-    //   params: new HttpParams()
-    //   .set('latitude', coordinates.lat)
-    //   .set('longitude', coordinates.lng)
-    //   .set('name', coordinates.name)
-    // })
-    return this.http.get(this.getPlacePhotoEndpoint, {
-      responseType: "blob",
-      params: new HttpParams().set('ref', photoRef)
+    return this.http.get(`${environment.BASE_API_URL}/yelpAPI`, {
+      params: new HttpParams()
+      .set('latitude', coordinates.lat)
+      .set('longitude', coordinates.lng)
+      .set('name', coordinates.name)
     })
+    // return this.http.get(this.getPlacePhotoEndpoint, {
+    //   responseType: "blob",
+    //   params: new HttpParams().set('ref', photoRef)
+    // })
   }
 
   public getPlaceInfo(place) {

@@ -12,7 +12,7 @@
 
 <form class="input-group-form">  
 <!------------------------------- origin input -------------------------------->
-  <igx-input-group #originGroup type="border">
+  <igx-input-group type="border">
     <input igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required"
       (ngModelChange)="onKey('origin', null)" [igxAutocomplete]="originSuggestions" [igxAutocompleteSettings]='settings'
       (click)="onClick()" />
@@ -53,7 +53,8 @@
 <!-------------------------- waypoints input1 ----------------------------------->
   <ng-container *ngIf="show[1]">
     <igx-input-group type="border">
-      <input 
+      <input
+      igxInput 
       name="waypoint1"
       type="text" 
       [(ngModel)]="form.waypoints[1]"
@@ -104,7 +105,7 @@
 <!-------------------------- waypoints input3 ----------------------------------->
   <ng-container *ngIf="show[3]">
     <igx-input-group type="border">
-      <input 
+      <input
       igxInput 
       name="waypoint3"
       type="text" 
@@ -131,7 +132,7 @@
   <!-------------------------- waypoints input4 ----------------------------------->
   <ng-container *ngIf="show[4]">
     <igx-input-group type="border">
-      <input 
+      <input
       igxInput 
       name="waypoint4"
       type="text" 
