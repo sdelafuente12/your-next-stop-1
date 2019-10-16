@@ -1,5 +1,5 @@
       <div [formGroup]="waypointGroup">
-        <div formArrayName="waypoints" *ngFor="let waypoint of waypointGroup.get('waypoints').controls; let i = index">
+        <div formArrayName="waypoints" *ngFor="let waypoint of waypointGroup.get('waypoints'); let i = index">
           <label [attr.for]="waypoint + i">Add a Stop</label>
           <div [formGroupName]="i">
             <input 
