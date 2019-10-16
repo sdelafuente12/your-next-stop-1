@@ -9,15 +9,21 @@ import { map, take } from 'rxjs/operators';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  newColor = false;
+  thumbColor = false;
+  saveColor = false;
   state$: Observable<object>;
   placeId: string;
   constructor(public activatedRoute: ActivatedRoute) { }
   
-  toggleColor() {
-    this.newColor = !this.newColor;
-    console.log('color change')
+  toggleThumb() {
+    this.thumbColor = !this.thumbColor;
+    console.log('thumb')
   }
+
+  toggleSave() {
+    this.saveColor = !this.saveColor;
+  }
+
   ngOnInit() {
     this.state$ = this.activatedRoute.paramMap
       .pipe(

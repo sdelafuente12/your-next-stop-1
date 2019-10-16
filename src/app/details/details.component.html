@@ -10,11 +10,12 @@
     <igx-card-header>
       <h3 igxCardHeaderTitle>Fair Grinds Coffeehouse</h3>
       <h3 igxCardHeaderSubtitle>Cafe</h3>
-      <div class="button-sample">
-        <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
+        <button class="button-sample" [ngClass]="{'thumb': thumbColor}" (click)="toggleThumb()">
           <igx-icon fontSet="material">thumb_up</igx-icon>
         </button>
-      </div>
+          <button class="button-sample" [ngClass]="{'save': saveColor}" (click)="toggleSave()">
+            <igx-icon fontSet="material">add_circle_outline</igx-icon>
+          </button>
     </igx-card-header>
     <igx-card-content>
       <p>Cozy coffeehouse with pastries, vegan snacks & fair-trade brews, plus outdoor seating.</p>
