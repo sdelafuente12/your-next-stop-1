@@ -12,9 +12,6 @@ export class PlacesComponent implements OnInit {
   userId = localStorage.getItem('userId');
   newColor = false;
   userPlaces = [];
-  // visitedPlaces = [{
-  //   city: 'San Antonio, TX', name: ''
-  // }]
 
   constructor(private location: LocationService) {}
 
@@ -42,7 +39,7 @@ export class PlacesComponent implements OnInit {
   onUpvote(place) {
     console.log('PLACE UPVOTED', place);
     this.toggleColor();
-    this.location.upvoteInterest(place, this.userId)
+    this.location.upvoteInterest(place, status, this.userId)
       .subscribe(response => {
         console.log('UPVOTE response', response);
       })
