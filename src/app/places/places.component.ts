@@ -8,13 +8,9 @@ import { API_KEY } from '../../../config.js';
   styleUrls: ['./places.component.scss']
 })
 export class PlacesComponent implements OnInit {
-
   userId = localStorage.getItem('userId');
-  newColor = false;
+  thumbColor = false;
   userPlaces = [];
-  // visitedPlaces = [{
-  //   city: 'San Antonio, TX', name: ''
-  // }]
 
   constructor(private location: LocationService) {}
 
@@ -23,29 +19,23 @@ export class PlacesComponent implements OnInit {
   }
 
   getUserPlaces() {
-    this.location.getUserPlaces(this.userId)
-    .subscribe(userPlace => {
+    this.location.getUserPlaces(this.userId).subscribe(userPlace => {
       console.log(userPlace);
       this.userPlaces.push(userPlace);
-    })
+    });
   }
 
   getImageSrc(ref) {
     return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
   }
 
-  toggleColor() {
-    this.newColor = !this.newColor;
-    console.log('color change');
+  toggleThumb() {
+    this.thumbColor = !this.thumbColor;
   }
 
   onUpvote(place) {
-    console.log('PLACE UPVOTED', place);
-    this.toggleColor();
-    this.location.upvoteInterest(place, this.userId)
-      .subscribe(response => {
-        console.log('UPVOTE response', response);
-      })
+    this.toggleThumb();
+    this.location.upvoteInterest(place, this.userId).subscribe(response => {
+    });
   }
-  
 }

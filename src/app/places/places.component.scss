@@ -1,4 +1,6 @@
 @import '~igniteui-angular/lib/core/styles/themes/index';
+@include igx-core();
+@include igx-theme($default-palette);
 
   $colorful-card: igx-card-theme(
     $background: #353A50,
@@ -7,6 +9,8 @@
     $content-text-color: #ffffff
   );
   
+  $pink: #ff2ad2;
+
   :host {
     ::ng-deep {
       @include igx-card($colorful-card);
@@ -14,7 +18,7 @@
   }
 
 .card-column {
-  max-width: 160px;
+  max-width: 225px;
   display: block;
   flex-flow: row wrap;
   flex-flow: column nowrap;
