@@ -4,13 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { HttpParams } from '@angular/common/http';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
   private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`;
   private getPlacePhotoEndpoint = `${environment.BASE_API_URL}/placePhoto`;
+  private getPlaceInfoEndpoint = `${environment.BASE_API_URL}/getPlaceInfo`;
   private wait = false;
 
   constructor(private http: HttpClient) { }
@@ -77,4 +77,10 @@ export class LocationService {
       params: new HttpParams().set('ref', photoRef)
     })
   }
+
+  public getPlaceInfo(place) {
+    const placeId = place.id;
+    return this.http.get(`${this.getPlaceInfoEndpoint}?placeId=${placeId}`)
+  }
+
 }
