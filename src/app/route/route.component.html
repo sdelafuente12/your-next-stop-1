@@ -10,9 +10,7 @@
   </div>
 </div>
 
-<!-- <form class="input-group-form" (ngSubmit)="onSubmit()"> -->
- <form class="input-group-form" (keyup.enter)="onSubmit()">
-      
+<form class="input-group-form">  
 <!------------------------------- origin input -------------------------------->
   <igx-input-group #originGroup type="border">
     <input #origin igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required"
@@ -63,17 +61,14 @@
       (ngModelChange)="onKey('waypoints', 1)"
       [igxAutocomplete]="waypoint1Suggestions"
       [igxAutocompleteSettings]='settings'
-  
       />
       <label igxLabel for="waypoint1">Waypoint</label>
-     
         <igx-suffix *ngIf="!show[2]">
           <igx-icon (click)="addWaypointInput()">add</igx-icon>
         </igx-suffix>
         <igx-suffix *ngIf="!show[2]">
           <igx-icon (click)="removeWaypointInput(1)">remove</igx-icon>
         </igx-suffix>     
-    
     </igx-input-group>
     <igx-drop-down #waypoint1Suggestions maxHeight="300px">
       <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
@@ -118,7 +113,6 @@
       (ngModelChange)="onKey('waypoints', 3)"
       [igxAutocomplete]="waypoint3Suggestions"
       [igxAutocompleteSettings]='settings'
-   
       required="required" 
       />
       <label igxLabel for="waypoint3">Waypoint</label>
@@ -146,7 +140,6 @@
       (ngModelChange)="onKey('waypoints', 4)"
       [igxAutocomplete]="waypoint4Suggestions"
       [igxAutocompleteSettings]='settings'
- 
       required="required" 
       />
       <label igxLabel for="waypoint4">Waypoint</label>
@@ -258,7 +251,7 @@
 </form>
 <!----------------------------- save to trips button -------------------------------------->
 <div style="text-align: center">
-  <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50" (click)="alert.open()">SAVE TO
+  <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50" (click)="alert.open(); onSubmit()">SAVE TO
     TRIPS</button>
   <igx-dialog #alert title="Notification" message="Your route has been saved to trips!" leftButtonLabel="OK"
     (onLeftButtonSelect)="alert.close()">
