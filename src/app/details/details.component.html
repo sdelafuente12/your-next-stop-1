@@ -19,8 +19,8 @@
     </igx-card-header>
     <ng-container>
       <div class="line-wrapper">
-        <h3 igxCardHeaderSubtitle>Category:
-          {{selectedPlaceInfo.category[0].toUpperCase().concat(selectedPlaceInfo.category.slice(1))}}</h3>
+        <h3 igxCardHeaderSubtitle>
+          Category:{{selectedPlaceInfo.category[0].toUpperCase().concat(selectedPlaceInfo.category.slice(1))}}</h3>
       </div>
       <div class="line-wrapper" *ngIf="selectedPlaceInfo.priceLevel">
         <h3 igxCardHeaderSubtitle>Price Level: {{selectedPlaceInfo.priceLevel}}</h3>
