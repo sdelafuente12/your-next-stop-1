@@ -12,7 +12,7 @@
       <h3 igxCardHeaderTitle>{{selectedPlaceInfo.name}}</h3>
       <h3 igxCardHeaderSubtitle>{{selectedPlaceInfo.interest}}</h3>
       <div class="button-sample">
-        <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
+        <button [ngClass]="{'change': newColor}" (click)=onUpvote(selectedPlaceInfo)>
           <igx-icon fontSet="material">thumb_up</igx-icon>
         </button>
       </div>
