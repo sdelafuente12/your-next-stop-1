@@ -5,6 +5,52 @@
 <div class="card-column">
   <igx-card>
     <igx-card-media>
+      <img [src]="getImageSrc(selectedPlaceInfo.photo)">
+      <!-- <img src="../../assets/images/fair grinds.jpg"> -->
+    </igx-card-media>
+    <igx-card-header>
+      <h3 igxCardHeaderTitle>{{selectedPlaceInfo.name}}</h3>
+      <h3 igxCardHeaderSubtitle>{{selectedPlaceInfo.interest}}</h3>
+      <div class="button-sample">
+        <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
+          <igx-icon fontSet="material">thumb_up</igx-icon>
+        </button>
+      </div>
+    </igx-card-header>
+    <!-- <igx-card-content>
+      <p>Cozy coffeehouse with pastries, vegan snacks & fair-trade brews, plus outdoor seating.</p>
+    </igx-card-content> -->
+    <ng-container>
+      <!-- <div class="line-wrapper">
+        <igx-icon fontSet="material">clock</igx-icon>
+        <h3 igxCardHeaderSubtitle *ngFor="let hour of selectedPlaceInfo.hours">{{hour}}</h3>
+      </div> -->
+      <div class="line-wrapper">
+        <h3 igxCardHeaderSubtitle>Price Level: {{selectedPlaceInfo.priceLevel}}</h3>
+      </div>
+      <div class="line-wrapper">
+        <h3 igxCardHeaderSubtitle>Rating: {{selectedPlaceInfo.rating}}</h3>
+      </div>
+      <div class="line-wrapper">
+        <igx-icon fontSet="material">computer</igx-icon>
+        <h3 igxCardHeaderSubtitle >{{selectedPlaceInfo.website}}</h3>
+      </div>
+      <div class="line-wrapper">
+        <igx-icon fontSet="material">phone</igx-icon>
+        <h3 igxCardHeaderSubtitle>{{selectedPlaceInfo.phone}}</h3>
+      </div>
+      <div class="line-wrapper">
+        <igx-icon fontSet="material">location_city</igx-icon>
+        <h3 igxCardHeaderSubtitle>{{selectedPlaceInfo.address}}
+          </h3>
+      </div>
+    </ng-container>
+  </igx-card>
+</div>
+
+<!-- <div class="card-column">
+  <igx-card>
+    <igx-card-media>
       <img src="../../assets/images/fair grinds.jpg">
     </igx-card-media>
     <igx-card-header>
@@ -37,4 +83,4 @@
   </igx-card>
 </div>
 
-
+ -->
