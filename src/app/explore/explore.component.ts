@@ -24,8 +24,8 @@ export class ExploreComponent implements OnInit {
   currentUser = localStorage.getItem('userId');
 
   constructor(private route: ActivatedRoute, public router: Router, private trips: TripsService) {
-    console.log('PLACESSSSSSSSSSSSSSSSSSSS', this.places);
-    console.log('ROUTE', this.route.snapshot.queryParams);
+    // console.log('PLACESSSSSSSSSSSSSSSSSSSS', this.places);
+    // console.log('ROUTE', this.route.snapshot.queryParams);
   }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class ExploreComponent implements OnInit {
     this.placesSubscription = from(this.map.nearbyPlaces)
     .subscribe(place => {
       this.places.push(place)
-      console.log('EXPLORE PLACES', this.places)
+      // console.log('EXPLORE PLACES', this.places)
     })
   }
 
@@ -62,11 +62,12 @@ export class ExploreComponent implements OnInit {
   }
 
   navigateWithState(id) {
+    // console.log('ID', id);
     this.router.navigateByUrl('/details', { state: { id } });
   }
 
   onUpvote(place) {
-    console.log('PLACE UPVOTED', place);
+    // console.log('PLACE UPVOTED', place);
     this.toggleColor();
     this.trips.upvoteInterest(place, this.currentUser)
     .subscribe(response => {
