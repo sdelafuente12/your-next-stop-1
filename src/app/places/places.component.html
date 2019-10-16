@@ -34,7 +34,25 @@
     </igx-tabs-group>
 
 
-    <igx-tabs-group label="Interests">
+        <igx-tabs-group label="Interests">
+          <div class="card-column">
+            <ng-container *ngFor="let places of userPlaces"></ng-container>
+            <igx-card>
+              <igx-card-header>
+                <h3 igxCardHeaderTitle>Interesting</h3>
+                <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
+                  <igx-icon fontSet="material">thumb_up</igx-icon>
+                </button>
+              </igx-card-header>
+              <igx-card-media routerLink="/details" height="200px"></igx-card-media>
+            </igx-card>
+          </div>
+        </igx-tabs-group>
+        </igx-tabs>
+        </div>
+
+
+    <!-- <igx-tabs-group label="Interests">
         <div class="card-column">
           <igx-card>
             <igx-card-header>
@@ -48,4 +66,4 @@
         </div>
     </igx-tabs-group>
   </igx-tabs>
-</div>
+</div> -->

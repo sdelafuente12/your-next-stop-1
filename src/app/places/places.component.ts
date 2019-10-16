@@ -12,6 +12,9 @@ export class PlacesComponent implements OnInit {
   userId = localStorage.getItem('userId');
   newColor = false;
   userPlaces = [];
+  // visitedPlaces = [{
+  //   city: 'San Antonio, TX', name: ''
+  // }]
 
   constructor(private trips: TripsService) {}
 

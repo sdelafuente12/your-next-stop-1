@@ -18,13 +18,18 @@ export class DetailsComponent implements OnInit {
     this.newColor = !this.newColor;
     console.log('color change')
   }
+
   ngOnInit() {
-    this.state$ = this.activatedRoute.paramMap
-      .pipe(
-        map((value) => this.placeId = window.history.state),
-        take(1)
-        )
-    this.state$.subscribe(state => console.log('state', state))
+    // this.state$ = this.activatedRoute.paramMap
+    //   .pipe(
+    //     map((value) => this.placeId = window.history.state),
+    //     take(1)
+    //     )
+    // this.state$.subscribe(state => console.log('state', state))
+  }
+
+  displayPlaceInfo(place) {
+    console.log('PLACEEEE', place);
   }
 
 }
