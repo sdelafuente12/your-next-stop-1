@@ -5,36 +5,42 @@
 <div class="card-column">
   <igx-card>
     <igx-card-media>
-      <img src="../../assets/images/fair grinds.jpg">
+      <img [src]="getImageSrc(selectedPlaceInfo.photo)">
     </igx-card-media>
     <igx-card-header>
-      <h3 igxCardHeaderTitle>Fair Grinds Coffeehouse</h3>
-      <h3 igxCardHeaderSubtitle>Cafe</h3>
-      <div class="button-sample">
-        <button [ngClass]="{'change': newColor}" (click)="toggleColor()">
-          <igx-icon fontSet="material">thumb_up</igx-icon>
-        </button>
-      </div>
+      <h3 igxCardHeaderTitle>{{selectedPlaceInfo.name}}</h3>
+      <h3 igxCardHeaderSubtitle>{{selectedPlaceInfo.interest}}</h3>
+      <button class="button-sample" [ngClass]="{'thumb': thumbColor}" (click)="toggleThumb()">
+        <igx-icon fontSet="material">thumb_up</igx-icon>
+      </button>
+      <button class="button-sample" [ngClass]="{'save': saveColor}" (click)="toggleSave()">
+        <igx-icon fontSet="material">add_circle_outline</igx-icon>
+      </button>
     </igx-card-header>
-    <igx-card-content>
-      <p>Cozy coffeehouse with pastries, vegan snacks & fair-trade brews, plus outdoor seating.</p>
-    </igx-card-content>
     <ng-container>
-    <div class="line-wrapper">
-    <igx-icon fontSet="material">computer</igx-icon>
-    <h3 igxCardHeaderSubtitle>fairgrinds.com</h3>
-    </div>
-    <div class="line-wrapper">
-      <igx-icon fontSet="material">phone</igx-icon>
-    <h3 igxCardHeaderSubtitle>(504) 913-9072</h3>
-    </div>
-    <div class="line-wrapper">
-      <igx-icon fontSet="material">location_city</igx-icon>
-    <h3 igxCardHeaderSubtitle>3133 Ponce De Leon St
-      New Orleans, LA 70119</h3>
+      <div class="line-wrapper">
+        <h3 igxCardHeaderSubtitle>Category:
+          {{selectedPlaceInfo.category[0].toUpperCase().concat(selectedPlaceInfo.category.slice(1))}}</h3>
       </div>
-      </ng-container>
+      <div class="line-wrapper" *ngIf="selectedPlaceInfo.priceLevel">
+        <h3 igxCardHeaderSubtitle>Price Level: {{selectedPlaceInfo.priceLevel}}</h3>
+      </div>
+      <div class="line-wrapper">
+        <h3 igxCardHeaderSubtitle>Rating: {{selectedPlaceInfo.rating}}</h3>
+      </div>
+      <div class="line-wrapper">
+        <igx-icon fontSet="material">computer</igx-icon>
+        <h3 igxCardHeaderSubtitle>{{selectedPlaceInfo.website}}</h3>
+      </div>
+      <div class="line-wrapper">
+        <igx-icon fontSet="material">phone</igx-icon>
+        <h3 igxCardHeaderSubtitle>{{selectedPlaceInfo.phone}}</h3>
+      </div>
+      <div class="line-wrapper">
+        <igx-icon fontSet="material">location_city</igx-icon>
+        <h3 igxCardHeaderSubtitle>{{selectedPlaceInfo.address}}
+        </h3>
+      </div>
+    </ng-container>
   </igx-card>
 </div>
-
-

@@ -12,16 +12,13 @@
   </div>
 </div>
 
-<igx-carousel #ic [pause]="true" [loop]="true" >
+<igx-carousel #ic [pause]="true" [loop]="true">
   <ng-container *ngFor="let place of places; let i = index;">
     <igx-slide>
       <div class="card-column">
         <igx-card>
           <igx-card-header>
             <h3 igxCardHeaderTitle>{{place.name}}</h3>
-            <button [ngClass]="{'change': newColor}">
-              <igx-icon fontSet="material" (click)=onUpvote(place)>thumb_up</igx-icon>
-            </button>
           </igx-card-header>
           <igx-card-media (click)="navigateWithState(place.placeId)" height="200px">
             <ng-container *ngIf="images.length">

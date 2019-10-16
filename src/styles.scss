@@ -147,6 +147,10 @@ $green-palette: igx-palette(
   @include igx-dark-theme($green-palette);
 }
 
-.change {
+.thumb {
+  color: $pink;
+}
+
+.save {
   color: $pink;
 }

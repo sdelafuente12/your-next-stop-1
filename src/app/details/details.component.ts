@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, ParamMap } from '@angular/router'
+import { LocationService } from '../services/location.service';
 import { map, take } from 'rxjs/operators';
+import { API_KEY } from '../../../config.js';
+import { TripsComponent } from '../trips/trips.component';
 
 @Component({
   selector: 'app-details',
@@ -9,22 +12,54 @@ import { map, take } from 'rxjs/operators';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  newColor = false;
+  thumbColor = false;
+  saveColor = false;
   state$: Observable<object>;
   placeId: string;
-  constructor(public activatedRoute: ActivatedRoute) { }
+  selectedPlaceInfo: {};
+  selectedPlacePhoto: null;
+  currentUser = localStorage.getItem('userId');
+
+  constructor(public activatedRoute: ActivatedRoute, private location: LocationService) { }
   
-  toggleColor() {
-    this.newColor = !this.newColor;
-    console.log('color change')
+  toggleThumb() {
+    this.thumbColor = !this.thumbColor;
   }
+
+  toggleSave() {
+    this.saveColor = !this.saveColor;
+  }
+
   ngOnInit() {
     this.state$ = this.activatedRoute.paramMap
       .pipe(
         map((value) => this.placeId = window.history.state),
         take(1)
         )
-    this.state$.subscribe(state => console.log('state', state))
+    this.state$.subscribe(state => 
+      this.getPlaceInfo(state));
+}
+
+  getPlaceInfo(place) {
+    // console.log('PLACEEEE', place);
+    this.location.getPlaceInfo(place)
+    .subscribe(info => {
+      console.log('INFO', info);
+      this.selectedPlaceInfo = info;
+    })
+  }
+
+  getImageSrc(ref) {
+    return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
+  }
+
+  onUpvote(place) {
+    console.log('PLACE UPVOTED', place);
+    this.toggleThumb();
+    this.location.upvoteInterest(place, this.currentUser)
+      .subscribe(response => {
+        console.log('UPVOTE response', response);
+      });
   }
 
 }

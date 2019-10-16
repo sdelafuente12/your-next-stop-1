@@ -8,12 +8,11 @@
     <ng-container *ngFor="let place of places">
       <igx-slide>
         <div class="card-column">
-          <igx-card routerLink="/details">
+          <igx-card>
             <igx-card-header>
               <h3 igxCardHeaderTitle>{{place.name}}</h3>
-              <igx-icon [ngClass]="{'change': newColor}" (click)=onUpvote(place)>thumb_up</igx-icon>
             </igx-card-header>
-          <igx-card-media height="200px">
+          <igx-card-media (click)="navigateWithState(place.placeId)" height="200px">
             <ng-container *ngIf="place.photos">
               <img [src]="getImageSrc(place.photos)" />
             </ng-container>

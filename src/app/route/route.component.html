@@ -10,13 +10,11 @@
   </div>
 </div>
 
-<!-- <form class="input-group-form" (ngSubmit)="onSubmit()"> -->
- <form class="input-group-form" (keyup.enter)="onSubmit()">
-      
+<form class="input-group-form">  
 <!------------------------------- origin input -------------------------------->
   <igx-input-group type="border">
     <input igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required"
-      (ngModelChange)="onKey('origin')" [igxAutocomplete]="originSuggestions" [igxAutocompleteSettings]='settings'
+      (ngModelChange)="onKey('origin', null)" [igxAutocomplete]="originSuggestions" [igxAutocompleteSettings]='settings'
       (click)="onClick()" />
     <label igxLabel for="origin">Origin</label>
     <igx-suffix>
@@ -63,17 +61,14 @@
       (ngModelChange)="onKey('waypoints', 1)"
       [igxAutocomplete]="waypoint1Suggestions"
       [igxAutocompleteSettings]='settings'
-  
       />
       <label igxLabel for="waypoint1">Waypoint</label>
-     
         <igx-suffix *ngIf="!show[2]">
           <igx-icon (click)="addWaypointInput()">add</igx-icon>
         </igx-suffix>
         <igx-suffix *ngIf="!show[2]">
           <igx-icon (click)="removeWaypointInput(1)">remove</igx-icon>
         </igx-suffix>     
-    
     </igx-input-group>
     <igx-drop-down #waypoint1Suggestions maxHeight="300px">
       <igx-drop-down-item *ngFor="let suggestion of suggestions" [value]="suggestion">
@@ -118,7 +113,6 @@
       (ngModelChange)="onKey('waypoints', 3)"
       [igxAutocomplete]="waypoint3Suggestions"
       [igxAutocompleteSettings]='settings'
-   
       required="required" 
       />
       <label igxLabel for="waypoint3">Waypoint</label>
@@ -146,7 +140,6 @@
       (ngModelChange)="onKey('waypoints', 4)"
       [igxAutocomplete]="waypoint4Suggestions"
       [igxAutocompleteSettings]='settings'
- 
       required="required" 
       />
       <label igxLabel for="waypoint4">Waypoint</label>
@@ -167,7 +160,7 @@
       name="destination" 
       type="text" 
       [(ngModel)]="form.destination"
-      (ngModelChange)="onKey('destination')" 
+      (ngModelChange)="onKey('destination', null)" 
       [igxAutocomplete]="destinationSuggestions"
       [igxAutocompleteSettings]='settings' 
       (click)="onClick()" 
@@ -183,33 +176,12 @@
       </igx-drop-down-item>
     </igx-drop-down>
   <!---------------------------- date picker-------------------------------------- -->
-  <ng-template #mySelectIcon>
-    <igx-icon fontSet="fa-solid" name="fa-check-circle"></igx-icon>
-  </ng-template>
-  <igx-date-picker name="startDate" (onSelection)="onDateSelection($event, 'start')">
-    <ng-template #dp igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
-      <igx-input-group (click)="openDialog()" type="box">
-        <label igxLabel>Start Date</label>
-        <input #dateStart igxInput name="dateStart" [value]="displayData" [(ngModel)]="form.dateStart" required="required" />
-        <igx-suffix>
-          <igx-icon>today</igx-icon>
-        </igx-suffix>
-      </igx-input-group>
-    </ng-template>
+  <igx-date-picker name="startDate" (onSelection)="onDateSelection($event)" [(ngModel)]="form.dateStart">
   </igx-date-picker>
-  <igx-date-picker name="endDate" (onSelection)="onDateSelection($event, 'end')">
-    <ng-template igxDatePickerTemplate let-openDialog="openDialog" let-value="value" let-displayData="displayData">
-      <igx-input-group (click)="openDialog()" type="box">
-        <label igxLabel>End Date</label>
-        <input #dateEnd igxInput name="dateEnd" [value]="displayData" [(ngModel)]="form.dateEnd"  required="required" />
-        <igx-suffix>
-          <igx-icon>today</igx-icon>
-        </igx-suffix>
-      </igx-input-group>
-    </ng-template>
+  <igx-date-picker name="endDate" (onSelection)="onDateSelection($event)" [(ngModel)]="form.dateEnd">
   </igx-date-picker>
   <!---------------------------- time picker ----------------------------------->
-  <igx-time-picker name="dateTime" (onValueChanged)="onTimeSelection($event)">
+  <!-- <igx-time-picker name="dateTime" (onValueChanged)="onTimeSelection($event)">
     <ng-template igxTimePickerTemplate let-openDialog="openDialog" let-value="value" let-displayTime="displayTime">
       <igx-input-group (click)="openDialog()" type="box">
         <label igxLabel>Time </label>
@@ -219,9 +191,9 @@
         </igx-suffix>
       </igx-input-group>
     </ng-template>
-  </igx-time-picker>
+  </igx-time-picker> -->
   <!---------------------------- places of interests buttons ----------------------------------->
-  <section class="chips-places">
+  <!-- <section class="chips-places">
     <igx-card>
       <i class="fas fa-grin fa-3x"></i>
       <span>Amusement Park</span>
@@ -254,11 +226,11 @@
       <i class="fas fa-paw fa-3x"></i>
       <span>Zoo</span>
     </igx-card>
-  </section>
+  </section> -->
 </form>
 <!----------------------------- save to trips button -------------------------------------->
 <div style="text-align: center">
-  <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50" (click)="alert.open()">SAVE TO
+  <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50" (click)="alert.open(); onSubmit()">SAVE TO
     TRIPS</button>
   <igx-dialog #alert title="Notification" message="Your route has been saved to trips!" leftButtonLabel="OK"
     (onLeftButtonSelect)="alert.close()">
