@@ -6,32 +6,27 @@
   <igx-tabs tabsType="fixed">
 
     <igx-tabs-group label="Likes">
-        <ng-container *ngFor="let places of userPlaces">
-          <h5>{{places.city}}</h5>
-          <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
-            <ng-container *ngFor="let place of places">
-              <igx-slide>
-                <div class="card-column">
-                  <igx-card>
-                    <igx-card-header>
-                      <h3 igxCardHeaderTitle>{{place.name}}</h3>
-                      <button class="button-sample"
-                        [ngClass]="{'thumb': thumbColor}" (click)="onUpvote(place)">
-                        <igx-icon fontSet="material">thumb_up</igx-icon>
-                      </button>
-                      
-                    </igx-card-header>
-                    <igx-card-media routerLink="/details" height="200px">
-                      <ng-container *ngIf="place.photo">
-                        <img [src]="getImageSrc(place.photo)" />
-                      </ng-container>
-                    </igx-card-media>
-                  </igx-card>
-                </div>
-              </igx-slide>
-            </ng-container>
-          </igx-carousel>
-        </ng-container>
+      <ng-container *ngFor="let places of userPlaces">
+        <h5>{{places.city}}</h5>
+        <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
+          <ng-container *ngFor="let place of places">
+            <igx-slide>
+              <div class="card-column">
+                <igx-card>
+                  <igx-card-header>
+                    <h3 igxCardHeaderTitle>{{place.name}}</h3>
+                  </igx-card-header>
+                  <igx-card-media routerLink="/details" height="200px">
+                    <ng-container *ngIf="place.photo">
+                      <img [src]="getImageSrc(place.photo)" />
+                    </ng-container>
+                  </igx-card-media>
+                </igx-card>
+              </div>
+            </igx-slide>
+          </ng-container>
+        </igx-carousel>
+      </ng-container>
     </igx-tabs-group>
 
     <igx-tabs-group label="Interests">
