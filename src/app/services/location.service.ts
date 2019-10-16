@@ -9,8 +9,10 @@ import { HttpParams } from '@angular/common/http';
 })
 export class LocationService {
   private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`;
+  private upvoteInterestEndpoint = `${environment.BASE_API_URL}/likedInterest`;
   private getPlacePhotoEndpoint = `${environment.BASE_API_URL}/placePhoto`;
   private getPlaceInfoEndpoint = `${environment.BASE_API_URL}/getPlaceInfo`;
+  private getUserPlacesEndpoint = `${environment.BASE_API_URL}/getLikedAndSavedForLater`;
   private wait = false;
 
   constructor(private http: HttpClient) { }
@@ -81,6 +83,20 @@ export class LocationService {
   public getPlaceInfo(place) {
     const placeId = place.id;
     return this.http.get(`${this.getPlaceInfoEndpoint}?placeId=${placeId}`)
+  }
+
+  upvoteInterest(upvotedPlace, userId) {
+    console.log('UPVOTE SERVICE', this.upvoteInterestEndpoint);
+    return this.http.post(this.upvoteInterestEndpoint, {
+      interest: upvotedPlace.interest || upvotedPlace.category, userId: userId, name: upvotedPlace.name, hours: upvotedPlace.hours,
+      coordinates: upvotedPlace.coordinates, city: upvotedPlace.city, address: upvotedPlace.address, phone: upvotedPlace.phone,
+      photoRef: upvotedPlace.photos || upvotedPlace.photo, placeId: upvotedPlace.placeId, priceLevel: upvotedPlace.priceLevel,
+      rating: upvotedPlace.rating, review: upvotedPlace.reviews || null, website: upvotedPlace.website || 'No website available',
+    });
+  }
+
+  getUserPlaces(user) {
+    return this.http.get(`${this.getUserPlacesEndpoint}?id=${user}`);
   }
 
 }
