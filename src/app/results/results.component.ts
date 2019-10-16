@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { LocationService } from '../services/location.service';
-import { TripsService } from '../services/trips.service';
 import { API_KEY } from '../../../config.js';
 
 @Component({
@@ -21,7 +21,7 @@ export class ResultsComponent implements OnInit {
   imagesSubscription;
   // private _window;
 
-  constructor(private locationService: LocationService, private trips: TripsService) { }
+  constructor(public router: Router, private locationService: LocationService) { }
 
   ngOnInit() {
     this.loadPlaces();
@@ -30,7 +30,7 @@ export class ResultsComponent implements OnInit {
   loadPlaces() {
     return this.locationService.getCurrentPosition()
     .subscribe(loc => {
-      console.log('LOCATION NATION', loc);
+      // console.log('LOCATION NATION', loc);
       this.allPlacesSubscription = this.locationService.getNearbyPlaces(loc, this.snapshotUrl)
       .subscribe(place => {
         this.allPlaces.push(place);
@@ -38,6 +38,11 @@ export class ResultsComponent implements OnInit {
         //console.log('IMAGE REFERENCE', this.allPlaces[0][0][0].photos);
       });
     })
+  }
+
+  navigateWithState(id) {
+    // console.log('ID', id);
+    this.router.navigateByUrl('/details', { state: { id } });
   }
 
   getImageSrc (ref) {
@@ -52,7 +57,7 @@ export class ResultsComponent implements OnInit {
   onUpvote(place) {
     console.log('PLACE UPVOTED', place);
     this.toggleColor();
-    this.trips.upvoteInterest(place, this.currentUser)
+    this.locationService.upvoteInterest(place, this.currentUser)
       .subscribe(response => {
         console.log('UPVOTE response', response);
     });
