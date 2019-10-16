@@ -23,10 +23,7 @@ export class ExploreComponent implements OnInit {
   newColor = false;
   currentUser = localStorage.getItem('userId');
 
-  constructor(private route: ActivatedRoute, public router: Router, private location: LocationService) {
-    // console.log('PLACESSSSSSSSSSSSSSSSSSSS', this.places);
-    // console.log('ROUTE', this.route.snapshot.queryParams);
-  }
+  constructor(private route: ActivatedRoute, public router: Router, private location: LocationService) {}
 
   ngOnInit() {
     const userId = this.route.snapshot.queryParams.id;
@@ -36,19 +33,25 @@ export class ExploreComponent implements OnInit {
   }
 
   loadPlaces() {
-    this.placesSubscription = from(this.map.nearbyPlaces)
-    .subscribe(place => {
-      this.places.push(place)
-      // console.log('EXPLORE PLACES', this.places)
+    if (!this.placesSubscription){
+      this.placesSubscription = from(this.map.nearbyPlaces)
+      .subscribe(place => {
+        this.places.push(place)
+        // console.log('EXPLORE PLACES', this.places)
     })
+    }
   }
 
-  loadImages() {
-    this.imagesSubscription = from(this.map.images)
-      .pipe(distinct())
-      .subscribe(image => {
-        this.images.push(image);
-      });
+  loadImages(index) {
+    console.log(index)
+    this.images[index] = this.map.images[index].photos[0];
+    // this.imagesSubscription = from(this.map.images)
+    //   // .pipe(distinct())
+    //   .subscribe(image => {
+    //     // console.log(image)
+    //     if (image) { this.images.push(image.photos[0]); }
+    //     else { this.images.push('http://www.moxmultisport.com/wp-content/uploads/no-image.jpg')}
+    //   });
   }
 
   mapMarkerClicked(i) {
@@ -62,7 +65,6 @@ export class ExploreComponent implements OnInit {
   }
 
   navigateWithState(id) {
-    // console.log('ID', id);
     this.router.navigateByUrl('/details', { state: { id } });
   }
 
@@ -74,5 +76,4 @@ export class ExploreComponent implements OnInit {
       console.log('UPVOTE response', response);
     })
   }
-
 }
