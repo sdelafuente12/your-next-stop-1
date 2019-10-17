@@ -77,14 +77,12 @@ export class MapComponent implements OnInit, OnDestroy {
                const p = {
                  coords: {latitude: this.currentPosition.lat, longitude: this.currentPosition.lng }
                }
-                console.log(position)
           return this.locationService.getNearbyPlaces(p, this.snapshotUrl)
         })
         )
         .subscribe(places => {
           this.nearbyPlaces = places;
           this.placesLoaded.emit('places loaded')
-          // console.log(this.nearbyPlaces)
           this.nearbyPlaces.map((place, i) => {
             const placeCoords = { lat: place.lat, lng: place.lng, name: place.name } 
             this.getPlacePhoto(placeCoords, i)
@@ -113,7 +111,6 @@ export class MapComponent implements OnInit, OnDestroy {
   setRoute(route) {
     this.routeSubscription = this.routeService.getRoutePositions(route)
       .subscribe((routePositions: Array<any>): void => { 
-        // console.log(routePositions) 
         this.origin = routePositions[0];
         this.destination = routePositions[1];
         this.waypoints = routePositions.splice(2);

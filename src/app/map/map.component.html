@@ -52,9 +52,12 @@
         scaledSize: {
             width: 30,
             height: 48
-        }}" 
+        }}"
+    
     >
-    <agm-info-window  
+    <agm-info-window
+    [isOpen]="true"
+    *ngIf="place.clicked"
     [disableAutoPan]="false"
     [isOpen]="false"
     [maxWidth]=500
@@ -82,9 +85,8 @@
         }}"
     >
         <agm-info-window
-        
+        [isOpen]="false"
         [disableAutoPan]="true"
-        [isOpen]="true"
         >
           <h5 style="color:black;">
                 You are here

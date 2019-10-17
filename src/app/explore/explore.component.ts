@@ -5,6 +5,7 @@ import { LocationService } from '../services/location.service';
 import { from } from 'rxjs';
 import { distinct } from 'rxjs/operators';
 import  { IgxCarouselComponent, Direction } from 'igniteui-angular';
+import { AgmInfoWindow } from '@agm/core';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class ExploreComponent implements OnInit {
   @ViewChild(MapComponent, { static: false }) private map: MapComponent;
   @ViewChild(IgxCarouselComponent, { static: false })
   private carousel: IgxCarouselComponent;
+  @ViewChild(AgmInfoWindow, { static: false }) private infoWindow: AgmInfoWindow;
   public places = [];
   public images = [];
   
@@ -38,21 +40,12 @@ export class ExploreComponent implements OnInit {
       this.placesSubscription = from(this.map.nearbyPlaces)
       .subscribe(place => {
         this.places.push(place)
-        // console.log('EXPLORE PLACES', this.places)
     })
     }
   }
 
   loadImages(index) {
-    
     this.images[index] = this.map.images[index].photos[0];
-    // this.imagesSubscription = from(this.map.images)
-    //   // .pipe(distinct())
-    //   .subscribe(image => {
-    //     // console.log(image)
-    //     if (image) { this.images.push(image.photos[0]); }
-    //     else { this.images.push('http://www.moxmultisport.com/wp-content/uploads/no-image.jpg')}
-    //   });
   }
 
   mapMarkerClicked(i) {
@@ -66,7 +59,6 @@ export class ExploreComponent implements OnInit {
 
   toggleColor() {
     this.newColor = !this.newColor;
-    console.log('color change');
   }
 
   navigateWithState(id) {
@@ -74,11 +66,9 @@ export class ExploreComponent implements OnInit {
   }
 
   onUpvote(place) {
-    console.log('PLACE UPVOTED', place);
     this.toggleColor();
     this.location.upvoteInterest(place, null, this.currentUser)
     .subscribe(response => {
-      console.log('UPVOTE response', response);
     })
   }
 }
