@@ -1,6 +1,6 @@
 @import '~igniteui-angular/lib/core/styles/themes/index';
 @include igx-core();
-@include igx-theme($default-palette);
+// @include igx-theme($default-palette);
 
 $htc: #bdeaf2;
 $bg: #1f1f1f;
@@ -41,6 +41,7 @@ h5 {
 html,
 body {
   height: 100%;
+  max-width: 375px;
   margin: 0;
   overflow: scroll;
   background-color: $bg;
@@ -128,20 +129,20 @@ body {
   text-align: right !important;
 }
 
-$green-palette: igx-palette(
-  $primary: $pink,
-  $secondary: #72da67,
-  $surface: $bg,
-);
+// $green-palette: igx-palette(
+//   $primary: $pink,
+//   $secondary: #72da67,
+//   $surface: $bg,
+// );
 
-.fin-dark-theme {
-  @include igx-dark-theme($green-palette);
-  background: $bg;
+// .fin-dark-theme {
+//   @include igx-dark-theme($green-palette);
+//   background: $bg;
 
-  ::-moz-placeholder {
-    opacity: 1;
-  }
-}
+//   ::-moz-placeholder {
+//     opacity: 1;
+//   }
+// }
 
 .dark-theme {
   @include igx-dark-theme($green-palette);
@@ -153,4 +154,8 @@ $green-palette: igx-palette(
 
 .save {
   color: $pink;
+}
+
+igx-bottom-nav__menu igx-bottom-nav__menu--bottom {
+  max-width: 375px;
 }
