@@ -8,13 +8,35 @@ $colorful-card: igx-card-theme(
   $subtitle-text-color: #ffffff,
   $content-text-color: #ffffff
 );
-
+  
 $pink: #ff2ad2;
-
+  
 :host {
   ::ng-deep {
     @include igx-card($colorful-card);
   }
+}
+  
+.line-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-left: 14px;
+}
+
+.card-column {
+  max-width: 450px;
+  display: block;
+  flex-flow: row nowrap;
+  flex-flow: column nowrap;
+  flex: 1 0 25%;
+  align-content: flex-start;
+  font-family: 'Roboto', sans-serif;
+  // width: inherit;
+  position: relative;
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 15px;
+  background: transparent;
 }
 
 igx-card {
@@ -23,11 +45,11 @@ igx-card {
   display: block;
   flex-direction: row;
   justify-content: space-around;
-  max-width: 350px;
-  min-height: 450px;
+  // max-width: 350px;
+  // min-height: 450px;
   flex-flow: column nowrap;
   // flex: 1 0 25%;
-  font-family: 'Roboto', sans-serif;
+  // font-family: 'Roboto', sans-serif;
   margin: 0 auto;
 }
 
@@ -49,12 +71,6 @@ h5 {
 
 p {
   font-family: 'Roboto', sans-serif;
-}
-
-.line-wrapper {
-  display: flex;
-  flex-direction: row;
-  margin-left: 14px;
 }
 
 button {

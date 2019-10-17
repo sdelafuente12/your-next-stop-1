@@ -3,7 +3,7 @@
 </div>
 
 <ng-container *ngFor="let places of allPlaces[0]">
-  <h5>{{places[0].interest[0].toUpperCase().concat(places[0].interest.slice(1))}}</h5>
+  <h5>{{places[0].interest}}</h5>
   <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
     <ng-container *ngFor="let place of places">
       <igx-slide>

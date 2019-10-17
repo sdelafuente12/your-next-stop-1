@@ -132,6 +132,7 @@ export class RouteComponent implements OnInit, OnDestroy {
         this.form.dateEnd = this.parsedTrip[0].dateEnd;
         this.form.userId = JSON.parse(this.currentUser);
         this.form.route = this.parsedTrip[0].route;
+        this.form.waypoints = this.parsedTrip[0].wayPoints;
         console.log('FORMMMMMM', this.form);
         //console.log(this.map.setRoute);
         setTimeout(() => this.map.setRoute(this.form), 1000);

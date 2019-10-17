@@ -49,7 +49,6 @@ import { WINDOW_PROVIDERS } from './services/window.service';
 import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe';
 import { DynamicInputComponent } from './route/dynamic-input/dynamic-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
 @NgModule({
   declarations: [
     AppComponent,

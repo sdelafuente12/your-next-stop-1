@@ -6,7 +6,6 @@ import { switchMap, flatMap, endWith, finalize, distinct, take } from 'rxjs/oper
 import { RouteService } from '../services/route.service.js';
 import { WindowRef } from '../services/window.service'
 import { DomSanitizer } from '@angular/platform-browser';
-import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 @Component({
   selector: 'app-map',
