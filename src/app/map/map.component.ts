@@ -19,7 +19,8 @@ export class MapComponent implements OnInit, OnDestroy {
   @Output() placesLoaded = new EventEmitter<string>();
   @Output() imagesLoaded = new EventEmitter<number>();
   @Output() markerClicked = new EventEmitter<number>();
-//custom map style
+  public currentLocationMarkerUrl: string = "../assets/icons/currentLocationMarker.png"
+//custom map style"
   styles = mapStyle;
 //geolocation properties
   currentPosition;
@@ -126,7 +127,7 @@ export class MapComponent implements OnInit, OnDestroy {
         distinct(),
         )
       .subscribe(photos => {
-        console.log(photos)
+       
         this.images[index] = photos || ['http://www.moxmultisport.com/wp-content/uploads/no-image.jpg'];
         if (this.images.length) {//this number will need to be dynamic in the future (ncategories * nplaces)
           this.imagesLoaded.emit(index);
@@ -135,8 +136,14 @@ export class MapComponent implements OnInit, OnDestroy {
     }  
   }
 
-  markerClick(index) {
-    this.markerClicked.emit(index)
+  markerClick(index, fromSlide) {
+    if (!this.nearbyPlaces[index].clicked) {
+      this.nearbyPlaces.forEach((place, i) => {
+        if(i === index) place.clicked = true;
+        else place.clicked = false;
+      })
+      if (!fromSlide) this.markerClicked.emit(index)
+    }
   }
 
   ngOnDestroy() {

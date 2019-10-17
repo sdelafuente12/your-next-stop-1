@@ -46,7 +46,13 @@
     [longitude]="place.lng" 
     [openInfoWindow]="true"
     (markerClick)="markerClick(i)"
-    [markerClickable]="true"  
+    [markerClickable]="true"
+    [iconUrl]="{
+        url: place.clicked ? '../assets/icons/yellow maps marker.png' : '../assets/icons/red maps marker.png',
+        scaledSize: {
+            width: 30,
+            height: 48
+        }}" 
     >
     <agm-info-window  
     [disableAutoPan]="false"
@@ -68,6 +74,12 @@
     <agm-marker
     [latitude]="currentPosition.lat"
     [longitude]="currentPosition.lng"
+    [iconUrl]="{
+        url: '../assets/icons/pink star maps marker.png',
+        scaledSize: {
+            width: 50,
+            height: 50
+        }}"
     >
         <agm-info-window
         

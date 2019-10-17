@@ -44,7 +44,7 @@ export class ExploreComponent implements OnInit {
   }
 
   loadImages(index) {
-    console.log(index)
+    
     this.images[index] = this.map.images[index].photos[0];
     // this.imagesSubscription = from(this.map.images)
     //   // .pipe(distinct())
@@ -58,6 +58,10 @@ export class ExploreComponent implements OnInit {
   mapMarkerClicked(i) {
     const focus = this.carousel.get(i);
     this.carousel.select(focus, Direction.NEXT);
+  }
+
+  onSlideChanged(slideIndex, fromSlide) {
+    this.map.markerClick(slideIndex, true);
   }
 
   toggleColor() {
