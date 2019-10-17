@@ -1,12 +1,10 @@
 <div class="content-wrap">
-  <igx-nav-drawer id="navigation" #drawer [isOpen]="false" (click)="drawer.toggle()">
+  <igx-nav-drawer id="navigation" #drawer [isOpen]="false"  (click)="drawer.toggle()">
     <ng-template igxDrawer>
       <nav>
         <span igxDrawerItem [isHeader]="true"> Settings </span>
-        <span igxDrawerItem routerLink="/stats" igxRipple> Stats </span>
+        <!-- <span igxDrawerItem routerLink="/stats" igxRipple> Stats </span> -->
         <span igxDrawerItem (click)=logoutUser() igxRipple> Logout </span>
-        <!-- <span igxDrawerItem igxRipple [active]="true"> Drafts </span> -->
-        
       </nav>
     </ng-template>
   </igx-nav-drawer>
