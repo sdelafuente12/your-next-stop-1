@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationService } from '../services/location.service';
-import { API_KEY } from '../../../config.js';
 
 @Component({
   selector: 'app-places',
@@ -24,10 +23,6 @@ export class PlacesComponent implements OnInit {
       console.log(userPlace);
       this.userPlaces.push(userPlace);
     });
-  }
-
-  getImageSrc(ref) {
-    return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
   }
 
   navigateWithState(id) {
