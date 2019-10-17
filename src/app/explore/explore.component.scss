@@ -1,21 +1,5 @@
 @import '~igniteui-angular/lib/core/styles/themes/index';
 
-.card-column {
-  max-width: 225px;
-  display: block;
-  flex-flow: row nowrap;
-  flex-flow: column nowrap;
-  flex: 1 0 25%;
-  align-content: flex-start;
-  font-family: 'Roboto', sans-serif;
-  width: inherit;
-  position: relative;
-  height: 250px;
-  margin: 0 auto;
-  margin-top: 15px;
-  background: transparent;
-}
-
 $colorful-card: igx-card-theme(
   $background: #353A50,
   $header-text-color: #ffffff,
@@ -29,38 +13,44 @@ $colorful-card: igx-card-theme(
   }
 }
 
-igx-carousel {
-  margin-top: 16px;
-}
-
-h5 {
-  text-align: left;
-}
-
-.material-icons {
-  font-size: 20px;
-  margin-top: 4px;
-  margin-right: -10px;
-
-}
-
-igx-card-header {
-  margin-top: -10px;
-  margin-bottom: -10px;
+.card-column {
+  max-width: 450px;
+  display: block;
+  flex-flow: row nowrap;
+  flex-flow: column nowrap;
+  flex: 1 0 25%;
+  align-content: flex-start;
+  font-family: 'Roboto', sans-serif;
+  width: inherit;
+  position: relative;
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 15px;
+  background: transparent;
 }
 
 .igx-card-header__title {
-  font-size: 16px;
-  white-space: nowrap;
-  width: 160px;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  font-size: 20px;
+  margin: auto;
 }
 
 .igx-button--raised {
   margin-top: 10px;
   margin-bottom: 65px;
   width: 215px;
+}
+
+.igx-card {
+  height: 350px;
+}
+
+igx-carousel {
+  margin-top: 16px;
+  height: 400px;
+}
+
+h5 {
+  text-align: left;
 }
 
 button {
