@@ -49,7 +49,7 @@ import { WINDOW_PROVIDERS } from './services/window.service';
 import { HtmlSanitizerPipe } from './pipes/html-sanitizer.pipe';
 import { DynamicInputComponent } from './route/dynamic-input/dynamic-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,7 +103,6 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
     IgxDividerModule,
     IgxLayoutModule,
     ReactiveFormsModule,
-    AgmSnazzyInfoWindowModule
   ],
   providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent],
