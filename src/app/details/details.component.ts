@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, ParamMap } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 import { LocationService } from '../services/location.service';
 import { map, take } from 'rxjs/operators';
 

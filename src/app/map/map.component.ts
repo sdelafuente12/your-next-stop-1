@@ -6,7 +6,7 @@ import { switchMap, flatMap, endWith, finalize, distinct, take } from 'rxjs/oper
 import { RouteService } from '../services/route.service.js';
 import { WindowRef } from '../services/window.service'
 import { DomSanitizer } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 @Component({
   selector: 'app-map',
@@ -17,9 +17,10 @@ import { Observable } from 'rxjs';
 
 export class MapComponent implements OnInit, OnDestroy {
   @Output() placesLoaded = new EventEmitter<string>();
-  @Output() imagesLoaded = new EventEmitter<string>();
+  @Output() imagesLoaded = new EventEmitter<number>();
   @Output() markerClicked = new EventEmitter<number>();
-//custom map style
+  public currentLocationMarkerUrl: string = "../assets/icons/currentLocationMarker.png"
+//custom map style"
   styles = mapStyle;
 //geolocation properties
   currentPosition;
@@ -76,14 +77,12 @@ export class MapComponent implements OnInit, OnDestroy {
                const p = {
                  coords: {latitude: this.currentPosition.lat, longitude: this.currentPosition.lng }
                }
-                console.log(position)
           return this.locationService.getNearbyPlaces(p, this.snapshotUrl)
         })
         )
         .subscribe(places => {
           this.nearbyPlaces = places;
           this.placesLoaded.emit('places loaded')
-          // console.log(this.nearbyPlaces)
           this.nearbyPlaces.map((place, i) => {
             const placeCoords = { lat: place.lat, lng: place.lng, name: place.name } 
             this.getPlacePhoto(placeCoords, i)
@@ -112,7 +111,6 @@ export class MapComponent implements OnInit, OnDestroy {
   setRoute(route) {
     this.routeSubscription = this.routeService.getRoutePositions(route)
       .subscribe((routePositions: Array<any>): void => { 
-        // console.log(routePositions) 
         this.origin = routePositions[0];
         this.destination = routePositions[1];
         this.waypoints = routePositions.splice(2);
@@ -126,7 +124,7 @@ export class MapComponent implements OnInit, OnDestroy {
         distinct(),
         )
       .subscribe(photos => {
-        console.log(photos)
+       
         this.images[index] = photos || ['http://www.moxmultisport.com/wp-content/uploads/no-image.jpg'];
         if (this.images.length) {//this number will need to be dynamic in the future (ncategories * nplaces)
           this.imagesLoaded.emit(index);
@@ -135,8 +133,14 @@ export class MapComponent implements OnInit, OnDestroy {
     }  
   }
 
-  markerClick(index) {
-    this.markerClicked.emit(index)
+  markerClick(index, fromSlide) {
+    if (!this.nearbyPlaces[index].clicked) {
+      this.nearbyPlaces.forEach((place, i) => {
+        if(i === index) place.clicked = true;
+        else place.clicked = false;
+      })
+      if (!fromSlide) this.markerClicked.emit(index)
+    }
   }
 
   ngOnDestroy() {
