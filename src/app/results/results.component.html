@@ -1,10 +1,10 @@
-<div>
+<div style="margin-bottom: 20px">
   <h4 class="igx-typography__h4">All Results</h4>
 </div>
 
 <ng-container *ngFor="let places of allPlaces[0]">
   <h5>{{places[0].interest[0].toUpperCase().concat(places[0].interest.slice(1))}}</h5>
-  <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
+  <igx-carousel [pause]="true" [loop]="true" [navigation]="true">
     <ng-container *ngFor="let place of places">
       <igx-slide>
         <div class="card-column">
@@ -12,7 +12,7 @@
             <igx-card-header>
               <h3 igxCardHeaderTitle>{{place.name}}</h3>
             </igx-card-header>
-          <igx-card-media (click)="navigateWithState(place.placeId)" height="200px">
+          <igx-card-media (click)="navigateWithState(place.placeId)" height="300px">
             <ng-container *ngIf="place.photos">
               <img [src]="getImageSrc(place.photos)" />
             </ng-container>
