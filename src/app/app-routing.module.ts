@@ -12,7 +12,6 @@ import {
   BottomNavRoutingComponent,
 } from './bottomnav-routing/bottomnav-routing.component';
 import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
-import { ɵPLATFORM_SERVER_ID } from '@angular/common';
 import { DynamicInputComponent } from './route/dynamic-input/dynamic-input.component';
 
 const routes: Routes = [
