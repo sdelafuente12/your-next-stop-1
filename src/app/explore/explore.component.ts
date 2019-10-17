@@ -72,7 +72,7 @@ export class ExploreComponent implements OnInit {
   onUpvote(place) {
     console.log('PLACE UPVOTED', place);
     this.toggleColor();
-    this.location.upvoteInterest(place, this.currentUser)
+    this.location.upvoteInterest(place, null, this.currentUser)
     .subscribe(response => {
       console.log('UPVOTE response', response);
     })

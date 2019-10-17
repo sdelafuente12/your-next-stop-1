@@ -53,10 +53,14 @@ export class DetailsComponent implements OnInit {
     return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
   }
 
-  onUpvote(place) {
-    console.log('PLACE UPVOTED', place);
-    this.toggleThumb();
-    this.location.upvoteInterest(place, this.currentUser)
+  onSelection(place, status) {
+    console.log('PLACE UPVOTED', place, 'STATUS', status);
+    if (status === 'liked') {
+      this.toggleThumb();
+    } else {
+      this.toggleSave();
+    }
+    this.location.upvoteInterest(place, status, this.currentUser)
       .subscribe(response => {
         console.log('UPVOTE response', response);
       });

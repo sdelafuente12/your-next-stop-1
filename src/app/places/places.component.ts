@@ -34,8 +34,11 @@ export class PlacesComponent implements OnInit {
   }
 
   onUpvote(place) {
+    console.log('PLACE UPVOTED', place);
     this.toggleThumb();
-    this.location.upvoteInterest(place, this.userId).subscribe(response => {
-    });
+    this.location.upvoteInterest(place, status, this.userId)
+      .subscribe(response => {
+        console.log('UPVOTE response', response);
+      })
   }
 }
