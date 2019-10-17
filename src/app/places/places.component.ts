@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LocationService } from '../services/location.service';
 import { API_KEY } from '../../../config.js';
 
@@ -12,7 +13,7 @@ export class PlacesComponent implements OnInit {
   thumbColor = false;
   userPlaces = [];
 
-  constructor(private location: LocationService) {}
+  constructor(private location: LocationService, private router: Router) {}
 
   ngOnInit() {
     this.getUserPlaces();
@@ -27,6 +28,10 @@ export class PlacesComponent implements OnInit {
 
   getImageSrc(ref) {
     return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
+  }
+
+  navigateWithState(id) {
+    this.router.navigateByUrl('/details', { state: { id } });
   }
 
   toggleThumb() {
