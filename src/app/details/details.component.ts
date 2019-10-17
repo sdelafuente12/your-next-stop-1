@@ -14,7 +14,17 @@ export class DetailsComponent implements OnInit {
   saveColor = false;
   state$: Observable<object>;
   placeId: string;
-  selectedPlaceInfo: {};
+  selectedPlaceInfo: {
+    photo: any,
+    name: any,
+    interest: any, 
+    category: any, 
+    priceLevel: any, 
+    rating: any, 
+    website: any, 
+    phone: any, 
+    address: any,
+  };
   selectedPlacePhoto: null;
   currentUser = localStorage.getItem('userId');
 
@@ -41,7 +51,7 @@ export class DetailsComponent implements OnInit {
   getPlaceInfo(place) {
     // console.log('PLACEEEE', place);
     this.location.getPlaceInfo(place)
-    .subscribe(info => {
+    .subscribe((info: any) => {
       console.log('INFO', info);
       this.selectedPlaceInfo = info;
     })
