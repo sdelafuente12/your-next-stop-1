@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router'
 import { LocationService } from '../services/location.service';
 import { map, take } from 'rxjs/operators';
-import { API_KEY } from '../../../config.js';
 
 @Component({
   selector: 'app-details',
@@ -15,7 +14,17 @@ export class DetailsComponent implements OnInit {
   saveColor = false;
   state$: Observable<object>;
   placeId: string;
-  selectedPlaceInfo: {};
+  selectedPlaceInfo: {
+    photo: any,
+    name: any,
+    interest: any, 
+    category: any, 
+    priceLevel: any, 
+    rating: any, 
+    website: any, 
+    phone: any, 
+    address: any,
+  };
   selectedPlacePhoto: null;
   currentUser = localStorage.getItem('userId');
 
@@ -42,14 +51,10 @@ export class DetailsComponent implements OnInit {
   getPlaceInfo(place) {
     // console.log('PLACEEEE', place);
     this.location.getPlaceInfo(place)
-    .subscribe(info => {
+    .subscribe((info: any) => {
       console.log('INFO', info);
       this.selectedPlaceInfo = info;
     })
-  }
-
-  getImageSrc(ref) {
-    return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
   }
 
   onSelection(place, status) {
