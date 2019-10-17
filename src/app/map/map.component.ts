@@ -6,7 +6,7 @@ import { switchMap, flatMap, endWith, finalize, distinct, take } from 'rxjs/oper
 import { RouteService } from '../services/route.service.js';
 import { WindowRef } from '../services/window.service'
 import { DomSanitizer } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 @Component({
   selector: 'app-map',
@@ -17,7 +17,7 @@ import { Observable } from 'rxjs';
 
 export class MapComponent implements OnInit, OnDestroy {
   @Output() placesLoaded = new EventEmitter<string>();
-  @Output() imagesLoaded = new EventEmitter<string>();
+  @Output() imagesLoaded = new EventEmitter<number>();
   @Output() markerClicked = new EventEmitter<number>();
 //custom map style
   styles = mapStyle;

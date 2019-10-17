@@ -46,20 +46,23 @@
     [longitude]="place.lng" 
     [openInfoWindow]="true"
     (markerClick)="markerClick(i)"
-    [markerClickable]="true"
-    
+    [markerClickable]="true"  
     >
-    <agm-info-window 
-    [disableAutoPan]="true"
+    <agm-info-window  
+    [disableAutoPan]="false"
     [isOpen]="false"
+    [maxWidth]=500
     >
-    <!-- <ng-container *ngIf="images[i]"><img [src]="images[i] | htmlSanitizer"/></ng-container><br> -->
-    {{place.name}}<br>
-    <hr>
+    <h5 style="color:black;">
+            {{place.name}}
+    </h5>  
+    <hr style="border-color:black;">
     {{place.address}}<br>
     rating: {{place.rating}}<br>
-    <a href="http://maps.google.com/?q={{place.address + place.name}}"  target="_blank">Open in Google Maps</a>
+    <a style ="font-size:0.9rem;"
+    href="http://maps.google.com/?q={{place.address + place.name}}"  target="_blank">Open in Google Maps</a>
     </agm-info-window>
+   
     </agm-marker>
 </div>
     <agm-marker
@@ -67,11 +70,19 @@
     [longitude]="currentPosition.lng"
     >
         <agm-info-window
+        
         [disableAutoPan]="true"
         [isOpen]="true"
         >
-        You are here
+          <h5 style="color:black;">
+                You are here
+          </h5>  
         </agm-info-window>
+   
+
     </agm-marker>
 
 </agm-map>
+
+
+    

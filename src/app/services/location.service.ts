@@ -53,17 +53,13 @@ export class LocationService {
     const currentPositionString = `${location.coords.latitude},${location.coords.longitude}`;
     const id = localStorage.getItem('userId');
 
-    // if(!this.wait){
-    //   this.wait = true;
-    //   setTimeout(() => this.wait = false, 1000)
-
       return this.http.get(this.getNearbyPlacesEndpoint, {
         params: new HttpParams()
         .set('location', currentPositionString)
         .set('id', id)
         .set('snapshotUrl', snapshotUrl)
       })
-    // }
+  
   }
 
   public getPlacePhoto(coordinates) {

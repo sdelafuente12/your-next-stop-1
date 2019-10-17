@@ -154,3 +154,30 @@ $green-palette: igx-palette(
 .save {
   color: $pink;
 }
+
+.si-float-wrapper {
+  width: 15rem;
+}
+
+// .si-wrapper-top {
+//   text-align: right;
+// }
+.si-content-wrapper {
+  
+  background: #2c0011;
+  color: #f6e7ec;
+  align-content: center;
+  font-size: 1.5rem;
+}
+.si-content {
+  background: #2c0011;
+  width: 100%;
+  text-align: center;
+}
+.agm-info-window-content {
+  height: 100%;
+  width: 20rem;
+  font-size: 1.1rem;
+  font-family: 'Roboto', sans-serif;
+  color: black;
+}

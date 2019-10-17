@@ -6,6 +6,7 @@ import { from } from 'rxjs';
 import { distinct } from 'rxjs/operators';
 import  { IgxCarouselComponent, Direction } from 'igniteui-angular';
 
+
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
