@@ -1,6 +1,6 @@
 @import '~igniteui-angular/lib/core/styles/themes/index';
 @include igx-core();
-@include igx-theme($default-palette);
+// @include igx-theme($default-palette);
 
 $htc: #bdeaf2;
 $bg: #1f1f1f;
@@ -41,46 +41,46 @@ h5 {
 html,
 body {
   height: 100%;
-  margin: 0;
-  overflow: scroll;
+  max-width: 720px;
+  margin: auto;
   background-color: $bg;
-  color: white;
+  // color: white;
   font-family: 'Roboto', sans-serif;
 }
 
-.sample-wrapper {
-    width: inherit;
-    position: relative;
-    height: 100%;
-    margin: 0 auto;
-    background: transparent;
-}
+// .sample-wrapper {
+//     width: inherit;
+//     position: relative;
+//     height: 100%;
+//     margin: 0 auto;
+//     background: transparent;
+// }
 
-.sample-content {
-  display: flex;
-  flex-grow: 1;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  padding: 0;
-  -webkit-animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  -moz-animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
+// .sample-content {
+//   display: flex;
+//   flex-grow: 1;
+//   flex-flow: row wrap;
+//   justify-content: flex-start;
+//   padding: 0;
+//   -webkit-animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+//   -moz-animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+//   animation: fade-in 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+// }
 
-.sample-column {
-  display: block;
-  flex-flow: row nowrap;
-  flex-flow: column nowrap;
-  flex: 1 0 25%;
-  align-content: flex-start;
-  font-family: 'Roboto', sans-serif;
-  // margin: 16px;
-  // min-width: 280px;
-}
+// .sample-column {
+//   display: block;
+//   flex-flow: row nowrap;
+//   flex-flow: column nowrap;
+//   flex: 1 0 25%;
+//   align-content: flex-start;
+//   font-family: 'Roboto', sans-serif;
+//   // margin: 16px;
+//   // min-width: 280px;
+// }
 
-.sample-title .light {
-  font-weight: 400;
-}
+// .sample-title .light {
+//   font-weight: 400;
+// }
 
 .sample-description {
   font-size: 14px;
@@ -134,17 +134,18 @@ $green-palette: igx-palette(
   $surface: $bg,
 );
 
-.fin-dark-theme {
-  @include igx-dark-theme($green-palette);
-  background: $bg;
+// .fin-dark-theme {
+//   @include igx-dark-theme($green-palette);
+//   background: $bg;
 
-  ::-moz-placeholder {
-    opacity: 1;
-  }
-}
+//   ::-moz-placeholder {
+//     opacity: 1;
+//   }
+// }
 
 .dark-theme {
   @include igx-dark-theme($green-palette);
+  // max-width: 375px;
 }
 
 .thumb {
@@ -153,4 +154,8 @@ $green-palette: igx-palette(
 
 .save {
   color: $pink;
+}
+
+igx-bottom-nav {
+  max-width: 375px;
 }
