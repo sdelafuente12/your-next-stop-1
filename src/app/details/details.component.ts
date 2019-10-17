@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, ParamMap } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 import { LocationService } from '../services/location.service';
 import { map, take } from 'rxjs/operators';
 import { API_KEY } from '../../../config.js';
-import { TripsComponent } from '../trips/trips.component';
 
 @Component({
   selector: 'app-details',
