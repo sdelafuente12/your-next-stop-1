@@ -10,10 +10,8 @@ import { HttpParams } from '@angular/common/http';
 export class LocationService {
   private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`;
   private upvoteInterestEndpoint = `${environment.BASE_API_URL}/likedInterest`;
-  private getPlacePhotoEndpoint = `${environment.BASE_API_URL}/placePhoto`;
   private getPlaceInfoEndpoint = `${environment.BASE_API_URL}/getPlaceInfo`;
   private getUserPlacesEndpoint = `${environment.BASE_API_URL}/getLikedAndSavedForLater`;
-  private savePlaceEndpoint = `${environment.BASE_API_URL}/saveForLater`;
   private wait = false;
 
   constructor(private http: HttpClient) { }
