@@ -5,7 +5,7 @@
 <div class="card-column">
   <igx-card>
     <igx-card-media>
-      <img style="height: 300px" [src]="selectedPlaceInfo.photo">
+      <img style="height: 300px" [src]="getImageSrc(selectedPlaceInfo.photo)">
     </igx-card-media>
     <igx-card-header>
       <h3 igxCardHeaderTitle>{{selectedPlaceInfo.name}}</h3>
