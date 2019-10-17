@@ -36,7 +36,7 @@
                   <igx-card-header>
                     <h3 igxCardHeaderTitle>{{savedPlace.name}}</h3>
                   </igx-card-header>
-                  <igx-card-media (click)="navigateWithState(likedPlace.placeId)" height="200px">
+                  <igx-card-media (click)="navigateWithState(savedPlace.placeId)" height="200px">
                     <ng-container *ngIf="savedPlace.photo">
                       <img [src]="getImageSrc(savedPlace.photo)" />
                     </ng-container>
