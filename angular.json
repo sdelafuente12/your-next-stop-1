@@ -31,7 +31,6 @@
             "styles": [
               "src/styles.scss",
               "node_modules/igniteui-angular/styles/igniteui-angular.css",
-              "node_modules/snazzy-info-window/dist/snazzy-info-window.css"
             ],
             "scripts": []
           },
