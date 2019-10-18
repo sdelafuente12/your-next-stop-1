@@ -12,7 +12,14 @@ $colorful-card: igx-card-theme(
     @include igx-card($colorful-card);
   }
 }
-
+.map-wrapper {
+  border-style: solid;
+  border-color: white;
+  border-width: 3px;
+  width: 100%;
+  height: 370px;
+  position: relative;
+}
 .card-column {
   max-width: 450px;
   display: block;
