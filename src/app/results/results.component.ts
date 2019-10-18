@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationService } from '../services/location.service';
-import { API_KEY } from '../../../config.js';
 
 @Component({
   selector: 'app-results',
@@ -43,10 +42,6 @@ export class ResultsComponent implements OnInit {
   navigateWithState(id) {
     // console.log('ID', id);
     this.router.navigateByUrl('/details', { state: { id } });
-  }
-
-  getImageSrc (ref) {
-    return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
   }
 
   toggleColor() {
