@@ -49,20 +49,24 @@ export class DetailsComponent implements OnInit {
 }
 
   getPlaceInfo(place) {
-    // console.log('PLACEEEE', place);
-    this.location.getPlaceInfo(place)
+    const currentUser = localStorage.getItem('userId');
+    this.location.getPlaceInfo(place, currentUser)
     .subscribe((info: any) => {
       console.log('INFO', info);
+      if (info.status === 'liked') this.thumbColor = true; 
+      if (info.status === 'saved') this.saveColor = true; 
       this.selectedPlaceInfo = info;
     })
   }
 
   onSelection(place, status) {
-    console.log('PLACE UPVOTED', place, 'STATUS', status);
+    console.log(this.currentUser);
     if (status === 'liked') {
       this.toggleThumb();
+      if (this.saveColor) this.saveColor = false;
     } else {
       this.toggleSave();
+      if (this.thumbColor) this.thumbColor = false;
     }
     this.location.upvoteInterest(place, status, this.currentUser)
       .subscribe(response => {

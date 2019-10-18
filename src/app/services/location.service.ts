@@ -75,9 +75,13 @@ export class LocationService {
     // })
   }
 
-  public getPlaceInfo(place) {
+  public getPlaceInfo(place, userId) {
     const placeId = place.id;
-    return this.http.get(`${this.getPlaceInfoEndpoint}?placeId=${placeId}`)
+    return this.http.get(`${this.getPlaceInfoEndpoint}`, {
+      params: new HttpParams()
+      .set("userId", userId)
+      .set("placeId", placeId)
+    })
   }
 
   upvoteInterest(upvotedPlace, status, userId) {
