@@ -34,7 +34,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
 //custom marker image
   markerOptions = {
-    icon: '../assets/icons/looks-24px.svg'
+    icon: '../assets/icons/red maps marker 30x48.png'
   };
 //options for map rendering
   renderOptions = {

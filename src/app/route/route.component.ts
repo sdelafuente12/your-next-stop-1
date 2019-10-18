@@ -65,7 +65,7 @@ export class RouteComponent implements OnInit, OnDestroy {
   
   public onSubmit() {
     this.map.setRoute(this.form);
-    this.submitTrip(this.form);
+    // this.submitTrip(this.form);
     let formStorage = JSON.stringify(this.form);
     localStorage.setItem('form', formStorage)
     console.log('@@form@@', localStorage.form)
