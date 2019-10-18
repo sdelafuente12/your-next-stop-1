@@ -18,9 +18,15 @@
     <agm-marker 
     [latitude]="currentPosition.lat"
     [longitude]="currentPosition.lng"
+    [iconUrl]="{
+        url: '../assets/icons/pink star maps marker.png',
+        scaledSize: {
+            width: 50,
+            height: 50
+        }}"
     >
         <agm-info-window
-        
+        [maxWidth]=350
         [disableAutoPan]="true"
         [isOpen]="true"
         >

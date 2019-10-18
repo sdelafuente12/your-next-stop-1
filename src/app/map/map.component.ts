@@ -34,7 +34,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
 //custom marker image
   markerOptions = {
-    icon: '../assets/icons/looks-24px.svg'
+    icon: '../assets/icons/red maps marker 30x48.png'
   };
 //options for map rendering
   renderOptions = {
@@ -69,7 +69,8 @@ export class MapComponent implements OnInit, OnDestroy {
       .pipe(
         switchMap(position => {
           this.currentPosition = {
-            lat: 45.53006858396305, lng: -122.65297249732771
+            lat: 47.62005908114151,
+lng: -122.32398084206318
                   // lat: position.coords.latitude,
                   // lng: position.coords.longitude
                 }

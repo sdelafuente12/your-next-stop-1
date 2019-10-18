@@ -30,7 +30,10 @@ export class ResultsComponent implements OnInit {
     return this.locationService.getCurrentPosition()
     .subscribe(loc => {
       // console.log('LOCATION NATION', loc);
-      this.allPlacesSubscription = this.locationService.getNearbyPlaces(loc, this.snapshotUrl)
+      const stubLocation = { coords: {latitude: 47.62005908114151,
+        longitude: -122.32398084206318} }
+
+      this.allPlacesSubscription = this.locationService.getNearbyPlaces(stubLocation, this.snapshotUrl)
       .subscribe(place => {
         this.allPlaces.push(place);
         console.log('ALL PLACES', this.allPlaces[0]);
