@@ -60,7 +60,7 @@ export class ResultsComponent implements OnInit {
   onUpvote(place) {
     console.log('PLACE UPVOTED', place);
     this.toggleColor();
-    this.locationService.upvoteInterest(place, null, this.currentUser)
+    this.locationService.voteInterest(place, null, this.currentUser)
       .subscribe(response => {
         console.log('UPVOTE response', response);
     });
