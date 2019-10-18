@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<form class="input-group-form">
+<form class="input-group-form" (keyup.enter)="onSubmit()">
   <!------------------------------- origin input -------------------------------->
   <igx-input-group type="border">
     <input igxInput name="origin" type="text" [(ngModel)]="form.origin" required="required"
@@ -212,7 +212,7 @@
 <!----------------------------- save to trips button -------------------------------------->
 <div style="text-align: center">
   <button igxButton="raised" igxButtonColor="white" igxButtonBackground="#353A50"
-    (click)="alert.open(); onSubmit()">SAVE TO
+    (click)="alert.open(); submitTrip(form)">SAVE TO
     TRIPS</button>
   <igx-dialog #alert title="Notification" message="Your route has been saved to trips!" leftButtonLabel="OK"
     (onLeftButtonSelect)="alert.close()">
