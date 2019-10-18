@@ -17,10 +17,15 @@ $my-chip-theme: igx-chip-theme(
 
 }
 
-.map-container {
-  width: 100%;
+.map-wrapper {
+  border-style: solid;
+  border-color: white;
+  border-width: 3px;
+  width: 706px;
   height: 370px;
   position: relative;
+  margin: auto;
+  margin-bottom: 30px;
 }
 
 .input-group-form {
@@ -52,7 +57,7 @@ igx-card {
 }
 
 button {
-  margin-bottom: 65px;
+  margin-top: 10px;
   width: 215px;
 }
 
