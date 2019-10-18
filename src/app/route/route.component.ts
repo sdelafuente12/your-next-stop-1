@@ -58,7 +58,7 @@ export class RouteComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const previousPage = this.router.getPreviousUrl();
     console.log('PASTTTTTT', previousPage);
-    if (previousPage === '/trips') {
+    if (previousPage === '/trips' && this.parsedTrip.length > 0) {
       this.fromTripsSubmit();
     }
   }
