@@ -14,7 +14,7 @@
             </igx-card-header>
           <igx-card-media (click)="navigateWithState(place.placeId)" height="300px">
             <ng-container *ngIf="place.photos">
-              <img [src]="getImageSrc(place.photos)" />
+              <img [src]="place.photoUrl" />
             </ng-container>
           </igx-card-media>
           </igx-card>
