@@ -18,29 +18,31 @@
   }
 
 .card-column {
-  max-width: 225px;
+  max-width: 450px;
   display: block;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   flex-flow: column nowrap;
   flex: 1 0 25%;
   align-content: flex-start;
   font-family: 'Roboto', sans-serif;
-  width: inherit;
   position: relative;
-  height: 250px;
+  height: 300px;
   margin: 0 auto;
   margin-top: 15px;
   background: transparent;
 }
 
-h5 {
-  text-align: left;
+.igx-card {
+  height: 350px;
 }
 
-.material-icons {
-  font-size: 20px;
-  margin-top: 4px;
-  margin-right: -10px;
+.igx-card-header__title {
+  font-size: 16px;
+  margin: auto;
+}
+
+h5 {
+  text-align: left;
 }
 
 igx-card-header {
@@ -48,11 +50,7 @@ igx-card-header {
   margin-bottom: -10px;
 }
 
-.igx-card-header__title {
-  font-size: 16px;
-}
-
-button {
-  border: none;
-  background: #353a50
+igx-carousel {
+  margin-top: 16px;
+  height: 400px;
 }
