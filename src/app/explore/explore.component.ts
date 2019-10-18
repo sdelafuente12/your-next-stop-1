@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MapComponent } from '../map/map.component';
 import { LocationService } from '../services/location.service';
 import { from } from 'rxjs';
-import { distinct } from 'rxjs/operators';
-import  { IgxCarouselComponent, Direction } from 'igniteui-angular';
+import { IgxCarouselComponent, Direction } from 'igniteui-angular';
 import { AgmInfoWindow } from '@agm/core';
 
 
@@ -70,5 +69,9 @@ export class ExploreComponent implements OnInit {
     this.location.voteInterest(place, null, this.currentUser)
     .subscribe(response => {
     })
+  }
+
+  chooseCategory() {
+    console.log('choose category');
   }
 }
