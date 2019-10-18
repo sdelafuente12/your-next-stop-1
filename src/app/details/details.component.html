@@ -1,8 +1,8 @@
-<div style="margin-bottom: 20px">
+<div *ngIf="selectedPlaceInfo" style="margin-bottom: 20px">
   <h4 class="igx-typography__h4">DETAILS</h4>
 </div>
 
-<div class="card-column">
+<div *ngIf="selectedPlaceInfo" class="card-column">
   <igx-card>
     <igx-card-media>
       <img style="height: 300px" [src]="selectedPlaceInfo.photo">
