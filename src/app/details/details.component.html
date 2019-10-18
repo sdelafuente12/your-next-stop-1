@@ -2,7 +2,7 @@
   <h4 class="igx-typography__h4">DETAILS</h4>
 </div>
 
-<div class="card-column">
+<div class="card-column" *ngIf="selectedPlaceInfo">
   <igx-card>
     <igx-card-media>
       <img style="height: 300px" [src]="selectedPlaceInfo.photo">
@@ -17,7 +17,7 @@
         <igx-icon fontSet="material">add_circle_outline</igx-icon>
       </button>
     </igx-card-header>
-    <ng-container>
+    <ng-container >
       <div class="line-wrapper">
         <h3 igxCardHeaderSubtitle>
           Category:{{selectedPlaceInfo.category[0].toUpperCase().concat(selectedPlaceInfo.category.slice(1))}}</h3>
