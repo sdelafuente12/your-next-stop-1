@@ -43,7 +43,11 @@ $my-chip-theme: igx-chip-theme(
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-} 
+}
+
+.date-picker-wrapper {
+  padding: 1rem;
+}
 
 igx-card {
   color: white;
@@ -61,6 +65,6 @@ button {
   width: 215px;
 }
 
-.date-picker-wrapper {
-    padding: 1rem;
-  }
+i {
+  margin-top: 5px;
+}
