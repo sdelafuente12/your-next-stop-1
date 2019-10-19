@@ -9,7 +9,7 @@
             <igx-list-item *ngFor="let current of current" (click)="dialog.open()">
               <p igxListLineTitle>Route: {{current[0].route}}</p>
               <igx-dialog #dialog title="Trip Details" leftButtonLabel="Close" (onLeftButtonSelect)="dialog.close()"
-                rightButtonLabel="Edit" (onRightButtonSelect)="onDialogOKSelected($event)"
+                rightButtonLabel="Edit" (onRightButtonSelect)="editTrip($event)"
                 message="FILL IN ROUTE INFORMATION">
               </igx-dialog>
             </igx-list-item>
@@ -24,7 +24,7 @@
         <igx-list-item *ngFor="let upcoming of upcoming" (click)="dialog.open()">
           <p igxListLineTitle>Route: {{upcoming[0].route}}</p>
           <igx-dialog #dialog title="Trip Details" leftButtonLabel="Close" (onLeftButtonSelect)="dialog.close()"
-            rightButtonLabel="Edit" (onRightButtonSelect)="onDialogOKSelected($event)"
+            rightButtonLabel="Edit" (onRightButtonSelect)="editTrip($event)"
             message="FILL IN ROUTE INFORMATION">
           </igx-dialog>
         </igx-list-item>
@@ -39,7 +39,7 @@
         <igx-list-item *ngFor="let previous of previous" (click)="dialog.open()">
           <p igxListLineTitle>Route: {{previous[0].route}}</p>
           <igx-dialog #dialog title="Trip Details" leftButtonLabel="Close" (onLeftButtonSelect)="dialog.close()"
-            rightButtonLabel="Edit" (onRightButtonSelect)="onDialogOKSelected($event)"
+            rightButtonLabel="Edit" (onRightButtonSelect)="editTrip($event)"
             message="FILL IN ROUTE INFORMATION">
           </igx-dialog>
         </igx-list-item>

@@ -14,7 +14,8 @@ export class TripsComponent implements OnInit {
 
   constructor(private trips: TripsService, private navBar: NavbarService) {}
 
-  public selectTrip(event) {
+  public editTrip(event) {
+    console.log('edit trip in Route')
     event.dialog.close();
   }
 
@@ -27,7 +28,6 @@ export class TripsComponent implements OnInit {
     return this.trips
       .getAllTrips(this.currentUser)
       .subscribe((response: Object[]): void => {
-        // console.log('USERS TRIPS RESPONSE', response);
         response.forEach(element => {
           if (element[0].status === 'current') {
             this.current.push(element);
@@ -42,7 +42,6 @@ export class TripsComponent implements OnInit {
   }
 
   onSelection(trip) {
-    console.log(trip);
     let storageTrip = JSON.stringify(trip);
     localStorage.setItem('trip', storageTrip);
   }
