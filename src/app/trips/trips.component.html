@@ -6,9 +6,12 @@
           <p class="empty">You aren't on a trip.</p>
           <p class="empty"> Route one now!</p>
         </ng-template>
-            <igx-list-item *ngFor="let current of current" (click)="onSelection(current)" routerLink="/route">
+            <igx-list-item *ngFor="let current of current" (click)="dialog.open()">
               <p igxListLineTitle>Route: {{current[0].route}}</p>
-              <!-- <p igxListLineTitle>Destination: {{current.destination}}</p> -->
+              <igx-dialog #dialog title="Trip Details" leftButtonLabel="Close" (onLeftButtonSelect)="dialog.close()"
+                rightButtonLabel="Edit" (onRightButtonSelect)="onDialogOKSelected($event)"
+                message="FILL IN ROUTE INFORMATION">
+              </igx-dialog>
             </igx-list-item>
       </igx-list>
     </igx-tabs-group>
@@ -18,10 +21,12 @@
           <p class="empty">You have no upcoming trips.</p>
           <p class="empty"> Route one now!</p>
         </ng-template>
-        <igx-list-item *ngFor="let upcoming of upcoming" (click)="onSelection(upcoming)" routerLink="/route">
-          <!-- <p igxListLineTitle>Origin: {{upcoming.origin}}</p> -->
+        <igx-list-item *ngFor="let upcoming of upcoming" (click)="dialog.open()">
           <p igxListLineTitle>Route: {{upcoming[0].route}}</p>
-          <!-- <p igxListLineTitle>Destination: {{upcoming.destination}}</p> -->
+          <igx-dialog #dialog title="Trip Details" leftButtonLabel="Close" (onLeftButtonSelect)="dialog.close()"
+            rightButtonLabel="Edit" (onRightButtonSelect)="onDialogOKSelected($event)"
+            message="FILL IN ROUTE INFORMATION">
+          </igx-dialog>
         </igx-list-item>
       </igx-list>
     </igx-tabs-group>
@@ -31,10 +36,12 @@
           <p class="empty">You haven't taken a trip yet.</p>
           <p class="empty"> Route one now!</p>
         </ng-template>
-        <igx-list-item *ngFor="let previous of previous" (click)="onSelection(previous)" routerLink="/route">
-          <!-- <p igxListLineTitle>Origin: {{previous.origin}}</p> -->
+        <igx-list-item *ngFor="let previous of previous" (click)="dialog.open()">
           <p igxListLineTitle>Route: {{previous[0].route}}</p>
-          <!-- <p igxListLineTitle>Destination: {{previous.destination}}</p> -->
+          <igx-dialog #dialog title="Trip Details" leftButtonLabel="Close" (onLeftButtonSelect)="dialog.close()"
+            rightButtonLabel="Edit" (onRightButtonSelect)="onDialogOKSelected($event)"
+            message="FILL IN ROUTE INFORMATION">
+          </igx-dialog>
         </igx-list-item>
       </igx-list>
     </igx-tabs-group>

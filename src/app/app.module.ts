@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { PlacesComponent } from './places/places.component';
 import { TripsComponent } from './trips/trips.component';
-import { TripCardComponent } from './trips/trip-card/trip-card.component';
 import { ResultsComponent } from './results/results.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -60,7 +59,6 @@ import { NavbarComponent } from './navbar/navbar.component';
     DetailsComponent,
     MapComponent,
     TripsComponent,
-    TripCardComponent,
     PlacesComponent,
     ResultsComponent,
     HtmlSanitizerPipe,
@@ -68,7 +66,6 @@ import { NavbarComponent } from './navbar/navbar.component';
     BottomNavRoutingComponent,
     DynamicInputComponent,
     NavbarComponent,
-    // OverlayComponent
   ],
   imports: [
     FormsModule,
