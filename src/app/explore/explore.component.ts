@@ -64,13 +64,6 @@ export class ExploreComponent implements OnInit {
     this.router.navigateByUrl('/details', { state: { id } });
   }
 
-  onUpvote(place) {
-    this.toggleColor();
-    this.location.voteInterest(place, null, this.currentUser)
-    .subscribe(response => {
-    })
-  }
-
   chooseCategory() {
     console.log('choose category');
   }

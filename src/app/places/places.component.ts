@@ -19,6 +19,7 @@ export class PlacesComponent implements OnInit {
   }
 
   getUserPlaces() {
+    console.log(this.userId)
     this.location.getUserPlaces(this.userId).subscribe(userPlace => {
       console.log(userPlace);
       this.userPlaces.push(userPlace);
@@ -34,11 +35,8 @@ export class PlacesComponent implements OnInit {
   }
 
   onUpvote(place) {
-    console.log('PLACE UPVOTED', place);
     this.toggleThumb();
     this.location.voteInterest(place, status, this.userId)
-      .subscribe(response => {
-        console.log('UPVOTE response', response);
-      })
+      .subscribe()
   }
 }
