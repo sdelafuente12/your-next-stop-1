@@ -1,0 +1,18 @@
+@import '~igniteui-angular/lib/core/styles/themes/index';
+
+$bg: #1f1f1f;
+$razzle-dazzle-rose: #ff2ad2;
+
+$dark-razzle-dazzle-rose-palette: igx-palette(
+  $primary: $razzle-dazzle-rose,
+  $secondary: #72da67,
+  $surface: $bg,
+);
+
+@include igx-dark-theme($dark-razzle-dazzle-rose-palette);
+
+:host {
+    ::ng-deep {
+        @include igx-dark-theme($dark-razzle-dazzle-rose-palette);
+    }
+}
