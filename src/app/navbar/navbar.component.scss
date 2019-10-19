@@ -18,3 +18,10 @@ $dark-navbar: igx-navbar-theme(
       @include igx-navbar($dark-navbar);
   }
 }
+
+igx-navbar {
+  position: sticky;
+  width: flex;
+  top: 0;
+  z-index: 10;
+}
