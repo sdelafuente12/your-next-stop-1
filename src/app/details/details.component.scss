@@ -31,7 +31,6 @@ $pink: #ff2ad2;
   flex: 1 0 25%;
   align-content: flex-start;
   font-family: 'Roboto', sans-serif;
-  // width: inherit;
   position: relative;
   height: 300px;
   margin: 0 auto;
@@ -45,18 +44,12 @@ igx-card {
   display: block;
   flex-direction: row;
   justify-content: space-around;
-  // max-width: 350px;
-  // min-height: 450px;
   flex-flow: column nowrap;
-  // flex: 1 0 25%;
-  // font-family: 'Roboto', sans-serif;
   margin: 0 auto;
 }
 
 igx-icon {
-  // margin-top: 8px;
   display: flex;
-  // flex: 1 0 30%;
   margin-bottom: 6px;
 }
 
