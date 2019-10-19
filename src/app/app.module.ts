@@ -65,7 +65,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     StatsComponent,
     BottomNavRoutingComponent,
     DynamicInputComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     FormsModule,
