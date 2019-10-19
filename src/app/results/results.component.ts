@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationService } from '../services/location.service';
-import { API_KEY } from '../../../config.js';
 
 @Component({
   selector: 'app-results',
@@ -48,10 +47,6 @@ export class ResultsComponent implements OnInit {
     this.router.navigateByUrl('/details', { state: { id } });
   }
 
-  getImageSrc (ref) {
-    return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${API_KEY}`;
-  }
-
   toggleColor() {
     this.newColor = !this.newColor;
     console.log('color change');
@@ -60,7 +55,7 @@ export class ResultsComponent implements OnInit {
   onUpvote(place) {
     console.log('PLACE UPVOTED', place);
     this.toggleColor();
-    this.locationService.upvoteInterest(place, null, this.currentUser)
+    this.locationService.voteInterest(place, null, this.currentUser)
       .subscribe(response => {
         console.log('UPVOTE response', response);
     });

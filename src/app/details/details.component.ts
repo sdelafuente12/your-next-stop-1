@@ -24,6 +24,7 @@ export class DetailsComponent implements OnInit {
     website: any, 
     phone: any, 
     address: any,
+    status?: string,
   };
   selectedPlacePhoto: null;
   currentUser = localStorage.getItem('userId');
@@ -52,23 +53,49 @@ export class DetailsComponent implements OnInit {
     const currentUser = localStorage.getItem('userId');
     this.location.getPlaceInfo(place, currentUser)
     .subscribe((info: any) => {
-      console.log('INFO', info);
-      if (info.status === 'liked') this.thumbColor = true; 
-      if (info.status === 'saved') this.saveColor = true; 
       this.selectedPlaceInfo = info;
+      
+      if (info.status === 'liked') {
+        this.selectedPlaceInfo.status = 'liked';
+        this.thumbColor = true; 
+      }
+      if (info.status === 'saved') {
+        this.selectedPlaceInfo.status = 'saved';
+        this.saveColor = true;
+      } 
+      
     })
   }
 
   onSelection(place, status) {
-    console.log(this.currentUser);
+    let action = status;
     if (status === 'liked') {
       this.toggleThumb();
-      if (this.saveColor) this.saveColor = false;
+      if (this.saveColor) {
+        this.saveColor = false;
+      }
+      if (this.selectedPlaceInfo.status === 'liked') {
+        action = 'remove';
+        this.selectedPlaceInfo.status = null;
+      } else {
+        this.selectedPlaceInfo.status = 'liked';
+      }
+      
+
     } else {
       this.toggleSave();
-      if (this.thumbColor) this.thumbColor = false;
+      if (this.thumbColor) {
+        this.thumbColor = false;
+      }
+      if (this.selectedPlaceInfo.status === 'saved') {
+        action = 'remove';
+        this.selectedPlaceInfo.status = null;
+      } else {
+        this.selectedPlaceInfo.status = 'saved';
+      }
     }
-    this.location.upvoteInterest(place, status, this.currentUser)
+    console.log(action)
+    this.location.voteInterest(place, action, this.currentUser)
       .subscribe(response => {
         console.log('UPVOTE response', response);
       });
