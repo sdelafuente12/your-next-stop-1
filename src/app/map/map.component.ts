@@ -4,8 +4,6 @@ import { mapStyle } from './map-style.js';
 import { LocationService } from '../services/location.service'
 import { switchMap, flatMap, endWith, finalize, distinct, take } from 'rxjs/operators';
 import { RouteService } from '../services/route.service.js';
-import { WindowRef } from '../services/window.service'
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-map',
@@ -32,14 +30,12 @@ export class MapComponent implements OnInit, OnDestroy {
   currentLocationSubscription;
   imageSubscription;
 
-//custom marker image
-  markerOptions = {
-    icon: '../assets/icons/red maps marker 30x48.png'
-  };
 //options for map rendering
   renderOptions = {
     suppressPolylines: false,
-    markerOptions: this.markerOptions
+    markerOptions: {
+      icon: '../assets/icons/red maps marker 30x48.png'
+    }
   };
 //all route points between origin and destination
   waypoints;
@@ -49,20 +45,15 @@ export class MapComponent implements OnInit, OnDestroy {
   snapshotUrl: string;
   images = [];
 
-  private _window;
-
   constructor(
     private router: Router, 
     private locationService: LocationService, 
     private routeService: RouteService,
-    private windowRefService: WindowRef,
-    private sanitizer: DomSanitizer
     ) { 
     this.snapshotUrl = router.routerState.snapshot.url.split('?')[0];
   }
 
   ngOnInit() {
-    this._window = this.windowRefService.nativeWindow;
     //if explore view is active, populates currentposition and nearby locations
     if (this.snapshotUrl === '/explore'){ 
       this.exploreSubscription = this.locationService.getCurrentPosition()
