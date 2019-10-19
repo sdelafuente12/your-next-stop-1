@@ -42,7 +42,6 @@ import {
   IgxNavbarModule
 } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
-import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
 import { API_KEY } from '../../config.js';
@@ -65,7 +64,6 @@ import { NavbarComponent } from './navbar/navbar.component';
     HtmlSanitizerPipe,
     StatsComponent,
     BottomNavRoutingComponent,
-    NavDrawerComponent,
     DynamicInputComponent,
     NavbarComponent
   ],

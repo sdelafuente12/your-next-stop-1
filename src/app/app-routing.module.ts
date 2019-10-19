@@ -11,17 +11,12 @@ import { StatsComponent } from './stats/stats.component';
 import {
   BottomNavRoutingComponent,
 } from './bottomnav-routing/bottomnav-routing.component';
-import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 import { DynamicInputComponent } from './route/dynamic-input/dynamic-input.component';
 
 const routes: Routes = [
   {
     path: 'bottomnav-routing',
     component: BottomNavRoutingComponent
-  },
-  {
-    path: 'nav-drawer',
-    component: NavDrawerComponent
   },
   { path: 'explore', component: ExploreComponent },
   { path: 'route', component: RouteComponent },
