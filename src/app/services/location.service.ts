@@ -9,7 +9,7 @@ import { HttpParams } from '@angular/common/http';
 })
 export class LocationService {
   private getNearbyPlacesEndpoint = `${environment.BASE_API_URL}/nearbyPlaces`;
-  private upvoteInterestEndpoint = `${environment.BASE_API_URL}/likedInterest`;
+  private voteInterestEndpoint = `${environment.BASE_API_URL}/likedInterest`;
   private getPlaceInfoEndpoint = `${environment.BASE_API_URL}/getPlaceInfo`;
   private getUserPlacesEndpoint = `${environment.BASE_API_URL}/getLikedAndSavedForLater`;
   private wait = false;
@@ -84,13 +84,32 @@ export class LocationService {
     })
   }
 
-  upvoteInterest(upvotedPlace, status, userId) {
-    console.log('UPVOTE SERVICE', this.upvoteInterestEndpoint);
-    return this.http.post(this.upvoteInterestEndpoint, {
-      status, interest: upvotedPlace.interest || upvotedPlace.category, userId: userId, name: upvotedPlace.name, hours: upvotedPlace.hours,
-      coordinates: upvotedPlace.coordinates, city: upvotedPlace.city, address: upvotedPlace.address, phone: upvotedPlace.phone,
-      photoRef: upvotedPlace.photos || upvotedPlace.photo, placeId: upvotedPlace.placeId, priceLevel: upvotedPlace.priceLevel,
-      rating: upvotedPlace.rating, review: upvotedPlace.reviews || null, website: upvotedPlace.website || 'No website available',
+  voteInterest(votedPlace, action, userId) {
+    const placeId = votedPlace.placeId;
+    if (action === 'remove') {
+      return this.http.delete(this.voteInterestEndpoint, {
+        params: new HttpParams()
+        .set('placeId', placeId)
+        .set('userId', userId)
+      })
+    } 
+
+    return this.http.post(this.voteInterestEndpoint, {
+      status: action,
+      userId,
+      interest: votedPlace.interest || votedPlace.category,
+      name: votedPlace.name,
+      hours: votedPlace.hours,
+      coordinates: votedPlace.coordinates,
+      city: votedPlace.city,
+      address: votedPlace.address,
+      phone: votedPlace.phone,
+      photoRef: votedPlace.photos || votedPlace.photo,
+      placeId: votedPlace.placeId,
+      priceLevel: votedPlace.priceLevel,
+      rating: votedPlace.rating,
+      review: votedPlace.reviews || null,
+      website: votedPlace.website || 'No website available',
     });
   }
 
