@@ -26,3 +26,18 @@ igx-navbar {
   z-index: 10;
   margin-bottom: 20px;
 }
+
+.drop-down-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+}
+
+.igx-drop-down__list {
+    border-radius: 4px;
+}
+
+.overlayOutlet {
+    z-index: 99;
+    position: relative;
+}
