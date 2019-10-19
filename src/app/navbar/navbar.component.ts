@@ -4,6 +4,8 @@ import {
   PathLocationStrategy
 } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from '../services/navbar.service';
+import { Observable } from 'rxjs';
 
 const CURRENT_VIEW = 'Ignite UI for Angular';
 
@@ -17,12 +19,11 @@ const CURRENT_VIEW = 'Ignite UI for Angular';
   templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
-  public currentView: string;
-
-  constructor(private _location: Location) {}
+  public currentView: Observable<string>;
+  constructor(private _location: Location, private navbar: NavbarService) {}
 
   public ngOnInit() {
-    this.currentView = CURRENT_VIEW;
+    this.currentView = this.navbar.title;
   }
 
   public navigateBack() {

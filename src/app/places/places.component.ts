@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationService } from '../services/location.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-places',
@@ -12,9 +13,14 @@ export class PlacesComponent implements OnInit {
   thumbColor = false;
   userPlaces = [];
 
-  constructor(private location: LocationService, private router: Router) {}
+  constructor(
+    private location: LocationService,
+    private router: Router,
+    private navBar: NavbarService,
+    ) {}
 
   ngOnInit() {
+    this.navBar.updateTitle('Places');
     this.getUserPlaces();
   }
 

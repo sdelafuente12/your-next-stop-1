@@ -11,6 +11,7 @@ import {
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { from } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
+import { NavbarService } from '../services/navbar.service';
 
 
 @Component({
@@ -52,10 +53,16 @@ export class RouteComponent implements OnInit, OnDestroy {
     })
   }
   inputSubscription;
-  constructor(private trips: TripsService, private route: RouteService, private router: PreviousRouteService) {}
+  constructor(
+    private trips: TripsService,
+    private route: RouteService,
+    private router: PreviousRouteService,
+    private navBar: NavbarService,
+    ) {}
   @ViewChild(MapComponent, {static: false}) public map: MapComponent;
   
   ngOnInit() {
+    this.navBar.updateTitle('Route');
     const previousPage = this.router.getPreviousUrl();
     console.log('PASTTTTTT', previousPage);
     if (previousPage === '/trips' && this.parsedTrip.length) {

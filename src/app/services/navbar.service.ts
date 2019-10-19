@@ -11,7 +11,7 @@ export class NavbarService {
 
   constructor() { }
 
-  updatetitle(newTitle) {
+  updateTitle(newTitle) {
     this.navBarTitle.next(newTitle);
   }
 }
