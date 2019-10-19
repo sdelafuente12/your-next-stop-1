@@ -5,6 +5,7 @@ import { LocationService } from '../services/location.service';
 import { from } from 'rxjs';
 import { IgxCarouselComponent, Direction } from 'igniteui-angular';
 import { AgmInfoWindow } from '@agm/core';
+import { NavbarService } from '../services/navbar.service';
 
 
 @Component({
@@ -19,15 +20,21 @@ export class ExploreComponent implements OnInit {
   @ViewChild(AgmInfoWindow, { static: false }) private infoWindow: AgmInfoWindow;
   public places = [];
   public images = [];
-  
+  public title = 'Your Personalized Stops';
   placesSubscription;
   imagesSubscription;
   newColor = false;
   currentUser = localStorage.getItem('userId');
 
-  constructor(private route: ActivatedRoute, public router: Router, private location: LocationService) {}
+  constructor(
+    private route: ActivatedRoute,
+    public router: Router,
+    private location: LocationService,
+    private navBar: NavbarService,
+    ) {}
 
   ngOnInit() {
+    this.updateNavbar();
     const userId = this.route.snapshot.queryParams.id;
     if (userId) {
       localStorage.setItem('userId', userId);
@@ -64,14 +71,11 @@ export class ExploreComponent implements OnInit {
     this.router.navigateByUrl('/details', { state: { id } });
   }
 
-  onUpvote(place) {
-    this.toggleColor();
-    this.location.voteInterest(place, null, this.currentUser)
-    .subscribe(response => {
-    })
-  }
-
   chooseCategory() {
     console.log('choose category');
+  }
+
+  updateNavbar() {
+    this.navBar.updateTitle(this.title);
   }
 }

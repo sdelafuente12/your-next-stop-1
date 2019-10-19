@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TripsService } from '../services/trips.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-trips',
@@ -12,9 +13,10 @@ export class TripsComponent implements OnInit {
   public current = [];
   public previous = [];
 
-  constructor(private trips: TripsService) {}
+  constructor(private trips: TripsService, private navBar: NavbarService) {}
   
   ngOnInit() {
+    this.navBar.updateTitle('Trips');
     this.getAllTrips();
   }
 

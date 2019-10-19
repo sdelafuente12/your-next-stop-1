@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationService } from '../services/location.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-results',
@@ -20,9 +21,14 @@ export class ResultsComponent implements OnInit {
   imagesSubscription;
   // private _window;
 
-  constructor(public router: Router, private locationService: LocationService) { }
+  constructor(
+    public router: Router,
+    private locationService: LocationService,
+    private navBar: NavbarService,
+    ) { }
 
   ngOnInit() {
+    this.navBar.updateTitle('All Results');
     this.loadPlaces();
   }
 

@@ -7,7 +7,12 @@
   <igx-tabs tabsType="fixed">
 
     <igx-tabs-group label="Likes">
-      <igx-carousel [pause]="true" [loop]="true" [navigation]="true">
+      <igx-carousel
+      *ngIf="userPlaces.length"
+      [pause]="true"
+      [loop]="true"
+      [navigation]="true"
+      >
         <ng-container *ngFor="let likedPlace of userPlaces[0].likedPlaces">
           <igx-slide>
             <div class="card-column">
@@ -28,7 +33,12 @@
     </igx-tabs-group>
 
     <igx-tabs-group label="Saved">
-        <igx-carousel [pause]="true" [loop]="false" [navigation]="true">
+      <igx-carousel
+      *ngIf="userPlaces.length"
+      [pause]="true"
+      [loop]="true"
+      [navigation]="true"
+      >
           <ng-container *ngFor="let savedPlace of userPlaces[0].savedPlaces">
             <igx-slide>
               <div class="card-column">

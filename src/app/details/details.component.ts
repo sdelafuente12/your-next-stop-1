@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router'
 import { LocationService } from '../services/location.service';
 import { map, take } from 'rxjs/operators';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-details',
@@ -29,7 +30,11 @@ export class DetailsComponent implements OnInit {
   selectedPlacePhoto: null;
   currentUser = localStorage.getItem('userId');
 
-  constructor(public activatedRoute: ActivatedRoute, private location: LocationService) { }
+  constructor(
+    public activatedRoute: ActivatedRoute,
+    private location: LocationService,
+    private navBar: NavbarService,
+    ) { }
   
   toggleThumb() {
     this.thumbColor = !this.thumbColor;
@@ -40,6 +45,7 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.navBar.updateTitle('Details');
     this.state$ = this.activatedRoute.paramMap
       .pipe(
         map((value) => this.placeId = window.history.state),
