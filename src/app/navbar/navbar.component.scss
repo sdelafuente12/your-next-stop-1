@@ -1,0 +1,24 @@
+@import '~igniteui-angular/lib/core/styles/themes/index';
+
+$htc: #bdeaf2;
+$bg: #1f1f1f;
+$pink: #ff2ad2;
+
+$dark-navbar: igx-navbar-theme(
+  $text-color: #FFCD0F,
+  $background: $bg,
+  $idle-icon-color: white,
+  $hover-icon-color: $pink
+);
+
+@include igx-navbar($dark-navbar);
+
+:host {
+  ::ng-deep {
+      @include igx-navbar($dark-navbar);
+  }
+}
+
+title {
+
+}
