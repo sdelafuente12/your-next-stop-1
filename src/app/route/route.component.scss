@@ -1,27 +1,14 @@
-@import '~igniteui-angular/lib/core/styles/themes/index';
-
-$my-chip-theme: igx-chip-theme(
-  $background: #353a50
-);
-
-:host {
-  ::ng-deep {
-    @include igx-chip($my-chip-theme);
-  }
-}
-
 .igx-input-group,
 .center-content,
 .select {
   margin-top: 8px;
-
 }
 
 .map-wrapper {
   border-style: solid;
   border-color: white;
   border-width: 3px;
-  width: 706px;
+  width: 95%;
   height: 370px;
   position: relative;
   margin: auto;
@@ -63,6 +50,7 @@ igx-card {
 button {
   margin-top: 10px;
   width: 215px;
+  margin-bottom: 100px;
 }
 
 i {
