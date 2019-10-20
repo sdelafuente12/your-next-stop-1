@@ -8,10 +8,15 @@
         </ng-template>
             <igx-list-item *ngFor="let current of current" (click)="dialog.open()">
               <p igxListLineTitle>Route: {{current[0].route}}</p>
-              <igx-dialog #dialog title="Trip Details" leftButtonLabel="Close" (onLeftButtonSelect)="dialog.close()"
-                rightButtonLabel="Edit" (onRightButtonSelect)="editTrip($event)"
-                message="FILL IN ROUTE INFORMATION">
-              </igx-dialog>
+          <igx-dialog #dialog title="Trip Details" leftButtonLabel="Close" (onLeftButtonSelect)="dialog.close()"
+            rightButtonLabel="Edit" (onRightButtonSelect)="editTrip($event, current)"
+            message=
+            "Origin: {{current[0].route.split('->')[0]}}
+             Waypoints: {{current[0].wayPoints[0]}}
+             Destination: {{current[0].route.split('->')[1]}}
+             Start Date: {{current[0].dateStart.split('T')[0]}}
+             End Date: {{current[0].dateEnd.split('T')[0]}}">
+          </igx-dialog>
             </igx-list-item>
       </igx-list>
     </igx-tabs-group>
@@ -24,8 +29,13 @@
         <igx-list-item *ngFor="let upcoming of upcoming" (click)="dialog.open()">
           <p igxListLineTitle>Route: {{upcoming[0].route}}</p>
           <igx-dialog #dialog title="Trip Details" leftButtonLabel="Close" (onLeftButtonSelect)="dialog.close()"
-            rightButtonLabel="Edit" (onRightButtonSelect)="editTrip($event)"
-            message="FILL IN ROUTE INFORMATION">
+            rightButtonLabel="Edit" (onRightButtonSelect)="editTrip($event, upcoming)"
+            message=
+            "Origin: {{upcoming[0].route.split('->')[0]}}
+             Waypoints: {{upcoming[0].wayPoints[0]}}
+             Destination: {{upcoming[0].route.split('->')[1]}}
+             Start Date: {{upcoming[0].dateStart.split('T')[0]}}
+             End Date: {{upcoming[0].dateEnd.split('T')[0]}}">
           </igx-dialog>
         </igx-list-item>
       </igx-list>
@@ -38,9 +48,14 @@
         </ng-template>
         <igx-list-item *ngFor="let previous of previous" (click)="dialog.open()">
           <p igxListLineTitle>Route: {{previous[0].route}}</p>
-          <igx-dialog #dialog title="Trip Details" leftButtonLabel="Close" (onLeftButtonSelect)="dialog.close()"
-            rightButtonLabel="Edit" (onRightButtonSelect)="editTrip($event)"
-            message="FILL IN ROUTE INFORMATION">
+          <igx-dialog #dialog title="Trip Details"
+            rightButtonLabel="Close" (onRightButtonSelect)="dialog.close()"
+            message=
+            "Origin: {{previous[0].route.split('->')[0]}}
+             Waypoints: {{previous[0].wayPoints[0]}}
+             Destination: {{previous[0].route.split('->')[1]}}
+             Start Date: {{previous[0].dateStart.split('T')[0]}}
+             End Date: {{previous[0].dateEnd.split('T')[0]}}">
           </igx-dialog>
         </igx-list-item>
       </igx-list>
