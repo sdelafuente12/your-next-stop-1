@@ -14,9 +14,12 @@ export class TripsComponent implements OnInit {
 
   constructor(private trips: TripsService, private navBar: NavbarService) {}
 
-  public editTrip(event) {
-    console.log('edit trip in Route')
+  public editTrip(event, trip) {
+    // console.log('TRIP SELECTED FROM TRIPS PAGE GOING INTO LOCALSTORAGE', trip);
+    let storageTrip = JSON.stringify(trip)
+    localStorage.setItem("trip", storageTrip);
     event.dialog.close();
+    window.location.href = '/route';
   }
 
   ngOnInit() {
@@ -28,6 +31,7 @@ export class TripsComponent implements OnInit {
     return this.trips
       .getAllTrips(this.currentUser)
       .subscribe((response: Object[]): void => {
+        // console.log('Trips RETRIEVED from database', response);
         response.forEach(element => {
           if (element[0].status === 'current') {
             this.current.push(element);
@@ -39,10 +43,5 @@ export class TripsComponent implements OnInit {
           }
         });
       });
-  }
-
-  onSelection(trip) {
-    let storageTrip = JSON.stringify(trip);
-    localStorage.setItem('trip', storageTrip);
   }
 }
