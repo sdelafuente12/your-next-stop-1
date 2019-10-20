@@ -3,7 +3,14 @@ import {
   LocationStrategy,
   PathLocationStrategy
 } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  ConnectedPositioningStrategy,
+  HorizontalAlignment,
+  ISelectionEventArgs,
+  NoOpScrollStrategy,
+  VerticalAlignment
+} from 'igniteui-angular';
 import { NavbarService } from '../services/navbar.service';
 import { Observable } from 'rxjs';
 
@@ -14,6 +21,7 @@ const CURRENT_VIEW = 'Ignite UI for Angular';
     Location,
     { provide: LocationStrategy, useClass: PathLocationStrategy }
   ],
+  encapsulation: ViewEncapsulation.None,
   selector: 'app-navbar',
   styleUrls: ['./navbar.component.scss'],
   templateUrl: './navbar.component.html'
@@ -26,11 +34,24 @@ export class NavbarComponent implements OnInit {
     this.currentView = this.navbar.title;
   }
 
-  public navigateBack() {
-    this._location.back();
+  public items: Array<{ text: string }> = [{ text: 'Logout' }];
+  public text: string;
+  public overlaySettings = {
+    positionStrategy: new ConnectedPositioningStrategy({
+      horizontalDirection: HorizontalAlignment.Left,
+      horizontalStartPoint: HorizontalAlignment.Right,
+      verticalStartPoint: VerticalAlignment.Bottom
+    }),
+    scrollStrategy: new NoOpScrollStrategy()
+  };
+
+  public onSelection(eventArgs: ISelectionEventArgs) {
+    this.text = eventArgs.newSelection.value;
+    eventArgs.cancel = true;
   }
 
-  public canGoBack() {
-    return window.history.length > 0;
+  logoutUser() {
+    localStorage.removeItem('username');
+    window.location.href = '/';
   }
 }

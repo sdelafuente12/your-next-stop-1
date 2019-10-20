@@ -39,7 +39,8 @@ import {
   IgxDropDownModule,
   IgxDividerModule,
   IgxLayoutModule,
-  IgxNavbarModule
+  IgxNavbarModule,
+  IgxToggleModule
 } from 'igniteui-angular';
 import { BottomNavRoutingComponent } from './bottomnav-routing/bottomnav-routing.component';
 import { AgmCoreModule } from '@agm/core';
@@ -103,6 +104,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     IgxDividerModule,
     IgxLayoutModule,
     IgxNavbarModule,
+    IgxToggleModule,
     ReactiveFormsModule,
   ],
   providers: [WINDOW_PROVIDERS],
