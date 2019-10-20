@@ -27,6 +27,15 @@ export class TripsComponent implements OnInit {
     this.getAllTrips();
   }
 
+  interpolate(trip) {
+    return `Origin: ${trip.route.split('->')[0]}
+            ${trip.wayPoints.filter(waypoint => waypoint.length)
+              .map((waypoint, i) => `Waypoint ${i + 1}: ${waypoint}`).join('\n')}
+            Destination: ${trip.route.split('->')[1]}
+            Start Date: ${trip.dateStart.split('T')[0]}
+            End Date: ${trip.dateEnd.split('T')[0]}`
+  }
+
   getAllTrips() {
     return this.trips
       .getAllTrips(this.currentUser)
