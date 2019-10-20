@@ -6,6 +6,7 @@ import { Component, HostBinding } from '@angular/core';
   templateUrl: 'bottomnav-routing.component.html'
 })
 export class BottomNavRoutingComponent {
+  currentUser = localStorage.getItem('userId');
   @HostBinding("class")
   public themesClass = "dark-theme";
   constructor() {}
