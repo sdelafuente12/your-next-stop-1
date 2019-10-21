@@ -16,7 +16,7 @@ export class TripsService {
   constructor(private http: HttpClient) { }
 
   getAllTrips(user) {
-    console.log('ENDGAME', this.getAllTripsEndpoint);
+    // console.log('ENDGAME', this.getAllTripsEndpoint);
     return this.http.get(`${this.getAllTripsEndpoint}?id=${user}`);
   }
 
