@@ -1,3 +1,5 @@
+<div *ngIf="currentUser">
+
 <igx-bottom-nav class="bottom-nav">
   <igx-tab class="bottom-nav" label="Explore" icon="directions_walk" routerLink="explore" routerLinkActive #rla1="routerLinkActive"
     [isSelected]="rla1.isActive">
@@ -15,3 +17,4 @@
     [isSelected]="rla4.isActive">
   </igx-tab>
 </igx-bottom-nav>
+</div>
