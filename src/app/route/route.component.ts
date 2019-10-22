@@ -19,10 +19,7 @@ import { NavbarService } from '../services/navbar.service';
   templateUrl: './route.component.html',
   styleUrls: ['./route.component.scss']
 })
-
-
 export class RouteComponent implements OnInit, OnDestroy {
-
   @Output() public onClosing = new EventEmitter<string>();
 
   currentUser = localStorage.getItem('userId');
@@ -31,19 +28,19 @@ export class RouteComponent implements OnInit, OnDestroy {
   form = {
     origin: '',
     destination: '',
-    route: '', 
-    waypoints: ['', '', '', '', ''] ,
+    route: '',
+    waypoints: ['', '', '', '', ''],
     dateStart: '',
     dateEnd: '',
-    userId: JSON.parse(this.currentUser),
-  }
+    userId: JSON.parse(this.currentUser)
+  };
   private isoDate = {
     start: '',
     end: ''
-  }
+  };
   public show = [0];
   public suggestions = [];
-  
+
   public settings = {
     positionStrategy: new ConnectedPositioningStrategy({
       closeAnimation: null,
@@ -51,16 +48,16 @@ export class RouteComponent implements OnInit, OnDestroy {
       verticalDirection: 0,
       verticalStartPoint: 0
     })
-  }
+  };
   inputSubscription;
   constructor(
     private trips: TripsService,
     private route: RouteService,
     private router: PreviousRouteService,
-    private navBar: NavbarService,
-    ) {}
-  @ViewChild(MapComponent, {static: false}) public map: MapComponent;
-  
+    private navBar: NavbarService
+  ) {}
+  @ViewChild(MapComponent, { static: false }) public map: MapComponent;
+
   ngOnInit() {
     this.navBar.updateTitle('Route');
     const previousPage = this.router.getPreviousUrl();
@@ -69,82 +66,77 @@ export class RouteComponent implements OnInit, OnDestroy {
       this.fromTripsSubmit();
     }
   }
-  
+
   public onSubmit() {
     this.map.setRoute(this.form);
     // this.submitTrip(this.form);
     let formStorage = JSON.stringify(this.form);
-    localStorage.setItem('form', formStorage)
-    console.log('@@form@@', localStorage.form)
+    localStorage.setItem('form', formStorage);
+    console.log('@@form@@', localStorage.form);
   }
-  
-  public submitTrip(form) { 
+
+  public submitTrip(form) {
     this.form.route = this.form.origin + ' -> ' + this.form.destination;
-    return this.route.saveTrips(form)
-    .subscribe(userTrip => {
+    return this.route.saveTrips(form).subscribe(userTrip => {
       console.log(userTrip);
-    })
+    });
   }
 
   public onKey(field, index) {
     let input;
     if (index) input = this.form[field][index];
     else input = this.form[field];
-    
+
     if (input.length) {
       this.inputSubscription = from(input)
-      .pipe(
-        debounceTime(250),
-        switchMap(
-          (text) => {
+        .pipe(
+          debounceTime(250),
+          switchMap(text => {
             console.log('FORMMMMM', this.form);
             if (field === 'origin') {
-              return this.route.autoSuggestion(input, this.map.currentPosition)
+              return this.route.autoSuggestion(input, this.map.currentPosition);
             } else {
-              return this.route.autoSuggestion(input, '')
+              return this.route.autoSuggestion(input, '');
             }
-            
-          }  
-          )
-          )
-          .subscribe((suggestions: any) => {
-            // console.log(suggestions)
-            this.suggestions = suggestions;
           })
-        }
-      }
-      
-      public onClick() {
-        this.suggestions = [];
-        if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
-      }
-      
-      public onDateSelection(value) {
-        if(value === 'startValue') {
-          this.form.dateStart = value;
-        }
-        this.form.dateEnd = value;
-        console.log(this.form.dateEnd);
-      }
-      
-      public autosuggestClick(suggestion) {
-        
-      }
+        )
+        .subscribe((suggestions: any) => {
+          // console.log(suggestions)
+          this.suggestions = suggestions;
+        });
+    }
+  }
 
-      public fromTripsSubmit() {
-        console.log('PARSLEY', this.parsedTrip);
-        this.form.origin = this.parsedTrip[0].route.split('->')[0];
-        this.form.destination = this.parsedTrip[0].route.split('-> ')[1];
-        this.form.dateStart = this.parsedTrip[0].dateStart;
-        this.form.dateEnd = this.parsedTrip[0].dateEnd;
-        this.form.userId = JSON.parse(this.currentUser);
-        this.form.route = this.parsedTrip[0].route;
-        this.form.waypoints = this.parsedTrip[0].wayPoints;
-        console.log('FORMMMMMM', this.form);
-        //console.log(this.map.setRoute);
-        setTimeout(() => this.map.setRoute(this.form), 1000);
-        
-      }
+  public onClick() {
+    this.suggestions = [];
+    if (this.inputSubscription) {
+      this.inputSubscription.unsubscribe();
+    }
+  }
+
+  public onDateSelection(value) {
+    if (value === 'startValue') {
+      this.form.dateStart = value;
+    }
+    this.form.dateEnd = value;
+    console.log(this.form.dateEnd);
+  }
+
+  public autosuggestClick(suggestion) {}
+
+  public fromTripsSubmit() {
+    console.log('PARSLEY', this.parsedTrip);
+    this.form.origin = this.parsedTrip[0].route.split('->')[0];
+    this.form.destination = this.parsedTrip[0].route.split('-> ')[1];
+    this.form.dateStart = this.parsedTrip[0].dateStart;
+    this.form.dateEnd = this.parsedTrip[0].dateEnd;
+    this.form.userId = JSON.parse(this.currentUser);
+    this.form.route = this.parsedTrip[0].route;
+    this.form.waypoints = this.parsedTrip[0].wayPoints;
+    console.log('FORMMMMMM', this.form);
+    //console.log(this.map.setRoute);
+    setTimeout(() => this.map.setRoute(this.form), 1000);
+  }
 
   addWaypointInput() {
     this.show[this.show.length] = this.show.length;
@@ -161,11 +153,17 @@ export class RouteComponent implements OnInit, OnDestroy {
     let month = isoDate.slice(6, 8);
     if (month[0] === 0) month = month.slice(1);
     let year = isoDate.slice(1, 5);
-    
-    return `${month}/${day}/${year}`
+
+    return `${month}/${day}/${year}`;
+  }
+
+  chooseCategory() {
+    console.log('choose category');
   }
 
   ngOnDestroy() {
-    if (this.inputSubscription) { this.inputSubscription.unsubscribe(); }
+    if (this.inputSubscription) {
+      this.inputSubscription.unsubscribe();
+    }
   }
 }
