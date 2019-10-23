@@ -49,7 +49,10 @@ export class RouteComponent implements OnInit, OnDestroy {
       verticalStartPoint: 0
     })
   };
+
   inputSubscription;
+  categoryColor = false;
+  
   constructor(
     private trips: TripsService,
     private route: RouteService,
@@ -158,6 +161,7 @@ export class RouteComponent implements OnInit, OnDestroy {
   }
 
   chooseCategory() {
+    this.categoryColor = !this.categoryColor;
     console.log('choose category');
   }
 
