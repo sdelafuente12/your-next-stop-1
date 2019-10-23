@@ -27,6 +27,7 @@ const CURRENT_VIEW = 'Ignite UI for Angular';
   templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
+  currentUser = localStorage.getItem('userId');
   public currentView: Observable<string>;
   constructor(private _location: Location, private navbar: NavbarService) {}
 
@@ -51,7 +52,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logoutUser() {
-    localStorage.removeItem('username');
+    localStorage.clear();
     window.location.href = '/';
   }
 }

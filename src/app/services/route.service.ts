@@ -41,7 +41,9 @@ export class RouteService {
     })
   }
 
-  saveTrips(form) {
+  saveTrips(form, tripId) {
+    form.tripId = tripId;
+    console.log('form info that will be saved to the DATABASE', form);
     return this.http.post(this.addTripEndpoint, form);
   }
 
