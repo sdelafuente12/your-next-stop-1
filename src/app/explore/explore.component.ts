@@ -17,21 +17,31 @@ export class ExploreComponent implements OnInit {
   @ViewChild(MapComponent, { static: false }) private map: MapComponent;
   @ViewChild(IgxCarouselComponent, { static: false })
   private carousel: IgxCarouselComponent;
-  @ViewChild(AgmInfoWindow, { static: false }) private infoWindow: AgmInfoWindow;
+  @ViewChild(AgmInfoWindow, { static: false })
+  private infoWindow: AgmInfoWindow;
   public places = [];
   public images = [];
   public title = 'Your Personalized Stops';
   placesSubscription;
   imagesSubscription;
-  newColor = false;
   currentUser = localStorage.getItem('userId');
+  category = {
+    bakery: false,
+    bar: false,
+    cafe: false,
+    museum: false,
+    park: false,
+    restaurant: false,
+    shopping: false,
+    tourist: false,
+  };
 
   constructor(
     private route: ActivatedRoute,
     public router: Router,
     private location: LocationService,
-    private navBar: NavbarService,
-    ) {}
+    private navBar: NavbarService
+  ) {}
 
   ngOnInit() {
     // this.updateNavbar();
@@ -45,14 +55,13 @@ export class ExploreComponent implements OnInit {
   }
 
   loadPlaces() {
-      if (!this.placesSubscription){
-        // console.log('Map Nearby Places', this.map.nearbyPlaces);
-        this.placesSubscription = from(this.map.nearbyPlaces)
-        .subscribe(place => {
-          // console.log('PLACE', place);
-          this.places.push(place);
+    if (!this.placesSubscription) {
+      // console.log('Map Nearby Places', this.map.nearbyPlaces);
+      this.placesSubscription = from(this.map.nearbyPlaces).subscribe(place => {
+        // console.log('PLACE', place);
+        this.places.push(place);
       });
-      }
+    }
   }
 
   loadImages(index) {
@@ -69,36 +78,40 @@ export class ExploreComponent implements OnInit {
     this.map.markerClick(slideIndex, true);
   }
 
-  toggleColor() {
-    this.newColor = !this.newColor;
-  }
-
   navigateWithState(id) {
     this.router.navigateByUrl('/details', { state: { id } });
   }
 
-  chooseCategory(category) {
-      const filteredPlaces = this.map.nearbyPlaces.filter(place => place.interest === category);
-      this.places = filteredPlaces;
-      return this.map.nearbyPlaces.filter((place, index) => {
-        if (place.interest === category) {
-          console.log('Image Index', index);
-          console.log('Filtered Places:', this.places, 'Filtered Images:', this.images);
-          this.loadImages(index);
-        }
-      });
-    }
-    // const filteredImages = this.map.nearbyPlaces.filter((place, index) => {
-    //   if (place.interest === category) {
-    //     console.log('Image Index', index);
-    //     return this.loadImages(index);
-    //   }
-    // });
-    // const filteredPlaces = this.map.nearbyPlaces.filter(place => place.interest === category);
-    // this.places = filteredPlaces;
-    // this.images = filteredImages;
-    // console.log('Filtered Places:', this.places, 'Filtered Images:', this.images);
-// }
+  chooseCategory(select) {
+    const filteredPlaces = this.map.nearbyPlaces.filter(
+      place => place.interest === select
+    );
+    this.places = filteredPlaces;
+    this.category[select] = !this.category[select];
+    return this.map.nearbyPlaces.filter((place, index) => {
+      if (place.interest === select) {
+        console.log('Image Index', index);
+        console.log(
+          'Filtered Places:',
+          this.places,
+          'Filtered Images:',
+          this.images
+        );
+        this.loadImages(index);
+      }
+    });
+  }
+  // const filteredImages = this.map.nearbyPlaces.filter((place, index) => {
+  //   if (place.interest === category) {
+  //     console.log('Image Index', index);
+  //     return this.loadImages(index);
+  //   }
+  // });
+  // const filteredPlaces = this.map.nearbyPlaces.filter(place => place.interest === category);
+  // this.places = filteredPlaces;
+  // this.images = filteredImages;
+  // console.log('Filtered Places:', this.places, 'Filtered Images:', this.images);
+  // }
 
   updateNavbar() {
     this.navBar.updateTitle(this.title);
