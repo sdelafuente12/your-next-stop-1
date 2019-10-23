@@ -23,7 +23,7 @@ export class ExploreComponent implements OnInit {
   public title = 'Your Personalized Stops';
   placesSubscription;
   imagesSubscription;
-  newColor = false;
+  categoryColor = false;
   currentUser = localStorage.getItem('userId');
 
   constructor(
@@ -63,15 +63,12 @@ export class ExploreComponent implements OnInit {
     this.map.markerClick(slideIndex, true);
   }
 
-  toggleColor() {
-    this.newColor = !this.newColor;
-  }
-
   navigateWithState(id) {
     this.router.navigateByUrl('/details', { state: { id } });
   }
 
-  chooseCategory() {
+  toggleCategory() {
+    this.categoryColor = !this.categoryColor;
     console.log('choose category');
   }
 

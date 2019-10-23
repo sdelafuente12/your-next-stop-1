@@ -1,37 +1,38 @@
 <div class="map-wrapper">
-        <app-map (placesLoaded)="loadPlaces()" (imagesLoaded)="loadImages($event)" (markerClicked)="mapMarkerClicked($event)"></app-map>
+  <app-map (placesLoaded)="loadPlaces()" (imagesLoaded)="loadImages($event)" (markerClicked)="mapMarkerClicked($event)">
+  </app-map>
 </div>
 
 <section class="chips-container">
-  <igx-card class="chips" (click)="chooseCategory()">
+  <igx-card class="chips" [ngClass]="{'category': categoryColor}" (click)="toggleCategory()">
     <i class="fas fa-cookie-bite fa-3x"></i>
     <span>Bakery</span>
   </igx-card>
-  <igx-card class="chips" (click)="chooseCategory()">
+  <igx-card class="chips" [ngClass]="{'category': categoryColor}" (click)="toggleCategory()">
     <i class="fas fa-glass-cheers fa-3x"></i>
     <span>Bar</span>
   </igx-card>
-  <igx-card class="chips" (click)="chooseCategory()">
+  <igx-card class="chips" [ngClass]="{'category': categoryColor}" (click)="toggleCategory()">
     <i class="fas fa-coffee fa-3x"></i>
     <span>Cafe</span>
   </igx-card>
-  <igx-card class="chips" (click)="chooseCategory()">
+  <igx-card class="chips" [ngClass]="{'category': categoryColor}" (click)="toggleCategory()">
     <i class="fas fa-palette fa-3x"></i>
     <span>Museum</span>
   </igx-card>
-  <igx-card class="chips" (click)="chooseCategory()">
+  <igx-card class="chips" [ngClass]="{'category': categoryColor}" (click)="toggleCategory()">
     <i class="fas fa-tree fa-3x"></i>
     <span>Park</span>
   </igx-card>
-  <igx-card class="chips" (click)="chooseCategory()">
+  <igx-card class="chips" [ngClass]="{'category': categoryColor}" (click)="toggleCategory()">
     <i class="fas fa-utensils fa-3x"></i>
     <span>Retaurant</span>
   </igx-card>
-  <igx-card class="chips" (click)="chooseCategory()">
+  <igx-card class="chips" [ngClass]="{'category': categoryColor}" (click)="toggleCategory()">
     <i class="fas fa-gifts fa-3x"></i>
     <span>Shopping</span>
   </igx-card>
-  <igx-card class="chips" (click)="chooseCategory()">
+  <igx-card class="chips" [ngClass]="{'category': categoryColor}" (click)="toggleCategory()">
     <i class="fas fa-archway fa-3x"></i>
     <span>Tourism</span>
   </igx-card>
@@ -48,7 +49,7 @@
           <igx-card-media (click)="navigateWithState(place.placeId)" height="300px">
             <ng-container *ngIf="images.length">
               <img [src]="images[i]">
-              </ng-container>
+            </ng-container>
           </igx-card-media>
         </igx-card>
       </div>
